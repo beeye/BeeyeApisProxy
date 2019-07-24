@@ -1,7 +1,8 @@
 {
   "profiles": {
     "HelloBeeye": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": ""
     }
   }
 }
