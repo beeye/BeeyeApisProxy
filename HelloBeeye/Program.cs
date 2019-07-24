@@ -10,6 +10,7 @@ namespace HelloBeeye
 {
     class Program
     {
+        //provide your API key. for requesting a demo key, contact us : https://www.mybeeye.com/contactus
         static string apiKey = "";
         //Cookies are used to hold authentification information. 
         static readonly CookieContainer cookies = new CookieContainer();
