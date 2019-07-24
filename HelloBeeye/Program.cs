@@ -56,7 +56,7 @@ namespace HelloBeeye
             //getting list of actives (not deleted) users
             var employyes = rh.GetAllRessources(true);
             PrintUsers(employyes);
-            //logining out. This is for demo porpuses only
+            //logining out. This is for demo purpose only
             _ = login.LogOut();
         }
 
