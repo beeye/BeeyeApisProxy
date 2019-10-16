@@ -946,6 +946,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean IsUniqueCustom { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Boolean AbakNumberField { get; set; }
 		/// <summary>
 		/// 
@@ -1210,15 +1214,15 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual T RequestObject { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Nullable<DateTime> StartDate { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
 		public virtual Nullable<DateTime> EndDate { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual T RequestObject { get; set; }
 		#endregion
 	}	
 	
@@ -1242,15 +1246,15 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual T RequestObject { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Nullable<DateTime> StartDate { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
 		public virtual Nullable<DateTime> EndDate { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual T RequestObject { get; set; }
 		#endregion
 	}	
 	
@@ -1266,15 +1270,15 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual T RequestObject { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Nullable<DateTime> StartDate { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
 		public virtual Nullable<DateTime> EndDate { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual T RequestObject { get; set; }
 		#endregion
 	}	
 	
@@ -1881,6 +1885,38 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class GetPlanningLineRequest
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<IntervalHelper> Periods { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RessourceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UnitsMode UnitsMode { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class GetPlanningParams
 	{
 		#region Constants
@@ -1922,7 +1958,7 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Int32 UnitsMode { get; set; }
+		public virtual UnitsMode UnitsMode { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1975,6 +2011,30 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual List<SimpleProject> Projects { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ShowEmptyLines { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class GetRessourcesRequest
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ReturnNotAssignedEmployees { get; set; }
 		#endregion
 	}	
 	
@@ -2007,6 +2067,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean TakeEmptyProjects { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean BlockEnterTimeOnProjects { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean TakeEmptyTasks { get; set; }
 		#endregion
 	}	
 	
@@ -2490,7 +2558,7 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual IEnumerable<RessourceStats> Ressources { get; set; }
+		public virtual List<RessourceStats> Ressources { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2539,6 +2607,38 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean IsFromRequest { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual PaginationEntity PaginateBy { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class PeriodValue
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Value { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsProjectDatesOK { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsTaskDatesOK { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsEmployeDatesOK { get; set; }
 		#endregion
 	}	
 	
@@ -2789,6 +2889,54 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class PlanningResponse
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 MaxResults { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ColumnsCount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 PlanningTimeUnit { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<SimplifiedPlanningEntity> Plannings { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double MaxAvalibilityHours { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<IntervalHelper> Periods { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Result { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Message { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class PlanningResult
 	{
 		#region Constants
@@ -2858,7 +3006,7 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Int32 Type { get; set; }
+		public virtual PlanningMode Type { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2875,6 +3023,30 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32[] ResosurceIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 WorkPlaceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OldId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsPercentage { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean AutoAdjustDates { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Comment { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean BlockModif { get; set; }
 		#endregion
 	}	
 	
@@ -3158,7 +3330,15 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String WorkPlace { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Nullable<DateTime> CreatedDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> WorkPlaceId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -3199,6 +3379,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 WorkPlaceId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -3550,6 +3734,14 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String WorkPlace { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> DefaultWorkPlaceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Name { get; set; }
 		/// <summary>
 		/// 
@@ -3686,6 +3878,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual List<Int32> ProjectsIdList { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 RessourceId { get; set; }
 		/// <summary>
 		/// 
@@ -3727,6 +3923,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32 CurrentStateId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DefaultWorkPlaceId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4007,6 +4207,18 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32[] ResosurceIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 WorkPlaceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Comment { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean BlockModif { get; set; }
 		#endregion
 	}	
 	
@@ -4023,6 +4235,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual DateTime StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime EndDate { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4053,6 +4269,46 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ReplanProjectsRequest
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] ProjectsIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime NewProjectsStartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RecreateTasks { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CopyCustomFields { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual PlanningSelection PlanType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String SignalRId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CloseOriginalProject { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class RequesTasks
 	{
 		#region Constants
@@ -4071,6 +4327,18 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual DateTime DateFinprevue { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 State { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 WorkPlaceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CascadeState { get; set; }
 		#endregion
 	}	
 	
@@ -4107,6 +4375,34 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean IncludeDetails { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RequestDeclareDone
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 resourceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 taskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double amount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean changeTimeSheet { get; set; }
 		#endregion
 	}	
 	
@@ -4454,6 +4750,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual List<OccupationJSWithRessources> AdditionalUsers { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Double TotalHours { get; set; }
 		#endregion
 	}	
@@ -4694,6 +4994,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Nullable<Double> RealMaxWorkDay { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Nullable<Double> MaxWorkDay { get; set; }
 		/// <summary>
 		/// 
@@ -4810,6 +5114,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean CanEditBudget { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 NumberOfUsers { get; set; }
 		#endregion
 	}	
@@ -4915,6 +5223,86 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean IsFav { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SimplifiedPlanningEntity
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 PlanningLineId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual EntityType EntityType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 EntityId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String EntityName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String AdditionalData1 { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String AdditionalData2 { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Avalibility { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double ProjectedTime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double RemainingToPlan { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Budget { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean HasChilds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<SimplifiedPlanningEntity> Childs { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<PeriodValue> Values { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RessourceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsProjectLine { get; set; }
 		#endregion
 	}	
 	
@@ -5242,11 +5630,39 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Nullable<Double> ValuePlanification { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> DatePlanification { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ResourceNameHistory { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String WorkPlaceHistory { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Text { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean IsSystem { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Boolean CanEdit { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String OldRessourceName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> OldDate { get; set; }
 		#endregion
 	}	
 	
@@ -6038,6 +6454,29 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public enum EntityType
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Project = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Task = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Ressource = 2,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public enum NotificationType
 	{
 
@@ -6065,6 +6504,70 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		LuccaEvent = 4,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum PaginationEntity
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Project = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Ressource = 1,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum PlanningMode
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		HoursPerDay = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		HoursTotal = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		PlanByAvalibility = 3,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum PlanningSelection
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		None = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		UseReals = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		UsePlanned = 3,
 		
 	}
 	
@@ -6116,6 +6619,24 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		Month = 3,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum UnitsMode
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Hours = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Percentages = 2,
 		
 	}
 	
@@ -6309,6 +6830,13 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> ReassingAsync(PlanParams Params);
+
+		/// <returns></returns>
+		UpdateResult Reassing(PlanParams Params);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> SavePlanniAsync(PlanParams Params);
 
 		/// <returns></returns>
@@ -6336,6 +6864,15 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="takeCalculHard"></param>
 		/// <returns></returns>
 		List<CustomFieldJs> GetAllCustomFields(Boolean takeHidden,Boolean takeCalculHard);
+
+		/// <param name="customFieldId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CheckUniqueValueAsync(Int32 customFieldId,CustomFieldValue value);
+
+		/// <param name="customFieldId"></param>
+		/// <returns></returns>
+		UpdateResult CheckUniqueValue(Int32 customFieldId,CustomFieldValue value);
 
 		/// <param name="customFieldId"></param>
 
@@ -6426,6 +6963,13 @@ namespace WebApi.Proxies.Interfaces
 	
 	public partial interface IEmployesClient : IClientBase
 	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllRessourcesFilteredAsync(DatesRangeFilteredRequestPagination<Boolean> request);
+
+		/// <returns></returns>
+		List<EmployeJS__> GetAllRessourcesFiltered(DatesRangeFilteredRequestPagination<Boolean> request);
 
 		/// <param name="takeOnlyActif">Only take not deleted employees</param>
 
@@ -6630,17 +7174,24 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> GetRessourcesAsync(DatesRangeRequest<Int32> args);
+		Task<HttpResponseMessage> GetRessourcesAsync(DatesRangeRequest<GetRessourcesRequest> args);
 
 		/// <returns></returns>
-		RessourcesForNewProject GetRessources(DatesRangeRequest<Int32> args);
+		RessourcesForNewProject GetRessources(DatesRangeRequest<GetRessourcesRequest> args);
 
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> SavePlanniRessourcesAsync(PlanParams Params);
+		Task<HttpResponseMessage> CheckIfPlanifAsync(PlanParams Params);
 
 		/// <returns></returns>
-		UpdateResult SavePlanniRessources(PlanParams Params);
+		UpdateResult CheckIfPlanif(PlanParams Params);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SavePlanningRessourcesAsync(PlanParams Params);
+
+		/// <returns></returns>
+		UpdateResult SavePlanningRessources(PlanParams Params);
 				
 	}
 	
@@ -6688,6 +7239,15 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		List<SkillLevelJs> GetAllSkillLevels();
+
+		/// <param name="ressourceId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CheckCanDeleteRessourceAsync(Int32 ressourceId);
+
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		Boolean CheckCanDeleteRessource(Int32 ressourceId);
 
 		/// <param name="skillLevelId"></param>
 
@@ -6766,6 +7326,15 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="titleId"></param>
 		/// <returns></returns>
 		UpdateResult DeleteTitile(Int32 titleId);
+
+		/// <param name="ressourceId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CheckUpdateEmployeeAsync(Int32 ressourceId,RessourceUpdate data);
+
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		UpdateResult CheckUpdateEmployee(Int32 ressourceId,RessourceUpdate data);
 
 		/// <param name="ressourceId"></param>
 
@@ -7010,6 +7579,15 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		List<Double> GetPlanifGraph(DatesRangeFilteredRequestPagination<GetPlanningParams> search);
 
+		/// <param name="ressourceId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetIfRessHavePlanifAsync(Int32 ressourceId,DatesRangeFilteredRequestPagination<GetPlanningParams> search);
+
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		Boolean GetIfRessHavePlanif(Int32 ressourceId,DatesRangeFilteredRequestPagination<GetPlanningParams> search);
+
 		/// <param name="userId">Id of project or ressource</param>
 
 		/// <returns></returns>
@@ -7057,14 +7635,19 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResult ClearProjectPlanning(Int32 projectId,Boolean clearTasks);
 
-		/// <param name="isPercantage"></param>
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> PlanProjectForDatesAsync(Boolean isPercantage,ValueWithDates data);
+		Task<HttpResponseMessage> GetCombienedPlanningAsync(DatesRangeFilteredRequestPagination<GetPlanningParams> requestData);
 
-		/// <param name="isPercantage"></param>
 		/// <returns></returns>
-		UpdateResult PlanProjectForDates(Boolean isPercantage,ValueWithDates data);
+		PlanningResponse GetCombienedPlanning(DatesRangeFilteredRequestPagination<GetPlanningParams> requestData);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAvailabilityAsync(GetPlanningLineRequest requestData);
+
+		/// <returns></returns>
+		PlanningResponse GetAvailability(GetPlanningLineRequest requestData);
 				
 	}
 	
@@ -7146,6 +7729,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResult SaveChangesToPlannings(TaskPlanningsToSave plannings);
 
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ReversePlanningAsDoneAsync(DatesRangeRequest<RequestDeclareDone> dates);
+
+		/// <returns></returns>
+		UpdateResult ReversePlanningAsDone(DatesRangeRequest<RequestDeclareDone> dates);
+
 		/// <param name="resourceId"></param>
 		/// <param name="taskId"></param>
 
@@ -7163,6 +7753,15 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResult SetupDefaultWorkSpaces();
+
+		/// <param name="taskId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetDefaultAllWorkSpaceAsync(Int32 taskId);
+
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		Int32 GetDefaultAllWorkSpace(Int32 taskId);
 
 
 		/// <returns></returns>
@@ -7322,16 +7921,12 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		DateTime GetGoodDate(DateTime StartDate,DateTime EndDate);
 
-		/// <param name="resourceId"></param>
-		/// <param name="taskId"></param>
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> DeclarePlanningAsDoneAsync(Int32 resourceId,Int32 taskId,DatesRangeRequest<Object> dates);
+		Task<HttpResponseMessage> DeclarePlanningAsDoneAsync(DatesRangeRequest<RequestDeclareDone> dates);
 
-		/// <param name="resourceId"></param>
-		/// <param name="taskId"></param>
 		/// <returns></returns>
-		UpdateResult DeclarePlanningAsDone(Int32 resourceId,Int32 taskId,DatesRangeRequest<Object> dates);
+		UpdateResult DeclarePlanningAsDone(DatesRangeRequest<RequestDeclareDone> dates);
 
 
 		/// <returns></returns>
@@ -7363,6 +7958,13 @@ namespace WebApi.Proxies.Interfaces
 	
 	public partial interface IProjectManagementClient : IClientBase
 	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CopyProjectsAsync(ReplanProjectsRequest data);
+
+		/// <returns></returns>
+		UpdateResultWithId CopyProjects(ReplanProjectsRequest data);
 
 		/// <param name="projectId"></param>
 		/// <param name="userId"></param>
@@ -7407,10 +8009,10 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> GetAllProjectsWithCustomFieldsAsync(DatesRangeRequest<Boolean> requestObject);
+		Task<HttpResponseMessage> GetAllProjectsWithCustomFieldsAsync(DatesRangeFilteredRequest<Boolean> requestObject);
 
 		/// <returns></returns>
-		List<ProjectJS> GetAllProjectsWithCustomFields(DatesRangeRequest<Boolean> requestObject);
+		List<ProjectJS> GetAllProjectsWithCustomFields(DatesRangeFilteredRequest<Boolean> requestObject);
 
 
 		/// <returns></returns>
@@ -7427,6 +8029,17 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="projectId"></param>
 		/// <returns></returns>
 		UpdateResult OpenProject(Int32 projectId);
+
+		/// <param name="projectId"></param>
+		/// <param name="workPlaceId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ChangeDefaultWorkPlaceAsync(Int32 projectId,Int32 workPlaceId);
+
+		/// <param name="projectId"></param>
+		/// <param name="workPlaceId"></param>
+		/// <returns></returns>
+		UpdateResult ChangeDefaultWorkPlace(Int32 projectId,Int32 workPlaceId);
 
 		/// <param name="projectId"></param>
 
@@ -7607,6 +8220,19 @@ namespace WebApi.Proxies.Interfaces
 	public partial interface ITasksClient : IClientBase
 	{	
 
+		/// <param name="templateId"></param>
+		/// <param name="projectId"></param>
+		/// <param name="addTemplateResp"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ImportFromTemplateAsync(String templateId,Int32 projectId,Boolean addTemplateResp);
+
+		/// <param name="templateId"></param>
+		/// <param name="projectId"></param>
+		/// <param name="addTemplateResp"></param>
+		/// <returns></returns>
+		UpdateResult ImportFromTemplate(String templateId,Int32 projectId,Boolean addTemplateResp);
+
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> CreateTaskAsync(ProjectTaskMinimal toCreate);
@@ -7632,29 +8258,27 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <param name="taskId"></param>
 		/// <param name="parentId"></param>
-		/// <param name="state"></param>
-		/// <param name="cascadeState"></param>
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> UpdateTaskAsync(Int32 taskId,Int32 parentId,Int32 state,Boolean cascadeState,RequesTasks requestTask);
+		Task<HttpResponseMessage> UpdateTaskAsync(Int32 taskId,Int32 parentId,RequesTasks requestTask);
 
 		/// <param name="taskId"></param>
 		/// <param name="parentId"></param>
-		/// <param name="state"></param>
-		/// <param name="cascadeState"></param>
 		/// <returns></returns>
-		UpdateResult UpdateTask(Int32 taskId,Int32 parentId,Int32 state,Boolean cascadeState,RequesTasks requestTask);
+		UpdateResult UpdateTask(Int32 taskId,Int32 parentId,RequesTasks requestTask);
 
 		/// <param name="taskId"></param>
 		/// <param name="projectId"></param>
+		/// <param name="noUnique"></param>
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> GetCustomFieldsForTaskAsync(Int32 taskId,Int32 projectId);
+		Task<HttpResponseMessage> GetCustomFieldsForTaskAsync(Int32 taskId,Int32 projectId,Boolean noUnique);
 
 		/// <param name="taskId"></param>
 		/// <param name="projectId"></param>
+		/// <param name="noUnique"></param>
 		/// <returns></returns>
-		List<CustomFieldJs> GetCustomFieldsForTask(Int32 taskId,Int32 projectId);
+		List<CustomFieldJs> GetCustomFieldsForTask(Int32 taskId,Int32 projectId,Boolean noUnique);
 
 		/// <param name="taskId"></param>
 
@@ -7679,14 +8303,14 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResult UpdateSelectedTasksInfo(RequestSelectedTasks data);
 
-		/// <param name="projectId"></param>
+		/// <param name="projectId">Id of the project to delete</param>
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> GetAllProjectRessourcesAsync(Int32 projectId);
+		Task<HttpResponseMessage> GetAllProjectRessourcesAsync(Int32 projectId,RequesTasks dates);
 
-		/// <param name="projectId"></param>
+		/// <param name="projectId">Id of the project to delete</param>
 		/// <returns></returns>
-		List<EmployeJS> GetAllProjectRessources(Int32 projectId);
+		List<EmployeJS> GetAllProjectRessources(Int32 projectId,RequesTasks dates);
 
 
 		/// <returns></returns>
@@ -7710,6 +8334,15 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		ProjectTask GetTaskById(DatesRangeRequest<Int32> criteria);
+
+		/// <param name="projectId">Id of the project</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectWorkPlaceAsync(Int32 projectId);
+
+		/// <param name="projectId">Id of the project</param>
+		/// <returns></returns>
+		Nullable<Int32> GetProjectWorkPlace(Int32 projectId);
 				
 	}
 	
@@ -8235,7 +8868,8 @@ namespace WebApi.Proxies.Clients
 		#region Methods
 
 		/// <summary>
-		/// Used to get the list of all clients with all relative data
+		/// Used to get the list of all clients with all relative data.
+		/// If user doesn't have complete licence, only names are returned
 		/// </summary>
 		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> GetClientsListAsyncMsg()
@@ -8244,7 +8878,8 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// Used to get the list of all clients with all relative data
+		/// Used to get the list of all clients with all relative data.
+		/// If user doesn't have complete licence, only names are returned
 		/// </summary>
 		/// <returns></returns>
 		public virtual async Task<HttpResponseMessage> GetClientsListAsync()
@@ -8253,7 +8888,8 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// Used to get the list of all clients with all relative data
+		/// Used to get the list of all clients with all relative data.
+		/// If user doesn't have complete licence, only names are returned
 		/// </summary>
 		public virtual List<Client> GetClientsList()
 		{
@@ -8485,6 +9121,37 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="Params"></param>
 		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ReassingAsyncMsg(PlanParams Params)
+		{
+			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/conflict/Reassing", Params);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ReassingAsync(PlanParams Params)
+		{
+			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/conflict/Reassing", Params);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult Reassing(PlanParams Params)
+		{
+			var result = Task.Run(() => ReassingAsyncMsg(Params)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="Params"></param>
+		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> SavePlanniAsyncMsg(PlanParams Params)
 		{
 			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/conflict/SavePlanni", Params);
@@ -8608,6 +9275,40 @@ namespace WebApi.Proxies.Clients
 		/// <param name="customFieldId"></param>
 		/// <param name="value"></param>
 		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CheckUniqueValueAsyncMsg(Int32 customFieldId,CustomFieldValue value)
+		{
+			return await HttpClient.PutAsJsonAsync<CustomFieldValue>("api/customFields/checkUniqueValue/" + customFieldId, value);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="customFieldId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CheckUniqueValueAsync(Int32 customFieldId,CustomFieldValue value)
+		{
+			return await HttpClient.PutAsJsonAsync<CustomFieldValue>("api/customFields/checkUniqueValue/" + customFieldId, value);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="customFieldId"></param>
+		public virtual UpdateResult CheckUniqueValue(Int32 customFieldId,CustomFieldValue value)
+		{
+			var result = Task.Run(() => CheckUniqueValueAsyncMsg(customFieldId, value)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="customFieldId"></param>
+		/// <param name="value"></param>
+		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> UpdateCustomFieldValueAsyncMsg(Int32 customFieldId,CustomFieldValue value)
 		{
 			return await HttpClient.PutAsJsonAsync<CustomFieldValue>("api/customFields/updateValue/" + customFieldId, value);
@@ -8639,20 +9340,20 @@ namespace WebApi.Proxies.Clients
 		#endregion
 	}
 	/// <summary>
-	/// 
+	/// This controller manages divisions.
 	/// </summary>
 	public partial class DirectionsClient : ClientBase, Interfaces.IDirectionsClient
 	{		
 
 		/// <summary>
-		/// 
+		/// This controller manages divisions.
 		/// </summary>
 		public DirectionsClient() : base()
 		{
 		}
 
 		/// <summary>
-		/// 
+		/// This controller manages divisions.
 		/// </summary>
 		public DirectionsClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
 		{
@@ -8972,6 +9673,37 @@ namespace WebApi.Proxies.Clients
 		#region Methods
 
 		/// <summary>
+		/// Returns a list of all employees. Request object is bool : take or not deleted employees
+		/// </summary>
+		/// <param name="request">Filters to use. Start date and EndDate are optional. The bool value indicate if we should only return actif users</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllRessourcesFilteredAsyncMsg(DatesRangeFilteredRequestPagination<Boolean> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<Boolean>>("api/v1/rh/employees/filtered", request);
+		}
+
+		/// <summary>
+		/// Returns a list of all employees. Request object is bool : take or not deleted employees
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllRessourcesFilteredAsync(DatesRangeFilteredRequestPagination<Boolean> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<Boolean>>("api/v1/rh/employees/filtered", request);
+		}
+
+		/// <summary>
+		/// Returns a list of all employees. Request object is bool : take or not deleted employees
+		/// </summary>
+		public virtual List<EmployeJS__> GetAllRessourcesFiltered(DatesRangeFilteredRequestPagination<Boolean> request)
+		{
+			var result = Task.Run(() => GetAllRessourcesFilteredAsyncMsg(request)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<EmployeJS__>>().Result;
+			 		}
+
+		/// <summary>
 		/// Returns a list of all employees
 		/// </summary>
 		/// <param name="takeOnlyActif">Only take not deleted employees</param>
@@ -9173,7 +9905,7 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// Replace ressource planning
+		/// Check if Availability Problem with ressource for a list of projects return problemes projects
 		/// </summary>
 		/// <param name="employeId">Ressource ID</param>
 		/// <param name="param">param</param>
@@ -9184,7 +9916,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// Replace ressource planning
+		/// Check if Availability Problem with ressource for a list of projects return problemes projects
 		/// </summary>
 		/// <param name="employeId">Ressource ID</param>
 		/// <returns></returns>
@@ -9194,7 +9926,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// Replace ressource planning
+		/// Check if Availability Problem with ressource for a list of projects return problemes projects
 		/// </summary>
 		/// <param name="employeId">Ressource ID</param>
 		public virtual List<Int32> CheckAvailabilityProblem(Int32 employeId,ReplaceRessource param)
@@ -9773,28 +10505,28 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// 
+		/// Returns 2 lists of users avalible for dates
 		/// </summary>
-		/// <param name="args"></param>
+		/// <param name="args">Contains users already in project and other avalible users</param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetRessourcesAsyncMsg(DatesRangeRequest<Int32> args)
+		protected virtual async Task<HttpResponseMessage> GetRessourcesAsyncMsg(DatesRangeRequest<GetRessourcesRequest> args)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/fastPlanning/getRessources", args);
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<GetRessourcesRequest>>("api/v1/fastPlanning/getRessources", args);
 		}
 
 		/// <summary>
-		/// 
+		/// Returns 2 lists of users avalible for dates
 		/// </summary>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetRessourcesAsync(DatesRangeRequest<Int32> args)
+		public virtual async Task<HttpResponseMessage> GetRessourcesAsync(DatesRangeRequest<GetRessourcesRequest> args)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/fastPlanning/getRessources", args);
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<GetRessourcesRequest>>("api/v1/fastPlanning/getRessources", args);
 		}
 
 		/// <summary>
-		/// 
+		/// Returns 2 lists of users avalible for dates
 		/// </summary>
-		public virtual RessourcesForNewProject GetRessources(DatesRangeRequest<Int32> args)
+		public virtual RessourcesForNewProject GetRessources(DatesRangeRequest<GetRessourcesRequest> args)
 		{
 			var result = Task.Run(() => GetRessourcesAsyncMsg(args)).Result;		 
 			 
@@ -9808,26 +10540,57 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="Params"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> SavePlanniRessourcesAsyncMsg(PlanParams Params)
+		protected virtual async Task<HttpResponseMessage> CheckIfPlanifAsyncMsg(PlanParams Params)
 		{
-			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/fastPlanning/SaveRecurenceRessource", Params);
+			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/fastPlanning/checkIfPlanif", Params);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> SavePlanniRessourcesAsync(PlanParams Params)
+		public virtual async Task<HttpResponseMessage> CheckIfPlanifAsync(PlanParams Params)
 		{
-			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/fastPlanning/SaveRecurenceRessource", Params);
+			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/fastPlanning/checkIfPlanif", Params);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual UpdateResult SavePlanniRessources(PlanParams Params)
+		public virtual UpdateResult CheckIfPlanif(PlanParams Params)
 		{
-			var result = Task.Run(() => SavePlanniRessourcesAsyncMsg(Params)).Result;		 
+			var result = Task.Run(() => CheckIfPlanifAsyncMsg(Params)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="Params"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SavePlanningRessourcesAsyncMsg(PlanParams Params)
+		{
+			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/fastPlanning/savePlanningRessources", Params);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SavePlanningRessourcesAsync(PlanParams Params)
+		{
+			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/fastPlanning/savePlanningRessources", Params);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult SavePlanningRessources(PlanParams Params)
+		{
+			var result = Task.Run(() => SavePlanningRessourcesAsyncMsg(Params)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -10034,6 +10797,39 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<SkillLevelJs>>().Result;
+			 		}
+
+		/// <summary>
+		/// Check If Can Delete Ressource
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CheckCanDeleteRessourceAsyncMsg(Int32 ressourceId)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/checkCanDeleteRessource?ressourceId=" + ressourceId);
+		}
+
+		/// <summary>
+		/// Check If Can Delete Ressource
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CheckCanDeleteRessourceAsync(Int32 ressourceId)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/checkCanDeleteRessource?ressourceId=" + ressourceId);
+		}
+
+		/// <summary>
+		/// Check If Can Delete Ressource
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		public virtual Boolean CheckCanDeleteRessource(Int32 ressourceId)
+		{
+			var result = Task.Run(() => CheckCanDeleteRessourceAsyncMsg(ressourceId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Boolean>().Result;
 			 		}
 
 		/// <summary>
@@ -10348,6 +11144,40 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResult DeleteTitile(Int32 titleId)
 		{
 			var result = Task.Run(() => DeleteTitileAsyncMsg(titleId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Updates an employee.
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <param name="data">All fields are optional except UserId</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CheckUpdateEmployeeAsyncMsg(Int32 ressourceId,RessourceUpdate data)
+		{
+			return await HttpClient.PutAsJsonAsync<RessourceUpdate>("api/v1/ressources/checkUpdateEmployee/" + ressourceId, data);
+		}
+
+		/// <summary>
+		/// Updates an employee.
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CheckUpdateEmployeeAsync(Int32 ressourceId,RessourceUpdate data)
+		{
+			return await HttpClient.PutAsJsonAsync<RessourceUpdate>("api/v1/ressources/checkUpdateEmployee/" + ressourceId, data);
+		}
+
+		/// <summary>
+		/// Updates an employee.
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		public virtual UpdateResult CheckUpdateEmployee(Int32 ressourceId,RessourceUpdate data)
+		{
+			var result = Task.Run(() => CheckUpdateEmployeeAsyncMsg(ressourceId, data)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -11376,6 +12206,40 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Get if their is planning for a RESSOURCE
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <param name="search"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetIfRessHavePlanifAsyncMsg(Int32 ressourceId,DatesRangeFilteredRequestPagination<GetPlanningParams> search)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<GetPlanningParams>>("api/v1/planning/api/v1/planning/GetIfRessHavePlanif?ressourceId=" + ressourceId, search);
+		}
+
+		/// <summary>
+		/// Get if their is planning for a RESSOURCE
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetIfRessHavePlanifAsync(Int32 ressourceId,DatesRangeFilteredRequestPagination<GetPlanningParams> search)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<GetPlanningParams>>("api/v1/planning/api/v1/planning/GetIfRessHavePlanif?ressourceId=" + ressourceId, search);
+		}
+
+		/// <summary>
+		/// Get if their is planning for a RESSOURCE
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		public virtual Boolean GetIfRessHavePlanif(Int32 ressourceId,DatesRangeFilteredRequestPagination<GetPlanningParams> search)
+		{
+			var result = Task.Run(() => GetIfRessHavePlanifAsyncMsg(ressourceId, search)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Boolean>().Result;
+			 		}
+
+		/// <summary>
 		/// Get the planning for a RESSOURCE
 		/// </summary>
 		/// <param name="userId">Id of project or ressource</param>
@@ -11548,37 +12412,68 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// 
+		/// Returns combiend (Project and tasks) planning
+		/// Pagination is by top level item (Project or ressource)
 		/// </summary>
-		/// <param name="isPercantage"></param>
-		/// <param name="data"></param>
+		/// <param name="requestData"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> PlanProjectForDatesAsyncMsg(Boolean isPercantage,ValueWithDates data)
+		protected virtual async Task<HttpResponseMessage> GetCombienedPlanningAsyncMsg(DatesRangeFilteredRequestPagination<GetPlanningParams> requestData)
 		{
-			return await HttpClient.PostAsJsonAsync<ValueWithDates>("api/v1/planning/AddPlanning/" + isPercantage, data);
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<GetPlanningParams>>("api/v1/planning/GetCombienedPlanning", requestData);
 		}
 
 		/// <summary>
-		/// 
+		/// Returns combiend (Project and tasks) planning
+		/// Pagination is by top level item (Project or ressource)
 		/// </summary>
-		/// <param name="isPercantage"></param>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> PlanProjectForDatesAsync(Boolean isPercantage,ValueWithDates data)
+		public virtual async Task<HttpResponseMessage> GetCombienedPlanningAsync(DatesRangeFilteredRequestPagination<GetPlanningParams> requestData)
 		{
-			return await HttpClient.PostAsJsonAsync<ValueWithDates>("api/v1/planning/AddPlanning/" + isPercantage, data);
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<GetPlanningParams>>("api/v1/planning/GetCombienedPlanning", requestData);
 		}
 
 		/// <summary>
-		/// 
+		/// Returns combiend (Project and tasks) planning
+		/// Pagination is by top level item (Project or ressource)
 		/// </summary>
-		/// <param name="isPercantage"></param>
-		public virtual UpdateResult PlanProjectForDates(Boolean isPercantage,ValueWithDates data)
+		public virtual PlanningResponse GetCombienedPlanning(DatesRangeFilteredRequestPagination<GetPlanningParams> requestData)
 		{
-			var result = Task.Run(() => PlanProjectForDatesAsyncMsg(isPercantage, data)).Result;		 
+			var result = Task.Run(() => GetCombienedPlanningAsyncMsg(requestData)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
-			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			return result.Content.ReadAsAsync<PlanningResponse>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="requestData"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAvailabilityAsyncMsg(GetPlanningLineRequest requestData)
+		{
+			return await HttpClient.PostAsJsonAsync<GetPlanningLineRequest>("api/v1/planning/GetAvailability", requestData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAvailabilityAsync(GetPlanningLineRequest requestData)
+		{
+			return await HttpClient.PostAsJsonAsync<GetPlanningLineRequest>("api/v1/planning/GetAvailability", requestData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual PlanningResponse GetAvailability(GetPlanningLineRequest requestData)
+		{
+			var result = Task.Run(() => GetAvailabilityAsyncMsg(requestData)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<PlanningResponse>().Result;
 			 		}
 
 		#endregion
@@ -11899,6 +12794,37 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Declares one day of planning done as not done and remove hour in the timesheet. The StartDate should be used for the day of planning.
+		/// </summary>
+		/// <param name="dates"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ReversePlanningAsDoneAsyncMsg(DatesRangeRequest<RequestDeclareDone> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<RequestDeclareDone>>("api/v1/task-planning/ReversePlanningAsDone", dates);
+		}
+
+		/// <summary>
+		/// Declares one day of planning done as not done and remove hour in the timesheet. The StartDate should be used for the day of planning.
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ReversePlanningAsDoneAsync(DatesRangeRequest<RequestDeclareDone> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<RequestDeclareDone>>("api/v1/task-planning/ReversePlanningAsDone", dates);
+		}
+
+		/// <summary>
+		/// Declares one day of planning done as not done and remove hour in the timesheet. The StartDate should be used for the day of planning.
+		/// </summary>
+		public virtual UpdateResult ReversePlanningAsDone(DatesRangeRequest<RequestDeclareDone> dates)
+		{
+			var result = Task.Run(() => ReversePlanningAsDoneAsyncMsg(dates)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
 		/// Deleting one task planning
 		/// </summary>
 		/// <param name="resourceId"></param>
@@ -11963,6 +12889,39 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get the default work place
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetDefaultAllWorkSpaceAsyncMsg(Int32 taskId)
+		{
+			return await HttpClient.GetAsync("api/v1/task-planning/GetDefaultAllWorkSpace/" + taskId);
+		}
+
+		/// <summary>
+		/// Get the default work place
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetDefaultAllWorkSpaceAsync(Int32 taskId)
+		{
+			return await HttpClient.GetAsync("api/v1/task-planning/GetDefaultAllWorkSpace/" + taskId);
+		}
+
+		/// <summary>
+		/// Get the default work place
+		/// </summary>
+		/// <param name="taskId"></param>
+		public virtual Int32 GetDefaultAllWorkSpace(Int32 taskId)
+		{
+			var result = Task.Run(() => GetDefaultAllWorkSpaceAsyncMsg(taskId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Int32>().Result;
 			 		}
 
 		/// <summary>
@@ -12529,34 +13488,28 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// Declares one day of planning as "Done" and fills time in their timesheets. The StartDate should be used for the day of planning.
 		/// </summary>
-		/// <param name="resourceId"></param>
-		/// <param name="taskId"></param>
 		/// <param name="dates"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> DeclarePlanningAsDoneAsyncMsg(Int32 resourceId,Int32 taskId,DatesRangeRequest<Object> dates)
+		protected virtual async Task<HttpResponseMessage> DeclarePlanningAsDoneAsyncMsg(DatesRangeRequest<RequestDeclareDone> dates)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Object>>("api/PlanningByTasks?resourceId=" + resourceId + "&taskId=" + taskId, dates);
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<RequestDeclareDone>>("api/PlanningByTasks", dates);
 		}
 
 		/// <summary>
 		/// Declares one day of planning as "Done" and fills time in their timesheets. The StartDate should be used for the day of planning.
 		/// </summary>
-		/// <param name="resourceId"></param>
-		/// <param name="taskId"></param>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> DeclarePlanningAsDoneAsync(Int32 resourceId,Int32 taskId,DatesRangeRequest<Object> dates)
+		public virtual async Task<HttpResponseMessage> DeclarePlanningAsDoneAsync(DatesRangeRequest<RequestDeclareDone> dates)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Object>>("api/PlanningByTasks?resourceId=" + resourceId + "&taskId=" + taskId, dates);
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<RequestDeclareDone>>("api/PlanningByTasks", dates);
 		}
 
 		/// <summary>
 		/// Declares one day of planning as "Done" and fills time in their timesheets. The StartDate should be used for the day of planning.
 		/// </summary>
-		/// <param name="resourceId"></param>
-		/// <param name="taskId"></param>
-		public virtual UpdateResult DeclarePlanningAsDone(Int32 resourceId,Int32 taskId,DatesRangeRequest<Object> dates)
+		public virtual UpdateResult DeclarePlanningAsDone(DatesRangeRequest<RequestDeclareDone> dates)
 		{
-			var result = Task.Run(() => DeclarePlanningAsDoneAsyncMsg(resourceId, taskId, dates)).Result;		 
+			var result = Task.Run(() => DeclarePlanningAsDoneAsyncMsg(dates)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -12701,6 +13654,37 @@ namespace WebApi.Proxies.Clients
 		}
 
 		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CopyProjectsAsyncMsg(ReplanProjectsRequest data)
+		{
+			return await HttpClient.PostAsJsonAsync<ReplanProjectsRequest>("api/v1/proj-management/CopyProjects", data);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CopyProjectsAsync(ReplanProjectsRequest data)
+		{
+			return await HttpClient.PostAsJsonAsync<ReplanProjectsRequest>("api/v1/proj-management/CopyProjects", data);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId CopyProjects(ReplanProjectsRequest data)
+		{
+			var result = Task.Run(() => CopyProjectsAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
 
 		/// <summary>
 		/// Add to project ressource if not in the project
@@ -12869,24 +13853,24 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="requestObject">Dates range. The parametre indicates if custom fields should be included</param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetAllProjectsWithCustomFieldsAsyncMsg(DatesRangeRequest<Boolean> requestObject)
+		protected virtual async Task<HttpResponseMessage> GetAllProjectsWithCustomFieldsAsyncMsg(DatesRangeFilteredRequest<Boolean> requestObject)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/proj-management/GetAllProjectsWithCustomFields", requestObject);
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Boolean>>("api/v1/proj-management/GetAllProjectsWithCustomFields", requestObject);
 		}
 
 		/// <summary>
 		/// Return list of all projects in the compagnie and values of custom fields
 		/// </summary>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetAllProjectsWithCustomFieldsAsync(DatesRangeRequest<Boolean> requestObject)
+		public virtual async Task<HttpResponseMessage> GetAllProjectsWithCustomFieldsAsync(DatesRangeFilteredRequest<Boolean> requestObject)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/proj-management/GetAllProjectsWithCustomFields", requestObject);
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Boolean>>("api/v1/proj-management/GetAllProjectsWithCustomFields", requestObject);
 		}
 
 		/// <summary>
 		/// Return list of all projects in the compagnie and values of custom fields
 		/// </summary>
-		public virtual List<ProjectJS> GetAllProjectsWithCustomFields(DatesRangeRequest<Boolean> requestObject)
+		public virtual List<ProjectJS> GetAllProjectsWithCustomFields(DatesRangeFilteredRequest<Boolean> requestObject)
 		{
 			var result = Task.Run(() => GetAllProjectsWithCustomFieldsAsyncMsg(requestObject)).Result;		 
 			 
@@ -12953,6 +13937,42 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResult OpenProject(Int32 projectId)
 		{
 			var result = Task.Run(() => OpenProjectAsyncMsg(projectId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Opends project
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="workPlaceId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ChangeDefaultWorkPlaceAsyncMsg(Int32 projectId,Int32 workPlaceId)
+		{
+			return await HttpClient.PutAsJsonAsync("api/v1/proj-management/ChangeDefaultWorkPlace/" + projectId + "/" + workPlaceId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Opends project
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="workPlaceId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ChangeDefaultWorkPlaceAsync(Int32 projectId,Int32 workPlaceId)
+		{
+			return await HttpClient.PutAsJsonAsync("api/v1/proj-management/ChangeDefaultWorkPlace/" + projectId + "/" + workPlaceId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Opends project
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="workPlaceId"></param>
+		public virtual UpdateResult ChangeDefaultWorkPlace(Int32 projectId,Int32 workPlaceId)
+		{
+			var result = Task.Run(() => ChangeDefaultWorkPlaceAsyncMsg(projectId, workPlaceId)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -13684,6 +14704,45 @@ namespace WebApi.Proxies.Clients
 		#region Methods
 
 		/// <summary>
+		/// Import, in a project, task from template
+		/// </summary>
+		/// <param name="templateId"></param>
+		/// <param name="projectId"></param>
+		/// <param name="addTemplateResp"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ImportFromTemplateAsyncMsg(String templateId,Int32 projectId,Boolean addTemplateResp)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks?templateId=" + templateId + "&projectId=" + projectId + "&addTemplateResp=" + addTemplateResp, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Import, in a project, task from template
+		/// </summary>
+		/// <param name="templateId"></param>
+		/// <param name="projectId"></param>
+		/// <param name="addTemplateResp"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ImportFromTemplateAsync(String templateId,Int32 projectId,Boolean addTemplateResp)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks?templateId=" + templateId + "&projectId=" + projectId + "&addTemplateResp=" + addTemplateResp, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Import, in a project, task from template
+		/// </summary>
+		/// <param name="templateId"></param>
+		/// <param name="projectId"></param>
+		/// <param name="addTemplateResp"></param>
+		public virtual UpdateResult ImportFromTemplate(String templateId,Int32 projectId,Boolean addTemplateResp)
+		{
+			var result = Task.Run(() => ImportFromTemplateAsyncMsg(templateId, projectId, addTemplateResp)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
 		/// Create a new task for a project and assign an employe
 		/// </summary>
 		/// <param name="toCreate"></param>
@@ -13783,13 +14842,11 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="parentId"></param>
-		/// <param name="state"></param>
-		/// <param name="cascadeState"></param>
 		/// <param name="requestTask"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> UpdateTaskAsyncMsg(Int32 taskId,Int32 parentId,Int32 state,Boolean cascadeState,RequesTasks requestTask)
+		protected virtual async Task<HttpResponseMessage> UpdateTaskAsyncMsg(Int32 taskId,Int32 parentId,RequesTasks requestTask)
 		{
-			return await HttpClient.PostAsJsonAsync<RequesTasks>("api/v1/tasks/api/v1/tasks/UpdateTask?taskId=" + taskId + "&parentId=" + parentId + "&state=" + state + "&cascadeState=" + cascadeState, requestTask);
+			return await HttpClient.PostAsJsonAsync<RequesTasks>("api/v1/tasks/api/v1/tasks/UpdateTask?taskId=" + taskId + "&parentId=" + parentId, requestTask);
 		}
 
 		/// <summary>
@@ -13797,12 +14854,10 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="parentId"></param>
-		/// <param name="state"></param>
-		/// <param name="cascadeState"></param>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> UpdateTaskAsync(Int32 taskId,Int32 parentId,Int32 state,Boolean cascadeState,RequesTasks requestTask)
+		public virtual async Task<HttpResponseMessage> UpdateTaskAsync(Int32 taskId,Int32 parentId,RequesTasks requestTask)
 		{
-			return await HttpClient.PostAsJsonAsync<RequesTasks>("api/v1/tasks/api/v1/tasks/UpdateTask?taskId=" + taskId + "&parentId=" + parentId + "&state=" + state + "&cascadeState=" + cascadeState, requestTask);
+			return await HttpClient.PostAsJsonAsync<RequesTasks>("api/v1/tasks/api/v1/tasks/UpdateTask?taskId=" + taskId + "&parentId=" + parentId, requestTask);
 		}
 
 		/// <summary>
@@ -13810,11 +14865,9 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="parentId"></param>
-		/// <param name="state"></param>
-		/// <param name="cascadeState"></param>
-		public virtual UpdateResult UpdateTask(Int32 taskId,Int32 parentId,Int32 state,Boolean cascadeState,RequesTasks requestTask)
+		public virtual UpdateResult UpdateTask(Int32 taskId,Int32 parentId,RequesTasks requestTask)
 		{
-			var result = Task.Run(() => UpdateTaskAsyncMsg(taskId, parentId, state, cascadeState, requestTask)).Result;		 
+			var result = Task.Run(() => UpdateTaskAsyncMsg(taskId, parentId, requestTask)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -13826,10 +14879,11 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="projectId"></param>
+		/// <param name="noUnique"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetCustomFieldsForTaskAsyncMsg(Int32 taskId,Int32 projectId)
+		protected virtual async Task<HttpResponseMessage> GetCustomFieldsForTaskAsyncMsg(Int32 taskId,Int32 projectId,Boolean noUnique)
 		{
-			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetCustomFieldsForTask?taskId=" + taskId + "&projectId=" + projectId, default(HttpResponseMessage));
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetCustomFieldsForTask?taskId=" + taskId + "&projectId=" + projectId + "&noUnique=" + noUnique, default(HttpResponseMessage));
 		}
 
 		/// <summary>
@@ -13837,10 +14891,11 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="projectId"></param>
+		/// <param name="noUnique"></param>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetCustomFieldsForTaskAsync(Int32 taskId,Int32 projectId)
+		public virtual async Task<HttpResponseMessage> GetCustomFieldsForTaskAsync(Int32 taskId,Int32 projectId,Boolean noUnique)
 		{
-			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetCustomFieldsForTask?taskId=" + taskId + "&projectId=" + projectId, default(HttpResponseMessage));
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetCustomFieldsForTask?taskId=" + taskId + "&projectId=" + projectId + "&noUnique=" + noUnique, default(HttpResponseMessage));
 		}
 
 		/// <summary>
@@ -13848,9 +14903,10 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="projectId"></param>
-		public virtual List<CustomFieldJs> GetCustomFieldsForTask(Int32 taskId,Int32 projectId)
+		/// <param name="noUnique"></param>
+		public virtual List<CustomFieldJs> GetCustomFieldsForTask(Int32 taskId,Int32 projectId,Boolean noUnique)
 		{
-			var result = Task.Run(() => GetCustomFieldsForTaskAsyncMsg(taskId, projectId)).Result;		 
+			var result = Task.Run(() => GetCustomFieldsForTaskAsyncMsg(taskId, projectId, noUnique)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -13954,32 +15010,33 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// .
+		/// get ressource for task
 		/// </summary>
-		/// <param name="projectId"></param>
+		/// <param name="projectId">Id of the project to delete</param>
+		/// <param name="dates">dates param</param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetAllProjectRessourcesAsyncMsg(Int32 projectId)
+		protected virtual async Task<HttpResponseMessage> GetAllProjectRessourcesAsyncMsg(Int32 projectId,RequesTasks dates)
 		{
-			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetAllProjectRessources?projectId=" + projectId, default(HttpResponseMessage));
+			return await HttpClient.PostAsJsonAsync<RequesTasks>("api/v1/tasks/api/v1/tasks/GetAllProjectRessources?projectId=" + projectId, dates);
 		}
 
 		/// <summary>
-		/// .
+		/// get ressource for task
 		/// </summary>
-		/// <param name="projectId"></param>
+		/// <param name="projectId">Id of the project to delete</param>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetAllProjectRessourcesAsync(Int32 projectId)
+		public virtual async Task<HttpResponseMessage> GetAllProjectRessourcesAsync(Int32 projectId,RequesTasks dates)
 		{
-			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetAllProjectRessources?projectId=" + projectId, default(HttpResponseMessage));
+			return await HttpClient.PostAsJsonAsync<RequesTasks>("api/v1/tasks/api/v1/tasks/GetAllProjectRessources?projectId=" + projectId, dates);
 		}
 
 		/// <summary>
-		/// .
+		/// get ressource for task
 		/// </summary>
-		/// <param name="projectId"></param>
-		public virtual List<EmployeJS> GetAllProjectRessources(Int32 projectId)
+		/// <param name="projectId">Id of the project to delete</param>
+		public virtual List<EmployeJS> GetAllProjectRessources(Int32 projectId,RequesTasks dates)
 		{
-			var result = Task.Run(() => GetAllProjectRessourcesAsyncMsg(projectId)).Result;		 
+			var result = Task.Run(() => GetAllProjectRessourcesAsyncMsg(projectId, dates)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -14079,6 +15136,39 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<ProjectTask>().Result;
+			 		}
+
+		/// <summary>
+		/// get project work place
+		/// </summary>
+		/// <param name="projectId">Id of the project</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectWorkPlaceAsyncMsg(Int32 projectId)
+		{
+			return await HttpClient.GetAsync("api/Tasks?projectId=" + projectId);
+		}
+
+		/// <summary>
+		/// get project work place
+		/// </summary>
+		/// <param name="projectId">Id of the project</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectWorkPlaceAsync(Int32 projectId)
+		{
+			return await HttpClient.GetAsync("api/Tasks?projectId=" + projectId);
+		}
+
+		/// <summary>
+		/// get project work place
+		/// </summary>
+		/// <param name="projectId">Id of the project</param>
+		public virtual Nullable<Int32> GetProjectWorkPlace(Int32 projectId)
+		{
+			var result = Task.Run(() => GetProjectWorkPlaceAsyncMsg(projectId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Nullable<Int32>>().Result;
 			 		}
 
 		#endregion
