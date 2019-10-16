@@ -27,6 +27,12 @@ namespace HelloBeeye
             {
                 apiKey = args[0];
             }
+
+            //Changing end point : by default https://beta.mybeeye.com
+            //WebApi.Proxies.Configuration.MyWebApiProxyBaseAddress = "https://eu.mybeeye.com"; // Server Europe
+            //WebApi.Proxies.Configuration.MyWebApiProxyBaseAddress = "https://app.mybeeye.com"; // Server Canada
+
+
             using (var beeyeLoginApi = new LoginClient(handler, false))
             using (var rhApi = new EmployesClient(handler, false))
             {
