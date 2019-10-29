@@ -29,7 +29,7 @@ namespace WebApi.Proxies
 		/// <summary>
 		/// Web Api Base Address.
 		/// </summary>
-		public static string MyWebApiProxyBaseAddress = "https://beta.mybeeye.com/";
+		public static string MyWebApiProxyBaseAddress = "https://betabeeye.azurewebsites.net/";
 	}
 }
 #endregion
@@ -2347,6 +2347,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual List<String> LuccaCategories { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean NotifyIfTimesheetIsValidated { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NotificationEmails { get; set; }
 		#endregion
 	}	
 	
@@ -5910,6 +5918,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean HasInfo { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Boolean ForTimesheet { get; set; }
 		/// <summary>
 		/// 
@@ -5953,6 +5965,46 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class TimesheetGeneralComment
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CommentText { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime PostedtDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TimesheetId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RessourceName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ResourceImageUrl { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanEdit { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class TimeSheetReduced
 	{
 		#region Constants
@@ -5983,6 +6035,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double CurrentTimeBank { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean HasGeneralComment { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -8400,6 +8456,44 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResultWithId SaveTimesheet(Int32 ressourceId,TimeSheetReduced time);
 
+		/// <param name="timesheetId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetGeneralCommentsTimesheetAsync(Int32 timesheetId);
+
+		/// <param name="timesheetId"></param>
+		/// <returns></returns>
+		List<TimesheetGeneralComment> GetGeneralCommentsTimesheet(Int32 timesheetId);
+
+		/// <param name="commentId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> EditGeneralCommentAsync(Int32 commentId,String newText);
+
+		/// <param name="commentId"></param>
+		/// <returns></returns>
+		UpdateResult EditGeneralComment(Int32 commentId,String newText);
+
+		/// <param name="commentId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteGeneralCommentAsync(Int32 commentId);
+
+		/// <param name="commentId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteGeneralComment(Int32 commentId);
+
+		/// <param name="timesheetId">id of the timesheet</param>
+		/// <param name="comment">text of the comment</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddGeneralTimesheetCommentsAsync(Int32 timesheetId,String comment);
+
+		/// <param name="timesheetId">id of the timesheet</param>
+		/// <param name="comment">text of the comment</param>
+		/// <returns></returns>
+		UpdateResultWithId AddGeneralTimesheetComments(Int32 timesheetId,String comment);
+
 		/// <param name="ressourceId"></param>
 
 		/// <returns></returns>
@@ -9675,7 +9769,8 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// Returns a list of all employees. Request object is bool : take or not deleted employees
 		/// </summary>
-		/// <param name="request">Filters to use. Start date and EndDate are optional. The bool value indicate if we should only return actif users</param>
+		/// <param name="request">Filters to use. Start date and EndDate are optional. The bool value indicate if we should only return actif users
+		/// If some projects filter is applied : only return users affected to these projects</param>
 		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> GetAllRessourcesFilteredAsyncMsg(DatesRangeFilteredRequestPagination<Boolean> request)
 		{
@@ -15409,6 +15504,142 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResultWithId SaveTimesheet(Int32 ressourceId,TimeSheetReduced time)
 		{
 			var result = Task.Run(() => SaveTimesheetAsyncMsg(ressourceId, time)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Gets a list of general comments for a timesheet
+		/// </summary>
+		/// <param name="timesheetId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetGeneralCommentsTimesheetAsyncMsg(Int32 timesheetId)
+		{
+			return await HttpClient.GetAsync("api/v1/timesheets/api/v1/timesheets/GetGeneralCommentsTimesheet/" + timesheetId);
+		}
+
+		/// <summary>
+		/// Gets a list of general comments for a timesheet
+		/// </summary>
+		/// <param name="timesheetId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetGeneralCommentsTimesheetAsync(Int32 timesheetId)
+		{
+			return await HttpClient.GetAsync("api/v1/timesheets/api/v1/timesheets/GetGeneralCommentsTimesheet/" + timesheetId);
+		}
+
+		/// <summary>
+		/// Gets a list of general comments for a timesheet
+		/// </summary>
+		/// <param name="timesheetId"></param>
+		public virtual List<TimesheetGeneralComment> GetGeneralCommentsTimesheet(Int32 timesheetId)
+		{
+			var result = Task.Run(() => GetGeneralCommentsTimesheetAsyncMsg(timesheetId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<TimesheetGeneralComment>>().Result;
+			 		}
+
+		/// <summary>
+		/// Edits a general comments for a timesheet
+		/// </summary>
+		/// <param name="commentId"></param>
+		/// <param name="newText"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> EditGeneralCommentAsyncMsg(Int32 commentId,String newText)
+		{
+			return await HttpClient.PostAsJsonAsync<String>("api/v1/timesheets/api/v1/timesheets/EditGeneralComment/" + commentId, newText);
+		}
+
+		/// <summary>
+		/// Edits a general comments for a timesheet
+		/// </summary>
+		/// <param name="commentId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> EditGeneralCommentAsync(Int32 commentId,String newText)
+		{
+			return await HttpClient.PostAsJsonAsync<String>("api/v1/timesheets/api/v1/timesheets/EditGeneralComment/" + commentId, newText);
+		}
+
+		/// <summary>
+		/// Edits a general comments for a timesheet
+		/// </summary>
+		/// <param name="commentId"></param>
+		public virtual UpdateResult EditGeneralComment(Int32 commentId,String newText)
+		{
+			var result = Task.Run(() => EditGeneralCommentAsyncMsg(commentId, newText)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete timesheet general comments
+		/// </summary>
+		/// <param name="commentId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteGeneralCommentAsyncMsg(Int32 commentId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/timesheets/api/v1/timesheets/DeleteGeneralComment/" + commentId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Delete timesheet general comments
+		/// </summary>
+		/// <param name="commentId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteGeneralCommentAsync(Int32 commentId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/timesheets/api/v1/timesheets/DeleteGeneralComment/" + commentId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Delete timesheet general comments
+		/// </summary>
+		/// <param name="commentId"></param>
+		public virtual UpdateResult DeleteGeneralComment(Int32 commentId)
+		{
+			var result = Task.Run(() => DeleteGeneralCommentAsyncMsg(commentId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Add timesheet general comments
+		/// </summary>
+		/// <param name="timesheetId">id of the timesheet</param>
+		/// <param name="comment">text of the comment</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddGeneralTimesheetCommentsAsyncMsg(Int32 timesheetId,String comment)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/timesheets/api/v1/timesheets/AddGeneralTimesheetComments?timesheetId=" + timesheetId + "&comment=" + comment, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Add timesheet general comments
+		/// </summary>
+		/// <param name="timesheetId">id of the timesheet</param>
+		/// <param name="comment">text of the comment</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddGeneralTimesheetCommentsAsync(Int32 timesheetId,String comment)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/timesheets/api/v1/timesheets/AddGeneralTimesheetComments?timesheetId=" + timesheetId + "&comment=" + comment, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Add timesheet general comments
+		/// </summary>
+		/// <param name="timesheetId">id of the timesheet</param>
+		/// <param name="comment">text of the comment</param>
+		public virtual UpdateResultWithId AddGeneralTimesheetComments(Int32 timesheetId,String comment)
+		{
+			var result = Task.Run(() => AddGeneralTimesheetCommentsAsyncMsg(timesheetId, comment)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 

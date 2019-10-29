@@ -11,6 +11,7 @@ namespace HelloBeeye
     class Program
     {
         //provide your API key. for requesting a demo key, contact us : https://www.mybeeye.com/contactus
+        //Note : Building both projects BeeyeApiNet4 and BeeyeApisProxy may cause an exception.
         static string apiKey = "";
         //Cookies are used to hold authentification information. 
         static readonly CookieContainer cookies = new CookieContainer();
@@ -28,7 +29,7 @@ namespace HelloBeeye
                 apiKey = args[0];
             }
 
-            //Changing end point : by default https://beta.mybeeye.com
+            //Changing end point : by default https://betabeeye.azurewebsites.net
             //WebApi.Proxies.Configuration.MyWebApiProxyBaseAddress = "https://eu.mybeeye.com"; // Server Europe
             //WebApi.Proxies.Configuration.MyWebApiProxyBaseAddress = "https://app.mybeeye.com"; // Server Canada
 
