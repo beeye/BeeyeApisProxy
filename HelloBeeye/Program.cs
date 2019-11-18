@@ -21,7 +21,10 @@ namespace HelloBeeye
             if (string.IsNullOrEmpty(apiKey) && args.Length < 1)
             {
                 Console.WriteLine("No API key provided");
+
+
                 Console.WriteLine("Apikey can be provided as parameter or in code");
+                //coment
                 return;
             }
             if (string.IsNullOrEmpty(apiKey))
@@ -37,14 +40,9 @@ namespace HelloBeeye
             using (var beeyeLoginApi = new LoginClient(handler, false))
             using (var rhApi = new EmployesClient(handler, false))
             {
-                //Example of Synchronous calls
                 DemoSynchronousCalls(beeyeLoginApi, rhApi);
-
-                //Example of Asunc code
                 await DemoAsyncCalls(beeyeLoginApi, rhApi);
             }
-
-            //cleaning up
             if (handler != null)
             {
                 handler.Dispose();

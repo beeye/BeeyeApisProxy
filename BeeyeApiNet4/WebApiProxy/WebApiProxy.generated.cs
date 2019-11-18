@@ -1201,6 +1201,34 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class DataShareTargetsHolder
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ListItem> Roles { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ListItem> Postes { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ListItem> Directions { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ListItem> Users { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class DatesRangeFilteredRequest<T>
 	{
 		#region Constants
@@ -2041,6 +2069,34 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class GetTimesheetFromProjectRequest
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Int32> ProjectIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ResourceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime EndDate { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class GetTimesheetRequest
 	{
 		#region Constants
@@ -2291,6 +2347,26 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String LocalName { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ListItem
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
 		#endregion
 	}	
 	
@@ -4186,19 +4262,11 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual DateTime Start { get; set; }
+		public virtual RecurrenceType RecurrentType { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual DateTime EndDate { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Int32 RecurrentType { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Int32 RecurrentDayOfTheWeek { get; set; }
+		public virtual DayOfWeek RecurrentDayOfTheWeek { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4206,11 +4274,11 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Int32 TaskId { get; set; }
+		public virtual Nullable<Int32> TaskId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Int32 ResosurceId { get; set; }
+		public virtual Int32 ProjectId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4226,7 +4294,7 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Boolean BlockModif { get; set; }
+		public virtual Boolean BlockModification { get; set; }
 		#endregion
 	}	
 	
@@ -4763,6 +4831,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double TotalHours { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean HasAditionalRessources { get; set; }
 		#endregion
 	}	
 	
@@ -5203,6 +5275,74 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String SmartView { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ShareInfos
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ShareName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String SharedBy { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ShareRapportHelper
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ReportType TypeRapport { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 IdRapport { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Roles { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Postes { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Directions { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Users { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ShareName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ShareExpirationDays { get; set; }
 		#endregion
 	}	
 	
@@ -5663,6 +5803,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean CanEdit { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Object Optionel { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -6155,6 +6299,30 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String PageName { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class TranslationLine
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Page { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Key { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsControl { get; set; }
 		#endregion
 	}	
 	
@@ -6658,6 +6826,77 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public enum RecurrenceType
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		None = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Weekly = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		BiWeekly = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		MonthlyFixedDay = 3,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Quarterly = 4,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Biannualy = 5,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		AllDaysForPeriod = 6,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum ReportType
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Projects = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Ressources = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Tasks = 3,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Survey = 4,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public enum TimeMode
 	{
 
@@ -6818,6 +7057,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		List<EmployeJS__> SuggestTop5Ressources(DatesRangeFilteredRequestPagination<RecommendationRequest> request);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -6871,6 +7117,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="id"></param>
 		/// <returns></returns>
 		UpdateResult DeleteClient(Int32 id);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -6904,6 +7157,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		List<Conflict> GetConflict(DatesRangeFilteredRequest<ConflictParams> param);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -6938,6 +7198,57 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="customFieldId"></param>
 		/// <returns></returns>
 		UpdateResultWithId UpdateCustomFieldValue(Int32 customFieldId,CustomFieldValue value);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
+				
+	}
+	
+	public partial interface IDataSharingClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAvalibleShareTargetsAsync();
+
+		/// <returns></returns>
+		DataShareTargetsHolder GetAvalibleShareTargets();
+
+		/// <param name="reportType">The report type (projects, ressources, tasks)</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetSharedReportsAsync(ReportType reportType);
+
+		/// <param name="reportType">The report type (projects, ressources, tasks)</param>
+		/// <returns></returns>
+		List<ShareInfos> GetSharedReports(ReportType reportType);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ShareReportAsync(DatesRangeFilteredRequest<ShareRapportHelper> dataToShare);
+
+		/// <returns></returns>
+		UpdateResult ShareReport(DatesRangeFilteredRequest<ShareRapportHelper> dataToShare);
+
+		/// <param name="reportType"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ImportReportsAsync(ReportType reportType,Guid[] toImport);
+
+		/// <param name="reportType"></param>
+		/// <returns></returns>
+		UpdateResultWithId ImportReports(ReportType reportType,Guid[] toImport);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7014,6 +7325,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		List<EmployeJS__> GetPossibleResponsables();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7112,6 +7430,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="userId"></param>
 		/// <returns></returns>
 		UpdateResult UpdateTiersId(Int32 userId,EmployeJS__ toUpdate);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7215,6 +7540,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="expenseId"></param>
 		/// <returns></returns>
 		UpdateResult DeleteExpense(Int32 expenseId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7248,6 +7580,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResult SavePlanningRessources(PlanParams Params);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7269,6 +7608,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="v"></param>
 		/// <returns></returns>
 		Boolean UnsubscribeAllEmail(Boolean v);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7400,6 +7746,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="ressourceId"></param>
 		/// <returns></returns>
 		UpdateResultWithId UpdateEmployee(Int32 ressourceId,RessourceUpdate data);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7472,6 +7825,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResult SaveLuccaConfig(LuccaConfig conf);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7520,6 +7880,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResultWithId CreateOrUpdateInvoice(Invoiced invoice);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7564,6 +7931,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="endDate"></param>
 		/// <returns></returns>
 		TimeByCustomFieldReturnType GetTimeByCustomFieldGraphInternal(DateTime startDate,DateTime endDate);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7606,6 +7980,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResult ResetPassword(String email);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7704,6 +8085,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		PlanningResponse GetAvailability(GetPlanningLineRequest requestData);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -7712,17 +8100,10 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> SaveRecurenceRessourcesAsync(RecurentPlanParams Params);
+		Task<HttpResponseMessage> SaveRecurenceAsync(DatesRangeRequest<RecurentPlanParams> Params);
 
 		/// <returns></returns>
-		UpdateResult SaveRecurenceRessources(RecurentPlanParams Params);
-
-
-		/// <returns></returns>
-		Task<HttpResponseMessage> SaveRecurenceAsync(RecurentPlanParams Params);
-
-		/// <returns></returns>
-		UpdateResult SaveRecurence(RecurentPlanParams Params);
+		UpdateResult SaveRecurence(DatesRangeRequest<RecurentPlanParams> Params);
 
 
 		/// <returns></returns>
@@ -7818,6 +8199,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="taskId"></param>
 		/// <returns></returns>
 		Int32 GetDefaultAllWorkSpace(Int32 taskId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllTasksAsync(DatesRangeRequest<Int32> param);
+
+		/// <returns></returns>
+		List<ProjectTaskMinimal> GetAllTasks(DatesRangeRequest<Int32> param);
 
 
 		/// <returns></returns>
@@ -7966,30 +8354,12 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResultWithId UpdateUnitPlaning(Int32 cardId,ConflictsPlanning data);
 
-		/// <param name="StartDate"></param>
-		/// <param name="EndDate"></param>
-
-		/// <returns></returns>
-		Task<HttpResponseMessage> GetGoodDateAsync(DateTime StartDate,DateTime EndDate);
-
-		/// <param name="StartDate"></param>
-		/// <param name="EndDate"></param>
-		/// <returns></returns>
-		DateTime GetGoodDate(DateTime StartDate,DateTime EndDate);
-
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> DeclarePlanningAsDoneAsync(DatesRangeRequest<RequestDeclareDone> dates);
 
 		/// <returns></returns>
 		UpdateResult DeclarePlanningAsDone(DatesRangeRequest<RequestDeclareDone> dates);
-
-
-		/// <returns></returns>
-		Task<HttpResponseMessage> GetConflictsByProjectAsync(DatesRangeFilteredRequest<RequestConflicts> data);
-
-		/// <returns></returns>
-		List<ConflictsManagmentEntity> GetConflictsByProject(DatesRangeFilteredRequest<RequestConflicts> data);
 				
 	}
 	
@@ -8009,6 +8379,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResult DeleteImage();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -8114,6 +8491,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="projectId"></param>
 		/// <returns></returns>
 		UpdateResult UpdateProjectRessources(Int32 projectId,List<RessourceStats> rs);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -8155,6 +8539,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="projectId">Id of project</param>
 		/// <returns></returns>
 		List<ProjectState> GetStatesForProject(Int32 projectId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -8167,6 +8558,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		ProjectTypeStats GetProjectsNoFilters(SearchCriteriaRapports searchOptions);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -8183,6 +8581,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="includeData"></param>
 		/// <returns></returns>
 		RessourceGeneralInformations GetUsergeneralInfo(Int32 userId,Boolean includeData,DatesRangeRequest<Object> dates);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -8243,6 +8648,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="roleId"></param>
 		/// <returns></returns>
 		Boolean SaveCustomFieldsPermissions(Int32 roleId,List<CustomFieldPermissionJS> customFieldPermissions);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -8270,6 +8682,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="viewSelector">View selector (me, team, company)</param>
 		/// <returns></returns>
 		List<EmployeJS__> SearchRessources(String searchStr,ViewSelect viewSelector);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -8399,6 +8818,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="projectId">Id of the project</param>
 		/// <returns></returns>
 		Nullable<Int32> GetProjectWorkPlace(Int32 projectId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -8411,6 +8837,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		TimeSheetReduced GetTimesheet(GetTimesheetRequest args);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTimesheetFromProjectAsync(GetTimesheetFromProjectRequest args);
+
+		/// <returns></returns>
+		TimeSheetReduced GetTimesheetFromProject(GetTimesheetFromProjectRequest args);
 
 
 		/// <returns></returns>
@@ -8502,6 +8935,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="ressourceId"></param>
 		/// <returns></returns>
 		UpdateResultWithId SaveTimesheetComments(Int32 ressourceId,TimeSheetReduced time);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -8545,6 +8985,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="origUser"></param>
 		/// <returns></returns>
 		UpdateResult ChangeLanguage(String newCulture,Boolean origUser);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -8618,6 +9065,20 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="country"></param>
 		/// <returns></returns>
 		IDictionary<String, String> GetTimeZones(String country);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCountryFromTimeZoneAsync(String timeZone);
+
+		/// <returns></returns>
+		String GetCountryFromTimeZone(String timeZone);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 	
@@ -8644,6 +9105,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResult UpdateWebHooks(List<ActiveBeeyeWebHook> activeHooks);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
 				
 	}
 
@@ -8762,6 +9230,7 @@ namespace WebApi.Proxies.Clients
 		public ClientsManagmentClient ClientsManagment { get; private set; }
 		public ConflictsClient Conflicts { get; private set; }
 		public CustomFieldsClient CustomFields { get; private set; }
+		public DataSharingClient DataSharing { get; private set; }
 		public DirectionsClient Directions { get; private set; }
 		public EmployesClient Employes { get; private set; }
 		public ExpensesClient Expenses { get; private set; }
@@ -8795,6 +9264,7 @@ namespace WebApi.Proxies.Clients
 				yield return ClientsManagment;
 				yield return Conflicts;
 				yield return CustomFields;
+				yield return DataSharing;
 				yield return Directions;
 				yield return Employes;
 				yield return Expenses;
@@ -8831,6 +9301,7 @@ namespace WebApi.Proxies.Clients
 			ClientsManagment = new ClientsManagmentClient();
 			Conflicts = new ConflictsClient();
 			CustomFields = new CustomFieldsClient();
+			DataSharing = new DataSharingClient();
 			Directions = new DirectionsClient();
 			Employes = new EmployesClient();
 			Expenses = new ExpensesClient();
@@ -8935,6 +9406,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<EmployeJS__>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/BeeyeAI");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/BeeyeAI");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -9156,6 +9658,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/ClientsManagment");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/ClientsManagment");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -9303,6 +9836,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<List<Conflict>>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Conflicts");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Conflicts");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -9429,6 +9993,220 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/CustomFields");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/CustomFields");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// This controller manages rapports and dashboards sharing / import
+	/// </summary>
+	public partial class DataSharingClient : ClientBase, Interfaces.IDataSharingClient
+	{		
+
+		/// <summary>
+		/// This controller manages rapports and dashboards sharing / import
+		/// </summary>
+		public DataSharingClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// This controller manages rapports and dashboards sharing / import
+		/// </summary>
+		public DataSharingClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// returns a list of all Roles, Titles, Teams and employes for the company
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAvalibleShareTargetsAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/dataShare/getTargets");
+		}
+
+		/// <summary>
+		/// returns a list of all Roles, Titles, Teams and employes for the company
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAvalibleShareTargetsAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/dataShare/getTargets");
+		}
+
+		/// <summary>
+		/// returns a list of all Roles, Titles, Teams and employes for the company
+		/// </summary>
+		public virtual DataShareTargetsHolder GetAvalibleShareTargets()
+		{
+			var result = Task.Run(() => GetAvalibleShareTargetsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<DataShareTargetsHolder>().Result;
+			 		}
+
+		/// <summary>
+		/// returns a list of shared reports with current user
+		/// </summary>
+		/// <param name="reportType">The report type (projects, ressources, tasks)</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetSharedReportsAsyncMsg(ReportType reportType)
+		{
+			return await HttpClient.GetAsync("api/v1/dataShare/getSharedReports/" + reportType);
+		}
+
+		/// <summary>
+		/// returns a list of shared reports with current user
+		/// </summary>
+		/// <param name="reportType">The report type (projects, ressources, tasks)</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetSharedReportsAsync(ReportType reportType)
+		{
+			return await HttpClient.GetAsync("api/v1/dataShare/getSharedReports/" + reportType);
+		}
+
+		/// <summary>
+		/// returns a list of shared reports with current user
+		/// </summary>
+		/// <param name="reportType">The report type (projects, ressources, tasks)</param>
+		public virtual List<ShareInfos> GetSharedReports(ReportType reportType)
+		{
+			var result = Task.Run(() => GetSharedReportsAsyncMsg(reportType)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ShareInfos>>().Result;
+			 		}
+
+		/// <summary>
+		/// Shares user's report
+		/// </summary>
+		/// <param name="dataToShare">Informations about report to share. Dates are optinal.DatesRangeFilteredRequest is used to mostly hold filters</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ShareReportAsyncMsg(DatesRangeFilteredRequest<ShareRapportHelper> dataToShare)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<ShareRapportHelper>>("api/v1/dataShare/shareReport", dataToShare);
+		}
+
+		/// <summary>
+		/// Shares user's report
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ShareReportAsync(DatesRangeFilteredRequest<ShareRapportHelper> dataToShare)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<ShareRapportHelper>>("api/v1/dataShare/shareReport", dataToShare);
+		}
+
+		/// <summary>
+		/// Shares user's report
+		/// </summary>
+		public virtual UpdateResult ShareReport(DatesRangeFilteredRequest<ShareRapportHelper> dataToShare)
+		{
+			var result = Task.Run(() => ShareReportAsyncMsg(dataToShare)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="reportType"></param>
+		/// <param name="toImport"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ImportReportsAsyncMsg(ReportType reportType,Guid[] toImport)
+		{
+			return await HttpClient.PostAsJsonAsync<Guid[]>("api/v1/dataShare/shareReport/" + reportType, toImport);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="reportType"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ImportReportsAsync(ReportType reportType,Guid[] toImport)
+		{
+			return await HttpClient.PostAsJsonAsync<Guid[]>("api/v1/dataShare/shareReport/" + reportType, toImport);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="reportType"></param>
+		public virtual UpdateResultWithId ImportReports(ReportType reportType,Guid[] toImport)
+		{
+			var result = Task.Run(() => ImportReportsAsyncMsg(reportType, toImport)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/DataSharing");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/DataSharing");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -9740,6 +10518,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<EmployeJS__>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Directions");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Directions");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -10133,6 +10942,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Employes");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Employes");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -10544,6 +11384,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Expenses");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Expenses");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -10692,6 +11563,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/FastPlanning");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/FastPlanning");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -10777,6 +11679,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<Boolean>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/HelperWeb");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/HelperWeb");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -11313,6 +12246,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/HumanRessources");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/HumanRessources");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -11627,6 +12591,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Integrations");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Integrations");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -11818,6 +12813,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Invoices");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Invoices");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -12002,6 +13028,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<TimeByCustomFieldReturnType>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Kpi");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Kpi");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -12179,6 +13236,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Login");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Login");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -12571,6 +13659,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<PlanningResponse>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Planning");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Planning");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -12596,59 +13715,28 @@ namespace WebApi.Proxies.Clients
 		#region Methods
 
 		/// <summary>
-		/// 
+		/// Creates recurrent planning for a selcted project, task and list of resources
 		/// </summary>
 		/// <param name="Params"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> SaveRecurenceRessourcesAsyncMsg(RecurentPlanParams Params)
+		protected virtual async Task<HttpResponseMessage> SaveRecurenceAsyncMsg(DatesRangeRequest<RecurentPlanParams> Params)
 		{
-			return await HttpClient.PostAsJsonAsync<RecurentPlanParams>("api/v1/task-planning/SaveRecurenceRessource", Params);
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<RecurentPlanParams>>("api/v1/task-planning/SaveRecurence", Params);
 		}
 
 		/// <summary>
-		/// 
+		/// Creates recurrent planning for a selcted project, task and list of resources
 		/// </summary>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> SaveRecurenceRessourcesAsync(RecurentPlanParams Params)
+		public virtual async Task<HttpResponseMessage> SaveRecurenceAsync(DatesRangeRequest<RecurentPlanParams> Params)
 		{
-			return await HttpClient.PostAsJsonAsync<RecurentPlanParams>("api/v1/task-planning/SaveRecurenceRessource", Params);
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<RecurentPlanParams>>("api/v1/task-planning/SaveRecurence", Params);
 		}
 
 		/// <summary>
-		/// 
+		/// Creates recurrent planning for a selcted project, task and list of resources
 		/// </summary>
-		public virtual UpdateResult SaveRecurenceRessources(RecurentPlanParams Params)
-		{
-			var result = Task.Run(() => SaveRecurenceRessourcesAsyncMsg(Params)).Result;		 
-			 
-			EnsureSuccess(result);
-			 			 
-			return result.Content.ReadAsAsync<UpdateResult>().Result;
-			 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="Params"></param>
-		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> SaveRecurenceAsyncMsg(RecurentPlanParams Params)
-		{
-			return await HttpClient.PostAsJsonAsync<RecurentPlanParams>("api/v1/task-planning/SaveRecurence", Params);
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> SaveRecurenceAsync(RecurentPlanParams Params)
-		{
-			return await HttpClient.PostAsJsonAsync<RecurentPlanParams>("api/v1/task-planning/SaveRecurence", Params);
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual UpdateResult SaveRecurence(RecurentPlanParams Params)
+		public virtual UpdateResult SaveRecurence(DatesRangeRequest<RecurentPlanParams> Params)
 		{
 			var result = Task.Run(() => SaveRecurenceAsyncMsg(Params)).Result;		 
 			 
@@ -13017,6 +14105,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<Int32>().Result;
+			 		}
+
+		/// <summary>
+		/// Gets a list tasks for a project
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllTasksAsyncMsg(DatesRangeRequest<Int32> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/task-planning/GetAllTasks", param);
+		}
+
+		/// <summary>
+		/// Gets a list tasks for a project
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllTasksAsync(DatesRangeRequest<Int32> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/task-planning/GetAllTasks", param);
+		}
+
+		/// <summary>
+		/// Gets a list tasks for a project
+		/// </summary>
+		public virtual List<ProjectTaskMinimal> GetAllTasks(DatesRangeRequest<Int32> param)
+		{
+			var result = Task.Run(() => GetAllTasksAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectTaskMinimal>>().Result;
 			 		}
 
 		/// <summary>
@@ -13545,42 +14664,6 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="StartDate"></param>
-		/// <param name="EndDate"></param>
-		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetGoodDateAsyncMsg(DateTime StartDate,DateTime EndDate)
-		{
-			return await HttpClient.GetAsync("api/PlanningByTasks?StartDate=" + StartDate.ToString("o") + "&EndDate=" + EndDate.ToString("o"));
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="StartDate"></param>
-		/// <param name="EndDate"></param>
-		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetGoodDateAsync(DateTime StartDate,DateTime EndDate)
-		{
-			return await HttpClient.GetAsync("api/PlanningByTasks?StartDate=" + StartDate.ToString("o") + "&EndDate=" + EndDate.ToString("o"));
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="StartDate"></param>
-		/// <param name="EndDate"></param>
-		public virtual DateTime GetGoodDate(DateTime StartDate,DateTime EndDate)
-		{
-			var result = Task.Run(() => GetGoodDateAsyncMsg(StartDate, EndDate)).Result;		 
-			 
-			EnsureSuccess(result);
-			 			 
-			return result.Content.ReadAsAsync<DateTime>().Result;
-			 		}
-
-		/// <summary>
 		/// Declares one day of planning as "Done" and fills time in their timesheets. The StartDate should be used for the day of planning.
 		/// </summary>
 		/// <param name="dates"></param>
@@ -13609,37 +14692,6 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
-			 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="data"></param>
-		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetConflictsByProjectAsyncMsg(DatesRangeFilteredRequest<RequestConflicts> data)
-		{
-			return await HttpClient.GetAsync("api/PlanningByTasks");
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetConflictsByProjectAsync(DatesRangeFilteredRequest<RequestConflicts> data)
-		{
-			return await HttpClient.GetAsync("api/PlanningByTasks");
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual List<ConflictsManagmentEntity> GetConflictsByProject(DatesRangeFilteredRequest<RequestConflicts> data)
-		{
-			var result = Task.Run(() => GetConflictsByProjectAsyncMsg(data)).Result;		 
-			 
-			EnsureSuccess(result);
-			 			 
-			return result.Content.ReadAsAsync<List<ConflictsManagmentEntity>>().Result;
 			 		}
 
 		#endregion
@@ -13724,6 +14776,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/ProfileImage");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/ProfileImage");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -14148,6 +15231,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/ProjectManagement");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/ProjectManagement");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -14306,6 +15420,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<List<ProjectState>>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/ProjectStates");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/ProjectStates");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -14362,6 +15507,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<ProjectTypeStats>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Rapports");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Rapports");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -14423,6 +15599,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<RessourceGeneralInformations>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Ressource");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Ressource");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -14672,6 +15879,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<Boolean>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/RolesManagement");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/RolesManagement");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -14772,6 +16010,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<EmployeJS__>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Search");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Search");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -15266,6 +16535,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<Nullable<Int32>>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Tasks");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Tasks");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -15315,6 +16615,37 @@ namespace WebApi.Proxies.Clients
 		public virtual TimeSheetReduced GetTimesheet(GetTimesheetRequest args)
 		{
 			var result = Task.Run(() => GetTimesheetAsyncMsg(args)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<TimeSheetReduced>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="args"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTimesheetFromProjectAsyncMsg(GetTimesheetFromProjectRequest args)
+		{
+			return await HttpClient.PostAsJsonAsync<GetTimesheetFromProjectRequest>("api/v1/timesheets/getTimesheetFromProject", args);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTimesheetFromProjectAsync(GetTimesheetFromProjectRequest args)
+		{
+			return await HttpClient.PostAsJsonAsync<GetTimesheetFromProjectRequest>("api/v1/timesheets/getTimesheetFromProject", args);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual TimeSheetReduced GetTimesheetFromProject(GetTimesheetFromProjectRequest args)
+		{
+			var result = Task.Run(() => GetTimesheetFromProjectAsyncMsg(args)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -15680,6 +17011,37 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Timesheets");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Timesheets");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -15838,6 +17200,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Translations");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/Translations");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -16127,6 +17520,68 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<IDictionary<String, String>>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="timeZone"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCountryFromTimeZoneAsyncMsg(String timeZone)
+		{
+			return await HttpClient.PostAsJsonAsync<String>("api/v1/profile/GetCountryFromTimeZone", timeZone);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCountryFromTimeZoneAsync(String timeZone)
+		{
+			return await HttpClient.PostAsJsonAsync<String>("api/v1/profile/GetCountryFromTimeZone", timeZone);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetCountryFromTimeZone(String timeZone)
+		{
+			var result = Task.Run(() => GetCountryFromTimeZoneAsyncMsg(timeZone)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/UserProfile");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/UserProfile");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -16240,6 +17695,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/WebHooks");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/WebHooks");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
