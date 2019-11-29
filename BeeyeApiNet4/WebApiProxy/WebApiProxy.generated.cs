@@ -954,6 +954,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean IsReadOnly { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Expression { get; set; }
 		/// <summary>
 		/// 
@@ -3382,6 +3386,26 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String ProjectType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CreatedBy { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String WorkPlace { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> CreatedDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> WorkPlaceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Double Advancement { get; set; }
 		/// <summary>
 		/// 
@@ -3403,26 +3427,6 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double TotalUsedAmount { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual String ProjectType { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual String CreatedBy { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual String WorkPlace { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Nullable<DateTime> CreatedDate { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Nullable<Int32> WorkPlaceId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4021,6 +4025,90 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ProjectTemplate
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Type { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CompanyId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 UserId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OriginalProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CategoryId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 FondId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DaysLength { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TasksCount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<TaskTemplate> Tasks { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<CustomFieldJsMinimal> CustomFields { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectTemplateParams
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsPrivate { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class ProjectTypeJS
 	{
 		#region Constants
@@ -4507,6 +4595,26 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean ReadOnly { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RequestProjectManaged
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SelectedView { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ShowClosedProject { get; set; }
 		#endregion
 	}	
 	
@@ -5639,6 +5747,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Nullable<DateTime> TaskEndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> ParentId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DisplayOrder { get; set; }
 		#endregion
 	}	
 	
@@ -5943,6 +6059,46 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Color { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class TaskTemplate
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 AssignedRessource { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DisplayOrder { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<CustomFieldJsMinimal> CustomFields { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OriginalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> OriginalParentId { get; set; }
 		#endregion
 	}	
 	
@@ -7170,6 +7326,15 @@ namespace WebApi.Proxies.Interfaces
 	public partial interface ICustomFieldsClient : IClientBase
 	{	
 
+		/// <param name="takeCalculated">Include calculated fields in the result</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetEmployeeCustomFieldsAsync(Boolean takeCalculated);
+
+		/// <param name="takeCalculated">Include calculated fields in the result</param>
+		/// <returns></returns>
+		List<CustomFieldJs> GetEmployeeCustomFields(Boolean takeCalculated);
+
 		/// <param name="takeHidden"></param>
 		/// <param name="takeCalculHard"></param>
 
@@ -8394,6 +8559,20 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> GetManagedProjectsByDateAsync(DatesRangeFilteredRequest<RequestProjectManaged> data);
+
+		/// <returns></returns>
+		List<ProjectJS> GetManagedProjectsByDate(DatesRangeFilteredRequest<RequestProjectManaged> data);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateNewProjectAsync(ProjectJS newProject);
+
+		/// <returns></returns>
+		UpdateResultWithId CreateNewProject(ProjectJS newProject);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> CopyProjectsAsync(ReplanProjectsRequest data);
 
 		/// <returns></returns>
@@ -8539,6 +8718,25 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="projectId">Id of project</param>
 		/// <returns></returns>
 		List<ProjectState> GetStatesForProject(Int32 projectId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
+
+		/// <returns></returns>
+		String GetText(TranslationLine line);
+				
+	}
+	
+	public partial interface IProjectTemplateClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateTemplateAsync(ProjectTemplateParams param);
+
+		/// <returns></returns>
+		ProjectTemplate CreateTemplate(ProjectTemplateParams param);
 
 
 		/// <returns></returns>
@@ -8938,6 +9136,13 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectsListForUserAsync(DatesRangeRequest<Int32> searchData);
+
+		/// <returns></returns>
+		List<ListItem> GetProjectsListForUser(DatesRangeRequest<Int32> searchData);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> GetTextAsync(TranslationLine line);
 
 		/// <returns></returns>
@@ -9246,6 +9451,7 @@ namespace WebApi.Proxies.Clients
 		public ProfileImageClient ProfileImage { get; private set; }
 		public ProjectManagementClient ProjectManagement { get; private set; }
 		public ProjectStatesClient ProjectStates { get; private set; }
+		public ProjectTemplateClient ProjectTemplate { get; private set; }
 		public RapportsClient Rapports { get; private set; }
 		public RessourceClient Ressource { get; private set; }
 		public RolesManagementClient RolesManagement { get; private set; }
@@ -9280,6 +9486,7 @@ namespace WebApi.Proxies.Clients
 				yield return ProfileImage;
 				yield return ProjectManagement;
 				yield return ProjectStates;
+				yield return ProjectTemplate;
 				yield return Rapports;
 				yield return Ressource;
 				yield return RolesManagement;
@@ -9317,6 +9524,7 @@ namespace WebApi.Proxies.Clients
 			ProfileImage = new ProfileImageClient();
 			ProjectManagement = new ProjectManagementClient();
 			ProjectStates = new ProjectStatesClient();
+			ProjectTemplate = new ProjectTemplateClient();
 			Rapports = new RapportsClient();
 			Ressource = new RessourceClient();
 			RolesManagement = new RolesManagementClient();
@@ -9890,6 +10098,39 @@ namespace WebApi.Proxies.Clients
 		}
 
 		#region Methods
+
+		/// <summary>
+		/// Returns a list of resources custom fields. (Without values)
+		/// </summary>
+		/// <param name="takeCalculated">Include calculated fields in the result</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetEmployeeCustomFieldsAsyncMsg(Boolean takeCalculated)
+		{
+			return await HttpClient.GetAsync("api/customFields/employes/" + takeCalculated);
+		}
+
+		/// <summary>
+		/// Returns a list of resources custom fields. (Without values)
+		/// </summary>
+		/// <param name="takeCalculated">Include calculated fields in the result</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetEmployeeCustomFieldsAsync(Boolean takeCalculated)
+		{
+			return await HttpClient.GetAsync("api/customFields/employes/" + takeCalculated);
+		}
+
+		/// <summary>
+		/// Returns a list of resources custom fields. (Without values)
+		/// </summary>
+		/// <param name="takeCalculated">Include calculated fields in the result</param>
+		public virtual List<CustomFieldJs> GetEmployeeCustomFields(Boolean takeCalculated)
+		{
+			var result = Task.Run(() => GetEmployeeCustomFieldsAsyncMsg(takeCalculated)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CustomFieldJs>>().Result;
+			 		}
 
 		/// <summary>
 		/// 
@@ -14838,6 +15079,68 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="data"></param>
 		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetManagedProjectsByDateAsyncMsg(DatesRangeFilteredRequest<RequestProjectManaged> data)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<RequestProjectManaged>>("api/v1/proj-management/getManagedProjectsByDate", data);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetManagedProjectsByDateAsync(DatesRangeFilteredRequest<RequestProjectManaged> data)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<RequestProjectManaged>>("api/v1/proj-management/getManagedProjectsByDate", data);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectJS> GetManagedProjectsByDate(DatesRangeFilteredRequest<RequestProjectManaged> data)
+		{
+			var result = Task.Run(() => GetManagedProjectsByDateAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// Create project
+		/// </summary>
+		/// <param name="newProject"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateNewProjectAsyncMsg(ProjectJS newProject)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectJS>("api/v1/proj-management/createNewProject", newProject);
+		}
+
+		/// <summary>
+		/// Create project
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateNewProjectAsync(ProjectJS newProject)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectJS>("api/v1/proj-management/createNewProject", newProject);
+		}
+
+		/// <summary>
+		/// Create project
+		/// </summary>
+		public virtual UpdateResultWithId CreateNewProject(ProjectJS newProject)
+		{
+			var result = Task.Run(() => CreateNewProjectAsyncMsg(newProject)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> CopyProjectsAsyncMsg(ReplanProjectsRequest data)
 		{
 			return await HttpClient.PostAsJsonAsync<ReplanProjectsRequest>("api/v1/proj-management/CopyProjects", data);
@@ -15437,6 +15740,92 @@ namespace WebApi.Proxies.Clients
 		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
 		{
 			return await HttpClient.GetAsync("api/ProjectStates");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetText(TranslationLine line)
+		{
+			var result = Task.Run(() => GetTextAsyncMsg(line)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// APIs for managing project states
+	/// </summary>
+	public partial class ProjectTemplateClient : ClientBase, Interfaces.IProjectTemplateClient
+	{		
+
+		/// <summary>
+		/// APIs for managing project states
+		/// </summary>
+		public ProjectTemplateClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// APIs for managing project states
+		/// </summary>
+		public ProjectTemplateClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// Create template for project
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateTemplateAsyncMsg(ProjectTemplateParams param)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectTemplateParams>("api/v1/projectTemplate/createTemplate", param);
+		}
+
+		/// <summary>
+		/// Create template for project
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateTemplateAsync(ProjectTemplateParams param)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectTemplateParams>("api/v1/projectTemplate/createTemplate", param);
+		}
+
+		/// <summary>
+		/// Create template for project
+		/// </summary>
+		public virtual ProjectTemplate CreateTemplate(ProjectTemplateParams param)
+		{
+			var result = Task.Run(() => CreateTemplateAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ProjectTemplate>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTextAsyncMsg(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/ProjectTemplate");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTextAsync(TranslationLine line)
+		{
+			return await HttpClient.GetAsync("api/ProjectTemplate");
 		}
 
 		/// <summary>
@@ -17009,6 +17398,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// returns the list of avalible project for a user between 2 dates
+		/// </summary>
+		/// <param name="searchData">RequestObject : Id of user</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectsListForUserAsyncMsg(DatesRangeRequest<Int32> searchData)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/timesheets/avalibleProjects", searchData);
+		}
+
+		/// <summary>
+		/// returns the list of avalible project for a user between 2 dates
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectsListForUserAsync(DatesRangeRequest<Int32> searchData)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/timesheets/avalibleProjects", searchData);
+		}
+
+		/// <summary>
+		/// returns the list of avalible project for a user between 2 dates
+		/// </summary>
+		public virtual List<ListItem> GetProjectsListForUser(DatesRangeRequest<Int32> searchData)
+		{
+			var result = Task.Run(() => GetProjectsListForUserAsyncMsg(searchData)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ListItem>>().Result;
 			 		}
 
 		/// <summary>
