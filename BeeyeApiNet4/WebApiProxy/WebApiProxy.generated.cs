@@ -29,7 +29,7 @@ namespace WebApi.Proxies
 		/// <summary>
 		/// Web Api Base Address.
 		/// </summary>
-		public static string MyWebApiProxyBaseAddress = "https://eu.mybeeye.com/";
+		public static string MyWebApiProxyBaseAddress = "https://betabeeye.azurewebsites.net/";
 	}
 }
 #endregion
@@ -175,6 +175,42 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String TargetRessourceName { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class AddonDetails
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Amount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Price { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ImageUrl { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double FullPrice { get; set; }
 		#endregion
 	}	
 	
@@ -477,6 +513,46 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ChargeBeeAddon
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Amount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NameWithPrice { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Currency { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken MetaData { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ImageUrl { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class Client
 	{
 		#region Constants
@@ -555,6 +631,146 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean CanBeDeleted { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ClientBilingInfos
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ClientId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<SubscriptionDetails> ActiveSubscriptions { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<AddonDetails> ActiveAddons { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Invoiced> Invoices { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean HasCard { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String MaskedCard { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NextInvoiceText { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ColumnInfoForExport
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ExportType ExportType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 AgregateType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Type { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ListField> PossibleValues { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class CompanyJS
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CurrentFinancialYear { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Responsable { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Logo { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 UsersCount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DirectionsCount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ConnexionsCount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DashBoardCount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectsCount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsSelfServe { get; set; }
 		#endregion
 	}	
 	
@@ -933,6 +1149,126 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class CreateCompanyJS
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RespPrenom { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RespNom { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ResptMail { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RespOccupation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ContactMail { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Direction { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double TempsSemaine { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TimeSheetEvery { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DefaultRoleName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CountryCode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String StateCode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PostalCode { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class CreditCardInfo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CardHolderName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CardNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CardExpirationMonth { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CardExpirationYear { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CardValidation { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class CustomFieldCategory
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class CustomFieldJs
 	{
 		#region Constants
@@ -963,10 +1299,6 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean IsUniqueCustom { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Boolean AbakNumberField { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1522,6 +1854,18 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String PlanId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsVirtual { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 Id { get; set; }
 		/// <summary>
 		/// 
@@ -1618,6 +1962,18 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String PlanId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsVirtual { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 Id { get; set; }
 		/// <summary>
 		/// 
@@ -1711,6 +2067,18 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Nullable<DateTime> EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PlanId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsVirtual { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1811,6 +2179,18 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Nullable<DateTime> EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PlanId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsVirtual { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1951,6 +2331,146 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean HasFiles { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ExportConfig
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExportName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ExportSheetConfig> Sheets { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsCompanyTemplate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ExportSheetConfig
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ExportType Type { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String JsonFilters { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ColumnInfoForExport> Columns { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FinancialInfo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ProjectJS Project { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double BilledAmount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double MontantGagne { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double PayedAmounts { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double VendantPlanned { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double BillRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Expenses { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double TotalRHCostPlanned { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double MarginDollar { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double MarginPercentage { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double TotalRHCostBaseline { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double VendantBaseline { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FondDeFinancementJSBD
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FondName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
 		#endregion
 	}	
 	
@@ -2107,6 +2627,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean ReturnNotAssignedEmployees { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> PreselectedUser { get; set; }
 		#endregion
 	}	
 	
@@ -2373,6 +2897,130 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class JContainer
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean HasValues { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken First { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken Last { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Count { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JContainer Parent { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken Root { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JTokenType Type { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken Next { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken Previous { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Path { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken Item { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class JToken
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JTokenEqualityComparer EqualityComparer { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JContainer Parent { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken Root { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JTokenType Type { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean HasValues { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken Next { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken Previous { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Path { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken Item { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken First { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual JToken Last { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class JTokenEqualityComparer
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class LangDefinition
 	{
 		#region Constants
@@ -2391,6 +3039,34 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String LocalName { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ListField
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Color { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Order { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
 		#endregion
 	}	
 	
@@ -2898,6 +3574,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Int32 TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Boolean IsWeek { get; set; }
 		/// <summary>
 		/// 
@@ -3278,6 +3958,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean ChangeTask { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Boolean BlockModif { get; set; }
 		#endregion
 	}	
@@ -3382,11 +4066,71 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String ClientName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 ProjectId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Double RealTimeSum { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double PlanificationSum { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual List<TaskFastPlanningResult> Tasks { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectInfo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ProjectJS Project { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectTypeJS> ProjectTypes { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<FondDeFinancementJSBD> Fonds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 NbDay { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double AllPlanif { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double AllReel { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double TotalBaseline { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double ProjectedProject { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double RAF { get; set; }
 		#endregion
 	}	
 	
@@ -3415,6 +4159,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual List<CustomFieldValue> CustomFieldsValues { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectTask> ProjetTasks { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -3475,6 +4223,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double ProjectPrevu { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> Millesime { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -3611,6 +4363,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> Millesime { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -3855,6 +4611,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual DateTime ObjectiveDueDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectId { get; set; }
 		#endregion
 	}	
 	
@@ -3958,6 +4718,14 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean HaveComment { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ClientName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual DateTime ProjectStartDate { get; set; }
 		/// <summary>
 		/// 
@@ -4007,6 +4775,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32 AssignedRessourceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String AssignedRessourceImg { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4797,6 +5569,26 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class RequestProjectManagedForUser
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Mode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ForUserOnly { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class RequestProjectResources
 	{
 		#region Constants
@@ -4811,6 +5603,34 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean ByDirec { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RequestSelectedProjects
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Ids { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean OpenProjects { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CloseProjects { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ProjectJSMainStats newData { get; set; }
 		#endregion
 	}	
 	
@@ -4891,10 +5711,6 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Nullable<Int32> TeamId { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Nullable<Int32> LicenseId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -5134,6 +5950,18 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String PlanId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsVirtual { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 Id { get; set; }
 		/// <summary>
 		/// 
@@ -5338,6 +6166,18 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String PlanId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsVirtual { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 Id { get; set; }
 		/// <summary>
 		/// 
@@ -5438,11 +6278,11 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Nullable<Int32> LicenseId { get; set; }
+		public virtual Boolean RemovedEndContractDate { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Boolean RemovedEndContractDate { get; set; }
+		public virtual String PlanId { get; set; }
 		#endregion
 	}	
 	
@@ -5767,6 +6607,50 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String SignalRId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean UseTemplate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SendEmails { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsDemo { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PlanId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double SetupFee { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String[] AvaliblePlans { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> FirstBilledDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String[] Addons { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Devise { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsImport { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DefautDirectionName { get; set; }
 		#endregion
 	}	
 	
@@ -5965,6 +6849,62 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class SubscriptionDetails
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Amount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Price { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TimeUnit { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Curency { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ActualUsers { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> NextBilling { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double FullPrice { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NextDueDateText { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class TaskComment
 	{
 		#region Constants
@@ -6066,6 +7006,22 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String TaskStateName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TaskResponsable { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double RealTimeSum { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double PlanificationSum { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Nullable<DateTime> TaskEndDate { get; set; }
 		/// <summary>
 		/// 
@@ -6075,6 +7031,30 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32 DisplayOrder { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class TaskFiltre
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> ProjectCloseDate { get; set; }
 		#endregion
 	}	
 	
@@ -6403,6 +7383,26 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Color { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class TaskStateWithTask
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual TaskState State { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectTask> ListTask { get; set; }
 		#endregion
 	}	
 	
@@ -7201,6 +8201,147 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public enum ExportType
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Project = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Resource = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Task = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Client = 3,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Expenses = 4,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Invoiced = 5,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Time = 6,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum JTokenType
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		None = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Object = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Array = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Constructor = 3,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Property = 4,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Comment = 5,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Integer = 6,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Float = 7,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		String = 8,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Boolean = 9,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Null = 10,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Undefined = 11,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Date = 12,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Raw = 13,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Bytes = 14,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Guid = 15,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Uri = 16,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		TimeSpan = 17,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public enum NotificationType
 	{
 
@@ -7391,6 +8532,16 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		AllDaysForPeriod = 6,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Fusion = 7,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		ChangeTask = 8,
 		
 	}
 	
@@ -7588,6 +8739,76 @@ namespace WebApi.Proxies.Interfaces
 				
 	}
 	
+	public partial interface IBillingClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAvalibleAddonsAsync();
+
+		/// <returns></returns>
+		List<ChargeBeeAddon> GetAvalibleAddons();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddAddonAsync(ChargeBeeAddon addon);
+
+		/// <returns></returns>
+		UpdateResult AddAddon(ChargeBeeAddon addon);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateUsersForBillingAsync(List<Int32> users);
+
+		/// <returns></returns>
+		UpdateResult UpdateUsersForBilling(List<Int32> users);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetUsersWithBillingAcessAsync();
+
+		/// <returns></returns>
+		List<EmployeJS__> GetUsersWithBillingAcess();
+
+		/// <param name="planId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> EstimateAsync(String planId);
+
+		/// <param name="planId"></param>
+		/// <returns></returns>
+		UpdateResult Estimate(String planId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RemoveAddonAsync(ChargeBeeAddon addon);
+
+		/// <returns></returns>
+		UpdateResult RemoveAddon(ChargeBeeAddon addon);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetBillingInfosAsync();
+
+		/// <returns></returns>
+		ClientBilingInfos GetBillingInfos();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddCreditCardAsync(CreditCardInfo card);
+
+		/// <returns></returns>
+		UpdateResult AddCreditCard(CreditCardInfo card);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetLastInvoicesAsync();
+
+		/// <returns></returns>
+		List<Invoiced> GetLastInvoices();
+				
+	}
+	
 	public partial interface IClientsManagmentClient : IClientBase
 	{	
 
@@ -7638,6 +8859,55 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="id"></param>
 		/// <returns></returns>
 		UpdateResult DeleteClient(Int32 id);
+				
+	}
+	
+	public partial interface ICompanyClient : IClientBase
+	{	
+
+		/// <param name="companyId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> LoginAsCompanyAsync(Int32 companyId);
+
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		UpdateResult LoginAsCompany(Int32 companyId);
+
+		/// <param name="companyId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteCompanyAsync(Int32 companyId);
+
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteCompany(Int32 companyId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ListAsync();
+
+		/// <returns></returns>
+		List<CompanyJS> List();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateAsync(CreateCompanyJS companyToCreate);
+
+		/// <returns></returns>
+		UpdateResultWithId Create(CreateCompanyJS companyToCreate);
+				
+	}
+	
+	public partial interface IConfigTaskClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectsAsync(DatesRangeRequest<Boolean> args);
+
+		/// <returns></returns>
+		List<ProjectFastPlanningResult> GetProjects(DatesRangeRequest<Boolean> args);
 				
 	}
 	
@@ -7714,6 +8984,20 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="customFieldId"></param>
 		/// <returns></returns>
 		UpdateResultWithId UpdateCustomFieldValue(Int32 customFieldId,CustomFieldValue value);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateOrUpdateCategoryAsync(CustomFieldCategory customFieldCategory);
+
+		/// <returns></returns>
+		UpdateResultWithId CreateOrUpdateCategory(CustomFieldCategory customFieldCategory);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateOrUpdateCustomFieldAsync(CustomFieldJs customField);
+
+		/// <returns></returns>
+		UpdateResultWithId CreateOrUpdateCustomField(CustomFieldJs customField);
 				
 	}
 	
@@ -7881,6 +9165,35 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResult UpdateEmployeCostRate(Int32 userId,Double rate);
 
+		/// <param name="userId"></param>
+		/// <param name="rate"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateEmployeCostRateFromDateAsync(Int32 userId,Double rate,DateTime localDate);
+
+		/// <param name="userId"></param>
+		/// <param name="rate"></param>
+		/// <returns></returns>
+		UpdateResult UpdateEmployeCostRateFromDate(Int32 userId,Double rate,DateTime localDate);
+
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateEmployeBillRateAsync(Int32 userId,Double rate);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		UpdateResult UpdateEmployeBillRate(Int32 userId,Double rate);
+
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateEmployeEndDateAsync(Int32 userId,DateTime date);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		UpdateResult UpdateEmployeEndDate(Int32 userId,DateTime date);
+
 		/// <param name="employeId"></param>
 
 		/// <returns></returns>
@@ -7925,6 +9238,24 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="userId"></param>
 		/// <returns></returns>
 		UpdateResult UpdateTiersId(Int32 userId,EmployeJS__ toUpdate);
+
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddSkillToResourceAsync(Int32 userId,SkillJs skill);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		UpdateResult AddSkillToResource(Int32 userId,SkillJs skill);
+
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateEmployeStartDateAsync(Int32 userId,DateTime date);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		UpdateResult UpdateEmployeStartDate(Int32 userId,DateTime date);
 				
 	}
 	
@@ -8028,6 +9359,48 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="expenseId"></param>
 		/// <returns></returns>
 		UpdateResult DeleteExpense(Int32 expenseId);
+				
+	}
+	
+	public partial interface IExportsClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllAvailableFieldsAsync();
+
+		/// <returns></returns>
+		List<ColumnInfoForExport> GetAllAvailableFields();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAvailableExportsAsync();
+
+		/// <returns></returns>
+		List<ExportConfig> GetAvailableExports();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RunExportPostAsync();
+
+		/// <returns></returns>
+		HttpResponseMessage RunExportPost();
+
+		/// <param name="exportId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteExportAsync(String exportId);
+
+		/// <param name="exportId"></param>
+		/// <returns></returns>
+		HttpResponseMessage DeleteExport(String exportId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveExportAsync(ExportConfig request);
+
+		/// <returns></returns>
+		String SaveExport(ExportConfig request);
 				
 	}
 	
@@ -8218,6 +9591,13 @@ namespace WebApi.Proxies.Interfaces
 	
 	public partial interface IIntegrationsClient : IClientBase
 	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> WipeAsync();
+
+		/// <returns></returns>
+		UpdateResult Wipe();
 
 		/// <param name="cfId"></param>
 
@@ -8849,6 +10229,27 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> GetGeneralInfoAsync(DatesRangeRequest<Int32> requestData);
+
+		/// <returns></returns>
+		ProjectInfo GetGeneralInfo(DatesRangeRequest<Int32> requestData);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetFinancialInfoAsync(DatesRangeRequest<Int32> requestData);
+
+		/// <returns></returns>
+		FinancialInfo GetFinancialInfo(DatesRangeRequest<Int32> requestData);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetManagedProjectsAsync(RequestProjectManagedForUser requestData);
+
+		/// <returns></returns>
+		List<ProjectJS> GetManagedProjects(RequestProjectManagedForUser requestData);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> CreateNewProjectAsync(ProjectJS newProject);
 
 		/// <returns></returns>
@@ -8911,6 +10312,27 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateListProjectsAsync(RequestSelectedProjects data);
+
+		/// <returns></returns>
+		UpdateResult UpdateListProjects(RequestSelectedProjects data);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateProjectInfoAsync(ProjectJSMainStats newData);
+
+		/// <returns></returns>
+		UpdateResult UpdateProjectInfo(ProjectJSMainStats newData);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateProjectMillesimeAsync(DatesRangeFilteredRequest<Int32> requestObjec);
+
+		/// <returns></returns>
+		UpdateResult UpdateProjectMillesime(DatesRangeFilteredRequest<Int32> requestObjec);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> UpdateProjectDatesAndNameAsync(ProjectJSMainStats data);
 
 		/// <returns></returns>
@@ -8953,6 +10375,24 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="projectId"></param>
 		/// <returns></returns>
 		UpdateResult UpdateProjectRessources(Int32 projectId,List<RessourceStats> rs);
+
+		/// <param name="companyId"></param>
+		/// <param name="range"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteCompanyProjectsRangeAsync(Int32 companyId,Int32 range);
+
+		/// <param name="companyId"></param>
+		/// <param name="range"></param>
+		/// <returns></returns>
+		UpdateResult DeleteCompanyProjectsRange(Int32 companyId,Int32 range);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateProjectsByBatchAsync(List<ProjectJS> projects);
+
+		/// <returns></returns>
+		UpdateResultWithId CreateProjectsByBatch(List<ProjectJS> projects);
 				
 	}
 	
@@ -9009,6 +10449,25 @@ namespace WebApi.Proxies.Interfaces
 				
 	}
 	
+	public partial interface IProjectTypeClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateAsync(ProjectTypeJS projectType);
+
+		/// <returns></returns>
+		UpdateResultWithId Create(ProjectTypeJS projectType);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ListAsync();
+
+		/// <returns></returns>
+		List<ProjectTypeJS> List();
+				
+	}
+	
 	public partial interface IRapportsClient : IClientBase
 	{	
 
@@ -9018,6 +10477,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		ProjectTypeStats GetProjectsNoFilters(SearchCriteriaRapports searchOptions);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAvailableTasksListAsync(DatesRangeFilteredRequest<Object> param);
+
+		/// <returns></returns>
+		List<TaskFiltre> GetAvailableTasksList(DatesRangeFilteredRequest<Object> param);
 				
 	}
 	
@@ -9041,6 +10507,22 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResult ResourceBulkUpdate(ResourceBulkUpdate resourceBulkUpdate);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateUserAsync(EmployeJS userInfo);
+
+		/// <returns></returns>
+		UpdateResultWithId CreateUser(EmployeJS userInfo);
+
+		/// <param name="resourceId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteResourceAsync(Int32 resourceId);
+
+		/// <param name="resourceId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteResource(Int32 resourceId);
 				
 	}
 	
@@ -9242,6 +10724,24 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		Boolean GetIfTaskHavePlanif(Int32 taskId,RequesTasks requestTask);
 
+		/// <param name="taskId"></param>
+		/// <param name="stateId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTaskStateAsync(Int32 taskId,Int32 stateId);
+
+		/// <param name="taskId"></param>
+		/// <param name="stateId"></param>
+		/// <returns></returns>
+		UpdateResult UpdateTaskState(Int32 taskId,Int32 stateId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetKanbanAsync(DatesRangeFilteredRequest<Int32> data);
+
+		/// <returns></returns>
+		List<TaskStateWithTask> GetKanban(DatesRangeFilteredRequest<Int32> data);
+
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> GetIfTasksHavePlanifAsync(RequestSelectedTasks data);
@@ -9287,6 +10787,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		ProjectTask GetTaskById(DatesRangeRequest<Int32> criteria);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateTaskStateAsync(TaskState taskState);
+
+		/// <returns></returns>
+		UpdateResultWithId CreateTaskState(TaskState taskState);
 
 		/// <param name="projectId">Id of the project</param>
 
@@ -9673,13 +11180,17 @@ namespace WebApi.Proxies.Clients
 	public partial class WebApiClients
 	{
 		public BeeyeAIClient BeeyeAI { get; private set; }
+		public BillingClient Billing { get; private set; }
 		public ClientsManagmentClient ClientsManagment { get; private set; }
+		public CompanyClient Company { get; private set; }
+		public ConfigTaskClient ConfigTask { get; private set; }
 		public ConflictsClient Conflicts { get; private set; }
 		public CustomFieldsClient CustomFields { get; private set; }
 		public DataSharingClient DataSharing { get; private set; }
 		public DirectionsClient Directions { get; private set; }
 		public EmployesClient Employes { get; private set; }
 		public ExpensesClient Expenses { get; private set; }
+		public ExportsClient Exports { get; private set; }
 		public FastPlanningClient FastPlanning { get; private set; }
 		public HelperWebClient HelperWeb { get; private set; }
 		public HumanRessourcesClient HumanRessources { get; private set; }
@@ -9693,6 +11204,7 @@ namespace WebApi.Proxies.Clients
 		public ProjectManagementClient ProjectManagement { get; private set; }
 		public ProjectStatesClient ProjectStates { get; private set; }
 		public ProjectTemplateClient ProjectTemplate { get; private set; }
+		public ProjectTypeClient ProjectType { get; private set; }
 		public RapportsClient Rapports { get; private set; }
 		public RessourceClient Ressource { get; private set; }
 		public RolesManagementClient RolesManagement { get; private set; }
@@ -9709,13 +11221,17 @@ namespace WebApi.Proxies.Clients
             get
             {
 				yield return BeeyeAI;
+				yield return Billing;
 				yield return ClientsManagment;
+				yield return Company;
+				yield return ConfigTask;
 				yield return Conflicts;
 				yield return CustomFields;
 				yield return DataSharing;
 				yield return Directions;
 				yield return Employes;
 				yield return Expenses;
+				yield return Exports;
 				yield return FastPlanning;
 				yield return HelperWeb;
 				yield return HumanRessources;
@@ -9729,6 +11245,7 @@ namespace WebApi.Proxies.Clients
 				yield return ProjectManagement;
 				yield return ProjectStates;
 				yield return ProjectTemplate;
+				yield return ProjectType;
 				yield return Rapports;
 				yield return Ressource;
 				yield return RolesManagement;
@@ -9748,13 +11265,17 @@ namespace WebApi.Proxies.Clients
                 Configuration.MyWebApiProxyBaseAddress = baseAddress.AbsoluteUri;
 
 			BeeyeAI = new BeeyeAIClient();
+			Billing = new BillingClient();
 			ClientsManagment = new ClientsManagmentClient();
+			Company = new CompanyClient();
+			ConfigTask = new ConfigTaskClient();
 			Conflicts = new ConflictsClient();
 			CustomFields = new CustomFieldsClient();
 			DataSharing = new DataSharingClient();
 			Directions = new DirectionsClient();
 			Employes = new EmployesClient();
 			Expenses = new ExpensesClient();
+			Exports = new ExportsClient();
 			FastPlanning = new FastPlanningClient();
 			HelperWeb = new HelperWebClient();
 			HumanRessources = new HumanRessourcesClient();
@@ -9768,6 +11289,7 @@ namespace WebApi.Proxies.Clients
 			ProjectManagement = new ProjectManagementClient();
 			ProjectStates = new ProjectStatesClient();
 			ProjectTemplate = new ProjectTemplateClient();
+			ProjectType = new ProjectTypeClient();
 			Rapports = new RapportsClient();
 			Ressource = new RessourceClient();
 			RolesManagement = new RolesManagementClient();
@@ -9858,6 +11380,310 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<EmployeJS__>>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class BillingClient : ClientBase, Interfaces.IBillingClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public BillingClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public BillingClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// returns list of avalible addons.
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAvalibleAddonsAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/billing/addons");
+		}
+
+		/// <summary>
+		/// returns list of avalible addons.
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAvalibleAddonsAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/billing/addons");
+		}
+
+		/// <summary>
+		/// returns list of avalible addons.
+		/// </summary>
+		public virtual List<ChargeBeeAddon> GetAvalibleAddons()
+		{
+			var result = Task.Run(() => GetAvalibleAddonsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ChargeBeeAddon>>().Result;
+			 		}
+
+		/// <summary>
+		/// Adds addon for user
+		/// </summary>
+		/// <param name="addon"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddAddonAsyncMsg(ChargeBeeAddon addon)
+		{
+			return await HttpClient.PostAsJsonAsync<ChargeBeeAddon>("api/v1/billing/addAddon", addon);
+		}
+
+		/// <summary>
+		/// Adds addon for user
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddAddonAsync(ChargeBeeAddon addon)
+		{
+			return await HttpClient.PostAsJsonAsync<ChargeBeeAddon>("api/v1/billing/addAddon", addon);
+		}
+
+		/// <summary>
+		/// Adds addon for user
+		/// </summary>
+		public virtual UpdateResult AddAddon(ChargeBeeAddon addon)
+		{
+			var result = Task.Run(() => AddAddonAsyncMsg(addon)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Updates users having billin acess. User needs to be active and not virtual
+		/// </summary>
+		/// <param name="users">List of user Ids</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateUsersForBillingAsyncMsg(List<Int32> users)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("api/v1/billing/billing/users/update", users);
+		}
+
+		/// <summary>
+		/// Updates users having billin acess. User needs to be active and not virtual
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateUsersForBillingAsync(List<Int32> users)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("api/v1/billing/billing/users/update", users);
+		}
+
+		/// <summary>
+		/// Updates users having billin acess. User needs to be active and not virtual
+		/// </summary>
+		public virtual UpdateResult UpdateUsersForBilling(List<Int32> users)
+		{
+			var result = Task.Run(() => UpdateUsersForBillingAsyncMsg(users)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Retuens list of users havinf acess to billing page
+		/// The company responsible always has acess
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetUsersWithBillingAcessAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/billing/billing/users");
+		}
+
+		/// <summary>
+		/// Retuens list of users havinf acess to billing page
+		/// The company responsible always has acess
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetUsersWithBillingAcessAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/billing/billing/users");
+		}
+
+		/// <summary>
+		/// Retuens list of users havinf acess to billing page
+		/// The company responsible always has acess
+		/// </summary>
+		public virtual List<EmployeJS__> GetUsersWithBillingAcess()
+		{
+			var result = Task.Run(() => GetUsersWithBillingAcessAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<EmployeJS__>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="planId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> EstimateAsyncMsg(String planId)
+		{
+			return await HttpClient.GetAsync("api/v1/billing/estimate/" + planId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="planId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> EstimateAsync(String planId)
+		{
+			return await HttpClient.GetAsync("api/v1/billing/estimate/" + planId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="planId"></param>
+		public virtual UpdateResult Estimate(String planId)
+		{
+			var result = Task.Run(() => EstimateAsyncMsg(planId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="addon"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RemoveAddonAsyncMsg(ChargeBeeAddon addon)
+		{
+			return await HttpClient.PostAsJsonAsync<ChargeBeeAddon>("api/v1/billing/billing/addons/remove", addon);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RemoveAddonAsync(ChargeBeeAddon addon)
+		{
+			return await HttpClient.PostAsJsonAsync<ChargeBeeAddon>("api/v1/billing/billing/addons/remove", addon);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult RemoveAddon(ChargeBeeAddon addon)
+		{
+			var result = Task.Run(() => RemoveAddonAsyncMsg(addon)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetBillingInfosAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/billing/billingInfos");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetBillingInfosAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/billing/billingInfos");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ClientBilingInfos GetBillingInfos()
+		{
+			var result = Task.Run(() => GetBillingInfosAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ClientBilingInfos>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="card"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddCreditCardAsyncMsg(CreditCardInfo card)
+		{
+			return await HttpClient.PostAsJsonAsync<CreditCardInfo>("api/v1/billing/addCard", card);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddCreditCardAsync(CreditCardInfo card)
+		{
+			return await HttpClient.PostAsJsonAsync<CreditCardInfo>("api/v1/billing/addCard", card);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult AddCreditCard(CreditCardInfo card)
+		{
+			var result = Task.Run(() => AddCreditCardAsyncMsg(card)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetLastInvoicesAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/billing/invoices");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetLastInvoicesAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/billing/invoices");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Invoiced> GetLastInvoices()
+		{
+			var result = Task.Run(() => GetLastInvoicesAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<Invoiced>>().Result;
 			 		}
 
 		#endregion
@@ -10077,6 +11903,212 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class CompanyClient : ClientBase, Interfaces.ICompanyClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public CompanyClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public CompanyClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> LoginAsCompanyAsyncMsg(Int32 companyId)
+		{
+			return await HttpClient.GetAsync("api/company/loginas/" + companyId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> LoginAsCompanyAsync(Int32 companyId)
+		{
+			return await HttpClient.GetAsync("api/company/loginas/" + companyId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		public virtual UpdateResult LoginAsCompany(Int32 companyId)
+		{
+			var result = Task.Run(() => LoginAsCompanyAsyncMsg(companyId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteCompanyAsyncMsg(Int32 companyId)
+		{
+			return await HttpClient.DeleteAsync("api/company/" + companyId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteCompanyAsync(Int32 companyId)
+		{
+			return await HttpClient.DeleteAsync("api/company/" + companyId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		public virtual UpdateResult DeleteCompany(Int32 companyId)
+		{
+			var result = Task.Run(() => DeleteCompanyAsyncMsg(companyId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ListAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/Company");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ListAsync()
+		{
+			return await HttpClient.GetAsync("api/Company");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<CompanyJS> List()
+		{
+			var result = Task.Run(() => ListAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CompanyJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyToCreate"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateAsyncMsg(CreateCompanyJS companyToCreate)
+		{
+			return await HttpClient.PostAsJsonAsync<CreateCompanyJS>("api/Company", companyToCreate);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateAsync(CreateCompanyJS companyToCreate)
+		{
+			return await HttpClient.PostAsJsonAsync<CreateCompanyJS>("api/Company", companyToCreate);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId Create(CreateCompanyJS companyToCreate)
+		{
+			var result = Task.Run(() => CreateAsyncMsg(companyToCreate)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ConfigTaskClient : ClientBase, Interfaces.IConfigTaskClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ConfigTaskClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ConfigTaskClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="args"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectsAsyncMsg(DatesRangeRequest<Boolean> args)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/configTask/getProjects", args);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectsAsync(DatesRangeRequest<Boolean> args)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/configTask/getProjects", args);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectFastPlanningResult> GetProjects(DatesRangeRequest<Boolean> args)
+		{
+			var result = Task.Run(() => GetProjectsAsyncMsg(args)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectFastPlanningResult>>().Result;
 			 		}
 
 		#endregion
@@ -10381,6 +12413,68 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResultWithId UpdateCustomFieldValue(Int32 customFieldId,CustomFieldValue value)
 		{
 			var result = Task.Run(() => UpdateCustomFieldValueAsyncMsg(customFieldId, value)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="customFieldCategory"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateOrUpdateCategoryAsyncMsg(CustomFieldCategory customFieldCategory)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldCategory>("api/customFields/category", customFieldCategory);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateOrUpdateCategoryAsync(CustomFieldCategory customFieldCategory)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldCategory>("api/customFields/category", customFieldCategory);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId CreateOrUpdateCategory(CustomFieldCategory customFieldCategory)
+		{
+			var result = Task.Run(() => CreateOrUpdateCategoryAsyncMsg(customFieldCategory)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="customField"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateOrUpdateCustomFieldAsyncMsg(CustomFieldJs customField)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldJs>("api/CustomFields", customField);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateOrUpdateCustomFieldAsync(CustomFieldJs customField)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldJs>("api/CustomFields", customField);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId CreateOrUpdateCustomField(CustomFieldJs customField)
+		{
+			var result = Task.Run(() => CreateOrUpdateCustomFieldAsyncMsg(customField)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -11077,6 +13171,111 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// 
 		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="rate"></param>
+		/// <param name="localDate"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateEmployeCostRateFromDateAsyncMsg(Int32 userId,Double rate,DateTime localDate)
+		{
+			return await HttpClient.PostAsJsonAsync<DateTime>("api/v1/rh/employees/" + userId + "/UpdateEmployeCostRate?rate=" + rate, localDate);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="rate"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateEmployeCostRateFromDateAsync(Int32 userId,Double rate,DateTime localDate)
+		{
+			return await HttpClient.PostAsJsonAsync<DateTime>("api/v1/rh/employees/" + userId + "/UpdateEmployeCostRate?rate=" + rate, localDate);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="rate"></param>
+		public virtual UpdateResult UpdateEmployeCostRateFromDate(Int32 userId,Double rate,DateTime localDate)
+		{
+			var result = Task.Run(() => UpdateEmployeCostRateFromDateAsyncMsg(userId, rate, localDate)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="rate"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateEmployeBillRateAsyncMsg(Int32 userId,Double rate)
+		{
+			return await HttpClient.PostAsJsonAsync<Double>("api/v1/rh/employees/UpdateEmployeBillRate?userId=" + userId, rate);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateEmployeBillRateAsync(Int32 userId,Double rate)
+		{
+			return await HttpClient.PostAsJsonAsync<Double>("api/v1/rh/employees/UpdateEmployeBillRate?userId=" + userId, rate);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual UpdateResult UpdateEmployeBillRate(Int32 userId,Double rate)
+		{
+			var result = Task.Run(() => UpdateEmployeBillRateAsyncMsg(userId, rate)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="date"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateEmployeEndDateAsyncMsg(Int32 userId,DateTime date)
+		{
+			return await HttpClient.PostAsJsonAsync<DateTime>("api/v1/rh/employees/UpdateEmployeEndDate?userId=" + userId, date);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateEmployeEndDateAsync(Int32 userId,DateTime date)
+		{
+			return await HttpClient.PostAsJsonAsync<DateTime>("api/v1/rh/employees/UpdateEmployeEndDate?userId=" + userId, date);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual UpdateResult UpdateEmployeEndDate(Int32 userId,DateTime date)
+		{
+			var result = Task.Run(() => UpdateEmployeEndDateAsyncMsg(userId, date)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
 		/// <param name="employeId"></param>
 		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> ArchiveEmployeeAsyncMsg(Int32 employeId)
@@ -11237,6 +13436,74 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResult UpdateTiersId(Int32 userId,EmployeJS__ toUpdate)
 		{
 			var result = Task.Run(() => UpdateTiersIdAsyncMsg(userId, toUpdate)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="skill"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddSkillToResourceAsyncMsg(Int32 userId,SkillJs skill)
+		{
+			return await HttpClient.PostAsJsonAsync<SkillJs>("api/v1/rh/employees/skills/" + userId, skill);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddSkillToResourceAsync(Int32 userId,SkillJs skill)
+		{
+			return await HttpClient.PostAsJsonAsync<SkillJs>("api/v1/rh/employees/skills/" + userId, skill);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual UpdateResult AddSkillToResource(Int32 userId,SkillJs skill)
+		{
+			var result = Task.Run(() => AddSkillToResourceAsyncMsg(userId, skill)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="date"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateEmployeStartDateAsyncMsg(Int32 userId,DateTime date)
+		{
+			return await HttpClient.PostAsJsonAsync<DateTime>("api/Employes?userId=" + userId, date);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateEmployeStartDateAsync(Int32 userId,DateTime date)
+		{
+			return await HttpClient.PostAsJsonAsync<DateTime>("api/Employes?userId=" + userId, date);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual UpdateResult UpdateEmployeStartDate(Int32 userId,DateTime date)
+		{
+			var result = Task.Run(() => UpdateEmployeStartDateAsyncMsg(userId, date)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -11650,6 +13917,184 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ExportsClient : ClientBase, Interfaces.IExportsClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ExportsClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ExportsClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllAvailableFieldsAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/exports/getfields");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllAvailableFieldsAsync()
+		{
+			return await HttpClient.GetAsync("api/exports/getfields");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ColumnInfoForExport> GetAllAvailableFields()
+		{
+			var result = Task.Run(() => GetAllAvailableFieldsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ColumnInfoForExport>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAvailableExportsAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/exports/list");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAvailableExportsAsync()
+		{
+			return await HttpClient.GetAsync("api/exports/list");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ExportConfig> GetAvailableExports()
+		{
+			var result = Task.Run(() => GetAvailableExportsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ExportConfig>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RunExportPostAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/exports/run", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RunExportPostAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/exports/run", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual HttpResponseMessage RunExportPost()
+		{
+			var result = Task.Run(() => RunExportPostAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<HttpResponseMessage>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="exportId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteExportAsyncMsg(String exportId)
+		{
+			return await HttpClient.DeleteAsync("api/exports/" + exportId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="exportId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteExportAsync(String exportId)
+		{
+			return await HttpClient.DeleteAsync("api/exports/" + exportId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="exportId"></param>
+		public virtual HttpResponseMessage DeleteExport(String exportId)
+		{
+			var result = Task.Run(() => DeleteExportAsyncMsg(exportId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<HttpResponseMessage>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveExportAsyncMsg(ExportConfig request)
+		{
+			return await HttpClient.PostAsJsonAsync<ExportConfig>("api/Exports", request);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveExportAsync(ExportConfig request)
+		{
+			return await HttpClient.PostAsJsonAsync<ExportConfig>("api/Exports", request);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String SaveExport(ExportConfig request)
+		{
+			var result = Task.Run(() => SaveExportAsyncMsg(request)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
 			 		}
 
 		#endregion
@@ -12444,6 +14889,36 @@ namespace WebApi.Proxies.Clients
 		}
 
 		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> WipeAsyncMsg()
+		{
+			return await HttpClient.DeleteAsync("api/v1/connect/wipe");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> WipeAsync()
+		{
+			return await HttpClient.DeleteAsync("api/v1/connect/wipe");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult Wipe()
+		{
+			var result = Task.Run(() => WipeAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
 
 		/// <summary>
 		/// 
@@ -14948,6 +17423,99 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="requestData"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetGeneralInfoAsyncMsg(DatesRangeRequest<Int32> requestData)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/proj-management/getGeneralInfo", requestData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetGeneralInfoAsync(DatesRangeRequest<Int32> requestData)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/proj-management/getGeneralInfo", requestData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ProjectInfo GetGeneralInfo(DatesRangeRequest<Int32> requestData)
+		{
+			var result = Task.Run(() => GetGeneralInfoAsyncMsg(requestData)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ProjectInfo>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="requestData"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetFinancialInfoAsyncMsg(DatesRangeRequest<Int32> requestData)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/proj-management/getFinancialInfo", requestData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetFinancialInfoAsync(DatesRangeRequest<Int32> requestData)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/proj-management/getFinancialInfo", requestData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual FinancialInfo GetFinancialInfo(DatesRangeRequest<Int32> requestData)
+		{
+			var result = Task.Run(() => GetFinancialInfoAsyncMsg(requestData)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<FinancialInfo>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="requestData"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetManagedProjectsAsyncMsg(RequestProjectManagedForUser requestData)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestProjectManagedForUser>("api/v1/proj-management/getManagedProjectsForUser", requestData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetManagedProjectsAsync(RequestProjectManagedForUser requestData)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestProjectManagedForUser>("api/v1/proj-management/getManagedProjectsForUser", requestData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectJS> GetManagedProjects(RequestProjectManagedForUser requestData)
+		{
+			var result = Task.Run(() => GetManagedProjectsAsyncMsg(requestData)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectJS>>().Result;
+			 		}
+
+		/// <summary>
 		/// Create project
 		/// </summary>
 		/// <param name="newProject"></param>
@@ -15203,6 +17771,99 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Updates multiple projects
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateListProjectsAsyncMsg(RequestSelectedProjects data)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestSelectedProjects>("api/v1/proj-management/UpdateListProjects", data);
+		}
+
+		/// <summary>
+		/// Updates multiple projects
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateListProjectsAsync(RequestSelectedProjects data)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestSelectedProjects>("api/v1/proj-management/UpdateListProjects", data);
+		}
+
+		/// <summary>
+		/// Updates multiple projects
+		/// </summary>
+		public virtual UpdateResult UpdateListProjects(RequestSelectedProjects data)
+		{
+			var result = Task.Run(() => UpdateListProjectsAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Updates project
+		/// </summary>
+		/// <param name="newData"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateProjectInfoAsyncMsg(ProjectJSMainStats newData)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectJSMainStats>("api/v1/proj-management/UpdateProjectInfo", newData);
+		}
+
+		/// <summary>
+		/// Updates project
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateProjectInfoAsync(ProjectJSMainStats newData)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectJSMainStats>("api/v1/proj-management/UpdateProjectInfo", newData);
+		}
+
+		/// <summary>
+		/// Updates project
+		/// </summary>
+		public virtual UpdateResult UpdateProjectInfo(ProjectJSMainStats newData)
+		{
+			var result = Task.Run(() => UpdateProjectInfoAsyncMsg(newData)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Updates project Millesime
+		/// </summary>
+		/// <param name="requestObjec">Start date == Millesimes, RequestObject == ProjectId</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateProjectMillesimeAsyncMsg(DatesRangeFilteredRequest<Int32> requestObjec)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Int32>>("api/v1/proj-management/UpdateProjectMillesime", requestObjec);
+		}
+
+		/// <summary>
+		/// Updates project Millesime
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateProjectMillesimeAsync(DatesRangeFilteredRequest<Int32> requestObjec)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Int32>>("api/v1/proj-management/UpdateProjectMillesime", requestObjec);
+		}
+
+		/// <summary>
+		/// Updates project Millesime
+		/// </summary>
+		public virtual UpdateResult UpdateProjectMillesime(DatesRangeFilteredRequest<Int32> requestObjec)
+		{
+			var result = Task.Run(() => UpdateProjectMillesimeAsyncMsg(requestObjec)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
 		/// Updates project dates and name (If name is not empty. Only updates names if startdate and enddate are the sames as projects
 		/// </summary>
 		/// <param name="data">Only StartDate, EndDate and Name are used for this update</param>
@@ -15374,6 +18035,73 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		/// <param name="range"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteCompanyProjectsRangeAsyncMsg(Int32 companyId,Int32 range)
+		{
+			return await HttpClient.DeleteAsync("api/v1/proj-management/deleteProjectsRange?companyId=" + companyId + "&range=" + range);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		/// <param name="range"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteCompanyProjectsRangeAsync(Int32 companyId,Int32 range)
+		{
+			return await HttpClient.DeleteAsync("api/v1/proj-management/deleteProjectsRange?companyId=" + companyId + "&range=" + range);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		/// <param name="range"></param>
+		public virtual UpdateResult DeleteCompanyProjectsRange(Int32 companyId,Int32 range)
+		{
+			var result = Task.Run(() => DeleteCompanyProjectsRangeAsyncMsg(companyId, range)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projects"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateProjectsByBatchAsyncMsg(List<ProjectJS> projects)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ProjectJS>>("api/v1/proj-management/createBatch", projects);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateProjectsByBatchAsync(List<ProjectJS> projects)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ProjectJS>>("api/v1/proj-management/createBatch", projects);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId CreateProjectsByBatch(List<ProjectJS> projects)
+		{
+			var result = Task.Run(() => CreateProjectsByBatchAsyncMsg(projects)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
 			 		}
 
 		#endregion
@@ -15594,6 +18322,91 @@ namespace WebApi.Proxies.Clients
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ProjectTypeClient : ClientBase, Interfaces.IProjectTypeClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ProjectTypeClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ProjectTypeClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectType"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateAsyncMsg(ProjectTypeJS projectType)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectTypeJS>("api/ProjectType", projectType);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateAsync(ProjectTypeJS projectType)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectTypeJS>("api/ProjectType", projectType);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId Create(ProjectTypeJS projectType)
+		{
+			var result = Task.Run(() => CreateAsyncMsg(projectType)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ListAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/ProjectType");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ListAsync()
+		{
+			return await HttpClient.GetAsync("api/ProjectType");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectTypeJS> List()
+		{
+			var result = Task.Run(() => ListAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectTypeJS>>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class RapportsClient : ClientBase, Interfaces.IRapportsClient
 	{		
 
@@ -15645,6 +18458,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<ProjectTypeStats>().Result;
+			 		}
+
+		/// <summary>
+		/// Get simple Tasks List
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAvailableTasksListAsyncMsg(DatesRangeFilteredRequest<Object> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Object>>("GetAvailableTasksList", param);
+		}
+
+		/// <summary>
+		/// Get simple Tasks List
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAvailableTasksListAsync(DatesRangeFilteredRequest<Object> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Object>>("GetAvailableTasksList", param);
+		}
+
+		/// <summary>
+		/// Get simple Tasks List
+		/// </summary>
+		public virtual List<TaskFiltre> GetAvailableTasksList(DatesRangeFilteredRequest<Object> param)
+		{
+			var result = Task.Run(() => GetAvailableTasksListAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<TaskFiltre>>().Result;
 			 		}
 
 		#endregion
@@ -15733,6 +18577,70 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResult ResourceBulkUpdate(ResourceBulkUpdate resourceBulkUpdate)
 		{
 			var result = Task.Run(() => ResourceBulkUpdateAsyncMsg(resourceBulkUpdate)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userInfo"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateUserAsyncMsg(EmployeJS userInfo)
+		{
+			return await HttpClient.PostAsJsonAsync<EmployeJS>("api/v1/ressource/create", userInfo);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateUserAsync(EmployeJS userInfo)
+		{
+			return await HttpClient.PostAsJsonAsync<EmployeJS>("api/v1/ressource/create", userInfo);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId CreateUser(EmployeJS userInfo)
+		{
+			var result = Task.Run(() => CreateUserAsyncMsg(userInfo)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="resourceId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteResourceAsyncMsg(Int32 resourceId)
+		{
+			return await HttpClient.DeleteAsync("api/Ressource?resourceId=" + resourceId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="resourceId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteResourceAsync(Int32 resourceId)
+		{
+			return await HttpClient.DeleteAsync("api/Ressource?resourceId=" + resourceId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="resourceId"></param>
+		public virtual UpdateResult DeleteResource(Int32 resourceId)
+		{
+			var result = Task.Run(() => DeleteResourceAsyncMsg(resourceId)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -16513,6 +19421,73 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// 
 		/// </summary>
+		/// <param name="taskId"></param>
+		/// <param name="stateId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTaskStateAsyncMsg(Int32 taskId,Int32 stateId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/UpdateTaskState?taskId=" + taskId + "&stateId=" + stateId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <param name="stateId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTaskStateAsync(Int32 taskId,Int32 stateId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/UpdateTaskState?taskId=" + taskId + "&stateId=" + stateId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <param name="stateId"></param>
+		public virtual UpdateResult UpdateTaskState(Int32 taskId,Int32 stateId)
+		{
+			var result = Task.Run(() => UpdateTaskStateAsyncMsg(taskId, stateId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetKanbanAsyncMsg(DatesRangeFilteredRequest<Int32> data)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Int32>>("api/v1/tasks/api/v1/tasks/getKanban", data);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetKanbanAsync(DatesRangeFilteredRequest<Int32> data)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Int32>>("api/v1/tasks/api/v1/tasks/getKanban", data);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<TaskStateWithTask> GetKanban(DatesRangeFilteredRequest<Int32> data)
+		{
+			var result = Task.Run(() => GetKanbanAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<TaskStateWithTask>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
 		/// <param name="data"></param>
 		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> GetIfTasksHavePlanifAsyncMsg(RequestSelectedTasks data)
@@ -16699,6 +19674,37 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<ProjectTask>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="taskState"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateTaskStateAsyncMsg(TaskState taskState)
+		{
+			return await HttpClient.PostAsJsonAsync<TaskState>("api/v1/tasks/api/v1/tasks/TaskState", taskState);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateTaskStateAsync(TaskState taskState)
+		{
+			return await HttpClient.PostAsJsonAsync<TaskState>("api/v1/tasks/api/v1/tasks/TaskState", taskState);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId CreateTaskState(TaskState taskState)
+		{
+			var result = Task.Run(() => CreateTaskStateAsyncMsg(taskState)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
 			 		}
 
 		/// <summary>
