@@ -15,7 +15,7 @@ namespace HelloBeeye
         static string apiKey = "";
         //Cookies are used to hold authentification information. 
         static readonly CookieContainer cookies = new CookieContainer();
-        static readonly HttpClientHandler handler = new HttpClientHandler() { CookieContainer = cookies };
+        static readonly LoggingHandler handler = new LoggingHandler(new HttpClientHandler() { CookieContainer = cookies });
         static async Task Main(string[] args)
         {
             if (string.IsNullOrEmpty(apiKey) && args.Length < 1)
@@ -35,6 +35,7 @@ namespace HelloBeeye
             //Changing end point : by default https://betabeeye.azurewebsites.net //TEST Server
             //WebApi.Proxies.Configuration.MyWebApiProxyBaseAddress = "https://eu.mybeeye.com"; // Server Europe
             //WebApi.Proxies.Configuration.MyWebApiProxyBaseAddress = "https://app.mybeeye.com"; // Server Canada
+            WebApi.Proxies.Configuration.MyWebApiProxyBaseAddress = "https://betabeeye.azurewebsites.net";
 
 
             using (var beeyeLoginApi = new LoginClient(handler, false))
@@ -74,7 +75,10 @@ namespace HelloBeeye
             var loginResponse = await login.ApiLoginAsync(apiKey);
             //Converting response into object.
             var loginResult = await loginResponse.Content.ReadAsAsync<UpdateResultWithId>();
-            CheckLogin(loginResult);
+            if (!CheckLogin(loginResult))
+            {
+                return;
+            }
             //getting list of actives (not deleted) users
             var employeesResponse = await rh.GetAllRessourcesAsync(true);
             var employyes = await employeesResponse.Content.ReadAsAsync<IEnumerable<EmployeJS__>>();
