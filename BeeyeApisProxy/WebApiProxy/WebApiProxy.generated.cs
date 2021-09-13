@@ -29,7 +29,7 @@ namespace WebApi.Proxies
 		/// <summary>
 		/// Web Api Base Address.
 		/// </summary>
-		public static string MyWebApiProxyBaseAddress = "https://betabeeye.azurewebsites.net/";
+		public static string MyWebApiProxyBaseAddress = "https://betabeeyev2.azurewebsites.net/";
 	}
 }
 #endregion
@@ -98,11 +98,179 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean IsSystem { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String InternalId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
 		public virtual String Name { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityBilling
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual BillingType BillingType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Decimal Value { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DefaultActs { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityCustomFields
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<CustomFieldDefaultValue> DefaultCustomFieldsValues { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityDateRule
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> FixedDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateComparisonType ComparisonType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OffsetDays { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OffsetWeeks { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OffsetMonths { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IgnoreWeekEnds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid ComparedActivityId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> CustomFieldId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CustomFieldIdWithFor { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityDatesRules
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityDateRule StartDateRule { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityDateRule ProjectedEndDateRule { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityDuration
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Decimal> Duration { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityExclusion
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ExclusionCondition Condition { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ExclusionType Type { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityExclusions
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ActivityExclusion> Exclusions { get; set; }
 		#endregion
 	}	
 	
@@ -181,6 +349,198 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ActivityRecurrenceRule
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RepeatEveryDays { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RepeatEveryWeeks { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RepeatEveryMonths { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IgnoreWeekEnds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityDateRule EndDateDateRule { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityScenario
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Order { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid ActivityId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityUsersFilters UsersFilters { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityBilling BillingRules { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityDatesRules DatesRules { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityRecurrenceRule RecurrenceRules { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityToDos ToDos { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityExclusions Exclusions { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityCustomFields CustomFields { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityDuration Duration { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityTextDescription TextDescription { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<JToken> Filters { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityTextDescription
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityToDo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ToDoText { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsFinished { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> FinishedAtDate { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityToDos
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ActivityToDo> ToDos { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityUsersFilters
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<JToken> BeeyeFilters { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid ActivityLink { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskLink { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SelectionType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CustomFieldId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ResourceId { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class AddonDetails
 	{
 		#region Constants
@@ -217,7 +577,7 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
-	public partial class AirTableError
+	public partial class ApiActivity
 	{
 		#region Constants
 		#endregion
@@ -226,23 +586,155 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual String RecordId { get; set; }
+		public virtual Guid Id { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual String ErrorMessage { get; set; }
+		public virtual String ActivityName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DisplayOrder { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ActivityCode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double AverageCosting { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double AverageSelling { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Guid> ActivityFamilyId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ActivityFamilyExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ActivityScenario> Scenarios { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ActivityUsersFilters> UsersFilters { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CompanyId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalId { get; set; }
 		#endregion
 	}	
 	
 	/// <summary>
 	/// 
 	/// </summary>
-	public partial class AirTableField
+	public partial class ApiActivityFamily
 	{
 		#region Constants
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ActivityFamilyName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CompanyId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ApiActivity> Activities { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityCustomFields CustomFieldsValues { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsAutoPlanned { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ApiClient
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String AddressCity { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String AddressCountry { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String AddressLine1 { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String AddressLine2 { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String AddressPostalCode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String AddressState { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ClientLogo { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ClientWebSite { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ContactEmail { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ContactName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ContactPhone { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalReference { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -250,22 +742,26 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual AirTableFieldType FieldType { get; set; }
+		public virtual Int32 Id { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Int32 MappedTo { get; set; }
+		public virtual String VATNumber { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Boolean IsManadory { get; set; }
+		public virtual Int32 CompanyId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Boolean> IsDeleted { get; set; }
 		#endregion
 	}	
 	
 	/// <summary>
 	/// 
 	/// </summary>
-	public partial class AirtableRecord
+	public partial class ApiImport
 	{
 		#region Constants
 		#endregion
@@ -274,22 +770,298 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual String Id { get; set; }
+		public virtual Guid Id { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual DateTime CreatedTime { get; set; }
+		public virtual DateTime DateCreated { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Dictionary<String, Object> Fields { get; set; }
+		public virtual DateTime DateUpdated { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ImportFileId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ImportFileUrl { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ImportFileName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ImportConfiguration { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ImportStatus Status { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Report { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RequesterName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual EmployeJS__ Requester { get; set; }
 		#endregion
 	}	
 	
 	/// <summary>
 	/// 
 	/// </summary>
-	public partial class AirTablesConfig
+	public partial class ApiProject
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> Milisime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ApiClient Client { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CategoryName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CategoryId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ApiRessource Responsible { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ActivityFamilyExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RemoveClient { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ApiprojectRessource> UsersToAddOrUpdate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ApiRessource> UsersToRemove { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ApiprojectRessource
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ApiRessource User { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ApiProject Project { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Double> BaseLine { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Double> HourRate { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ApiRessource
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Email { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FirstName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String LastName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Role_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RoleName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Direction_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DirectionName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Title_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TitleName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RemoveStartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RemoveEndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Boolean> IsActive { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Culture { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Boolean> CanViewTeam { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Boolean> CanViewCompany { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Double> BillRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<RessourceHourRate> CostRates { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ApiTask
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ActivityExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityBilling BillingInfos { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityDuration Duration { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ApiProject Project { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ApproConfig
 	{
 		#region Constants
 		#endregion
@@ -299,42 +1071,66 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean IsEnabled { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ApproConfigInfo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual String AirTablesKey { get; set; }
+		public virtual Boolean Enabled { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual String AirTablesTable { get; set; }
+		public virtual ApproConfig Config { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class AssignMultiples
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual String AirTablesBase { get; set; }
+		public virtual List<Int32> RessourcesIds { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual List<AirTableField> FieldsMappings { get; set; }
+		public virtual List<Int32> ProjectsIds { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class AswerQuestion
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual List<AirTableError> Last15Errors { get; set; }
+		public virtual List<SendCommentAswer> CommentList { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Int32 CategoryId { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual String WorkSpace { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual String ViewLink { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Boolean AssignAllUsersToNewProjects { get; set; }
+		public virtual String Name { get; set; }
 		#endregion
 	}	
 	
@@ -365,6 +1161,98 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class BaseDashboardComponent
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ViewSelect ViewSelector { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CurrentWidth { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CurrentHeight { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanBeResized { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean HasViewMoreLink { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TypeComponent { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DisplayOrder { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class BaseFilter
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual FilterType DataFilterType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsQuerrybale { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class BaseRapport
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectsList> GroupsOfProjects { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsHeadLoad { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class BeeyeWebHook
 	{
 		#region Constants
@@ -379,6 +1267,26 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Name { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class BillRateHistory
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<RessourceBillRate> toUpdate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<RessourceBillRate> toDelete { get; set; }
 		#endregion
 	}	
 	
@@ -631,6 +1539,18 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean CanBeDeleted { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsDeleted { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<CustomFieldValue> CustomFields { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Company_Id { get; set; }
 		#endregion
 	}	
 	
@@ -651,6 +1571,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual InvoiceDetails InvoiceDetails { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -675,6 +1599,54 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String NextInvoiceText { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<DiscountDetails> Discounts { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ColumnInfo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 AgregateType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Type { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String MandatoryImportGroup { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ListField> PossibleValues { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual TranslationLine Translation { get; set; }
 		#endregion
 	}	
 	
@@ -706,6 +1678,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String MandatoryImportGroup { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual List<ListField> PossibleValues { get; set; }
 		/// <summary>
 		/// 
@@ -715,6 +1691,130 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual TranslationLine Translation { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class CompagnyGeneralParams
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double WorkHoursPerWeek { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RemainsToBeDone { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DefaultOccupationId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DefaultRoleId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DefaultWorkPlaceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CompagnyLogo { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double MaxWorkHours { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean OrderPostesByDisplayOrder { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean BlockEnterTimeOnProjects { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean PreFill { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ApplicationPage DefaultPage { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CountryCode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RegionCode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ZipCode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ConcatenatedFormula { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ProjectSurveyEnable { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SurveyCanChange { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IgnoreDataLoadingWarning { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String BaseUnit { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ShowLatePlannings { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double ProjectSheetPlanningStep { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class CompagnyInfo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<TaskPlanningWorkSpace> workSpaces { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<SpendingType> spendingTypes { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Taxe> taxes { get; set; }
 		#endregion
 	}	
 	
@@ -734,7 +1834,15 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PrincipalApiKey { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -857,6 +1965,58 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ConfigRessourcesModel
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Position { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Team { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String HighView { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Role { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 NumProjects { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsDeleted { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsVirtual { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PlanName { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class Conflict
 	{
 		#region Constants
@@ -966,6 +2126,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean CannotAddPlan { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Conflict Conflict { get; set; }
 		/// <summary>
 		/// 
@@ -1015,6 +2179,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual List<ConflictsDayPlanning> Days { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ConflictsPlanning> LatePlannings { get; set; }
 		#endregion
 	}	
 	
@@ -1042,6 +2210,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Double TotalRessourcePlan { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String StateName { get; set; }
 		/// <summary>
 		/// 
@@ -1066,7 +2238,23 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean CanUnlock { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DefaultOrderDisplay { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsAutoPlanned { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double BillRate { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1143,6 +2331,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual DateTime OldEndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsAutoPlanning { get; set; }
 		#endregion
 	}	
 	
@@ -1263,6 +2455,42 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<CustomFieldJs> customfields { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class CustomFieldDefaultValue
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CustomFieldId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 FieldId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Value { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual CustomFieldType CustomFieldType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ListValue { get; set; }
 		#endregion
 	}	
 	
@@ -1330,7 +2558,15 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean UsedForClient { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual CustomFieldValue Value { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual CustomFieldTypeUsedFor OldUsedInObject { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1518,6 +2754,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String CustomFieldName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 Id { get; set; }
 		/// <summary>
 		/// 
@@ -1534,7 +2774,15 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String ProjectExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 Task_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TaskExternalId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1542,7 +2790,23 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String Resource_ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TargetResource_ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 ListValue_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Client_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Client_ExternalId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1665,6 +2929,106 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class DatesRangeRequestBase
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> EndDate { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class DatesRangeRequestProjectsDueDate
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Int32> Ids { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ActivityDateRule> TypeData { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsClientUpdate { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class DelegationJS
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 IdBy { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 IdTo { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NameBy { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NameTo { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String OccupationBy { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String OccupationTo { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PhotoBy { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PhotoTo { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> EndDate { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class DirectionEmployeesStats
 	{
 		#region Constants
@@ -1765,6 +3129,30 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class DiscountDetails
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Text { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Amount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsPercentage { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class EmployeeTaskHours
 	{
 		#region Constants
@@ -1794,7 +3182,31 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String CellNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Occupation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SubmitTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ValidateTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CommentsTimesheets { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean EditedPlanning { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RejectTimesheet { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1807,6 +3219,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String DirectionName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String UserLanguageId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NewPass { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1835,6 +3255,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double BillRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double RateByHour { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1902,7 +3326,31 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String CellNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Occupation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SubmitTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ValidateTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CommentsTimesheets { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean EditedPlanning { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RejectTimesheet { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1915,6 +3363,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String DirectionName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String UserLanguageId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NewPass { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1943,6 +3399,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double BillRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double RateByHour { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double TotalPlanifs { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2010,7 +3474,31 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String CellNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Occupation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SubmitTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ValidateTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CommentsTimesheets { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean EditedPlanning { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RejectTimesheet { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2023,6 +3511,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String DirectionName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String UserLanguageId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NewPass { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2051,6 +3547,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double BillRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double RateByHour { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double TotalPlanifs { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2122,7 +3626,31 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String CellNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Occupation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SubmitTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ValidateTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CommentsTimesheets { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean EditedPlanning { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RejectTimesheet { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2135,6 +3663,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String DirectionName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String UserLanguageId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NewPass { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2163,6 +3699,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double BillRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double RateByHour { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double TotalPlanifs { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2265,6 +3809,26 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ExclusionCondition
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String[] Value { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class Expense
 	{
 		#region Constants
@@ -2282,7 +3846,23 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Int32 RessourceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TaskName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual DateTime SpendingDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> TaskProjectedEnd { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Guid> TaskActivityId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2306,6 +3886,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String SpendingTypeExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String SpendingTypeText { get; set; }
 		/// <summary>
 		/// 
@@ -2314,11 +3898,19 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Nullable<Int32> TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Comment { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
 		public virtual String RessourceName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RessourceImage { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2363,6 +3955,42 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Description { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OwnerId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsShared { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ExportConfigRun
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ExportConfig Export { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TestAjout { get; set; }
 		#endregion
 	}	
 	
@@ -2391,6 +4019,86 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual List<ColumnInfoForExport> Columns { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FastPlaningGetProject
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RessourceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean OnlyProjectThatCanAddTasks { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class Fee
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Value { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TaskName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TaskExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> TaskProjectedEnd { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Guid> TaskActivityId { get; set; }
 		#endregion
 	}	
 	
@@ -2471,6 +4179,466 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalReference { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FormApiParm
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CompId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Type { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String StrinGuid { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Email { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Comment { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean NewGUID { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NameSender { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ValueJson { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FormJs
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Company_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Required { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Type { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<RessourceStats> Ressources { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FormJS
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Required { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Company_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Type { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectCloseDateRessource { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<RessourceStats> Ressources { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FormRedundantJson
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 FormIndex { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FormNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Reference { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Format { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 NbPage { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Lang { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 FinalFile { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean FinalFileDyn { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PdfHRRequired { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DateThisVersion { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DateNewVersion { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DateVersion { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Other { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NoLaserForm { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NumberGroup { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RequiredFileType { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FormReturn
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<FormJs> FormList { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual FormValueJson formValue { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 State { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ShowRejectValid { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FormValueJson
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean DateFlex { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<FormRedundantJson> FormsRedundantList { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 FormValue { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RequestCreate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RequestCreateQty { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RequestModif { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RequestModifQty { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RequestFileExist { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RequestFileExistQty { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Email { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Institut { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Public { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] CompConcer { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Place { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 InvisibleAnchors { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SignGerePar { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Datepublic { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Phone { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Fonction { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Phone2 { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Courriel2 { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 BusinessSector { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CostCenter { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String SpecificProjectnumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NameOfProject { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String SecondApplicant { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FirsValidDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String LastDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FinalFilesDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ImplementationDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String OtherDetails { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NameIT { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FormValueReturn
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String InterneNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TypeName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ValueJson { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String SeekerName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 StateId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DateFirstSave { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DateValidRej { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String StateName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String link { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime FirstSave { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> ValidationRejectDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Type { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class GeneralParams_Return
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual CompagnyGeneralParams Parametres { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<MonthInfo> Months { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<UserForFacturation> Users { get; set; }
 		#endregion
 	}	
 	
@@ -2659,6 +4827,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual DateTime EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean TakeEmptyTasks { get; set; }
 		#endregion
 	}	
 	
@@ -2797,6 +4969,146 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class GraphInfo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CreateNew { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 View { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<BaseDashboardComponent> Components { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class GtGpConfig
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsEnabled { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean WasUploaded { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime LastUpload { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String LastUploadBy { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OracleCfId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> LastPeriodStart { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> LastPeriodEnd { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<UploadedFilesGtGp> Files { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsSap { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class GtGpImportError
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 LineNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Message { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TypeOfError { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String OracleCode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Action { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsFileValid { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class GtGpImportResult
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<GtGpImportError> Errors { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Result { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Message { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class InfoDashBoardSend
 	{
 		#region Constants
@@ -2819,6 +5131,70 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual List<Double> AllTotal { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class IntegrationConfigurationBasic
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual IntegrationType IntegrationType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsActive { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class IntegrationConfigurationSellsy
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String AccessToken { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String AccessTokenSecret { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ConsumerToken { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ConsumerSecret { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual IntegrationType IntegrationType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsActive { get; set; }
 		#endregion
 	}	
 	
@@ -2862,11 +5238,15 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Name { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual DateTime InvoicedDate { get; set; }
+		public virtual Nullable<DateTime> InvoicedDate { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -2886,11 +5266,71 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String ProjectExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Comment { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
 		public virtual Boolean Paid { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Status { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String StatusColor { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class InvoiceDetails
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CompanyName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Address { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Apartment { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Contact { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Zip { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String City { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Email { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Country { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String State { get; set; }
 		#endregion
 	}	
 	
@@ -3021,6 +5461,94 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class KpiSingleNumberCustomFields
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CustomFieldId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 PeriodeSelector { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ListId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Agregation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ViewSelect ViewSelector { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CurrentWidth { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CurrentHeight { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanBeResized { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean HasViewMoreLink { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TypeComponent { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DisplayOrder { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class KpiSingleNumberCustomFieldsValue
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Value { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TotalProjects { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Result { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Message { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class LangDefinition
 	{
 		#region Constants
@@ -3067,6 +5595,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual TranslationLine Translation { get; set; }
 		#endregion
 	}	
 	
@@ -3087,6 +5619,26 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Name { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ListItemInt
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Value { get; set; }
 		#endregion
 	}	
 	
@@ -3159,6 +5711,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String LuccaApiKey { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean AutoFinishPlaningCards { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CategoriesToIgnore { get; set; }
 		#endregion
 	}	
 	
@@ -3215,6 +5775,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String ImportId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String OriginalRequestId { get; set; }
 		#endregion
 	}	
 	
@@ -3235,6 +5799,26 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String SignalRId { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class MandatoryFields
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ClientIsMandatory { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<CustomFieldJs> CustomFieldList { get; set; }
 		#endregion
 	}	
 	
@@ -3295,6 +5879,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean ExcludeFromCalculations { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PlanId { get; set; }
 		#endregion
 	}	
 	
@@ -3323,6 +5911,86 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Name { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class MonthInfo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class NewDirections
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Int32> ParsedUserIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Int32> ParsedDirectionIds { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class NewPositions
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Int32> ParsedUserIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Int32> ParsedPositionIds { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class NewRoles
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Int32> ParsedUserIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Int32> ParsedRoleIds { get; set; }
 		#endregion
 	}	
 	
@@ -3383,6 +6051,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32 DisplayOrder { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanDelete { get; set; }
 		#endregion
 	}	
 	
@@ -3423,6 +6095,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32 DisplayOrder { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanDelete { get; set; }
 		#endregion
 	}	
 	
@@ -3538,15 +6214,31 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Boolean IsProjectDatesOK { get; set; }
+		public virtual Boolean PrOk { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Boolean IsTaskDatesOK { get; set; }
+		public virtual Boolean TOk { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Boolean IsEmployeDatesOK { get; set; }
+		public virtual Boolean EmOk { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class PlanBulkParams
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<PlanParams> PlanParams { get; set; }
 		#endregion
 	}	
 	
@@ -3901,6 +6593,42 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class PlanningTimeLine
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 pId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 tId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 rId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Amount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime Date { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class PlanParams
 	{
 		#region Constants
@@ -3969,6 +6697,38 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ProfileUser
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual RessourceStats ResourceInfo { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] SelectedDelegations { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid[] NotificationNotToDelete { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<DelegationJS> AllDelegations { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean DelegationIsModify { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class ProjecMonthlyPlanned
 	{
 		#region Constants
@@ -3991,6 +6751,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double ProjectValue { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double HoursWeekly { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4041,6 +6805,70 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ProjectData
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<String> Fields { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual TranslationLine Translation { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectDynamicNameField
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ListItemInt> ListValues { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 FieldId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Value { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual CustomFieldType CustomFieldType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ListValue { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class ProjectFastPlanningResult
 	{
 		#region Constants
@@ -4083,6 +6911,34 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual List<TaskFastPlanningResult> Tasks { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectGraphMax
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double GraphMax { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double GraphMaxCumulated { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double GraphMaxDay { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double GraphMaxDayCumulated { get; set; }
 		#endregion
 	}	
 	
@@ -4214,7 +7070,15 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Double ProjectSheetPlanningStep { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String ClientName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ClientExternalReference { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4223,6 +7087,18 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double ProjectPrevu { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ConcatenatedFormula { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String OriginalName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4302,6 +7178,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Nullable<Guid> ActivityFamilyId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Double Advancement { get; set; }
 		/// <summary>
 		/// 
@@ -4335,6 +7215,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double ProjectValue { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double HoursWeekly { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4446,6 +7330,26 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Nullable<Double> TotalPlannedDollarsNoDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Double> TotalTaskPlannedDollarsFutur { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Double> TotalTaskPlannedFutur { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Double> TotalReelDollarsPast { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Double> TotalReelPast { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Nullable<Double> RaFProject { get; set; }
 		/// <summary>
 		/// 
@@ -4526,6 +7430,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Double TotalAllExpensesNoDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String MainCategory { get; set; }
 		/// <summary>
 		/// 
@@ -4570,7 +7478,83 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Double TotalExpensesHT { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double TotalExpensesHTNoDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Decimal Fees { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Landing { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double LandingTime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Decimal ProjectDuration { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 ResponsableId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double InvoiceHT { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double InvoiceHTTotal { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double DifferenceDollar { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double DifferenceTime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double ProjectDurationDollar { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectMiniInfo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CompaniesId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CompaniesName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual RessourceStats CompaniesManager { get; set; }
 		#endregion
 	}	
 	
@@ -4621,6 +7605,66 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ProjectQuickCreate
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SelectedType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SelectedClient { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> Millesime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Guid> ActivityFamilyId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<CustomFieldValue> CustomFields { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double ProjectValue { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double HoursWeekly { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsFav { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class ProjectSearchResult
 	{
 		#region Constants
@@ -4647,6 +7691,42 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32 ProjectId { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectsList
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<String> Footer { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectData> Projects { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ExcludedFromCalculations { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual TranslationLine Translation { get; set; }
 		#endregion
 	}	
 	
@@ -4697,6 +7777,274 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ProjectSuccess
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double OverallRating { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 NbRessourceSurveyDone { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanChangeSurvey { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 NbRessourceNeedSurvey { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Rating> Ratings { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Question> Questions { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectSuccessComponent
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 PeriodSelector { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Ascending { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ViewSelect ViewSelector { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CurrentWidth { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CurrentHeight { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanBeResized { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean HasViewMoreLink { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TypeComponent { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DisplayOrder { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectSuccessPieComponent
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 PeriodSelector { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ViewSelect ViewSelector { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CurrentWidth { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CurrentHeight { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanBeResized { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean HasViewMoreLink { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TypeComponent { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DisplayOrder { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectSuccessReturn
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double OverallRating { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectSurveyQuestion
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CompagnieId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Question { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Weighting { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> SectionId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ICollection<ProjectSurveyQuestionAnswer> ProjectSurveyQuestionAnswers { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ProjectSurveyQuestionSection ProjectSurveyQuestionSection { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectSurveyQuestionAnswer
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Question_ID { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Ressources_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Projects_ID { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Answer { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Comment { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ProjectSurveyQuestion ProjectSurveyQuestion { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectSurveyQuestionSection
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Company_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Required { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ICollection<ProjectSurveyQuestion> ProjectSurveyQuestion { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class ProjectTask
 	{
 		#region Constants
@@ -4710,7 +8058,15 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 ProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectExternalId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4838,6 +8194,22 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Double PlanSumForDateRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double ReelsSumForDateRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> FondDeFinancement_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double BudgetDollar { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Client { get; set; }
 		/// <summary>
 		/// 
@@ -4850,6 +8222,22 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Nullable<Guid> ActivityId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ActivityExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ActivityBillingJson { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityBilling ActivityBillingRules { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual List<CustomFieldJs> CustomFields { get; set; }
 		/// <summary>
 		/// 
@@ -4858,7 +8246,7 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual IEnumerable<TaskComment> Comments { get; set; }
+		public virtual List<TaskComment> Comments { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4867,6 +8255,46 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean IsSubscribed { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Decimal DefaultDuration { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ProjectIsAvailable { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RecurrenceJson { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityRecurrenceRule RecurrenceRules { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String UsersFiltersJson { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityUsersFilters UsersFilters { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ToDoListJson { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ActivityToDo> ToDoList { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double AverageCosting { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double AverageSelling { get; set; }
 		#endregion
 	}	
 	
@@ -4882,22 +8310,6 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Int32 Id { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Nullable<Int32> ParentId { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual String Name { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Int32 ProjectId { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
 		public virtual List<Int32> ProjectsIdList { get; set; }
 		/// <summary>
 		/// 
@@ -4906,19 +8318,7 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Nullable<DateTime> TaskStartDate { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
 		public virtual DateTime ProjectStartDate { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Nullable<DateTime> TaskEndDate { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Nullable<DateTime> TaskTargetedEndDate { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -4950,7 +8350,47 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Nullable<DateTime> DueDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Guid> ActivityId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Nullable<Int32> ParentTaksId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> ParentId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> TaskStartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> TaskEndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> TaskTargetedEndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjecName { get; set; }
 		#endregion
 	}	
 	
@@ -5063,6 +8503,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean IsSubscribed { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanDelete { get; set; }
 		#endregion
 	}	
 	
@@ -5103,6 +8547,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean IsSubscribed { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanDelete { get; set; }
 		#endregion
 	}	
 	
@@ -5163,6 +8611,70 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double TimePlanned { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class Question
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Value { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RateHistory
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<RessourceHourRate> toUpdate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<RessourceHourRate> toDelete { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class Rating
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Value { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
 		#endregion
 	}	
 	
@@ -5247,6 +8759,46 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean IsOther { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RealtimeEntry
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RessourceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Amount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double HourCost { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double BillRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime Date { get; set; }
 		#endregion
 	}	
 	
@@ -5411,6 +8963,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean CloseOriginalProject { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Renew { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<CustomFieldValue> CustomFieldOverrides { get; set; }
 		#endregion
 	}	
 	
@@ -5447,6 +9007,210 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean CascadeState { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RequesTasksBillingRules
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ActivityBilling BillingRules { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RequesTasksDeadline
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> Deadline { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RequesTasksDefaultDuration
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Decimal DefaultDuration { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RequesTasksDescription
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Description { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RequesTasksFilter
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CustomFieldId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ResourceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SelectionType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskLink { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<JToken> BeeyeFilters { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RequesTasksInfo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TaskName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TaskDescription { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 NewResp { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Decimal DefaultDuration { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual RequesTasksFilter filter { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> Deadline { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 NewCurrentStateId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ActivityToDo> Todo { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RequesTasksInfosUpdate
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual RequesTasksInfo data { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Int32> TasksId { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RequesTasksTodo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ActivityToDo> Todo { get; set; }
 		#endregion
 	}	
 	
@@ -5562,6 +9326,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Int32 UserId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Boolean ShowClosedProject { get; set; }
 		#endregion
 	}	
@@ -5609,6 +9377,26 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class RequestSelectedBulkAction
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Ids { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ListItemInt[] ValueChange { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class RequestSelectedProjects
 	{
 		#region Constants
@@ -5622,6 +9410,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String[] SelectedNameForm { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Boolean OpenProjects { get; set; }
 		/// <summary>
 		/// 
@@ -5631,6 +9423,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual ProjectJSMainStats newData { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Guid> ActivityFamilyId { get; set; }
 		#endregion
 	}	
 	
@@ -5654,6 +9450,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String NewName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Int32 NewRessourceId { get; set; }
 		/// <summary>
 		/// 
@@ -5663,6 +9463,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual DateTime DateFinprevue { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime RealEnd { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime DateFin { get; set; }
 		#endregion
 	}	
 	
@@ -5683,6 +9491,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean OnlySubmitedOrValidated { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TimesheetId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -5789,6 +9601,226 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class ResourceWithListModification
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<OccupationJS> OccupationsList { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<RoleJS> RolesList { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 CompaniesId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CompaniesName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual EmployeJS__ CompaniesManager { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FullName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Brand { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CellNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Occupation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SubmitTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ValidateTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CommentsTimesheets { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean EditedPlanning { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RejectTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OccupationId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> DirectionId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DirectionName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String UserLanguageId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NewPass { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ImagePath { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsOnline { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Mail { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsActive { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Baseline { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RoleId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double BillRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double RateByHour { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double TotalPlanifs { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double CurrentCostRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PlanId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsVirtual { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FirstName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String LastName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ResponseContainer<T>
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual T Item { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ErrorMessage { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RessourceBillRate
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Amount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 UserId { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class RessourceGeneralInformations
 	{
 		#region Constants
@@ -5819,6 +9851,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double ReelCapacity { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Password { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NewPassConfirm { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -5878,6 +9918,14 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual DateTime ProjectStartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime ProjectEndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Double TotalAmount { get; set; }
 		/// <summary>
 		/// 
@@ -5890,7 +9938,31 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String CellNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Occupation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SubmitTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ValidateTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CommentsTimesheets { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean EditedPlanning { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RejectTimesheet { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -5903,6 +9975,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String DirectionName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String UserLanguageId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NewPass { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -5981,6 +10061,66 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class RessourceHourRate
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Amount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 UserId { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class RessourceParam
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean TakeDeleted { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean UsePlanView { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean TakeTotalPlan { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TaskId { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class RessourcesForNewProject
 	{
 		#region Constants
@@ -6035,6 +10175,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Double ReelCapacity { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Password { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NewPassConfirm { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -6094,6 +10242,14 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual DateTime ProjectStartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime ProjectEndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Double TotalAmount { get; set; }
 		/// <summary>
 		/// 
@@ -6106,7 +10262,31 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String CellNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Occupation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SubmitTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ValidateTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CommentsTimesheets { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean EditedPlanning { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RejectTimesheet { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -6119,6 +10299,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String DirectionName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String UserLanguageId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NewPass { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -6282,6 +10470,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean IsVirtual { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String PlanId { get; set; }
 		#endregion
 	}	
@@ -6307,6 +10499,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean CanManageHourRates { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanManageHourBillRates { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanManageHourCostRates { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -6343,6 +10543,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean HasTaxReturns { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanCreateTaskOnFamilyProject { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -6457,6 +10661,274 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class SearchProjectReturn
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectMiniInfo> Projects { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 MaxLines { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SearchResourceReturn
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 MaxLines { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ResourceWithListModification> Ressources { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SendCommentAswer
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Comment { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ImageUrl { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FirstName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String LastName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Occupation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 PostedBy { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SettingResource
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<OccupationJS> titles { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<SkillJs> skills { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<SkillLevelJs> skillsLevel { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<RoleJS> roles { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ShareDashboardParam
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GuidId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Dashboard { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Graphs { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual SharedWithData SharedWith { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ExpDays { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FromDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ToDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SelectedView { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DashboardId { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SharedDashboard
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SharedByUserId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String SharedByUserName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SharedWithCompanyId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] SharedWithRolesIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] SharedWithPostesIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] SharedWithDirectonsIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] SharedWithUsersIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String SharedName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ExpirationInDays { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime SharedDateUTC { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DashboardHtml { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GraphsData { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DashboardType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FromDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ToDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SelectedView { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Culture { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SharedWithData
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Roles { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Postes { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Directions { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Users { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class ShareInfos
 	{
 		#region Constants
@@ -6475,6 +10947,50 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String SharedBy { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SharePlanningHelper
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual PlanType TypePlan { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 IdPlanning { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Roles { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Postes { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Directions { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Users { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ShareName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ShareExpirationDays { get; set; }
 		#endregion
 	}	
 	
@@ -6651,6 +11167,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String DefautDirectionName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalIdComp { get; set; }
 		#endregion
 	}	
 	
@@ -6678,6 +11202,50 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Double HoursWeekly { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsFav { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SimpleProjectWithDates
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double ProjectValue { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double HoursWeekly { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Boolean IsFav { get; set; }
 		#endregion
 	}	
@@ -6694,7 +11262,7 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Int32 PlanningLineId { get; set; }
+		public virtual Int32 PId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -6714,11 +11282,11 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual String AdditionalData1 { get; set; }
+		public virtual String AD1 { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual String AdditionalData2 { get; set; }
+		public virtual String AD2 { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -6747,6 +11315,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual List<PeriodValue> Values { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double TotalHoursPlanned { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -6799,6 +11371,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String LevelManagerName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanDelete { get; set; }
 		#endregion
 	}	
 	
@@ -6823,6 +11399,30 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanDelete { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SkillsAndSkillLevelsJs
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<SkillJs> Skills { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<SkillLevelJs> Levels { get; set; }
 		#endregion
 	}	
 	
@@ -6843,6 +11443,42 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Text { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanDelete { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SubmitFormReturn
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ShowRejectValid { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid NewGuid { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Result { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Message { get; set; }
 		#endregion
 	}	
 	
@@ -6890,6 +11526,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String PlanId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Nullable<DateTime> NextBilling { get; set; }
 		/// <summary>
 		/// 
@@ -6899,6 +11539,90 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String NextDueDateText { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SurveyQuestion
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Question { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Weighting { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Value { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Comment { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SurveySection
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Required { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<SurveyQuestion> QuestionList { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class SurveyState
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SurveyEnable { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanSurvey { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Alone { get; set; }
 		#endregion
 	}	
 	
@@ -6947,6 +11671,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32 PostedBy { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ResourceId { get; set; }
 		#endregion
 	}	
 	
@@ -7022,7 +11750,15 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Nullable<Guid> ActivityId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Nullable<DateTime> TaskEndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> TaskDueDate { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -7046,15 +11782,7 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Int32 Id { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
 		public virtual String Name { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual Nullable<DateTime> ProjectCloseDate { get; set; }
 		#endregion
 	}	
 	
@@ -7095,6 +11823,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double BillRate { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -7171,6 +11903,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual DateTime OldEndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanUnlock { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsAutoPlanning { get; set; }
 		#endregion
 	}	
 	
@@ -7383,6 +12123,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Color { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanDelete { get; set; }
 		#endregion
 	}	
 	
@@ -7471,6 +12215,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Boolean IsSelected { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CanDelete { get; set; }
 		#endregion
 	}	
 	
@@ -7491,6 +12239,62 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual List<RatioGraphReturnType> Items { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class TimehseetBaseLine
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RessourceId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RessourceExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ProjectId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> TaskId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TaskExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Amount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime Date { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Comment { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 NbActs { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ActivityExternalId { get; set; }
 		#endregion
 	}	
 	
@@ -7543,6 +12347,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String Comment { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> NbActs { get; set; }
 		#endregion
 	}	
 	
@@ -7562,7 +12370,27 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Guid> ActivityId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ActivityCode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ActivityExternalid { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double RealTotal { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -7590,6 +12418,10 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Boolean CanAddTask { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual Boolean ForTimesheet { get; set; }
 		/// <summary>
 		/// 
@@ -7603,6 +12435,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual DateTime EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> DueDate { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -7627,6 +12463,10 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual Nullable<Int32> ParentId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 StateId { get; set; }
 		#endregion
 	}	
 	
@@ -7691,6 +12531,14 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		public virtual String RessourceName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String RessourceImage { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ResourceExternalId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -7829,6 +12677,74 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class TranslationLine
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Page { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Key { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsControl { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Object[] FormatParams { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class TranslationsData
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PageName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Dictionary<String, TranslationsPage> AvalibleTranslations { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class TranslationsPage
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String LangIso2char { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Dictionary<String, String> Translations { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class TranslationText
 	{
 		#region Constants
@@ -7866,7 +12782,31 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public virtual Guid Guid { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public virtual BaseBeeyeTrigger Trigger { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class TypeProjectDynamic
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectTypeJS> ProjectType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<String> ConcatenatedFormulaList { get; set; }
 		#endregion
 	}	
 	
@@ -7879,6 +12819,98 @@ namespace WebApi.Proxies.Models
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Result { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Message { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UpdateResultMultiErrorSuccess
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<String> ErrorMessage { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<String> SuccessMessage { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UpdateResultMultiMessages
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Result { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ErrorMessage { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String[] OtherMessage { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UpdateResultWithData<T>
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual T Data { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Result { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Message { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UpdateResultWithGui
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Guid NewGuid { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -7921,6 +12953,30 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
+	public partial class UpdateTiersParam
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 userId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String tierId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime StartDate { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
 	public partial class UploadedFile
 	{
 		#region Constants
@@ -7930,19 +12986,583 @@ namespace WebApi.Proxies.Models
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual String name { get; set; }
+		public virtual String Name { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Int32 serverId { get; set; }
+		public virtual Int32 ServerId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual Decimal size { get; set; }
+		public virtual Decimal Size { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
 		public virtual String UploadBy { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CalculatedSzie { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UploadedFilesGtGp
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Year { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime EndDate { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UserForFacturation
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean HasAcces { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ImagePath { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UserInfo
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsManager { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String OccupationText { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime LastLogin { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double HourRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsTauxFronOccupation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NumeroNas { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double MaxDayWork { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Double> RealMaxWorkDay { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double HourRateCoutant { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Int32> DashboardAccses { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ExcludeFromCalculations { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> EndContract { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PhotoLink { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsVirtualReadOnly { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FullName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Brand { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String CellNumber { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Occupation { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SubmitTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ValidateTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CommentsTimesheets { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean EditedPlanning { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RejectTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OccupationId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<Int32> DirectionId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String DirectionName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String UserLanguageId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String NewPass { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ImagePath { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsOnline { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Mail { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsActive { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double Baseline { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RoleId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double BillRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double RateByHour { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double TotalPlanifs { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Double CurrentCostRate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ExternalId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Nullable<DateTime> EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PlanId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ProjectIds { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsVirtual { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String FirstName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String LastName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UserNotificationsList
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean SubmitTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean RejectTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ValidateTimesheet { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean EditedPlanning { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean CommentsTimesheets { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UserPreferencesPlanningParam
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 PlanningId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Normal { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean Conflict { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean ShowByResource { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SelectedPlannigView { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SelectedMode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SelectedTimeMode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SelectedUnit { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ResultByPage { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime ChangeDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<BaseFilter> Filters { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UserPreferencesRepportsParam
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Category_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Fond_Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Beeye_Filter { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Grouping { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Collumns { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 RapportId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime ChangeDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime StartDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime EndDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32[] Columns { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 SortExpression { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsSortAscending { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean OptionSelected { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OrderDisplay { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ViewSelect SelectedView { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ReportType RapportType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<BaseFilter> Filters { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UserPreferencesTasksParam
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsDefault { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsFavorite { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual DateTime ChangeDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String ShareBy { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ShareById { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 ShareId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 OrderDisplay { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual TasksViews TaskView { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String TableOrderBy { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual GroupByOptions GroupBy { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean IsDefaultPage { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<BaseFilter> Filters { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UserPreferencesTimesheetsParam
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 TimesheetId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Int32 DefaultTimesheetView { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<BaseFilter> Filters { get; set; }
+		#endregion
+	}	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class UsersListRequest
+	{
+		#region Constants
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual ViewSelect View { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Boolean OnlyActif { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String PlanIdToShow { get; set; }
 		#endregion
 	}	
 	
@@ -8026,68 +13646,71 @@ namespace WebApi.Proxies.Models
 	/// <summary>
 	/// 
 	/// </summary>
-	public enum AirTableFieldType
+	public enum ApplicationPage
 	{
 
 		/// <summary>
 		/// 
 		/// </summary>
-		Ignore = 0,
+		Dashboard = 0,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		ProjectName = 1,
+		Conflict = 1,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		ProjectResponsible = 2,
+		Timesheets = 2,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		ProjectRessource = 3,
+		Validation = 3,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		Text = 4,
+		Projects = 4,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		Number = 5,
+		ChargePlan = 5,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		ListOneValue = 6,
+		Hub = 6,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum BillingType
+	{
 
 		/// <summary>
 		/// 
 		/// </summary>
-		ListMultipleValues = 7,
+		NotBillable = 0,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		ProjectStartDate = 8,
+		FixedValue = 1,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		ProjectEndDate = 9,
+		ByAct = 2,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		Date = 10,
-
-		/// <summary>
-		/// 
-		/// </summary>
-		Attachements = 11,
+		ByHour = 3,
 		
 	}
 	
@@ -8172,6 +13795,82 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		CalculationField = 6,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Color = 200,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum CustomFieldTypeUsedFor
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Project = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Task = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Resource = 3,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Client = 4,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum DateComparisonType
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		None = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		CustomField = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		ProjectStart = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		ProjectEnd = 3,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		ActivityStart = 4,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		ActivityEnd = 5,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Millesime = 6,
 		
 	}
 	
@@ -8195,6 +13894,34 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		Ressource = 2,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum ExclusionType
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		CustomField = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		ProjectType = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Client = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		CustomFieldClient = 3,
 		
 	}
 	
@@ -8238,6 +13965,113 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		Time = 6,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum FilterType
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Ressources = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Projects = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Tasks = 3,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Clients = 4,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum GroupByOptions
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Resource = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		State = 1,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum ImportStatus
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Creating = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Pending = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Processing = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Completed = 3,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		CompletedWithError = 4,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum IntegrationType
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Sellsy = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Sage = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Jovaco = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		BeeyeExcel = 3,
 		
 	}
 	
@@ -8369,6 +14203,64 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		LuccaEvent = 4,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		SageEvent = 5,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum ObjectType
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Client = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Resource = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Task = 2,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Mission = 3,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Plan = 4,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Real = 5,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Nomenclature = 6,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Invoice = 7,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Fee = 8,
 		
 	}
 	
@@ -8461,6 +14353,24 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		UsePlanned = 3,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum PlanType
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		CombinedPlanning = 1,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		ConflictPlanning = 2,
 		
 	}
 	
@@ -8570,6 +14480,24 @@ namespace WebApi.Proxies.Models
 		/// 
 		/// </summary>
 		Survey = 4,
+		
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum TasksViews
+	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		List = 0,
+
+		/// <summary>
+		/// 
+		/// </summary>
+		Kanban = 1,
 		
 	}
 	
@@ -8727,6 +14655,194 @@ namespace WebApi.Proxies.Interfaces
 	}
 
 	
+	public partial interface IActivitiesClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddOrUpdateMultipleActivitiesAsync(List<ApiActivity> activities);
+
+		/// <returns></returns>
+		UpdateResultWithId AddOrUpdateMultipleActivities(List<ApiActivity> activities);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetListAsync();
+
+		/// <returns></returns>
+		List<ApiActivity> GetList();
+
+		/// <param name="activityId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetOneAsync(Guid activityId);
+
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		ApiActivity GetOne(Guid activityId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddOrUpdateActivityAsync(ApiActivity activity);
+
+		/// <returns></returns>
+		UpdateResultWithId AddOrUpdateActivity(ApiActivity activity);
+
+		/// <param name="activityId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteActivityAsync(Guid activityId);
+
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteActivity(Guid activityId);
+				
+	}
+	
+	public partial interface IActivityFamiliesClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetListAsync();
+
+		/// <returns></returns>
+		List<ApiActivityFamily> GetList();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetListWithActivitiesAsync();
+
+		/// <returns></returns>
+		List<ApiActivityFamily> GetListWithActivities();
+
+		/// <param name="projectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetListWithActivitiesByProjectidAsync(Int32 projectId);
+
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		List<ApiActivityFamily> GetListWithActivitiesByProjectid(Int32 projectId);
+
+		/// <param name="familyId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetListWithActivitiesByfamilyIdAsync(Guid familyId);
+
+		/// <param name="familyId"></param>
+		/// <returns></returns>
+		ApiActivityFamily GetListWithActivitiesByfamilyId(Guid familyId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddOrEditFamiliesAsync(List<ApiActivityFamily> apiActivityFamilies);
+
+		/// <returns></returns>
+		UpdateResultWithId AddOrEditFamilies(List<ApiActivityFamily> apiActivityFamilies);
+
+		/// <param name="activityFamilyId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetListByActivityfamilyidAsync(Guid activityFamilyId);
+
+		/// <param name="activityFamilyId"></param>
+		/// <returns></returns>
+		ApiActivityFamily GetListByActivityfamilyid(Guid activityFamilyId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddFamilyAsync(ApiActivityFamily apiActivityFamily);
+
+		/// <returns></returns>
+		UpdateResultWithId AddFamily(ApiActivityFamily apiActivityFamily);
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateActivityFamilyAsync(Guid id,ApiActivityFamily apiActivityFamily);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		UpdateResult UpdateActivityFamily(Guid id,ApiActivityFamily apiActivityFamily);
+
+		/// <param name="familyGuid"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteActivityFamilyAsync(Guid familyGuid);
+
+		/// <param name="familyGuid"></param>
+		/// <returns></returns>
+		UpdateResult DeleteActivityFamily(Guid familyGuid);
+
+		/// <param name="familyGuid"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateActivityOrderAsync(Guid familyGuid,List<Guid> orders);
+
+		/// <param name="familyGuid"></param>
+		/// <returns></returns>
+		UpdateResult UpdateActivityOrder(Guid familyGuid,List<Guid> orders);
+				
+	}
+	
+	public partial interface IActivityScenariosClient : IClientBase
+	{	
+
+		/// <param name="activityId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ListAsync(Guid activityId);
+
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		List<ActivityScenario> List(Guid activityId);
+
+		/// <param name="activityId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> InsertAsync(Guid activityId,ActivityScenario activityScenario);
+
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		ActivityScenario Insert(Guid activityId,ActivityScenario activityScenario);
+
+		/// <param name="activityId"></param>
+		/// <param name="activityScenarioId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateAsync(Guid activityId,Guid activityScenarioId,ActivityScenario activityScenario);
+
+		/// <param name="activityId"></param>
+		/// <param name="activityScenarioId"></param>
+		/// <returns></returns>
+		ActivityScenario Update(Guid activityId,Guid activityScenarioId,ActivityScenario activityScenario);
+
+		/// <param name="activityId"></param>
+		/// <param name="activityScenarioId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteAsync(Guid activityId,Guid activityScenarioId);
+
+		/// <param name="activityId"></param>
+		/// <param name="activityScenarioId"></param>
+		/// <returns></returns>
+		ActivityScenario Delete(Guid activityId,Guid activityScenarioId);
+				
+	}
+	
+	public partial interface IApiRawDataClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllPlanningsAsync(DatesRangeRequest<Object> data);
+
+		/// <returns></returns>
+		List<PlanningTimeLine> GetAllPlannings(DatesRangeRequest<Object> data);
+				
+	}
+	
 	public partial interface IBeeyeAIClient : IClientBase
 	{	
 
@@ -8751,6 +14867,13 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> ChangeAddressAsync(InvoiceDetails adresssInfo);
+
+		/// <returns></returns>
+		UpdateResult ChangeAddress(InvoiceDetails adresssInfo);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> AddAddonAsync(ChargeBeeAddon addon);
 
 		/// <returns></returns>
@@ -8769,15 +14892,6 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		List<EmployeJS__> GetUsersWithBillingAcess();
-
-		/// <param name="planId"></param>
-
-		/// <returns></returns>
-		Task<HttpResponseMessage> EstimateAsync(String planId);
-
-		/// <param name="planId"></param>
-		/// <returns></returns>
-		UpdateResult Estimate(String planId);
 
 
 		/// <returns></returns>
@@ -8812,12 +14926,48 @@ namespace WebApi.Proxies.Interfaces
 	public partial interface IClientsManagmentClient : IClientBase
 	{	
 
+		/// <param name="clientId"></param>
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> GetClientsListAsync();
+		Task<HttpResponseMessage> UploadClientDocumentAsync(Int32 clientId);
+
+		/// <param name="clientId"></param>
+		/// <returns></returns>
+		UpdateResultWithId UploadClientDocument(Int32 clientId);
+
+		/// <param name="clientId"></param>
 
 		/// <returns></returns>
-		List<Client> GetClientsList();
+		Task<HttpResponseMessage> GetDocumentsForClientAsync(Int32 clientId);
+
+		/// <param name="clientId"></param>
+		/// <returns></returns>
+		List<UploadedFile> GetDocumentsForClient(Int32 clientId);
+
+		/// <param name="clientId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ReactivateClientAsync(Int32 clientId);
+
+		/// <param name="clientId"></param>
+		/// <returns></returns>
+		UpdateResult ReactivateClient(Int32 clientId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetClientsListFilterAsync(DatesRangeFilteredRequest<Boolean> data);
+
+		/// <returns></returns>
+		List<Client> GetClientsListFilter(DatesRangeFilteredRequest<Boolean> data);
+
+		/// <param name="takeDeleted">Display archived clients</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetClientsListAsync(Boolean takeDeleted);
+
+		/// <param name="takeDeleted">Display archived clients</param>
+		/// <returns></returns>
+		List<Client> GetClientsList(Boolean takeDeleted);
 
 		/// <param name="id"></param>
 
@@ -8835,6 +14985,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResultWithId CreateClient(Client value);
 
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateListClientAsync(RequestSelectedBulkAction data);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess UpdateListClient(RequestSelectedBulkAction data);
+
 		/// <param name="id"></param>
 
 		/// <returns></returns>
@@ -8849,7 +15006,30 @@ namespace WebApi.Proxies.Interfaces
 		Task<HttpResponseMessage> DeleteMultipleClientsAsync(Int32[] ids);
 
 		/// <returns></returns>
-		UpdateResult DeleteMultipleClients(Int32[] ids);
+		UpdateResultMultiErrorSuccess DeleteMultipleClients(Int32[] ids);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ArchiveMultipleClientsAsync(Int32[] ids);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess ArchiveMultipleClients(Int32[] ids);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ReactivateMultipleClientsAsync(Int32[] ids);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess ReactivateMultipleClients(Int32[] ids);
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ArchiveClientAsync(Int32 id);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		UpdateResult ArchiveClient(Int32 id);
 
 		/// <param name="id"></param>
 
@@ -8859,6 +15039,31 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="id"></param>
 		/// <returns></returns>
 		UpdateResult DeleteClient(Int32 id);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> InsertOrUpdateOldAsync(List<ApiClient> clients);
+
+		/// <returns></returns>
+		UpdateResultWithId InsertOrUpdateOld(List<ApiClient> clients);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> InsertOrUpdateAsync(List<ApiClient> clients);
+
+		/// <returns></returns>
+		List<ResponseContainer<ApiClient>> InsertOrUpdate(List<ApiClient> clients);
+
+		/// <param name="clientId"></param>
+		/// <param name="getAllCustomField"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCustomFieldsForClientAsync(Int32 clientId,Boolean getAllCustomField);
+
+		/// <param name="clientId"></param>
+		/// <param name="getAllCustomField"></param>
+		/// <returns></returns>
+		List<CustomFieldJs> GetCustomFieldsForClient(Int32 clientId,Boolean getAllCustomField);
 				
 	}
 	
@@ -8874,6 +15079,131 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResult LoginAsCompany(Int32 companyId);
 
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveUserAsync(EmployeJS__ resource);
+
+		/// <returns></returns>
+		UpdateResult SaveUser(EmployeJS__ resource);
+
+		/// <param name="UserId">new reposable id</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ChangeCompagnyRespAsync(Int32 UserId);
+
+		/// <param name="UserId">new reposable id</param>
+		/// <returns></returns>
+		UpdateResult ChangeCompagnyResp(Int32 UserId);
+
+		/// <param name="search">Contain this text</param>
+		/// <param name="page">Page selected</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SearchAllRessourcesAsync(String search,Int32 page);
+
+		/// <param name="search">Contain this text</param>
+		/// <param name="page">Page selected</param>
+		/// <returns></returns>
+		SearchResourceReturn SearchAllRessources(String search,Int32 page);
+
+		/// <param name="compId">compagnie id</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetApproConfigAsync(Int32 compId);
+
+		/// <param name="compId">compagnie id</param>
+		/// <returns></returns>
+		ApproConfigInfo GetApproConfig(Int32 compId);
+
+		/// <param name="search">Contain this text</param>
+		/// <param name="page">Page selected</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SearchAllProjectsAsync(String search,Int32 page);
+
+		/// <param name="search">Contain this text</param>
+		/// <param name="page">Page selected</param>
+		/// <returns></returns>
+		SearchProjectReturn SearchAllProjects(String search,Int32 page);
+
+		/// <param name="compId"></param>
+		/// <param name="isEnabled"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveApproConfigAsync(Int32 compId,Boolean isEnabled);
+
+		/// <param name="compId"></param>
+		/// <param name="isEnabled"></param>
+		/// <returns></returns>
+		UpdateResult SaveApproConfig(Int32 compId,Boolean isEnabled);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveCompagnyInfoAsync(CompagnyInfo compagnyInfo);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess SaveCompagnyInfo(CompagnyInfo compagnyInfo);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveGeneralParametresAsync(CompagnyGeneralParams toSave);
+
+		/// <returns></returns>
+		UpdateResult SaveGeneralParametres(CompagnyGeneralParams toSave);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveFormAsync(FormJS newData);
+
+		/// <returns></returns>
+		UpdateResultWithId SaveForm(FormJS newData);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetFormsAsync();
+
+		/// <returns></returns>
+		List<FormJS> GetForms();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetGeneralParametresAsync();
+
+		/// <returns></returns>
+		GeneralParams_Return GetGeneralParametres();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetNameFormulaAsync();
+
+		/// <returns></returns>
+		String GetNameFormula();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCompaniesListAsync();
+
+		/// <returns></returns>
+		List<CompanyJS> GetCompaniesList();
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> LoginAsUserAsync(Int32 id);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		UpdateResult LoginAsUser(Int32 id);
+
+		/// <param name="compid"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllUsersAsync(Int32 compid);
+
+		/// <param name="compid"></param>
+		/// <returns></returns>
+		List<EmployeJS__> GetAllUsers(Int32 compid);
+
 		/// <param name="companyId"></param>
 
 		/// <returns></returns>
@@ -8882,6 +15212,24 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="companyId"></param>
 		/// <returns></returns>
 		UpdateResult DeleteCompany(Int32 companyId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteCompanyYourCompanyAsync();
+
+		/// <returns></returns>
+		UpdateResult DeleteCompanyYourCompany();
+
+		/// <param name="companyId">Id of the company</param>
+		/// <param name="companyExternalId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCompanyAsync(Nullable<Int32> companyId,String companyExternalId);
+
+		/// <param name="companyId">Id of the company</param>
+		/// <param name="companyExternalId"></param>
+		/// <returns></returns>
+		CompanyJS GetCompany(Nullable<Int32> companyId,String companyExternalId);
 
 
 		/// <returns></returns>
@@ -8904,10 +15252,10 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> GetProjectsAsync(DatesRangeRequest<Boolean> args);
+		Task<HttpResponseMessage> GetProjectsAsync(DatesRangeFilteredRequest<Boolean> args);
 
 		/// <returns></returns>
-		List<ProjectFastPlanningResult> GetProjects(DatesRangeRequest<Boolean> args);
+		List<ProjectFastPlanningResult> GetProjects(DatesRangeFilteredRequest<Boolean> args);
 				
 	}
 	
@@ -8956,6 +15304,47 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		List<CustomFieldJs> GetEmployeeCustomFields(Boolean takeCalculated);
 
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectCustomFieldsAsync();
+
+		/// <returns></returns>
+		List<CustomFieldJs> GetProjectCustomFields();
+
+		/// <param name="valueId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteClientCustomFieldValueAsync(Int32 valueId);
+
+		/// <param name="valueId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteClientCustomFieldValue(Int32 valueId);
+
+		/// <param name="cfId">custom field value id</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteCustomFieldValueAsync(Int32 cfId,CustomFieldValue value);
+
+		/// <param name="cfId">custom field value id</param>
+		/// <returns></returns>
+		UpdateResult DeleteCustomFieldValue(Int32 cfId,CustomFieldValue value);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateCustomFieldCategoriesAsync(Int32[] ids);
+
+		/// <returns></returns>
+		UpdateResult UpdateCustomFieldCategories(Int32[] ids);
+
+		/// <param name="cfId">custom field value id</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteRessourceCustomFieldValueAsync(Int32 cfId,CustomFieldValue value);
+
+		/// <param name="cfId">custom field value id</param>
+		/// <returns></returns>
+		UpdateResult DeleteRessourceCustomFieldValue(Int32 cfId,CustomFieldValue value);
+
 		/// <param name="takeHidden"></param>
 		/// <param name="takeCalculHard"></param>
 
@@ -8966,6 +15355,19 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="takeCalculHard"></param>
 		/// <returns></returns>
 		List<CustomFieldJs> GetAllCustomFields(Boolean takeHidden,Boolean takeCalculHard);
+
+		/// <param name="takeHidden"></param>
+		/// <param name="takeCalculHard"></param>
+		/// <param name="getVisibleReadAccess"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllCustomFieldsByCategorieAsync(Boolean takeHidden,Boolean takeCalculHard,Boolean getVisibleReadAccess);
+
+		/// <param name="takeHidden"></param>
+		/// <param name="takeCalculHard"></param>
+		/// <param name="getVisibleReadAccess"></param>
+		/// <returns></returns>
+		List<CustomFieldCategory> GetAllCustomFieldsByCategorie(Boolean takeHidden,Boolean takeCalculHard,Boolean getVisibleReadAccess);
 
 		/// <param name="customFieldId"></param>
 
@@ -8985,6 +15387,29 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResultWithId UpdateCustomFieldValue(Int32 customFieldId,CustomFieldValue value);
 
+		/// <param name="customFieldName"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateCustomFieldValueByNameAsync(String customFieldName,CustomFieldValue value);
+
+		/// <param name="customFieldName"></param>
+		/// <returns></returns>
+		UpdateResultWithId UpdateCustomFieldValueByName(String customFieldName,CustomFieldValue value);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateCustomFieldValueShortAsync(CustomFieldValue value);
+
+		/// <returns></returns>
+		UpdateResultWithId UpdateCustomFieldValueShort(CustomFieldValue value);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateCustomFieldValueBatchAsync(List<CustomFieldValue> Values);
+
+		/// <returns></returns>
+		List<UpdateResultWithId> UpdateCustomFieldValueBatch(List<CustomFieldValue> Values);
+
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> CreateOrUpdateCategoryAsync(CustomFieldCategory customFieldCategory);
@@ -8992,12 +15417,41 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResultWithId CreateOrUpdateCategory(CustomFieldCategory customFieldCategory);
 
+		/// <param name="fieldId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteClientCustomFieldAsync(Int32 fieldId);
+
+		/// <param name="fieldId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteClientCustomField(Int32 fieldId);
+
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> CreateOrUpdateCustomFieldAsync(CustomFieldJs customField);
 
 		/// <returns></returns>
 		UpdateResultWithId CreateOrUpdateCustomField(CustomFieldJs customField);
+
+		/// <param name="category"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteCustomFieldCategoryAsync(Int32 category);
+
+		/// <param name="category"></param>
+		/// <returns></returns>
+		UpdateResult DeleteCustomFieldCategory(Int32 category);
+
+		/// <param name="fieldId"></param>
+		/// <param name="isRessourceCustom"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteCustomFieldAsync(Int32 fieldId,Boolean isRessourceCustom);
+
+		/// <param name="fieldId"></param>
+		/// <param name="isRessourceCustom"></param>
+		/// <returns></returns>
+		UpdateResult DeleteCustomField(Int32 fieldId,Boolean isRessourceCustom);
 				
 	}
 	
@@ -9020,12 +15474,28 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		List<ShareInfos> GetSharedReports(ReportType reportType);
 
+		/// <param name="planType">The report type (projects, ressources, tasks)</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetSharedPlansAsync(PlanType planType);
+
+		/// <param name="planType">The report type (projects, ressources, tasks)</param>
+		/// <returns></returns>
+		List<ShareInfos> GetSharedPlans(PlanType planType);
+
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> ShareReportAsync(DatesRangeFilteredRequest<ShareRapportHelper> dataToShare);
 
 		/// <returns></returns>
 		UpdateResult ShareReport(DatesRangeFilteredRequest<ShareRapportHelper> dataToShare);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SharePlanningAsync(DatesRangeFilteredRequest<SharePlanningHelper> dataToShare);
+
+		/// <returns></returns>
+		UpdateResult SharePlanning(DatesRangeFilteredRequest<SharePlanningHelper> dataToShare);
 
 		/// <param name="reportType"></param>
 
@@ -9035,6 +15505,15 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="reportType"></param>
 		/// <returns></returns>
 		UpdateResultWithId ImportReports(ReportType reportType,Guid[] toImport);
+
+		/// <param name="planType"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ImportPlansAsync(PlanType planType,Guid[] toImport);
+
+		/// <param name="planType"></param>
+		/// <returns></returns>
+		UpdateResultWithId ImportPlans(PlanType planType,Guid[] toImport);
 				
 	}
 	
@@ -9117,12 +15596,28 @@ namespace WebApi.Proxies.Interfaces
 	public partial interface IEmployesClient : IClientBase
 	{	
 
+		/// <param name="projectid"></param>
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> GetAllRessourcesFilteredAsync(DatesRangeFilteredRequestPagination<Boolean> request);
+		Task<HttpResponseMessage> GetCombinedRessourcesByTaskAsync(Int32 projectid);
+
+		/// <param name="projectid"></param>
+		/// <returns></returns>
+		Dictionary<Int32, List<EmployeJS__>> GetCombinedRessourcesByTask(Int32 projectid);
+
 
 		/// <returns></returns>
-		List<EmployeJS__> GetAllRessourcesFiltered(DatesRangeFilteredRequestPagination<Boolean> request);
+		Task<HttpResponseMessage> GetAllRessourcesFilteredAsync(DatesRangeFilteredRequestPagination<RessourceParam> request);
+
+		/// <returns></returns>
+		List<EmployeJS__> GetAllRessourcesFiltered(DatesRangeFilteredRequestPagination<RessourceParam> request);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetRessourcesListAsync(DatesRangeFilteredRequest<UsersListRequest> request);
+
+		/// <returns></returns>
+		List<ConfigRessourcesModel> GetRessourcesList(DatesRangeFilteredRequest<UsersListRequest> request);
 
 		/// <param name="takeOnlyActif">Only take not deleted employees</param>
 
@@ -9155,6 +15650,40 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		List<ActivityLine> GetLastActivityForUser(DatesRangeRequest<Int32> data);
+
+		/// <param name="userId">User id</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetHourRateHistoryAsync(Int32 userId);
+
+		/// <param name="userId">User id</param>
+		/// <returns></returns>
+		List<RessourceHourRate> GetHourRateHistory(Int32 userId);
+
+		/// <param name="userId">User id</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetBillRateHistoryAsync(Int32 userId);
+
+		/// <param name="userId">User id</param>
+		/// <returns></returns>
+		List<RessourceBillRate> GetBillRateHistory(Int32 userId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateBillRateHistoryAsync(BillRateHistory rateHistory);
+
+		/// <returns></returns>
+		UpdateResult UpdateBillRateHistory(BillRateHistory rateHistory);
+
+		/// <param name="userId">User id</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateRateHistoryAsync(Int32 userId,RateHistory rateHistory);
+
+		/// <param name="userId">User id</param>
+		/// <returns></returns>
+		UpdateResult UpdateRateHistory(Int32 userId,RateHistory rateHistory);
 
 		/// <param name="userId">User id</param>
 
@@ -9238,6 +15767,58 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="userId"></param>
 		/// <returns></returns>
 		UpdateResult UpdateTiersId(Int32 userId,EmployeJS__ toUpdate);
+
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetUserInfoAsync(Int32 userId);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		UserInfo GetUserInfo(Int32 userId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RessourceLevelAsync();
+
+		/// <returns></returns>
+		List<Int32> RessourceLevel();
+
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetUsergeneralInfoAsync(Int32 userId,DatesRangeRequest<Boolean> updateTiersParam);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		RessourceGeneralInformations GetUsergeneralInfo(Int32 userId,DatesRangeRequest<Boolean> updateTiersParam);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTiersIdByUpdatetiersparamAsync(UpdateTiersParam updateTiersParam);
+
+		/// <returns></returns>
+		UpdateResult UpdateTiersIdByUpdatetiersparam(UpdateTiersParam updateTiersParam);
+
+		/// <param name="email"></param>
+		/// <param name="message"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ReferFriendAsync(String email,String message);
+
+		/// <param name="email"></param>
+		/// <param name="message"></param>
+		/// <returns></returns>
+		UpdateResult ReferFriend(String email,String message);
+
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetSkillsAndLevelsAsync(Int32 userId);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		SkillsAndSkillLevelsJs GetSkillsAndLevels(Int32 userId);
 
 		/// <param name="userId"></param>
 
@@ -9333,6 +15914,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResultWithId AddOrEditProjectExpense(Expense expense);
 
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateListExpenseAsync(RequestSelectedBulkAction data);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess UpdateListExpense(RequestSelectedBulkAction data);
+
 		/// <param name="expenseId"></param>
 
 		/// <returns></returns>
@@ -9381,10 +15969,10 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> RunExportPostAsync();
+		Task<HttpResponseMessage> RunExportPostAsync(ExportConfigRun template);
 
 		/// <returns></returns>
-		HttpResponseMessage RunExportPost();
+		UpdateResult RunExportPost(ExportConfigRun template);
 
 		/// <param name="exportId"></param>
 
@@ -9409,10 +15997,10 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> GetProjectsAsync(DatesRangeRequest<Boolean> args);
+		Task<HttpResponseMessage> GetProjectsAsync(DatesRangeRequest<FastPlaningGetProject> param);
 
 		/// <returns></returns>
-		List<ProjectFastPlanningResult> GetProjects(DatesRangeRequest<Boolean> args);
+		List<SimpleProjectWithDates> GetProjects(DatesRangeRequest<FastPlaningGetProject> param);
 
 
 		/// <returns></returns>
@@ -9430,10 +16018,186 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> SavePlanningRessourcesAsync(PlanParams Params);
+		Task<HttpResponseMessage> SaveAllPlanningRessourcesAsync(PlanBulkParams param);
 
 		/// <returns></returns>
-		UpdateResult SavePlanningRessources(PlanParams Params);
+		UpdateResultMultiErrorSuccess SaveAllPlanningRessources(PlanBulkParams param);
+
+		/// <param name="fromImport"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SavePlanningRessourcesAsync(Nullable<Boolean> fromImport,PlanParams Params);
+
+		/// <param name="fromImport"></param>
+		/// <returns></returns>
+		UpdateResult SavePlanningRessources(Nullable<Boolean> fromImport,PlanParams Params);
+				
+	}
+	
+	public partial interface IFeesClient : IClientBase
+	{	
+
+		/// <param name="projectId"></param>
+		/// <param name="taskId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ListAsync(Int32 projectId,Nullable<Int32> taskId);
+
+		/// <param name="projectId"></param>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		List<Fee> List(Int32 projectId,Nullable<Int32> taskId);
+
+		/// <param name="projectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddAsyncAsync(Int32 projectId,Fee fee);
+
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		Fee AddAsync(Int32 projectId,Fee fee);
+
+		/// <param name="projectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateAsyncAsync(Int32 projectId,Fee fee);
+
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		Fee UpdateAsync(Int32 projectId,Fee fee);
+
+		/// <param name="projectExternalId">External id of the project</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddOrUpdateExternalAsyncAsync(String projectExternalId,Fee fee);
+
+		/// <param name="projectExternalId">External id of the project</param>
+		/// <returns></returns>
+		Fee AddOrUpdateExternalAsync(String projectExternalId,Fee fee);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddOrUpdateBatchOldAsync(List<Fee> fees);
+
+		/// <returns></returns>
+		List<Fee> AddOrUpdateBatchOld(List<Fee> fees);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddOrUpdateBatchAsync(List<Fee> fees);
+
+		/// <returns></returns>
+		List<ResponseContainer<Fee>> AddOrUpdateBatch(List<Fee> fees);
+
+		/// <param name="projectId"></param>
+		/// <param name="feeId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteAsyncAsync(Int32 projectId,Guid feeId);
+
+		/// <param name="projectId"></param>
+		/// <param name="feeId"></param>
+		/// <returns></returns>
+		void DeleteAsync(Int32 projectId,Guid feeId);
+				
+	}
+	
+	public partial interface IFormClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UploadDocumentAsync();
+
+		/// <returns></returns>
+		UpdateResultWithId UploadDocument();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UploadDocumentQtyAsync();
+
+		/// <returns></returns>
+		UpdateResultWithId UploadDocumentQty();
+
+		/// <param name="fileToRemove"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RemoveDocumentAsync(Int32 fileToRemove);
+
+		/// <param name="fileToRemove"></param>
+		/// <returns></returns>
+		UpdateResult RemoveDocument(Int32 fileToRemove);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetFormValuesAsync();
+
+		/// <returns></returns>
+		List<FormValueReturn> GetFormValues();
+
+		/// <param name="compId"></param>
+		/// <param name="strinGuid"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetFormsByCompIdAsync(Int32 compId,String strinGuid);
+
+		/// <param name="compId"></param>
+		/// <param name="strinGuid"></param>
+		/// <returns></returns>
+		FormReturn GetFormsByCompId(Int32 compId,String strinGuid);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ValidFormValueAsync(FormApiParm param);
+
+		/// <returns></returns>
+		UpdateResultWithId ValidFormValue(FormApiParm param);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RejectFormValueAsync(FormApiParm param);
+
+		/// <returns></returns>
+		UpdateResultWithGui RejectFormValue(FormApiParm param);
+
+		/// <param name="compId"></param>
+		/// <param name="strinGuid"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RemoveFormValueAsync(Int32 compId,String strinGuid);
+
+		/// <param name="compId"></param>
+		/// <param name="strinGuid"></param>
+		/// <returns></returns>
+		UpdateResult RemoveFormValue(Int32 compId,String strinGuid);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SendNotifSubmitAsync(FormApiParm param);
+
+		/// <returns></returns>
+		UpdateResultWithGui SendNotifSubmit(FormApiParm param);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SubmitFormValueAsync(FormApiParm param);
+
+		/// <returns></returns>
+		SubmitFormReturn SubmitFormValue(FormApiParm param);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SendNotifSaveAsync(FormApiParm param);
+
+		/// <returns></returns>
+		UpdateResultWithGui SendNotifSave(FormApiParm param);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveFormValueAsync(FormApiParm param);
+
+		/// <returns></returns>
+		UpdateResultWithGui SaveFormValue(FormApiParm param);
 				
 	}
 	
@@ -9530,6 +16294,26 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResult DeleteSkill(Int32 skillId);
 
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateResourceSkillsAsync(Int32 userId,List<SkillJs> skills);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		UpdateResult UpdateResourceSkills(Int32 userId,List<SkillJs> skills);
+
+		/// <param name="userId"></param>
+		/// <param name="skillId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteResourceSkillAsync(Int32 userId,Int32 skillId);
+
+		/// <param name="userId"></param>
+		/// <param name="skillId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteResourceSkill(Int32 userId,Int32 skillId);
+
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> ChangeSkillsOrderAsync(Int32[] newOrder);
@@ -9550,6 +16334,22 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResultWithId CreateTitile(OccupationJS title);
+
+		/// <param name="email"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SendEmailAsync(String email);
+
+		/// <param name="email"></param>
+		/// <returns></returns>
+		UpdateResult SendEmail(String email);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveSettingResourceAsync(SettingResource setting);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess SaveSettingResource(SettingResource setting);
 
 		/// <param name="titleId"></param>
 
@@ -9586,11 +16386,146 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="ressourceId"></param>
 		/// <returns></returns>
 		UpdateResultWithId UpdateEmployee(Int32 ressourceId,RessourceUpdate data);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateOrAddEmployesOldAsync(List<ApiRessource> users);
+
+		/// <returns></returns>
+		UpdateResultWithId UpdateOrAddEmployesOld(List<ApiRessource> users);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateOrAddEmployesAsync(List<ApiRessource> users);
+
+		/// <returns></returns>
+		List<ResponseContainer<ApiRessource>> UpdateOrAddEmployes(List<ApiRessource> users);
+
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetManagersAsync(Int32 userId);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		Int32[] GetManagers(Int32 userId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveNewPositionsAsync(NewPositions newPositions);
+
+		/// <returns></returns>
+		UpdateResult SaveNewPositions(NewPositions newPositions);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveNewDirectionsAsync(NewDirections newDirections);
+
+		/// <returns></returns>
+		UpdateResult SaveNewDirections(NewDirections newDirections);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveNewRolesAsync(NewRoles newRoles);
+
+		/// <returns></returns>
+		UpdateResult SaveNewRoles(NewRoles newRoles);
+
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteUserAsync(Int32 userId);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteUser(Int32 userId);
+
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ReactivateUserAsync(Int32 userId);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		UpdateResult ReactivateUser(Int32 userId);
+				
+	}
+	
+	public partial interface IImportsClient : IClientBase
+	{	
+
+		/// <param name="exportType"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetFieldsForAsync(ObjectType exportType);
+
+		/// <param name="exportType"></param>
+		/// <returns></returns>
+		List<ColumnInfo> GetFieldsFor(ObjectType exportType);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddImportAsync(ApiImport import);
+
+		/// <returns></returns>
+		ApiImport AddImport(ApiImport import);
+
+		/// <param name="importId">Id of the import to update</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateImportAsync(Guid importId,ApiImport import);
+
+		/// <param name="importId">Id of the import to update</param>
+		/// <returns></returns>
+		ApiImport UpdateImport(Guid importId,ApiImport import);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ListImportsAsync();
+
+		/// <returns></returns>
+		List<ApiImport> ListImports();
 				
 	}
 	
 	public partial interface IIntegrationsClient : IClientBase
 	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ImportFicheContributionAsync();
+
+		/// <returns></returns>
+		UpdateResultWithId ImportFicheContribution();
+
+		/// <param name="oracleId"></param>
+		/// <param name="BeeyeId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AssignOracleProjetAsync(String oracleId,Int32 BeeyeId);
+
+		/// <param name="oracleId"></param>
+		/// <param name="BeeyeId"></param>
+		/// <returns></returns>
+		UpdateResult AssignOracleProjet(String oracleId,Int32 BeeyeId);
+
+		/// <param name="oracleId"></param>
+		/// <param name="BeeyeId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AssignOracleRessourceAsync(String oracleId,Int32 BeeyeId);
+
+		/// <param name="oracleId"></param>
+		/// <param name="BeeyeId"></param>
+		/// <returns></returns>
+		UpdateResult AssignOracleRessource(String oracleId,Int32 BeeyeId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UploadGrGpDataAsync();
+
+		/// <returns></returns>
+		GtGpImportResult UploadGrGpData();
 
 
 		/// <returns></returns>
@@ -9607,43 +16542,6 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="cfId"></param>
 		/// <returns></returns>
 		UpdateResult UpdateGtGpCustomField(Int32 cfId);
-
-		/// <param name="compId"></param>
-
-		/// <returns></returns>
-		Task<HttpResponseMessage> CreateProjectFromAirTableAsync(Int32 compId,AirtableRecord record);
-
-		/// <param name="compId"></param>
-		/// <returns></returns>
-		UpdateResultWithId CreateProjectFromAirTable(Int32 compId,AirtableRecord record);
-
-
-		/// <returns></returns>
-		Task<HttpResponseMessage> GetAirTablesConfigAsync();
-
-		/// <returns></returns>
-		AirTablesConfig GetAirTablesConfig();
-
-
-		/// <returns></returns>
-		Task<HttpResponseMessage> TestAirTableConnexionAsync(AirTablesConfig config);
-
-		/// <returns></returns>
-		UpdateResult TestAirTableConnexion(AirTablesConfig config);
-
-
-		/// <returns></returns>
-		Task<HttpResponseMessage> GetAirTablesFieldsAsync(AirTablesConfig config);
-
-		/// <returns></returns>
-		List<String> GetAirTablesFields(AirTablesConfig config);
-
-
-		/// <returns></returns>
-		Task<HttpResponseMessage> SaveAirTablesConfigAsync(AirTablesConfig config);
-
-		/// <returns></returns>
-		UpdateResult SaveAirTablesConfig(AirTablesConfig config);
 
 
 		/// <returns></returns>
@@ -9688,6 +16586,78 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="errorId"></param>
 		/// <returns></returns>
 		UpdateResult DeleteLuccaError(Int32 errorId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteAllLuccaErrorsAsync();
+
+		/// <returns></returns>
+		UpdateResult DeleteAllLuccaErrors();
+
+		/// <param name="compId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetGTGPConfigAsync(Int32 compId);
+
+		/// <param name="compId"></param>
+		/// <returns></returns>
+		GtGpConfig GetGTGPConfig(Int32 compId);
+
+		/// <param name="compId"></param>
+		/// <param name="cfId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateGtGpConfigAsync(Int32 compId,Int32 cfId);
+
+		/// <param name="compId"></param>
+		/// <param name="cfId"></param>
+		/// <returns></returns>
+		UpdateResult UpdateGtGpConfig(Int32 compId,Int32 cfId);
+
+		/// <param name="type"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ForceSyncAsync(IntegrationType type);
+
+		/// <param name="type"></param>
+		/// <returns></returns>
+		UpdateResult ForceSync(IntegrationType type);
+
+		/// <param name="compId"></param>
+		/// <param name="compExternalId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetConfigurationsAsync(Nullable<Int32> compId,String compExternalId);
+
+		/// <param name="compId"></param>
+		/// <param name="compExternalId"></param>
+		/// <returns></returns>
+		List<IntegrationConfigurationBasic> GetConfigurations(Nullable<Int32> compId,String compExternalId);
+
+		/// <param name="errorId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RerunLuccaAsync(Int32 errorId);
+
+		/// <param name="errorId"></param>
+		/// <returns></returns>
+		UpdateResult RerunLucca(Int32 errorId);
+
+		/// <param name="compId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateConfigurationsSellsyAsync(Int32 compId,IntegrationConfigurationSellsy newConfiguration);
+
+		/// <param name="compId"></param>
+		/// <returns></returns>
+		UpdateResult UpdateConfigurationsSellsy(Int32 compId,IntegrationConfigurationSellsy newConfiguration);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GenerateSellsyInvoiceAsync(DatesRangeRequest<Int32> datesRangeRequest);
+
+		/// <returns></returns>
+		UpdateResult GenerateSellsyInvoice(DatesRangeRequest<Int32> datesRangeRequest);
 				
 	}
 	
@@ -9712,6 +16682,24 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		Invoiced GetInvoiceDetails(Int32 invoiceId);
 
+		/// <param name="invoiceId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddFilesToInvoiceAsync(Int32 invoiceId);
+
+		/// <param name="invoiceId"></param>
+		/// <returns></returns>
+		UpdateResultWithId AddFilesToInvoice(Int32 invoiceId);
+
+		/// <param name="invoiceId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetFilesListForInvoiceAsync(Int32 invoiceId);
+
+		/// <param name="invoiceId"></param>
+		/// <returns></returns>
+		List<UploadedFile> GetFilesListForInvoice(Int32 invoiceId);
+
 		/// <param name="projectId"></param>
 
 		/// <returns></returns>
@@ -9720,6 +16708,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="projectId"></param>
 		/// <returns></returns>
 		List<Invoiced> GetAllInvoicesForProject(Int32 projectId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllInvoicesAsync();
+
+		/// <returns></returns>
+		List<Invoiced> GetAllInvoices();
 
 		/// <param name="invoiceId"></param>
 
@@ -9732,15 +16727,128 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateListInvoicedAsync(RequestSelectedBulkAction data);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess UpdateListInvoiced(RequestSelectedBulkAction data);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> CreateOrUpdateInvoiceAsync(Invoiced invoice);
 
 		/// <returns></returns>
 		UpdateResultWithId CreateOrUpdateInvoice(Invoiced invoice);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateOrUpdateInvoicesOldAsync(List<Invoiced> invoices);
+
+		/// <returns></returns>
+		UpdateResultWithId CreateOrUpdateInvoicesOld(List<Invoiced> invoices);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateOrUpdateInvoicesAsync(List<Invoiced> invoices);
+
+		/// <returns></returns>
+		List<ResponseContainer<Invoiced>> CreateOrUpdateInvoices(List<Invoiced> invoices);
 				
 	}
 	
 	public partial interface IKpiClient : IClientBase
 	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectSuccessByProjectAsync(DatesRangeFilteredRequest<ProjectSuccessComponent> request);
+
+		/// <returns></returns>
+		List<ProjectSuccessReturn> GetProjectSuccessByProject(DatesRangeFilteredRequest<ProjectSuccessComponent> request);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectSuccessPieAsync(DatesRangeFilteredRequest<ProjectSuccessPieComponent> request);
+
+		/// <returns></returns>
+		Int32[] GetProjectSuccessPie(DatesRangeFilteredRequest<ProjectSuccessPieComponent> request);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetSingleValueCustomFieldKpiAsync(DatesRangeFilteredRequest<KpiSingleNumberCustomFields> request);
+
+		/// <returns></returns>
+		KpiSingleNumberCustomFieldsValue GetSingleValueCustomFieldKpi(DatesRangeFilteredRequest<KpiSingleNumberCustomFields> request);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveDashBoardAsync(DatesRangeFilteredRequest<GraphInfo> request);
+
+		/// <returns></returns>
+		UpdateResultWithId SaveDashBoard(DatesRangeFilteredRequest<GraphInfo> request);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveFiltersDashBoardAsync(DatesRangeFilteredRequest<Int32> request);
+
+		/// <returns></returns>
+		UpdateResult SaveFiltersDashBoard(DatesRangeFilteredRequest<Int32> request);
+
+		/// <param name="id">Id of the dashboard</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteDashboardAsync(Int32 id);
+
+		/// <param name="id">Id of the dashboard</param>
+		/// <returns></returns>
+		UpdateResult DeleteDashboard(Int32 id);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateSharedDashboardAsync(ShareDashboardParam request);
+
+		/// <returns></returns>
+		UpdateResult UpdateSharedDashboard(ShareDashboardParam request);
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetSharedDashboardAsync(String id);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		SharedDashboard GetSharedDashboard(String id);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetSharedDashboardsListAsync();
+
+		/// <returns></returns>
+		List<SharedDashboard> GetSharedDashboardsList();
+
+		/// <param name="Id">id</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteSharedDashboardAsync(String Id);
+
+		/// <param name="Id">id</param>
+		/// <returns></returns>
+		UpdateResult DeleteSharedDashboard(String Id);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ShareDashboardAsync(ShareDashboardParam request);
+
+		/// <returns></returns>
+		UpdateResult ShareDashboard(ShareDashboardParam request);
+
+		/// <param name="id">Id of the dashboard</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetDashboardAsync(Int32 id);
+
+		/// <param name="id">Id of the dashboard</param>
+		/// <returns></returns>
+		List<BaseDashboardComponent> GetDashboard(Int32 id);
 
 
 		/// <returns></returns>
@@ -9786,12 +16894,12 @@ namespace WebApi.Proxies.Interfaces
 	public partial interface ILoginClient : IClientBase
 	{	
 
-		/// <param name="apiKey"></param>
+		/// <param name="apiKey">Authentication key for the company</param>
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> ApiLoginAsync(String apiKey);
 
-		/// <param name="apiKey"></param>
+		/// <param name="apiKey">Authentication key for the company</param>
 		/// <returns></returns>
 		UpdateResultWithId ApiLogin(String apiKey);
 
@@ -9825,8 +16933,98 @@ namespace WebApi.Proxies.Interfaces
 				
 	}
 	
+	public partial interface IMobileAuthClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAsync();
+
+		/// <returns></returns>
+		void Get();
+				
+	}
+	
+	public partial interface INotificationClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ToggleSubmitSubscriptionAsync();
+
+		/// <returns></returns>
+		UpdateResultWithId ToggleSubmitSubscription();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ToggleRejectedSubscriptionAsync();
+
+		/// <returns></returns>
+		UpdateResultWithId ToggleRejectedSubscription();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ToggleEditedPlanningAsync();
+
+		/// <returns></returns>
+		UpdateResultWithId ToggleEditedPlanning();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ToggleValidatedCommentsTimesheetAsync();
+
+		/// <returns></returns>
+		UpdateResultWithId ToggleValidatedCommentsTimesheet();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ToggleValidatedSubscriptionAsync();
+
+		/// <returns></returns>
+		UpdateResultWithId ToggleValidatedSubscription();
+
+		/// <param name="taskId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ToggleTaskSubscriptionAsync(Int32 taskId);
+
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		UpdateResultWithId ToggleTaskSubscription(Int32 taskId);
+
+		/// <param name="projectTypeId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ToggleProjectTypeSubscriptionAsync(Int32 projectTypeId);
+
+		/// <param name="projectTypeId"></param>
+		/// <returns></returns>
+		UpdateResultWithId ToggleProjectTypeSubscription(Int32 projectTypeId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetUserNotificationsListAsync();
+
+		/// <returns></returns>
+		UserNotificationsList GetUserNotificationsList();
+				
+	}
+	
 	public partial interface IPlanningClient : IClientBase
 	{	
+
+		/// <param name="projectId"></param>
+		/// <param name="resourceId"></param>
+		/// <param name="taskId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTaskPlanningAsync(Nullable<Int32> projectId,Nullable<Int32> resourceId,Nullable<Int32> taskId);
+
+		/// <param name="projectId"></param>
+		/// <param name="resourceId"></param>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		List<TaskPlanning> GetTaskPlanning(Nullable<Int32> projectId,Nullable<Int32> resourceId,Nullable<Int32> taskId);
 
 
 		/// <returns></returns>
@@ -9834,6 +17032,47 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		PlanningResult GetPlanning(DatesRangeFilteredRequestPagination<GetPlanningParams> search);
+
+		/// <param name="viewId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeletePlanningViewAsync(Int32 viewId);
+
+		/// <param name="viewId"></param>
+		/// <returns></returns>
+		UpdateResult DeletePlanningView(Int32 viewId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SavePreferencesPlannificationAsync();
+
+		/// <returns></returns>
+		void SavePreferencesPlannification();
+
+		/// <param name="normal"></param>
+		/// <param name="conflict"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ChangePlanningOrderAsync(Boolean normal,Boolean conflict,Int32[] newOrder);
+
+		/// <param name="normal"></param>
+		/// <param name="conflict"></param>
+		/// <returns></returns>
+		UpdateResult ChangePlanningOrder(Boolean normal,Boolean conflict,Int32[] newOrder);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddNewPlanningViewAsync(DatesRangeFilteredRequestPagination<UserPreferencesPlanningParam> param);
+
+		/// <returns></returns>
+		UpdateResultWithId AddNewPlanningView(DatesRangeFilteredRequestPagination<UserPreferencesPlanningParam> param);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeletePlanningViewsAsync(List<Int32> viewsIdList);
+
+		/// <returns></returns>
+		UpdateResult DeletePlanningViews(List<Int32> viewsIdList);
 
 		/// <param name="companyId"></param>
 
@@ -9976,6 +17215,15 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		Double GetRealHoursForTask(Int32 taskId,Int32 resourceId,DatesRangeRequest<Object> dates);
 
+		/// <param name="taskId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetPlannedHoursForTaskAsync(Int32 taskId);
+
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		Double GetPlannedHoursForTask(Int32 taskId);
+
 		/// <param name="projectId"></param>
 		/// <param name="resourceId"></param>
 
@@ -10000,6 +17248,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResult ReversePlanningAsDone(DatesRangeRequest<RequestDeclareDone> dates);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeclarePlanningAsDoneAsync(DatesRangeRequest<RequestDeclareDone> dates);
+
+		/// <returns></returns>
+		UpdateResult DeclarePlanningAsDone(DatesRangeRequest<RequestDeclareDone> dates);
 
 		/// <param name="resourceId"></param>
 		/// <param name="taskId"></param>
@@ -10184,13 +17439,6 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> DeclarePlanningAsDoneAsync(DatesRangeRequest<RequestDeclareDone> dates);
-
-		/// <returns></returns>
-		UpdateResult DeclarePlanningAsDone(DatesRangeRequest<RequestDeclareDone> dates);
-
-
-		/// <returns></returns>
 		Task<HttpResponseMessage> GetConflictsByProjectAsync(DatesRangeFilteredRequest<RequestConflicts> data);
 
 		/// <returns></returns>
@@ -10200,6 +17448,13 @@ namespace WebApi.Proxies.Interfaces
 	
 	public partial interface IProfileImageClient : IClientBase
 	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UploadUserFileAsync();
+
+		/// <returns></returns>
+		UpdateResult UploadUserFile();
 
 
 		/// <returns></returns>
@@ -10222,10 +17477,231 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> QueueProjectsForPlanningAsync(DatesRangeFilteredRequest<Int32[]> projects);
+
+		/// <returns></returns>
+		UpdateResult QueueProjectsForPlanning(DatesRangeFilteredRequest<Int32[]> projects);
+
+		/// <param name="projId"></param>
+		/// <param name="GraphDateMode"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetGraphMaxAsync(Int32 projId,Int32 GraphDateMode);
+
+		/// <param name="projId"></param>
+		/// <param name="GraphDateMode"></param>
+		/// <returns></returns>
+		ProjectGraphMax GetGraphMax(Int32 projId,Int32 GraphDateMode);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetFieldsUsedForProjectCreationAsync();
+
+		/// <returns></returns>
+		List<ProjectDynamicNameField> GetFieldsUsedForProjectCreation();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectsDueDateUseAsync(DatesRangeRequestProjectsDueDate datesRangeRequestProjectsDueDate);
+
+		/// <returns></returns>
+		List<ListItemInt> GetProjectsDueDateUse(DatesRangeRequestProjectsDueDate datesRangeRequestProjectsDueDate);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateProjectsDueDateAsync(List<Int32> projectsIds);
+
+		/// <returns></returns>
+		UpdateResult UpdateProjectsDueDate(List<Int32> projectsIds);
+
+		/// <param name="projId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectRessourcesAsync(Int32 projId);
+
+		/// <param name="projId"></param>
+		/// <returns></returns>
+		List<RessourceStats> GetProjectRessources(Int32 projId);
+
+		/// <param name="projId"></param>
+		/// <param name="objId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteObjectiveAsync(Int32 projId,Int32 objId);
+
+		/// <param name="projId"></param>
+		/// <param name="objId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteObjective(Int32 projId,Int32 objId);
+
+		/// <param name="activityFamiliesId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetMandatoryFieldsAsync(Guid activityFamiliesId);
+
+		/// <param name="activityFamiliesId"></param>
+		/// <returns></returns>
+		MandatoryFields GetMandatoryFields(Guid activityFamiliesId);
+
+		/// <param name="prId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllExpenssesAsync(Int32 prId);
+
+		/// <param name="prId"></param>
+		/// <returns></returns>
+		List<Expense> GetAllExpensses(Int32 prId);
+
+		/// <param name="prId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectSuccessAsync(Int32 prId);
+
+		/// <param name="prId"></param>
+		/// <returns></returns>
+		ProjectSuccess GetProjectSuccess(Int32 prId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllResourcesResponsibleForTaskAsync();
+
+		/// <returns></returns>
+		List<EmployeJS> GetAllResourcesResponsibleForTask();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllResourcesResponsibleForProjectAsync();
+
+		/// <returns></returns>
+		List<EmployeJS> GetAllResourcesResponsibleForProject();
+
+		/// <param name="projId"></param>
+		/// <param name="responsableId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveResponsableAsync(Int32 projId,Int32 responsableId);
+
+		/// <param name="projId"></param>
+		/// <param name="responsableId"></param>
+		/// <returns></returns>
+		UpdateResult SaveResponsable(Int32 projId,Int32 responsableId);
+
+		/// <param name="projId"></param>
+		/// <param name="projectGagne"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveBudgetAsync(Int32 projId,Double projectGagne);
+
+		/// <param name="projId"></param>
+		/// <param name="projectGagne"></param>
+		/// <returns></returns>
+		UpdateResult SaveBudget(Int32 projId,Double projectGagne);
+
+		/// <param name="projId"></param>
+		/// <param name="projectPrevu"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SavePlannedExpensesAsync(Int32 projId,Double projectPrevu);
+
+		/// <param name="projId"></param>
+		/// <param name="projectPrevu"></param>
+		/// <returns></returns>
+		UpdateResult SavePlannedExpenses(Int32 projId,Double projectPrevu);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetMyProjectsListAsync(DatesRangeRequestBase dates);
+
+		/// <returns></returns>
+		List<ProjectJS> GetMyProjectsList(DatesRangeRequestBase dates);
+
+		/// <param name="projectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetDocumentsForprojectAsync(Int32 projectId);
+
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		List<UploadedFile> GetDocumentsForproject(Int32 projectId);
+
+		/// <param name="fileToRemove"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RemoveDocumentAsync(Int32 fileToRemove);
+
+		/// <param name="fileToRemove"></param>
+		/// <returns></returns>
+		UpdateResult RemoveDocument(Int32 fileToRemove);
+
+		/// <param name="projectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UploadDocumentAsync(Int32 projectId);
+
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		UpdateResultWithId UploadDocument(Int32 projectId);
+
+		/// <param name="isImport"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateAllNewProjectAsync(Boolean isImport,List<ProjectJS> newProjList);
+
+		/// <param name="isImport"></param>
+		/// <returns></returns>
+		UpdateResultWithId CreateAllNewProject(Boolean isImport,List<ProjectJS> newProjList);
+
+		/// <param name="isImport"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateProjectsByBatchAsync(Boolean isImport,List<ProjectJS> projects);
+
+		/// <param name="isImport"></param>
+		/// <returns></returns>
+		UpdateResultWithId CreateProjectsByBatch(Boolean isImport,List<ProjectJS> projects);
+
+		/// <param name="projectId"></param>
+		/// <param name="name"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateProjectNameAsync(Int32 projectId,String name);
+
+		/// <param name="projectId"></param>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		UpdateResult UpdateProjectName(Int32 projectId,String name);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteProjectsAsync(Int32[] projectsIdList);
+
+		/// <returns></returns>
+		UpdateResult DeleteProjects(Int32[] projectsIdList);
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteProjectAsync(Int32 id);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		UpdateResult DeleteProject(Int32 id);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> GetManagedProjectsByDateAsync(DatesRangeFilteredRequest<RequestProjectManaged> data);
 
 		/// <returns></returns>
 		List<ProjectJS> GetManagedProjectsByDate(DatesRangeFilteredRequest<RequestProjectManaged> data);
+
+		/// <param name="projectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectInfoMinimalAsync(Int32 projectId);
+
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		ProjectJS GetProjectInfoMinimal(Int32 projectId);
 
 
 		/// <returns></returns>
@@ -10250,6 +17726,22 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> ProjectQuickCreateAsync(ProjectQuickCreate tocreate);
+
+		/// <returns></returns>
+		UpdateResultWithId ProjectQuickCreate(ProjectQuickCreate tocreate);
+
+		/// <param name="projectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddActivitysToProjectAsync(Int32 projectId,Guid[] activitysId);
+
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess AddActivitysToProject(Int32 projectId,Guid[] activitysId);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> CreateNewProjectAsync(ProjectJS newProject);
 
 		/// <returns></returns>
@@ -10261,6 +17753,20 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResultWithId CopyProjects(ReplanProjectsRequest data);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetPossibledRessourcesWithCapacityAsync(DatesRangeRequest<Boolean> dates);
+
+		/// <returns></returns>
+		RessourcesForNewProject GetPossibledRessourcesWithCapacity(DatesRangeRequest<Boolean> dates);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddUsersToProjectsAsync(AssignMultiples assignMultiples);
+
+		/// <returns></returns>
+		UpdateResult AddUsersToProjects(AssignMultiples assignMultiples);
 
 		/// <param name="projectId"></param>
 		/// <param name="userId"></param>
@@ -10310,12 +17816,45 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		List<ProjectJS> GetAllProjectsWithCustomFields(DatesRangeFilteredRequest<Boolean> requestObject);
 
+		/// <param name="familyId"></param>
+		/// <param name="projectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ChangeActivityFamilyAsync(Guid familyId,Int32 projectId);
+
+		/// <param name="familyId"></param>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		UpdateResultWithId ChangeActivityFamily(Guid familyId,Int32 projectId);
+
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> UpdateListProjectsAsync(RequestSelectedProjects data);
 
 		/// <returns></returns>
 		UpdateResult UpdateListProjects(RequestSelectedProjects data);
+
+		/// <param name="projectId"></param>
+		/// <param name="fondDeFinancement">client id</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateFondDeFinancementAsync(Int32 projectId,Int32 fondDeFinancement);
+
+		/// <param name="projectId"></param>
+		/// <param name="fondDeFinancement">client id</param>
+		/// <returns></returns>
+		UpdateResult UpdateFondDeFinancement(Int32 projectId,Int32 fondDeFinancement);
+
+		/// <param name="projectName"></param>
+		/// <param name="projectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateNameAsync(String projectName,Int32 projectId);
+
+		/// <param name="projectName"></param>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		UpdateResult UpdateName(String projectName,Int32 projectId);
 
 
 		/// <returns></returns>
@@ -10367,6 +17906,125 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResult CloseProject(Int32 projectId,Boolean deleteSurvey);
 
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateDatesAsync(ProjectJSMainStats newData);
+
+		/// <returns></returns>
+		UpdateResult UpdateDates(ProjectJSMainStats newData);
+
+		/// <param name="projectId"></param>
+		/// <param name="projectTypeId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateProjectTypeIdAsync(Int32 projectId,Int32 projectTypeId);
+
+		/// <param name="projectId"></param>
+		/// <param name="projectTypeId"></param>
+		/// <returns></returns>
+		UpdateResult UpdateProjectTypeId(Int32 projectId,Int32 projectTypeId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetPossibledRessourcesAsync(DatesRangeFilteredRequest<Boolean> param);
+
+		/// <returns></returns>
+		List<EmployeJS> GetPossibledRessources(DatesRangeFilteredRequest<Boolean> param);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetPossibledResponsablesAsync();
+
+		/// <returns></returns>
+		List<EmployeJS> GetPossibledResponsables();
+
+		/// <param name="prId"></param>
+		/// <param name="val"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ToggleProjectFavAsync(Int32 prId,Boolean val);
+
+		/// <param name="prId"></param>
+		/// <param name="val"></param>
+		/// <returns></returns>
+		UpdateResult ToggleProjectFav(Int32 prId,Boolean val);
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectDescriptionAsync(Int32 id);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		UpdateResult GetProjectDescription(Int32 id);
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateProjectDescriptionAsync(Int32 id,String description);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		UpdateResult UpdateProjectDescription(Int32 id,String description);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAvalibleProjectsListAsync(DatesRangeFilteredRequest<RequestProjectManaged> param);
+
+		/// <returns></returns>
+		List<ProjectJS> GetAvalibleProjectsList(DatesRangeFilteredRequest<RequestProjectManaged> param);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAvalibleProjectsListNoDateAsync();
+
+		/// <returns></returns>
+		List<ProjectJS> GetAvalibleProjectsListNoDate();
+
+		/// <param name="projectId"></param>
+		/// <param name="noUnique"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCustomFieldsForProjectAsync(Int32 projectId,Boolean noUnique);
+
+		/// <param name="projectId"></param>
+		/// <param name="noUnique"></param>
+		/// <returns></returns>
+		List<CustomFieldJs> GetCustomFieldsForProject(Int32 projectId,Boolean noUnique);
+
+		/// <param name="ressourceId"></param>
+		/// <param name="noUnique"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCustomFieldsForRessourceAsync(Int32 ressourceId,Boolean noUnique);
+
+		/// <param name="ressourceId"></param>
+		/// <param name="noUnique"></param>
+		/// <returns></returns>
+		List<CustomFieldJs> GetCustomFieldsForRessource(Int32 ressourceId,Boolean noUnique);
+
+		/// <param name="pId"></param>
+		/// <param name="rId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RemoveRessourceFromProjectAsync(Int32 pId,Int32 rId);
+
+		/// <param name="pId"></param>
+		/// <param name="rId"></param>
+		/// <returns></returns>
+		UpdateResultWithId RemoveRessourceFromProject(Int32 pId,Int32 rId);
+
+		/// <param name="projectId"></param>
+		/// <param name="resourceId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RemoveProjectResourcesBillRateAsync(Int32 projectId,Int32 resourceId);
+
+		/// <param name="projectId"></param>
+		/// <param name="resourceId"></param>
+		/// <returns></returns>
+		Double RemoveProjectResourcesBillRate(Int32 projectId,Int32 resourceId);
+
 		/// <param name="projectId"></param>
 
 		/// <returns></returns>
@@ -10376,23 +18034,33 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResult UpdateProjectRessources(Int32 projectId,List<RessourceStats> rs);
 
-		/// <param name="companyId"></param>
-		/// <param name="range"></param>
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> DeleteCompanyProjectsRangeAsync(Int32 companyId,Int32 range);
+		Task<HttpResponseMessage> AddObjectiveAsync(ProjectObjective objective);
 
-		/// <param name="companyId"></param>
-		/// <param name="range"></param>
 		/// <returns></returns>
-		UpdateResult DeleteCompanyProjectsRange(Int32 companyId,Int32 range);
+		UpdateResultWithId AddObjective(ProjectObjective objective);
 
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> CreateProjectsByBatchAsync(List<ProjectJS> projects);
+		Task<HttpResponseMessage> CreateOrUpdateProjectsAsync(List<ApiProject> projects);
 
 		/// <returns></returns>
-		UpdateResultWithId CreateProjectsByBatch(List<ProjectJS> projects);
+		UpdateResultWithId CreateOrUpdateProjects(List<ApiProject> projects);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateOrUpdateProjectsWithoutUsersOldAsync(List<ApiProject> projects);
+
+		/// <returns></returns>
+		UpdateResultWithId CreateOrUpdateProjectsWithoutUsersOld(List<ApiProject> projects);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateOrUpdateProjectsWithoutUsersAsync(List<ApiProject> projects);
+
+		/// <returns></returns>
+		List<ResponseContainer<ApiProject>> CreateOrUpdateProjectsWithoutUsers(List<ApiProject> projects);
 				
 	}
 	
@@ -10437,8 +18105,151 @@ namespace WebApi.Proxies.Interfaces
 				
 	}
 	
+	public partial interface IProjectSurveyClient : IClientBase
+	{	
+
+		/// <param name="pId"></param>
+		/// <param name="sendToTeam"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SendAllTeamAsync(Int32 pId,Boolean sendToTeam);
+
+		/// <param name="pId"></param>
+		/// <param name="sendToTeam"></param>
+		/// <returns></returns>
+		UpdateResult SendAllTeam(Int32 pId,Boolean sendToTeam);
+
+		/// <param name="idSection"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddSurveyQuestionAsync(Int32 idSection);
+
+		/// <param name="idSection"></param>
+		/// <returns></returns>
+		UpdateResultWithId AddSurveyQuestion(Int32 idSection);
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteSurveySectionAsync(Int32 id);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		Boolean DeleteSurveySection(Int32 id);
+
+		/// <param name="prId"></param>
+		/// <param name="sendToTeam"></param>
+		/// <param name="haveSurveyAnswer"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SendEmailSurveyAsync(Int32 prId,Boolean sendToTeam,Boolean haveSurveyAnswer);
+
+		/// <param name="prId"></param>
+		/// <param name="sendToTeam"></param>
+		/// <param name="haveSurveyAnswer"></param>
+		/// <returns></returns>
+		Boolean SendEmailSurvey(Int32 prId,Boolean sendToTeam,Boolean haveSurveyAnswer);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveAnswerAsync(List<ProjectSurveyQuestionAnswer> answer);
+
+		/// <returns></returns>
+		UpdateResult SaveAnswer(List<ProjectSurveyQuestionAnswer> answer);
+
+		/// <param name="pId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectSurveyQuestionSectionsAsync(Int32 pId);
+
+		/// <param name="pId"></param>
+		/// <returns></returns>
+		List<SurveySection> GetProjectSurveyQuestionSections(Int32 pId);
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteSurveyAsync(Int32 id);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		Boolean DeleteSurvey(Int32 id);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateQuestionAsync(ProjectSurveyQuestion questionChange);
+
+		/// <returns></returns>
+		UpdateResult UpdateQuestion(ProjectSurveyQuestion questionChange);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateSectionAsync(ProjectSurveyQuestionSection sectionChange);
+
+		/// <returns></returns>
+		UpdateResult UpdateSection(ProjectSurveyQuestionSection sectionChange);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddSurveySectionAsync();
+
+		/// <returns></returns>
+		UpdateResultWithId AddSurveySection();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveSurveyParametresAsync(CompagnyGeneralParams toSave);
+
+		/// <returns></returns>
+		UpdateResult SaveSurveyParametres(CompagnyGeneralParams toSave);
+
+		/// <param name="ProjectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetSurveyEnableAsync(Int32 ProjectId);
+
+		/// <param name="ProjectId"></param>
+		/// <returns></returns>
+		SurveyState GetSurveyEnable(Int32 ProjectId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetSurveyQuestionSectionsAsync();
+
+		/// <returns></returns>
+		List<SurveySection> GetSurveyQuestionSections();
+
+		/// <param name="qId"></param>
+		/// <param name="pId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAswerQuestionAsync(Int32 qId,Int32 pId);
+
+		/// <param name="qId"></param>
+		/// <param name="pId"></param>
+		/// <returns></returns>
+		AswerQuestion GetAswerQuestion(Int32 qId,Int32 pId);
+				
+	}
+	
 	public partial interface IProjectTemplateClient : IClientBase
 	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllTemplatesAsync();
+
+		/// <returns></returns>
+		List<ProjectTemplate> GetAllTemplates();
+
+		/// <param name="projectId">Id of project</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTemplatesListAsync(Int32 projectId);
+
+		/// <param name="projectId">Id of project</param>
+		/// <returns></returns>
+		List<ProjectTemplate> GetTemplatesList(Int32 projectId);
 
 
 		/// <returns></returns>
@@ -10446,11 +18257,158 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		ProjectTemplate CreateTemplate(ProjectTemplateParams param);
+
+		/// <param name="tid">Guid of the template</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteTemplateAsync(String tid);
+
+		/// <param name="tid">Guid of the template</param>
+		/// <returns></returns>
+		UpdateResult DeleteTemplate(String tid);
 				
 	}
 	
 	public partial interface IProjectTypeClient : IClientBase
 	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveTypeProjectDynamicNameAsync(TypeProjectDynamic param);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess SaveTypeProjectDynamicName(TypeProjectDynamic param);
+
+		/// <param name="ProjectTypeId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteProjectTypeAsync(Int32 ProjectTypeId);
+
+		/// <param name="ProjectTypeId"></param>
+		/// <returns></returns>
+		UpdateResultWithId DeleteProjectType(Int32 ProjectTypeId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateProjectTypeAsync(ProjectTypeJS prjs);
+
+		/// <returns></returns>
+		UpdateResultWithId UpdateProjectType(ProjectTypeJS prjs);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateProjectTypesAsync(List<ProjectTypeJS> prjs);
+
+		/// <returns></returns>
+		UpdateResultWithId UpdateProjectTypes(List<ProjectTypeJS> prjs);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateCategoryAsync(CustomFieldCategory categorie);
+
+		/// <returns></returns>
+		UpdateResultWithId UpdateCategory(CustomFieldCategory categorie);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCustomFieldsCategpriesAsync();
+
+		/// <returns></returns>
+		List<CustomFieldCategory> GetCustomFieldsCategpries();
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCustomFieldByIdAsync(Int32 id);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		CustomFieldJs GetCustomFieldById(Int32 id);
+
+		/// <param name="takeHiddens"></param>
+		/// <param name="takeCalculHard"></param>
+		/// <param name="getAllCustomField"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCustomFieldsAsync(Boolean takeHiddens,Boolean takeCalculHard,Boolean getAllCustomField);
+
+		/// <param name="takeHiddens"></param>
+		/// <param name="takeCalculHard"></param>
+		/// <param name="getAllCustomField"></param>
+		/// <returns></returns>
+		List<CustomFieldJs> GetCustomFields(Boolean takeHiddens,Boolean takeCalculHard,Boolean getAllCustomField);
+
+		/// <param name="categoryId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteCustomFieldCategoryAsync(Int32 categoryId);
+
+		/// <param name="categoryId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteCustomFieldCategory(Int32 categoryId);
+
+		/// <param name="category"></param>
+		/// <param name="isRessource"></param>
+		/// <param name="isClient"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ReorderFieldsAsync(Int32 category,Boolean isRessource,Boolean isClient,Dictionary<Int32, Int32> toReorder);
+
+		/// <param name="category"></param>
+		/// <param name="isRessource"></param>
+		/// <param name="isClient"></param>
+		/// <returns></returns>
+		UpdateResult ReorderFields(Int32 category,Boolean isRessource,Boolean isClient,Dictionary<Int32, Int32> toReorder);
+
+		/// <param name="fieldId"></param>
+		/// <param name="isRessourceCustom"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteCustomFieldAsync(Int32 fieldId,Boolean isRessourceCustom);
+
+		/// <param name="fieldId"></param>
+		/// <param name="isRessourceCustom"></param>
+		/// <returns></returns>
+		UpdateResult DeleteCustomField(Int32 fieldId,Boolean isRessourceCustom);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCompanyTypesAsync();
+
+		/// <returns></returns>
+		List<ProjectTypeJS> GetCompanyTypes();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> EditCustomFieldAsync(CustomFieldJs field);
+
+		/// <returns></returns>
+		UpdateResultWithId EditCustomField(CustomFieldJs field);
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCustomFieldRessourceByIdAsync(Int32 id);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		CustomFieldJs GetCustomFieldRessourceById(Int32 id);
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCustomFieldClientByIdAsync(Int32 id);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		CustomFieldJs GetCustomFieldClientById(Int32 id);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCompanyTypesWithSubscribtionAsync();
+
+		/// <returns></returns>
+		List<ProjectTypeJS> GetCompanyTypesWithSubscribtion();
 
 
 		/// <returns></returns>
@@ -10480,10 +18438,165 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> AddNewRapportViewAsync(DatesRangeFilteredRequestPagination<UserPreferencesRepportsParam> param);
+
+		/// <returns></returns>
+		UpdateResultWithId AddNewRapportView(DatesRangeFilteredRequestPagination<UserPreferencesRepportsParam> param);
+
+		/// <param name="viewId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteRapportViewAsync(Int32 viewId);
+
+		/// <param name="viewId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteRapportView(Int32 viewId);
+
+		/// <param name="rapportType"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ChangeRepportsOrderAsync(Int32 rapportType,Int32[] newOrder);
+
+		/// <param name="rapportType"></param>
+		/// <returns></returns>
+		UpdateResult ChangeRepportsOrder(Int32 rapportType,Int32[] newOrder);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProjectsByCategorieAsync(DatesRangeFilteredRequest<SearchCriteriaRapports> dates);
+
+		/// <returns></returns>
+		BaseRapport GetProjectsByCategorie(DatesRangeFilteredRequest<SearchCriteriaRapports> dates);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTasksByDirectionAsync(DatesRangeFilteredRequest<SearchCriteriaRapports> dates);
+
+		/// <returns></returns>
+		BaseRapport GetTasksByDirection(DatesRangeFilteredRequest<SearchCriteriaRapports> dates);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetSurveysByProjectAsync(DatesRangeFilteredRequest<SearchCriteriaRapports> dates);
+
+		/// <returns></returns>
+		BaseRapport GetSurveysByProject(DatesRangeFilteredRequest<SearchCriteriaRapports> dates);
+
+		/// <param name="taskId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetTaskCustomByIdAsync(Int32 taskId);
+
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		List<CustomFieldJs> GetTaskCustomById(Int32 taskId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetPossiblesColumnsProjectsAsync();
+
+		/// <returns></returns>
+		List<ColumnInfo> GetPossiblesColumnsProjects();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetPossiblesColumnsRessourcesAsync();
+
+		/// <returns></returns>
+		List<ColumnInfo> GetPossiblesColumnsRessources();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetPossiblesColumnsTasksAsync();
+
+		/// <returns></returns>
+		List<ColumnInfo> GetPossiblesColumnsTasks();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetPossiblesColumnsSurveysAsync();
+
+		/// <returns></returns>
+		List<ColumnInfo> GetPossiblesColumnsSurveys();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteRapportsViewsAsync(List<Int32> viewsIdList);
+
+		/// <returns></returns>
+		UpdateResult DeleteRapportsViews(List<Int32> viewsIdList);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> GetAvailableTasksListAsync(DatesRangeFilteredRequest<Object> param);
 
 		/// <returns></returns>
 		List<TaskFiltre> GetAvailableTasksList(DatesRangeFilteredRequest<Object> param);
+
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateDefaultSortingAsync(Int32 col,Boolean direction);
+
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		UpdateResult UpdateDefaultSorting(Int32 col,Boolean direction);
+
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateDefaultSortingTasksAsync(Int32 col,Boolean direction);
+
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		UpdateResult UpdateDefaultSortingTasks(Int32 col,Boolean direction);
+
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateDefaultSortingSurveysAsync(Int32 col,Boolean direction);
+
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		UpdateResult UpdateDefaultSortingSurveys(Int32 col,Boolean direction);
+
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateDefaultSortingRessourcesAsync(Int32 col,Boolean direction);
+
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		UpdateResult UpdateDefaultSortingRessources(Int32 col,Boolean direction);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetRessourcesByDirectionAsync(DatesRangeFilteredRequest<SearchCriteriaRapports> dates);
+
+		/// <returns></returns>
+		BaseRapport GetRessourcesByDirection(DatesRangeFilteredRequest<SearchCriteriaRapports> dates);
+				
+	}
+	
+	public partial interface IRealTimesClient : IClientBase
+	{	
+
+		/// <param name="projectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ListAsync(Int32 projectId,DatesRangeRequestBase dates);
+
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		List<RealtimeEntry> List(Int32 projectId,DatesRangeRequestBase dates);
 				
 	}
 	
@@ -10506,7 +18619,14 @@ namespace WebApi.Proxies.Interfaces
 		Task<HttpResponseMessage> ResourceBulkUpdateAsync(ResourceBulkUpdate resourceBulkUpdate);
 
 		/// <returns></returns>
-		UpdateResult ResourceBulkUpdate(ResourceBulkUpdate resourceBulkUpdate);
+		UpdateResultMultiMessages ResourceBulkUpdate(ResourceBulkUpdate resourceBulkUpdate);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetPreferencesAsync();
+
+		/// <returns></returns>
+		Object GetPreferences();
 
 
 		/// <returns></returns>
@@ -10514,6 +18634,13 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResultWithId CreateUser(EmployeJS userInfo);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetDefaultAsync();
+
+		/// <returns></returns>
+		EmployeJS GetDefault();
 
 		/// <param name="resourceId"></param>
 
@@ -10576,13 +18703,15 @@ namespace WebApi.Proxies.Interfaces
 		List<CustomFieldPermissionJS> GetCustomFieldsPermissions(Int32 roleId);
 
 		/// <param name="roleId"></param>
+		/// <param name="roleName"></param>
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> SaveCustomFieldsPermissionsAsync(Int32 roleId,List<CustomFieldPermissionJS> customFieldPermissions);
+		Task<HttpResponseMessage> SaveCustomFieldsPermissionsAsync(Int32 roleId,String roleName,List<CustomFieldPermissionJS> customFieldPermissions);
 
 		/// <param name="roleId"></param>
+		/// <param name="roleName"></param>
 		/// <returns></returns>
-		Boolean SaveCustomFieldsPermissions(Int32 roleId,List<CustomFieldPermissionJS> customFieldPermissions);
+		UpdateResult SaveCustomFieldsPermissions(Int32 roleId,String roleName,List<CustomFieldPermissionJS> customFieldPermissions);
 				
 	}
 	
@@ -10652,6 +18781,29 @@ namespace WebApi.Proxies.Interfaces
 				
 	}
 	
+	public partial interface IStatisticsClient : IClientBase
+	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ReportAdBlockAsync();
+
+		/// <returns></returns>
+		void ReportAdBlock();
+
+		/// <param name="events"></param>
+		/// <param name="objects"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> TrackAsync(String events,String objects);
+
+		/// <param name="events"></param>
+		/// <param name="objects"></param>
+		/// <returns></returns>
+		void Track(String events,String objects);
+				
+	}
+	
 	public partial interface ITasksClient : IClientBase
 	{	
 
@@ -10670,10 +18822,65 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> AddNewTaskViewAsync(DatesRangeFilteredRequestPagination<UserPreferencesTasksParam> param);
+
+		/// <returns></returns>
+		UpdateResultWithId AddNewTaskView(DatesRangeFilteredRequestPagination<UserPreferencesTasksParam> param);
+
+		/// <param name="taskViewId">The id of the view we want to share</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ShareTaskViewAsync(Int32 taskViewId);
+
+		/// <param name="taskViewId">The id of the view we want to share</param>
+		/// <returns></returns>
+		UpdateResult ShareTaskView(Int32 taskViewId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateListTasksAsync(RequestSelectedBulkAction data);
+
+		/// <returns></returns>
+		List<UpdateResultWithData<ApiTask>> UpdateListTasks(RequestSelectedBulkAction data);
+
+		/// <param name="taskViewId">The id of the view we want to share</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UnShareTaskViewAsync(Int32 taskViewId);
+
+		/// <param name="taskViewId">The id of the view we want to share</param>
+		/// <returns></returns>
+		UpdateResult UnShareTaskView(Int32 taskViewId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateViewAsync(DatesRangeFilteredRequestPagination<UserPreferencesTasksParam> param);
+
+		/// <returns></returns>
+		UpdateResult UpdateView(DatesRangeFilteredRequestPagination<UserPreferencesTasksParam> param);
+
+		/// <param name="viewId">view id to remove</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteViewAsync(Int32 viewId);
+
+		/// <param name="viewId">view id to remove</param>
+		/// <returns></returns>
+		UpdateResult DeleteView(Int32 viewId);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> CreateTaskAsync(ProjectTaskMinimal toCreate);
 
 		/// <returns></returns>
-		UpdateResultWithId CreateTask(ProjectTaskMinimal toCreate);
+		List<UpdateResultWithData<ApiTask>> CreateTask(ProjectTaskMinimal toCreate);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetCustomFieldsForTaskNoValueAsync();
+
+		/// <returns></returns>
+		List<CustomFieldJs> GetCustomFieldsForTaskNoValue();
 
 		/// <param name="taskId">Id of the task to delete</param>
 
@@ -10686,10 +18893,82 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> DeleteTasksAsync(Int32[] tasksId);
+		Task<HttpResponseMessage> SaveAllStatesAsync(List<TaskState> states);
 
 		/// <returns></returns>
-		UpdateResult DeleteTasks(Int32[] tasksId);
+		UpdateResult SaveAllStates(List<TaskState> states);
+
+		/// <param name="stateId">Id of the state</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteStateAsync(Int32 stateId);
+
+		/// <param name="stateId">Id of the state</param>
+		/// <returns></returns>
+		UpdateResult DeleteState(Int32 stateId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteTasksAsync(List<Int32> tasksId);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess DeleteTasks(List<Int32> tasksId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTaskFilterAsync(RequesTasksFilter requesTasksFilter);
+
+		/// <returns></returns>
+		UpdateResult UpdateTaskFilter(RequesTasksFilter requesTasksFilter);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTaskTodoListAsync(RequesTasksTodo requesTasksTodo);
+
+		/// <returns></returns>
+		UpdateResult UpdateTaskTodoList(RequesTasksTodo requesTasksTodo);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTaskBillingRulesAsync(RequesTasksBillingRules requesTasksBillingRules);
+
+		/// <returns></returns>
+		UpdateResult UpdateTaskBillingRules(RequesTasksBillingRules requesTasksBillingRules);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTaskDefaultDurationAsync(RequesTasksDefaultDuration requesTasksDefaultDuration);
+
+		/// <returns></returns>
+		UpdateResult UpdateTaskDefaultDuration(RequesTasksDefaultDuration requesTasksDefaultDuration);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTaskDeadlineAsync(RequesTasksDeadline requesTasksDeadline);
+
+		/// <returns></returns>
+		UpdateResult UpdateTaskDeadline(RequesTasksDeadline requesTasksDeadline);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTaskDescriptionAsync(RequesTasksDescription requesTasksDescription);
+
+		/// <returns></returns>
+		UpdateResult UpdateTaskDescription(RequesTasksDescription requesTasksDescription);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateBulkTasksAsync(RequesTasksInfosUpdate requesTasksInfosUpdate);
+
+		/// <returns></returns>
+		UpdateResult UpdateBulkTasks(RequesTasksInfosUpdate requesTasksInfosUpdate);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTaskInfoAsync(RequesTasksInfo requestTaskInfo);
+
+		/// <returns></returns>
+		UpdateResult UpdateTaskInfo(RequesTasksInfo requestTaskInfo);
 
 		/// <param name="taskId"></param>
 		/// <param name="parentId"></param>
@@ -10704,16 +18983,54 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <param name="taskId"></param>
 		/// <param name="projectId"></param>
+		/// <param name="isForTaskEmpty"></param>
 		/// <param name="noUnique"></param>
 
 		/// <returns></returns>
-		Task<HttpResponseMessage> GetCustomFieldsForTaskAsync(Int32 taskId,Int32 projectId,Boolean noUnique);
+		Task<HttpResponseMessage> GetCustomFieldsForTaskAsync(Int32 taskId,Int32 projectId,Boolean isForTaskEmpty,Boolean noUnique);
 
 		/// <param name="taskId"></param>
 		/// <param name="projectId"></param>
+		/// <param name="isForTaskEmpty"></param>
 		/// <param name="noUnique"></param>
 		/// <returns></returns>
-		List<CustomFieldJs> GetCustomFieldsForTask(Int32 taskId,Int32 projectId,Boolean noUnique);
+		List<CustomFieldJs> GetCustomFieldsForTask(Int32 taskId,Int32 projectId,Boolean isForTaskEmpty,Boolean noUnique);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddOrUpdateTasksAsync(List<ApiTask> tasks);
+
+		/// <returns></returns>
+		UpdateResult AddOrUpdateTasks(List<ApiTask> tasks);
+
+		/// <param name="projectId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTasksOrderAsync(Int32 projectId,List<Int32[]> orders);
+
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		UpdateResult UpdateTasksOrder(Int32 projectId,List<Int32[]> orders);
+
+		/// <param name="userId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetMyTodayTasksAsync(Int32 userId);
+
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		List<ProjectWithTasks> GetMyTodayTasks(Int32 userId);
+
+		/// <param name="taskId"></param>
+		/// <param name="isEnded"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ToggleEndedAsync(Int32 taskId,Boolean isEnded);
+
+		/// <param name="taskId"></param>
+		/// <param name="isEnded"></param>
+		/// <returns></returns>
+		UpdateResult ToggleEnded(Int32 taskId,Boolean isEnded);
 
 		/// <param name="taskId"></param>
 
@@ -10723,6 +19040,13 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="taskId"></param>
 		/// <returns></returns>
 		Boolean GetIfTaskHavePlanif(Int32 taskId,RequesTasks requestTask);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateListStateTaskAsync(List<TaskState> taskStates);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess UpdateListStateTask(List<TaskState> taskStates);
 
 		/// <param name="taskId"></param>
 		/// <param name="stateId"></param>
@@ -10756,12 +19080,68 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResult UpdateSelectedTasksInfo(RequestSelectedTasks data);
 
-		/// <param name="projectId">Id of the project to delete</param>
+		/// <param name="taskId"></param>
+		/// <param name="comment"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddCommentAsync(Int32 taskId,String comment);
+
+		/// <param name="taskId"></param>
+		/// <param name="comment"></param>
+		/// <returns></returns>
+		UpdateResultWithId AddComment(Int32 taskId,String comment);
+
+		/// <param name="commentId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteCommentAsync(Int32 commentId);
+
+		/// <param name="commentId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteComment(Int32 commentId);
+
+		/// <param name="commentId"></param>
+		/// <param name="newText"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateCommentAsync(Int32 commentId,String newText);
+
+		/// <param name="commentId"></param>
+		/// <param name="newText"></param>
+		/// <returns></returns>
+		UpdateResult UpdateComment(Int32 commentId,String newText);
+
+		/// <param name="taskId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RefreshTaskAsync(Int32 taskId);
+
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		ProjectTask RefreshTask(Int32 taskId);
+
+		/// <param name="taskId">task to duplicate</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DuplicateTaskAsync(Int32 taskId);
+
+		/// <param name="taskId">task to duplicate</param>
+		/// <returns></returns>
+		UpdateResult DuplicateTask(Int32 taskId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DuplicateTasksAsync(List<Int32> tasksId);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess DuplicateTasks(List<Int32> tasksId);
+
+		/// <param name="projectId"></param>
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> GetAllProjectRessourcesAsync(Int32 projectId,RequesTasks dates);
 
-		/// <param name="projectId">Id of the project to delete</param>
+		/// <param name="projectId"></param>
 		/// <returns></returns>
 		List<EmployeJS> GetAllProjectRessources(Int32 projectId,RequesTasks dates);
 
@@ -10795,6 +19175,53 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		UpdateResultWithId CreateTaskState(TaskState taskState);
 
+		/// <param name="projectId"></param>
+		/// <param name="activityId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateTaskFromActicityAsync(Int32 projectId,Guid activityId);
+
+		/// <param name="projectId"></param>
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		UpdateResultWithId CreateTaskFromActicity(Int32 projectId,Guid activityId);
+
+		/// <param name="projectId">Id of the project</param>
+		/// <param name="getBillingInfo">get hour rate</param>
+		/// <param name="putInTreeChild">if the return task should be in a tree structure (childs tasks in childs object of the tasks)</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllTasksAsync(Int32 projectId,Boolean getBillingInfo,Boolean putInTreeChild);
+
+		/// <param name="projectId">Id of the project</param>
+		/// <param name="getBillingInfo">get hour rate</param>
+		/// <param name="putInTreeChild">if the return task should be in a tree structure (childs tasks in childs object of the tasks)</param>
+		/// <returns></returns>
+		List<ProjectTask> GetAllTasks(Int32 projectId,Boolean getBillingInfo,Boolean putInTreeChild);
+
+		/// <param name="projectId">Id of the project</param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateMultipleTasksFromIdsAsync(Int32 projectId,List<Guid> activities);
+
+		/// <param name="projectId">Id of the project</param>
+		/// <returns></returns>
+		UpdateResultWithId CreateMultipleTasksFromIds(Int32 projectId,List<Guid> activities);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ListTasksAsync(DatesRangeFilteredRequest<Object> query);
+
+		/// <returns></returns>
+		List<ProjectTask> ListTasks(DatesRangeFilteredRequest<Object> query);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ListTasksBudgetRateAsync(DatesRangeFilteredRequest<Object> query);
+
+		/// <returns></returns>
+		List<ProjectTask> ListTasksBudgetRate(DatesRangeFilteredRequest<Object> query);
+
 		/// <param name="projectId">Id of the project</param>
 
 		/// <returns></returns>
@@ -10809,12 +19236,37 @@ namespace WebApi.Proxies.Interfaces
 	public partial interface ITimesheetsClient : IClientBase
 	{	
 
+		/// <param name="ressourceId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTimeAsync(Int32 ressourceId,TimehseetBaseLine data);
+
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		UpdateResultWithId UpdateTime(Int32 ressourceId,TimehseetBaseLine data);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTimeExternalAsync(List<TimehseetBaseLine> dataList);
+
+		/// <returns></returns>
+		UpdateResult UpdateTimeExternal(List<TimehseetBaseLine> dataList);
+
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> GetTimesheetAsync(GetTimesheetRequest args);
 
 		/// <returns></returns>
 		TimeSheetReduced GetTimesheet(GetTimesheetRequest args);
+
+		/// <param name="timesheetId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SubmitTimesheetAsync(Int32 timesheetId);
+
+		/// <param name="timesheetId"></param>
+		/// <returns></returns>
+		UpdateResult SubmitTimesheet(Int32 timesheetId);
 
 
 		/// <returns></returns>
@@ -10837,6 +19289,22 @@ namespace WebApi.Proxies.Interfaces
 		/// <returns></returns>
 		NotSubmitedTimesheetsResponse GetUsersNotSubmittedTimesheets(DatesRangeFilteredRequest<TimesheetsValidationUsersRequest> data);
 
+		/// <param name="viewId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteNewTimesheetViewAsync(Int32 viewId);
+
+		/// <param name="viewId"></param>
+		/// <returns></returns>
+		UpdateResult DeleteNewTimesheetView(Int32 viewId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddNewTimesheetViewAsync(DatesRangeFilteredRequestPagination<UserPreferencesTimesheetsParam> param);
+
+		/// <returns></returns>
+		UpdateResultWithId AddNewTimesheetView(DatesRangeFilteredRequestPagination<UserPreferencesTimesheetsParam> param);
+
 
 		/// <returns></returns>
 		Task<HttpResponseMessage> GetSubmitDetailByDateAsync(DatesRangeFilteredRequest<TimesheetsValidationUsersRequest> data);
@@ -10850,6 +19318,33 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResult SendNotifToUserNotSubmit(DatesRangeFilteredRequest<TimesheetsValidationUsersRequest> data);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetPastTimesheetAsync(GetTimesheetRequest args);
+
+		/// <returns></returns>
+		TimeSheetReduced GetPastTimesheet(GetTimesheetRequest args);
+
+		/// <param name="toReject"></param>
+		/// <param name="comment"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> RejectTimeSheetAsync(Int32 toReject,String comment);
+
+		/// <param name="toReject"></param>
+		/// <param name="comment"></param>
+		/// <returns></returns>
+		UpdateResult RejectTimeSheet(Int32 toReject,String comment);
+
+		/// <param name="toVal"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DevalidateTimeSheetAsync(Int32 toVal);
+
+		/// <param name="toVal"></param>
+		/// <returns></returns>
+		UpdateResult DevalidateTimeSheet(Int32 toVal);
 
 
 		/// <returns></returns>
@@ -10916,11 +19411,34 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		List<ListItem> GetProjectsListForUser(DatesRangeRequest<Int32> searchData);
+
+		/// <param name="timesheetId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ValidateTimesheetAsync(Int32 timesheetId,String coment);
+
+		/// <param name="timesheetId"></param>
+		/// <returns></returns>
+		UpdateResult ValidateTimesheet(Int32 timesheetId,String coment);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateTimebankAsync(TimeSheetReduced ts);
+
+		/// <returns></returns>
+		UpdateResultWithId UpdateTimebank(TimeSheetReduced ts);
 				
 	}
 	
 	public partial interface ITranslationsClient : IClientBase
 	{	
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetAllAvalibleTranslationsAsync();
+
+		/// <returns></returns>
+		List<TranslationsData> GetAllAvalibleTranslations();
 
 		/// <param name="pageName"></param>
 		/// <param name="isControl"></param>
@@ -10983,6 +19501,38 @@ namespace WebApi.Proxies.Interfaces
 
 
 		/// <returns></returns>
+		Task<HttpResponseMessage> GetActiveDelegationsRecivedAsync();
+
+		/// <returns></returns>
+		List<DelegationJS> GetActiveDelegationsRecived();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> CreateDelegationAsync(DelegationJS delegation);
+
+		/// <returns></returns>
+		UpdateResultWithId CreateDelegation(DelegationJS delegation);
+
+		/// <param name="id"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteDelegationAsync(Int32 id);
+
+		/// <param name="id"></param>
+		/// <returns></returns>
+		UpdateResult DeleteDelegation(Int32 id);
+
+		/// <param name="newLink"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateStartUpPageAsync(String newLink);
+
+		/// <param name="newLink"></param>
+		/// <returns></returns>
+		UpdateResult UpdateStartUpPage(String newLink);
+
+
+		/// <returns></returns>
 		Task<HttpResponseMessage> GetTimesheetRemindersAsync();
 
 		/// <returns></returns>
@@ -11007,6 +19557,57 @@ namespace WebApi.Proxies.Interfaces
 		/// <param name="ressourceId">optional ressource id</param>
 		/// <returns></returns>
 		UpdateResult DeleteCustomTrigger(Guid nuid,Int32 ressourceId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetActiveDelegationsAsync();
+
+		/// <returns></returns>
+		List<DelegationJS> GetActiveDelegations();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetUsersListForDelegationAsync();
+
+		/// <returns></returns>
+		List<EmployeJS> GetUsersListForDelegation();
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ChangeNameAsync(RessourceStats newInfo);
+
+		/// <returns></returns>
+		UpdateResult ChangeName(RessourceStats newInfo);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ChangePasswordAsync(RessourceStats info);
+
+		/// <returns></returns>
+		UpdateResult ChangePassword(RessourceStats info);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> ResetAllTimePeriodsAsync();
+
+		/// <returns></returns>
+		void ResetAllTimePeriods();
+
+		/// <param name="ressourceId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetProfileFilesAsync(Int32 ressourceId);
+
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		List<UploadedFile> GetProfileFiles(Int32 ressourceId);
+
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> SaveProfileAsync(ProfileUser profile);
+
+		/// <returns></returns>
+		UpdateResultMultiErrorSuccess SaveProfile(ProfileUser profile);
 
 		/// <param name="ressourceId">USer to add notification to. (Optional)</param>
 
@@ -11065,6 +19666,46 @@ namespace WebApi.Proxies.Interfaces
 
 		/// <returns></returns>
 		UpdateResult UpdateWebHooks(List<ActiveBeeyeWebHook> activeHooks);
+
+		/// <param name="companyId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> GetSystemWebHooksAsync(Nullable<Int32> companyId);
+
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		List<ActiveBeeyeWebHook> GetSystemWebHooks(Nullable<Int32> companyId);
+
+		/// <param name="id"></param>
+		/// <param name="companyId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> UpdateSystemWebHookAsync(Guid id,Nullable<Int32> companyId,ActiveBeeyeWebHook webHookUpdate);
+
+		/// <param name="id"></param>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		ActiveBeeyeWebHook UpdateSystemWebHook(Guid id,Nullable<Int32> companyId,ActiveBeeyeWebHook webHookUpdate);
+
+		/// <param name="id"></param>
+		/// <param name="companyId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> DeleteSystemWebHookAsync(Guid id,Nullable<Int32> companyId);
+
+		/// <param name="id"></param>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		void DeleteSystemWebHook(Guid id,Nullable<Int32> companyId);
+
+		/// <param name="companyId"></param>
+
+		/// <returns></returns>
+		Task<HttpResponseMessage> AddSystemWebHookAsync(Nullable<Int32> companyId,ActiveBeeyeWebHook beeyeWebHook);
+
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		ActiveBeeyeWebHook AddSystemWebHook(Nullable<Int32> companyId,ActiveBeeyeWebHook beeyeWebHook);
 				
 	}
 
@@ -11179,6 +19820,10 @@ namespace WebApi.Proxies.Clients
 	/// </summary>
 	public partial class WebApiClients
 	{
+		public ActivitiesClient Activities { get; private set; }
+		public ActivityFamiliesClient ActivityFamilies { get; private set; }
+		public ActivityScenariosClient ActivityScenarios { get; private set; }
+		public ApiRawDataClient ApiRawData { get; private set; }
 		public BeeyeAIClient BeeyeAI { get; private set; }
 		public BillingClient Billing { get; private set; }
 		public ClientsManagmentClient ClientsManagment { get; private set; }
@@ -11192,24 +19837,32 @@ namespace WebApi.Proxies.Clients
 		public ExpensesClient Expenses { get; private set; }
 		public ExportsClient Exports { get; private set; }
 		public FastPlanningClient FastPlanning { get; private set; }
+		public FeesClient Fees { get; private set; }
+		public FormClient Form { get; private set; }
 		public HelperWebClient HelperWeb { get; private set; }
 		public HumanRessourcesClient HumanRessources { get; private set; }
+		public ImportsClient Imports { get; private set; }
 		public IntegrationsClient Integrations { get; private set; }
 		public InvoicesClient Invoices { get; private set; }
 		public KpiClient Kpi { get; private set; }
 		public LoginClient Login { get; private set; }
+		public MobileAuthClient MobileAuth { get; private set; }
+		public NotificationClient Notification { get; private set; }
 		public PlanningClient Planning { get; private set; }
 		public PlanningByTasksClient PlanningByTasks { get; private set; }
 		public ProfileImageClient ProfileImage { get; private set; }
 		public ProjectManagementClient ProjectManagement { get; private set; }
 		public ProjectStatesClient ProjectStates { get; private set; }
+		public ProjectSurveyClient ProjectSurvey { get; private set; }
 		public ProjectTemplateClient ProjectTemplate { get; private set; }
 		public ProjectTypeClient ProjectType { get; private set; }
 		public RapportsClient Rapports { get; private set; }
+		public RealTimesClient RealTimes { get; private set; }
 		public RessourceClient Ressource { get; private set; }
 		public RolesManagementClient RolesManagement { get; private set; }
 		public SearchClient Search { get; private set; }
 		public SignupClient Signup { get; private set; }
+		public StatisticsClient Statistics { get; private set; }
 		public TasksClient Tasks { get; private set; }
 		public TimesheetsClient Timesheets { get; private set; }
 		public TranslationsClient Translations { get; private set; }
@@ -11220,6 +19873,10 @@ namespace WebApi.Proxies.Clients
         {
             get
             {
+				yield return Activities;
+				yield return ActivityFamilies;
+				yield return ActivityScenarios;
+				yield return ApiRawData;
 				yield return BeeyeAI;
 				yield return Billing;
 				yield return ClientsManagment;
@@ -11233,24 +19890,32 @@ namespace WebApi.Proxies.Clients
 				yield return Expenses;
 				yield return Exports;
 				yield return FastPlanning;
+				yield return Fees;
+				yield return Form;
 				yield return HelperWeb;
 				yield return HumanRessources;
+				yield return Imports;
 				yield return Integrations;
 				yield return Invoices;
 				yield return Kpi;
 				yield return Login;
+				yield return MobileAuth;
+				yield return Notification;
 				yield return Planning;
 				yield return PlanningByTasks;
 				yield return ProfileImage;
 				yield return ProjectManagement;
 				yield return ProjectStates;
+				yield return ProjectSurvey;
 				yield return ProjectTemplate;
 				yield return ProjectType;
 				yield return Rapports;
+				yield return RealTimes;
 				yield return Ressource;
 				yield return RolesManagement;
 				yield return Search;
 				yield return Signup;
+				yield return Statistics;
 				yield return Tasks;
 				yield return Timesheets;
 				yield return Translations;
@@ -11264,6 +19929,10 @@ namespace WebApi.Proxies.Clients
             if (baseAddress != null)
                 Configuration.MyWebApiProxyBaseAddress = baseAddress.AbsoluteUri;
 
+			Activities = new ActivitiesClient();
+			ActivityFamilies = new ActivityFamiliesClient();
+			ActivityScenarios = new ActivityScenariosClient();
+			ApiRawData = new ApiRawDataClient();
 			BeeyeAI = new BeeyeAIClient();
 			Billing = new BillingClient();
 			ClientsManagment = new ClientsManagmentClient();
@@ -11277,24 +19946,32 @@ namespace WebApi.Proxies.Clients
 			Expenses = new ExpensesClient();
 			Exports = new ExportsClient();
 			FastPlanning = new FastPlanningClient();
+			Fees = new FeesClient();
+			Form = new FormClient();
 			HelperWeb = new HelperWebClient();
 			HumanRessources = new HumanRessourcesClient();
+			Imports = new ImportsClient();
 			Integrations = new IntegrationsClient();
 			Invoices = new InvoicesClient();
 			Kpi = new KpiClient();
 			Login = new LoginClient();
+			MobileAuth = new MobileAuthClient();
+			Notification = new NotificationClient();
 			Planning = new PlanningClient();
 			PlanningByTasks = new PlanningByTasksClient();
 			ProfileImage = new ProfileImageClient();
 			ProjectManagement = new ProjectManagementClient();
 			ProjectStates = new ProjectStatesClient();
+			ProjectSurvey = new ProjectSurveyClient();
 			ProjectTemplate = new ProjectTemplateClient();
 			ProjectType = new ProjectTypeClient();
 			Rapports = new RapportsClient();
+			RealTimes = new RealTimesClient();
 			Ressource = new RessourceClient();
 			RolesManagement = new RolesManagementClient();
 			Search = new SearchClient();
 			Signup = new SignupClient();
+			Statistics = new StatisticsClient();
 			Tasks = new TasksClient();
 			Timesheets = new TimesheetsClient();
 			Translations = new TranslationsClient();
@@ -11329,6 +20006,798 @@ namespace WebApi.Proxies.Clients
 		}
 	}
 
+	/// <summary>
+	/// Manages company activities
+		/// An activity can be imported as a task on any project in a company.
+	/// </summary>
+	public partial class ActivitiesClient : ClientBase, Interfaces.IActivitiesClient
+	{		
+
+		/// <summary>
+		/// Manages company activities
+		/// An activity can be imported as a task on any project in a company.
+		/// </summary>
+		public ActivitiesClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// Manages company activities
+		/// An activity can be imported as a task on any project in a company.
+		/// </summary>
+		public ActivitiesClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// Adds or updates a list of activities
+		/// </summary>
+		/// <param name="activities"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddOrUpdateMultipleActivitiesAsyncMsg(List<ApiActivity> activities)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiActivity>>("multiples", activities);
+		}
+
+		/// <summary>
+		/// Adds or updates a list of activities
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddOrUpdateMultipleActivitiesAsync(List<ApiActivity> activities)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiActivity>>("multiples", activities);
+		}
+
+		/// <summary>
+		/// Adds or updates a list of activities
+		/// </summary>
+		public virtual UpdateResultWithId AddOrUpdateMultipleActivities(List<ApiActivity> activities)
+		{
+			var result = Task.Run(() => AddOrUpdateMultipleActivitiesAsyncMsg(activities)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns a list of activities
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetListAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/activities");
+		}
+
+		/// <summary>
+		/// Returns a list of activities
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetListAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/activities");
+		}
+
+		/// <summary>
+		/// Returns a list of activities
+		/// </summary>
+		public virtual List<ApiActivity> GetList()
+		{
+			var result = Task.Run(() => GetListAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ApiActivity>>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns ONE activity by Id
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetOneAsyncMsg(Guid activityId)
+		{
+			return await HttpClient.GetAsync("api/v1/activities?activityId=" + activityId);
+		}
+
+		/// <summary>
+		/// Returns ONE activity by Id
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetOneAsync(Guid activityId)
+		{
+			return await HttpClient.GetAsync("api/v1/activities?activityId=" + activityId);
+		}
+
+		/// <summary>
+		/// Returns ONE activity by Id
+		/// </summary>
+		/// <param name="activityId"></param>
+		public virtual ApiActivity GetOne(Guid activityId)
+		{
+			var result = Task.Run(() => GetOneAsyncMsg(activityId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ApiActivity>().Result;
+			 		}
+
+		/// <summary>
+		/// Adds or updates an activity
+		/// </summary>
+		/// <param name="activity"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddOrUpdateActivityAsyncMsg(ApiActivity activity)
+		{
+			return await HttpClient.PostAsJsonAsync<ApiActivity>("api/v1/activities", activity);
+		}
+
+		/// <summary>
+		/// Adds or updates an activity
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddOrUpdateActivityAsync(ApiActivity activity)
+		{
+			return await HttpClient.PostAsJsonAsync<ApiActivity>("api/v1/activities", activity);
+		}
+
+		/// <summary>
+		/// Adds or updates an activity
+		/// </summary>
+		public virtual UpdateResultWithId AddOrUpdateActivity(ApiActivity activity)
+		{
+			var result = Task.Run(() => AddOrUpdateActivityAsyncMsg(activity)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Deletes one activity by Id
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteActivityAsyncMsg(Guid activityId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/activities?activityId=" + activityId);
+		}
+
+		/// <summary>
+		/// Deletes one activity by Id
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteActivityAsync(Guid activityId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/activities?activityId=" + activityId);
+		}
+
+		/// <summary>
+		/// Deletes one activity by Id
+		/// </summary>
+		/// <param name="activityId"></param>
+		public virtual UpdateResult DeleteActivity(Guid activityId)
+		{
+			var result = Task.Run(() => DeleteActivityAsyncMsg(activityId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// Aloows managment of activity famillies
+	/// </summary>
+	public partial class ActivityFamiliesClient : ClientBase, Interfaces.IActivityFamiliesClient
+	{		
+
+		/// <summary>
+		/// Aloows managment of activity famillies
+		/// </summary>
+		public ActivityFamiliesClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// Aloows managment of activity famillies
+		/// </summary>
+		public ActivityFamiliesClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// Returns a list of all activity families 
+		/// Does not include activities
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetListAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/activityFamily");
+		}
+
+		/// <summary>
+		/// Returns a list of all activity families 
+		/// Does not include activities
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetListAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/activityFamily");
+		}
+
+		/// <summary>
+		/// Returns a list of all activity families 
+		/// Does not include activities
+		/// </summary>
+		public virtual List<ApiActivityFamily> GetList()
+		{
+			var result = Task.Run(() => GetListAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ApiActivityFamily>>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns a list of all activity famillies 
+		/// Include activities
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetListWithActivitiesAsyncMsg()
+		{
+			return await HttpClient.GetAsync("withActivities");
+		}
+
+		/// <summary>
+		/// Returns a list of all activity famillies 
+		/// Include activities
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetListWithActivitiesAsync()
+		{
+			return await HttpClient.GetAsync("withActivities");
+		}
+
+		/// <summary>
+		/// Returns a list of all activity famillies 
+		/// Include activities
+		/// </summary>
+		public virtual List<ApiActivityFamily> GetListWithActivities()
+		{
+			var result = Task.Run(() => GetListWithActivitiesAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ApiActivityFamily>>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns a list of all activity famillies 
+		/// Include activities
+		/// Excluded activcities already presents in a given project
+		/// retrun nothing when you dont have the access to add task to a project to a famillies
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetListWithActivitiesByProjectidAsyncMsg(Int32 projectId)
+		{
+			return await HttpClient.GetAsync("withActivities/" + projectId);
+		}
+
+		/// <summary>
+		/// Returns a list of all activity famillies 
+		/// Include activities
+		/// Excluded activcities already presents in a given project
+		/// retrun nothing when you dont have the access to add task to a project to a famillies
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetListWithActivitiesByProjectidAsync(Int32 projectId)
+		{
+			return await HttpClient.GetAsync("withActivities/" + projectId);
+		}
+
+		/// <summary>
+		/// Returns a list of all activity famillies 
+		/// Include activities
+		/// Excluded activcities already presents in a given project
+		/// retrun nothing when you dont have the access to add task to a project to a famillies
+		/// </summary>
+		/// <param name="projectId"></param>
+		public virtual List<ApiActivityFamily> GetListWithActivitiesByProjectid(Int32 projectId)
+		{
+			var result = Task.Run(() => GetListWithActivitiesByProjectidAsyncMsg(projectId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ApiActivityFamily>>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns an activity family 
+		/// Include activities
+		/// </summary>
+		/// <param name="familyId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetListWithActivitiesByfamilyIdAsyncMsg(Guid familyId)
+		{
+			return await HttpClient.GetAsync("familyWithActivities/" + familyId);
+		}
+
+		/// <summary>
+		/// Returns an activity family 
+		/// Include activities
+		/// </summary>
+		/// <param name="familyId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetListWithActivitiesByfamilyIdAsync(Guid familyId)
+		{
+			return await HttpClient.GetAsync("familyWithActivities/" + familyId);
+		}
+
+		/// <summary>
+		/// Returns an activity family 
+		/// Include activities
+		/// </summary>
+		/// <param name="familyId"></param>
+		public virtual ApiActivityFamily GetListWithActivitiesByfamilyId(Guid familyId)
+		{
+			var result = Task.Run(() => GetListWithActivitiesByfamilyIdAsyncMsg(familyId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ApiActivityFamily>().Result;
+			 		}
+
+		/// <summary>
+		/// Insert or update multiple activity families.
+		/// </summary>
+		/// <param name="apiActivityFamilies"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddOrEditFamiliesAsyncMsg(List<ApiActivityFamily> apiActivityFamilies)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiActivityFamily>>("multiple", apiActivityFamilies);
+		}
+
+		/// <summary>
+		/// Insert or update multiple activity families.
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddOrEditFamiliesAsync(List<ApiActivityFamily> apiActivityFamilies)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiActivityFamily>>("multiple", apiActivityFamilies);
+		}
+
+		/// <summary>
+		/// Insert or update multiple activity families.
+		/// </summary>
+		public virtual UpdateResultWithId AddOrEditFamilies(List<ApiActivityFamily> apiActivityFamilies)
+		{
+			var result = Task.Run(() => AddOrEditFamiliesAsyncMsg(apiActivityFamilies)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns one activity familly matching provided Id
+		/// </summary>
+		/// <param name="activityFamilyId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetListByActivityfamilyidAsyncMsg(Guid activityFamilyId)
+		{
+			return await HttpClient.GetAsync("api/ActivityFamilies?activityFamilyId=" + activityFamilyId);
+		}
+
+		/// <summary>
+		/// Returns one activity familly matching provided Id
+		/// </summary>
+		/// <param name="activityFamilyId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetListByActivityfamilyidAsync(Guid activityFamilyId)
+		{
+			return await HttpClient.GetAsync("api/ActivityFamilies?activityFamilyId=" + activityFamilyId);
+		}
+
+		/// <summary>
+		/// Returns one activity familly matching provided Id
+		/// </summary>
+		/// <param name="activityFamilyId"></param>
+		public virtual ApiActivityFamily GetListByActivityfamilyid(Guid activityFamilyId)
+		{
+			var result = Task.Run(() => GetListByActivityfamilyidAsyncMsg(activityFamilyId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ApiActivityFamily>().Result;
+			 		}
+
+		/// <summary>
+		/// Creates a new activity family
+		/// If the list of activities is provided, they will be automaticlly added
+		/// </summary>
+		/// <param name="apiActivityFamily"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddFamilyAsyncMsg(ApiActivityFamily apiActivityFamily)
+		{
+			return await HttpClient.PostAsJsonAsync<ApiActivityFamily>("api/ActivityFamilies", apiActivityFamily);
+		}
+
+		/// <summary>
+		/// Creates a new activity family
+		/// If the list of activities is provided, they will be automaticlly added
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddFamilyAsync(ApiActivityFamily apiActivityFamily)
+		{
+			return await HttpClient.PostAsJsonAsync<ApiActivityFamily>("api/ActivityFamilies", apiActivityFamily);
+		}
+
+		/// <summary>
+		/// Creates a new activity family
+		/// If the list of activities is provided, they will be automaticlly added
+		/// </summary>
+		public virtual UpdateResultWithId AddFamily(ApiActivityFamily apiActivityFamily)
+		{
+			var result = Task.Run(() => AddFamilyAsyncMsg(apiActivityFamily)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="apiActivityFamily"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateActivityFamilyAsyncMsg(Guid id,ApiActivityFamily apiActivityFamily)
+		{
+			return await HttpClient.PutAsJsonAsync<ApiActivityFamily>("api/ActivityFamilies/" + id, apiActivityFamily);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateActivityFamilyAsync(Guid id,ApiActivityFamily apiActivityFamily)
+		{
+			return await HttpClient.PutAsJsonAsync<ApiActivityFamily>("api/ActivityFamilies/" + id, apiActivityFamily);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual UpdateResult UpdateActivityFamily(Guid id,ApiActivityFamily apiActivityFamily)
+		{
+			var result = Task.Run(() => UpdateActivityFamilyAsyncMsg(id, apiActivityFamily)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Deletes a family with all activities
+		/// </summary>
+		/// <param name="familyGuid"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteActivityFamilyAsyncMsg(Guid familyGuid)
+		{
+			return await HttpClient.DeleteAsync("api/ActivityFamilies?familyGuid=" + familyGuid);
+		}
+
+		/// <summary>
+		/// Deletes a family with all activities
+		/// </summary>
+		/// <param name="familyGuid"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteActivityFamilyAsync(Guid familyGuid)
+		{
+			return await HttpClient.DeleteAsync("api/ActivityFamilies?familyGuid=" + familyGuid);
+		}
+
+		/// <summary>
+		/// Deletes a family with all activities
+		/// </summary>
+		/// <param name="familyGuid"></param>
+		public virtual UpdateResult DeleteActivityFamily(Guid familyGuid)
+		{
+			var result = Task.Run(() => DeleteActivityFamilyAsyncMsg(familyGuid)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update the activity order display
+		/// </summary>
+		/// <param name="familyGuid"></param>
+		/// <param name="orders"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateActivityOrderAsyncMsg(Guid familyGuid,List<Guid> orders)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Guid>>("api/ActivityFamilies?familyGuid=" + familyGuid, orders);
+		}
+
+		/// <summary>
+		/// Update the activity order display
+		/// </summary>
+		/// <param name="familyGuid"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateActivityOrderAsync(Guid familyGuid,List<Guid> orders)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Guid>>("api/ActivityFamilies?familyGuid=" + familyGuid, orders);
+		}
+
+		/// <summary>
+		/// Update the activity order display
+		/// </summary>
+		/// <param name="familyGuid"></param>
+		public virtual UpdateResult UpdateActivityOrder(Guid familyGuid,List<Guid> orders)
+		{
+			var result = Task.Run(() => UpdateActivityOrderAsyncMsg(familyGuid, orders)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ActivityScenariosClient : ClientBase, Interfaces.IActivityScenariosClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ActivityScenariosClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ActivityScenariosClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ListAsyncMsg(Guid activityId)
+		{
+			return await HttpClient.GetAsync("api/v1/activities/" + activityId + "/scenarios");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ListAsync(Guid activityId)
+		{
+			return await HttpClient.GetAsync("api/v1/activities/" + activityId + "/scenarios");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		public virtual List<ActivityScenario> List(Guid activityId)
+		{
+			var result = Task.Run(() => ListAsyncMsg(activityId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ActivityScenario>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <param name="activityScenario"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> InsertAsyncMsg(Guid activityId,ActivityScenario activityScenario)
+		{
+			return await HttpClient.PostAsJsonAsync<ActivityScenario>("api/v1/activities/" + activityId + "/scenarios", activityScenario);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> InsertAsync(Guid activityId,ActivityScenario activityScenario)
+		{
+			return await HttpClient.PostAsJsonAsync<ActivityScenario>("api/v1/activities/" + activityId + "/scenarios", activityScenario);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		public virtual ActivityScenario Insert(Guid activityId,ActivityScenario activityScenario)
+		{
+			var result = Task.Run(() => InsertAsyncMsg(activityId, activityScenario)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ActivityScenario>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <param name="activityScenarioId"></param>
+		/// <param name="activityScenario"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateAsyncMsg(Guid activityId,Guid activityScenarioId,ActivityScenario activityScenario)
+		{
+			return await HttpClient.PutAsJsonAsync<ActivityScenario>("api/v1/activities/" + activityId + "/scenarios/" + activityScenarioId, activityScenario);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <param name="activityScenarioId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateAsync(Guid activityId,Guid activityScenarioId,ActivityScenario activityScenario)
+		{
+			return await HttpClient.PutAsJsonAsync<ActivityScenario>("api/v1/activities/" + activityId + "/scenarios/" + activityScenarioId, activityScenario);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <param name="activityScenarioId"></param>
+		public virtual ActivityScenario Update(Guid activityId,Guid activityScenarioId,ActivityScenario activityScenario)
+		{
+			var result = Task.Run(() => UpdateAsyncMsg(activityId, activityScenarioId, activityScenario)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ActivityScenario>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <param name="activityScenarioId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteAsyncMsg(Guid activityId,Guid activityScenarioId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/activities/" + activityId + "/scenarios/" + activityScenarioId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <param name="activityScenarioId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteAsync(Guid activityId,Guid activityScenarioId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/activities/" + activityId + "/scenarios/" + activityScenarioId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="activityId"></param>
+		/// <param name="activityScenarioId"></param>
+		public virtual ActivityScenario Delete(Guid activityId,Guid activityScenarioId)
+		{
+			var result = Task.Run(() => DeleteAsyncMsg(activityId, activityScenarioId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ActivityScenario>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// Controller for getting raw data.
+		/// no checks are performed, except autentification and acess level
+		/// Only basic filtering is supported
+		/// Only users with following requirement can use it :
+		/// Company view,
+		/// Acess to project managment for projects
+		/// Full planification acess for plannings
+		/// Full timesheet acess for real times
+	/// </summary>
+	public partial class ApiRawDataClient : ClientBase, Interfaces.IApiRawDataClient
+	{		
+
+		/// <summary>
+		/// Controller for getting raw data.
+		/// no checks are performed, except autentification and acess level
+		/// Only basic filtering is supported
+		/// Only users with following requirement can use it :
+		/// Company view,
+		/// Acess to project managment for projects
+		/// Full planification acess for plannings
+		/// Full timesheet acess for real times
+		/// </summary>
+		public ApiRawDataClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// Controller for getting raw data.
+		/// no checks are performed, except autentification and acess level
+		/// Only basic filtering is supported
+		/// Only users with following requirement can use it :
+		/// Company view,
+		/// Acess to project managment for projects
+		/// Full planification acess for plannings
+		/// Full timesheet acess for real times
+		/// </summary>
+		public ApiRawDataClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// Only considers task plannings
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllPlanningsAsyncMsg(DatesRangeRequest<Object> data)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Object>>("api/v1/rawData/plannings", data);
+		}
+
+		/// <summary>
+		/// Only considers task plannings
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllPlanningsAsync(DatesRangeRequest<Object> data)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Object>>("api/v1/rawData/plannings", data);
+		}
+
+		/// <summary>
+		/// Only considers task plannings
+		/// </summary>
+		public virtual List<PlanningTimeLine> GetAllPlannings(DatesRangeRequest<Object> data)
+		{
+			var result = Task.Run(() => GetAllPlanningsAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<PlanningTimeLine>>().Result;
+			 		}
+
+		#endregion
+	}
 	/// <summary>
 	/// 
 	/// </summary>
@@ -11437,6 +20906,37 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Change Address
+		/// </summary>
+		/// <param name="adresssInfo"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ChangeAddressAsyncMsg(InvoiceDetails adresssInfo)
+		{
+			return await HttpClient.PostAsJsonAsync<InvoiceDetails>("api/v1/billing/changeAddress", adresssInfo);
+		}
+
+		/// <summary>
+		/// Change Address
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ChangeAddressAsync(InvoiceDetails adresssInfo)
+		{
+			return await HttpClient.PostAsJsonAsync<InvoiceDetails>("api/v1/billing/changeAddress", adresssInfo);
+		}
+
+		/// <summary>
+		/// Change Address
+		/// </summary>
+		public virtual UpdateResult ChangeAddress(InvoiceDetails adresssInfo)
+		{
+			var result = Task.Run(() => ChangeAddressAsyncMsg(adresssInfo)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
 		/// Adds addon for user
 		/// </summary>
 		/// <param name="addon"></param>
@@ -11534,39 +21034,6 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="planId"></param>
-		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> EstimateAsyncMsg(String planId)
-		{
-			return await HttpClient.GetAsync("api/v1/billing/estimate/" + planId);
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="planId"></param>
-		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> EstimateAsync(String planId)
-		{
-			return await HttpClient.GetAsync("api/v1/billing/estimate/" + planId);
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="planId"></param>
-		public virtual UpdateResult Estimate(String planId)
-		{
-			var result = Task.Run(() => EstimateAsyncMsg(planId)).Result;		 
-			 
-			EnsureSuccess(result);
-			 			 
-			return result.Content.ReadAsAsync<UpdateResult>().Result;
-			 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
 		/// <param name="addon"></param>
 		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> RemoveAddonAsyncMsg(ChargeBeeAddon addon)
@@ -11626,7 +21093,7 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// 
+		/// Changes user's credit card information
 		/// </summary>
 		/// <param name="card"></param>
 		/// <returns></returns>
@@ -11636,7 +21103,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// Changes user's credit card information
 		/// </summary>
 		/// <returns></returns>
 		public virtual async Task<HttpResponseMessage> AddCreditCardAsync(CreditCardInfo card)
@@ -11645,7 +21112,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// Changes user's credit card information
 		/// </summary>
 		public virtual UpdateResult AddCreditCard(CreditCardInfo card)
 		{
@@ -11711,32 +21178,165 @@ namespace WebApi.Proxies.Clients
 		#region Methods
 
 		/// <summary>
-		/// Used to get the list of all clients with all relative data.
-		/// If user doesn't have complete licence, only names are returned
+		/// 
+		/// </summary>
+		/// <param name="clientId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UploadClientDocumentAsyncMsg(Int32 clientId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/clients/UploadClientDocument/" + clientId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="clientId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UploadClientDocumentAsync(Int32 clientId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/clients/UploadClientDocument/" + clientId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="clientId"></param>
+		public virtual UpdateResultWithId UploadClientDocument(Int32 clientId)
+		{
+			var result = Task.Run(() => UploadClientDocumentAsyncMsg(clientId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="clientId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetDocumentsForClientAsyncMsg(Int32 clientId)
+		{
+			return await HttpClient.GetAsync("api/v1/clients/files/" + clientId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="clientId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetDocumentsForClientAsync(Int32 clientId)
+		{
+			return await HttpClient.GetAsync("api/v1/clients/files/" + clientId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="clientId"></param>
+		public virtual List<UploadedFile> GetDocumentsForClient(Int32 clientId)
+		{
+			var result = Task.Run(() => GetDocumentsForClientAsyncMsg(clientId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<UploadedFile>>().Result;
+			 		}
+
+		/// <summary>
+		/// Reactive archived client
+		/// </summary>
+		/// <param name="clientId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ReactivateClientAsyncMsg(Int32 clientId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/clients/Reactivate/" + clientId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Reactive archived client
+		/// </summary>
+		/// <param name="clientId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ReactivateClientAsync(Int32 clientId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/clients/Reactivate/" + clientId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Reactive archived client
+		/// </summary>
+		/// <param name="clientId"></param>
+		public virtual UpdateResult ReactivateClient(Int32 clientId)
+		{
+			var result = Task.Run(() => ReactivateClientAsyncMsg(clientId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get list of client with filter
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetClientsListFilterAsyncMsg(DatesRangeFilteredRequest<Boolean> data)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Boolean>>("api/v1/clients/GetClientsListFilter", data);
+		}
+
+		/// <summary>
+		/// Get list of client with filter
 		/// </summary>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetClientsListAsyncMsg()
+		public virtual async Task<HttpResponseMessage> GetClientsListFilterAsync(DatesRangeFilteredRequest<Boolean> data)
 		{
-			return await HttpClient.GetAsync("api/v1/clients/GetClientsList");
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Boolean>>("api/v1/clients/GetClientsListFilter", data);
+		}
+
+		/// <summary>
+		/// Get list of client with filter
+		/// </summary>
+		public virtual List<Client> GetClientsListFilter(DatesRangeFilteredRequest<Boolean> data)
+		{
+			var result = Task.Run(() => GetClientsListFilterAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<Client>>().Result;
+			 		}
+
+		/// <summary>
+		/// Used to get the list of all clients with all relative data.
+		/// If user doesn't have complete license, only names are returned
+		/// </summary>
+		/// <param name="takeDeleted">Display archived clients</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetClientsListAsyncMsg(Boolean takeDeleted)
+		{
+			return await HttpClient.GetAsync("api/v1/clients/GetClientsList/" + takeDeleted);
 		}
 
 		/// <summary>
 		/// Used to get the list of all clients with all relative data.
-		/// If user doesn't have complete licence, only names are returned
+		/// If user doesn't have complete license, only names are returned
 		/// </summary>
+		/// <param name="takeDeleted">Display archived clients</param>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetClientsListAsync()
+		public virtual async Task<HttpResponseMessage> GetClientsListAsync(Boolean takeDeleted)
 		{
-			return await HttpClient.GetAsync("api/v1/clients/GetClientsList");
+			return await HttpClient.GetAsync("api/v1/clients/GetClientsList/" + takeDeleted);
 		}
 
 		/// <summary>
 		/// Used to get the list of all clients with all relative data.
-		/// If user doesn't have complete licence, only names are returned
+		/// If user doesn't have complete license, only names are returned
 		/// </summary>
-		public virtual List<Client> GetClientsList()
+		/// <param name="takeDeleted">Display archived clients</param>
+		public virtual List<Client> GetClientsList(Boolean takeDeleted)
 		{
-			var result = Task.Run(() => GetClientsListAsyncMsg()).Result;		 
+			var result = Task.Run(() => GetClientsListAsyncMsg(takeDeleted)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -11808,6 +21408,37 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Update list of clients information
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateListClientAsyncMsg(RequestSelectedBulkAction data)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestSelectedBulkAction>("api/v1/clients/UpdateListClient", data);
+		}
+
+		/// <summary>
+		/// Update list of clients information
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateListClientAsync(RequestSelectedBulkAction data)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestSelectedBulkAction>("api/v1/clients/UpdateListClient", data);
+		}
+
+		/// <summary>
+		/// Update list of clients information
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess UpdateListClient(RequestSelectedBulkAction data)
+		{
+			var result = Task.Run(() => UpdateListClientAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
 		/// Update information on one client
 		/// </summary>
 		/// <param name="id"></param>
@@ -11863,9 +21494,104 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// Delete multiple clients
 		/// </summary>
-		public virtual UpdateResult DeleteMultipleClients(Int32[] ids)
+		public virtual UpdateResultMultiErrorSuccess DeleteMultipleClients(Int32[] ids)
 		{
 			var result = Task.Run(() => DeleteMultipleClientsAsyncMsg(ids)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
+		/// Archive multiple clients
+		/// </summary>
+		/// <param name="ids"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ArchiveMultipleClientsAsyncMsg(Int32[] ids)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("api/v1/clients/ArchiveMultipleClients", ids);
+		}
+
+		/// <summary>
+		/// Archive multiple clients
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ArchiveMultipleClientsAsync(Int32[] ids)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("api/v1/clients/ArchiveMultipleClients", ids);
+		}
+
+		/// <summary>
+		/// Archive multiple clients
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess ArchiveMultipleClients(Int32[] ids)
+		{
+			var result = Task.Run(() => ArchiveMultipleClientsAsyncMsg(ids)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
+		/// Unarchive multiple clients
+		/// </summary>
+		/// <param name="ids"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ReactivateMultipleClientsAsyncMsg(Int32[] ids)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("api/v1/clients/ReactivateMultipleClients", ids);
+		}
+
+		/// <summary>
+		/// Unarchive multiple clients
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ReactivateMultipleClientsAsync(Int32[] ids)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("api/v1/clients/ReactivateMultipleClients", ids);
+		}
+
+		/// <summary>
+		/// Unarchive multiple clients
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess ReactivateMultipleClients(Int32[] ids)
+		{
+			var result = Task.Run(() => ReactivateMultipleClientsAsyncMsg(ids)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
+		/// Archiving one client
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ArchiveClientAsyncMsg(Int32 id)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/clients/ArchiveClient?id=" + id, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Archiving one client
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ArchiveClientAsync(Int32 id)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/clients/ArchiveClient?id=" + id, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Archiving one client
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual UpdateResult ArchiveClient(Int32 id)
+		{
+			var result = Task.Run(() => ArchiveClientAsyncMsg(id)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -11903,6 +21629,104 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Insert or update a list of clients
+		/// </summary>
+		/// <param name="clients">List of clients to insert or update</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> InsertOrUpdateOldAsyncMsg(List<ApiClient> clients)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiClient>>("api/v1/clients/insertOrUpdate", clients);
+		}
+
+		/// <summary>
+		/// Insert or update a list of clients
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> InsertOrUpdateOldAsync(List<ApiClient> clients)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiClient>>("api/v1/clients/insertOrUpdate", clients);
+		}
+
+		/// <summary>
+		/// Insert or update a list of clients
+		/// </summary>
+		public virtual UpdateResultWithId InsertOrUpdateOld(List<ApiClient> clients)
+		{
+			var result = Task.Run(() => InsertOrUpdateOldAsyncMsg(clients)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Insert or update a list of clients
+		/// </summary>
+		/// <param name="clients">List of clients to insert or update</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> InsertOrUpdateAsyncMsg(List<ApiClient> clients)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiClient>>("api/v2/clients/insertOrUpdate", clients);
+		}
+
+		/// <summary>
+		/// Insert or update a list of clients
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> InsertOrUpdateAsync(List<ApiClient> clients)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiClient>>("api/v2/clients/insertOrUpdate", clients);
+		}
+
+		/// <summary>
+		/// Insert or update a list of clients
+		/// </summary>
+		public virtual List<ResponseContainer<ApiClient>> InsertOrUpdate(List<ApiClient> clients)
+		{
+			var result = Task.Run(() => InsertOrUpdateAsyncMsg(clients)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ResponseContainer<ApiClient>>>().Result;
+			 		}
+
+		/// <summary>
+		/// Retuens a list of customn fields for a client
+		/// </summary>
+		/// <param name="clientId"></param>
+		/// <param name="getAllCustomField"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCustomFieldsForClientAsyncMsg(Int32 clientId,Boolean getAllCustomField)
+		{
+			return await HttpClient.GetAsync("api/v1/clients/GetCustomFieldsForClient/" + clientId + "/" + getAllCustomField);
+		}
+
+		/// <summary>
+		/// Retuens a list of customn fields for a client
+		/// </summary>
+		/// <param name="clientId"></param>
+		/// <param name="getAllCustomField"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCustomFieldsForClientAsync(Int32 clientId,Boolean getAllCustomField)
+		{
+			return await HttpClient.GetAsync("api/v1/clients/GetCustomFieldsForClient/" + clientId + "/" + getAllCustomField);
+		}
+
+		/// <summary>
+		/// Retuens a list of customn fields for a client
+		/// </summary>
+		/// <param name="clientId"></param>
+		/// <param name="getAllCustomField"></param>
+		public virtual List<CustomFieldJs> GetCustomFieldsForClient(Int32 clientId,Boolean getAllCustomField)
+		{
+			var result = Task.Run(() => GetCustomFieldsForClientAsyncMsg(clientId, getAllCustomField)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CustomFieldJs>>().Result;
 			 		}
 
 		#endregion
@@ -11963,6 +21787,490 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// change info on a resource
+		/// </summary>
+		/// <param name="resource">Resource to update</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveUserAsyncMsg(EmployeJS__ resource)
+		{
+			return await HttpClient.PostAsJsonAsync<EmployeJS__>("api/company/saveUser", resource);
+		}
+
+		/// <summary>
+		/// change info on a resource
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveUserAsync(EmployeJS__ resource)
+		{
+			return await HttpClient.PostAsJsonAsync<EmployeJS__>("api/company/saveUser", resource);
+		}
+
+		/// <summary>
+		/// change info on a resource
+		/// </summary>
+		public virtual UpdateResult SaveUser(EmployeJS__ resource)
+		{
+			var result = Task.Run(() => SaveUserAsyncMsg(resource)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// change responsable of a compagnie
+		/// </summary>
+		/// <param name="UserId">new reposable id</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ChangeCompagnyRespAsyncMsg(Int32 UserId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/company/changeCompagnyResp?UserId=" + UserId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// change responsable of a compagnie
+		/// </summary>
+		/// <param name="UserId">new reposable id</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ChangeCompagnyRespAsync(Int32 UserId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/company/changeCompagnyResp?UserId=" + UserId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// change responsable of a compagnie
+		/// </summary>
+		/// <param name="UserId">new reposable id</param>
+		public virtual UpdateResult ChangeCompagnyResp(Int32 UserId)
+		{
+			var result = Task.Run(() => ChangeCompagnyRespAsyncMsg(UserId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// search in all resources
+		/// </summary>
+		/// <param name="search">Contain this text</param>
+		/// <param name="page">Page selected</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SearchAllRessourcesAsyncMsg(String search,Int32 page)
+		{
+			return await HttpClient.GetAsync("api/company/searchAllRessources?search=" + search + "&page=" + page);
+		}
+
+		/// <summary>
+		/// search in all resources
+		/// </summary>
+		/// <param name="search">Contain this text</param>
+		/// <param name="page">Page selected</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SearchAllRessourcesAsync(String search,Int32 page)
+		{
+			return await HttpClient.GetAsync("api/company/searchAllRessources?search=" + search + "&page=" + page);
+		}
+
+		/// <summary>
+		/// search in all resources
+		/// </summary>
+		/// <param name="search">Contain this text</param>
+		/// <param name="page">Page selected</param>
+		public virtual SearchResourceReturn SearchAllRessources(String search,Int32 page)
+		{
+			var result = Task.Run(() => SearchAllRessourcesAsyncMsg(search, page)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<SearchResourceReturn>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Appro Config
+		/// </summary>
+		/// <param name="compId">compagnie id</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetApproConfigAsyncMsg(Int32 compId)
+		{
+			return await HttpClient.GetAsync("api/company/getApproConfig?compId=" + compId);
+		}
+
+		/// <summary>
+		/// Get Appro Config
+		/// </summary>
+		/// <param name="compId">compagnie id</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetApproConfigAsync(Int32 compId)
+		{
+			return await HttpClient.GetAsync("api/company/getApproConfig?compId=" + compId);
+		}
+
+		/// <summary>
+		/// Get Appro Config
+		/// </summary>
+		/// <param name="compId">compagnie id</param>
+		public virtual ApproConfigInfo GetApproConfig(Int32 compId)
+		{
+			var result = Task.Run(() => GetApproConfigAsyncMsg(compId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ApproConfigInfo>().Result;
+			 		}
+
+		/// <summary>
+		/// search in all projects
+		/// </summary>
+		/// <param name="search">Contain this text</param>
+		/// <param name="page">Page selected</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SearchAllProjectsAsyncMsg(String search,Int32 page)
+		{
+			return await HttpClient.GetAsync("api/company/searchAllProjects?search=" + search + "&page=" + page);
+		}
+
+		/// <summary>
+		/// search in all projects
+		/// </summary>
+		/// <param name="search">Contain this text</param>
+		/// <param name="page">Page selected</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SearchAllProjectsAsync(String search,Int32 page)
+		{
+			return await HttpClient.GetAsync("api/company/searchAllProjects?search=" + search + "&page=" + page);
+		}
+
+		/// <summary>
+		/// search in all projects
+		/// </summary>
+		/// <param name="search">Contain this text</param>
+		/// <param name="page">Page selected</param>
+		public virtual SearchProjectReturn SearchAllProjects(String search,Int32 page)
+		{
+			var result = Task.Run(() => SearchAllProjectsAsyncMsg(search, page)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<SearchProjectReturn>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="isEnabled"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveApproConfigAsyncMsg(Int32 compId,Boolean isEnabled)
+		{
+			return await HttpClient.PostAsJsonAsync("api/company/saveApproConfig?compId=" + compId + "&isEnabled=" + isEnabled, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="isEnabled"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveApproConfigAsync(Int32 compId,Boolean isEnabled)
+		{
+			return await HttpClient.PostAsJsonAsync("api/company/saveApproConfig?compId=" + compId + "&isEnabled=" + isEnabled, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="isEnabled"></param>
+		public virtual UpdateResult SaveApproConfig(Int32 compId,Boolean isEnabled)
+		{
+			var result = Task.Run(() => SaveApproConfigAsyncMsg(compId, isEnabled)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compagnyInfo"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveCompagnyInfoAsyncMsg(CompagnyInfo compagnyInfo)
+		{
+			return await HttpClient.PostAsJsonAsync<CompagnyInfo>("api/company/saveCompagnyInfo", compagnyInfo);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveCompagnyInfoAsync(CompagnyInfo compagnyInfo)
+		{
+			return await HttpClient.PostAsJsonAsync<CompagnyInfo>("api/company/saveCompagnyInfo", compagnyInfo);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess SaveCompagnyInfo(CompagnyInfo compagnyInfo)
+		{
+			var result = Task.Run(() => SaveCompagnyInfoAsyncMsg(compagnyInfo)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="toSave"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveGeneralParametresAsyncMsg(CompagnyGeneralParams toSave)
+		{
+			return await HttpClient.PostAsJsonAsync<CompagnyGeneralParams>("api/company/saveGeneralParametres", toSave);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveGeneralParametresAsync(CompagnyGeneralParams toSave)
+		{
+			return await HttpClient.PostAsJsonAsync<CompagnyGeneralParams>("api/company/saveGeneralParametres", toSave);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult SaveGeneralParametres(CompagnyGeneralParams toSave)
+		{
+			var result = Task.Run(() => SaveGeneralParametresAsyncMsg(toSave)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="newData"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveFormAsyncMsg(FormJS newData)
+		{
+			return await HttpClient.PostAsJsonAsync<FormJS>("api/company/saveForm", newData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveFormAsync(FormJS newData)
+		{
+			return await HttpClient.PostAsJsonAsync<FormJS>("api/company/saveForm", newData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId SaveForm(FormJS newData)
+		{
+			var result = Task.Run(() => SaveFormAsyncMsg(newData)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetFormsAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/company/getForms");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetFormsAsync()
+		{
+			return await HttpClient.GetAsync("api/company/getForms");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<FormJS> GetForms()
+		{
+			var result = Task.Run(() => GetFormsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<FormJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetGeneralParametresAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/company/getGeneralParametres");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetGeneralParametresAsync()
+		{
+			return await HttpClient.GetAsync("api/company/getGeneralParametres");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual GeneralParams_Return GetGeneralParametres()
+		{
+			var result = Task.Run(() => GetGeneralParametresAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<GeneralParams_Return>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetNameFormulaAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/company/getNameFormula");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetNameFormulaAsync()
+		{
+			return await HttpClient.GetAsync("api/company/getNameFormula");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual String GetNameFormula()
+		{
+			var result = Task.Run(() => GetNameFormulaAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<String>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCompaniesListAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/company/getCompaniesList");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCompaniesListAsync()
+		{
+			return await HttpClient.GetAsync("api/company/getCompaniesList");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<CompanyJS> GetCompaniesList()
+		{
+			var result = Task.Run(() => GetCompaniesListAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CompanyJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> LoginAsUserAsyncMsg(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/company/loginAsUser?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> LoginAsUserAsync(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/company/loginAsUser?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual UpdateResult LoginAsUser(Int32 id)
+		{
+			var result = Task.Run(() => LoginAsUserAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compid"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllUsersAsyncMsg(Int32 compid)
+		{
+			return await HttpClient.GetAsync("api/company/getAllUsers?compid=" + compid);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compid"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllUsersAsync(Int32 compid)
+		{
+			return await HttpClient.GetAsync("api/company/getAllUsers?compid=" + compid);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compid"></param>
+		public virtual List<EmployeJS__> GetAllUsers(Int32 compid)
+		{
+			var result = Task.Run(() => GetAllUsersAsyncMsg(compid)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<EmployeJS__>>().Result;
+			 		}
+
+		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="companyId"></param>
@@ -11993,6 +22301,72 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteCompanyYourCompanyAsyncMsg()
+		{
+			return await HttpClient.DeleteAsync("api/company/deleteCompanyYourCompany");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteCompanyYourCompanyAsync()
+		{
+			return await HttpClient.DeleteAsync("api/company/deleteCompanyYourCompany");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult DeleteCompanyYourCompany()
+		{
+			var result = Task.Run(() => DeleteCompanyYourCompanyAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns a single company
+		/// </summary>
+		/// <param name="companyId">Id of the company</param>
+		/// <param name="companyExternalId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCompanyAsyncMsg(Nullable<Int32> companyId,String companyExternalId)
+		{
+			return await HttpClient.GetAsync("api/company/single?companyId=" + companyId + "&companyExternalId=" + companyExternalId);
+		}
+
+		/// <summary>
+		/// Returns a single company
+		/// </summary>
+		/// <param name="companyId">Id of the company</param>
+		/// <param name="companyExternalId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCompanyAsync(Nullable<Int32> companyId,String companyExternalId)
+		{
+			return await HttpClient.GetAsync("api/company/single?companyId=" + companyId + "&companyExternalId=" + companyExternalId);
+		}
+
+		/// <summary>
+		/// Returns a single company
+		/// </summary>
+		/// <param name="companyId">Id of the company</param>
+		/// <param name="companyExternalId"></param>
+		public virtual CompanyJS GetCompany(Nullable<Int32> companyId,String companyExternalId)
+		{
+			var result = Task.Run(() => GetCompanyAsyncMsg(companyId, companyExternalId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<CompanyJS>().Result;
 			 		}
 
 		/// <summary>
@@ -12085,24 +22459,24 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="args"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetProjectsAsyncMsg(DatesRangeRequest<Boolean> args)
+		protected virtual async Task<HttpResponseMessage> GetProjectsAsyncMsg(DatesRangeFilteredRequest<Boolean> args)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/configTask/getProjects", args);
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Boolean>>("api/v1/configTask/getProjects", args);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetProjectsAsync(DatesRangeRequest<Boolean> args)
+		public virtual async Task<HttpResponseMessage> GetProjectsAsync(DatesRangeFilteredRequest<Boolean> args)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/configTask/getProjects", args);
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Boolean>>("api/v1/configTask/getProjects", args);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual List<ProjectFastPlanningResult> GetProjects(DatesRangeRequest<Boolean> args)
+		public virtual List<ProjectFastPlanningResult> GetProjects(DatesRangeFilteredRequest<Boolean> args)
 		{
 			var result = Task.Run(() => GetProjectsAsyncMsg(args)).Result;		 
 			 
@@ -12316,6 +22690,168 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Returns a list of project custom fields. (Without values)
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectCustomFieldsAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/customFields/getProjectCustomFields");
+		}
+
+		/// <summary>
+		/// Returns a list of project custom fields. (Without values)
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectCustomFieldsAsync()
+		{
+			return await HttpClient.GetAsync("api/customFields/getProjectCustomFields");
+		}
+
+		/// <summary>
+		/// Returns a list of project custom fields. (Without values)
+		/// </summary>
+		public virtual List<CustomFieldJs> GetProjectCustomFields()
+		{
+			var result = Task.Run(() => GetProjectCustomFieldsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CustomFieldJs>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="valueId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteClientCustomFieldValueAsyncMsg(Int32 valueId)
+		{
+			return await HttpClient.DeleteAsync("api/customFields/DeleteClientCustomFieldValue?valueId=" + valueId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="valueId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteClientCustomFieldValueAsync(Int32 valueId)
+		{
+			return await HttpClient.DeleteAsync("api/customFields/DeleteClientCustomFieldValue?valueId=" + valueId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="valueId"></param>
+		public virtual UpdateResult DeleteClientCustomFieldValue(Int32 valueId)
+		{
+			var result = Task.Run(() => DeleteClientCustomFieldValueAsyncMsg(valueId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete custom field value
+		/// </summary>
+		/// <param name="cfId">custom field value id</param>
+		/// <param name="value">custom field value</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteCustomFieldValueAsyncMsg(Int32 cfId,CustomFieldValue value)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldValue>("api/customFields/DeleteCustomFieldValue?cfId=" + cfId, value);
+		}
+
+		/// <summary>
+		/// Delete custom field value
+		/// </summary>
+		/// <param name="cfId">custom field value id</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteCustomFieldValueAsync(Int32 cfId,CustomFieldValue value)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldValue>("api/customFields/DeleteCustomFieldValue?cfId=" + cfId, value);
+		}
+
+		/// <summary>
+		/// Delete custom field value
+		/// </summary>
+		/// <param name="cfId">custom field value id</param>
+		public virtual UpdateResult DeleteCustomFieldValue(Int32 cfId,CustomFieldValue value)
+		{
+			var result = Task.Run(() => DeleteCustomFieldValueAsyncMsg(cfId, value)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update CustomField Categories
+		/// </summary>
+		/// <param name="ids">ids</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateCustomFieldCategoriesAsyncMsg(Int32[] ids)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("api/customFields/UpdateCustomFieldCategories", ids);
+		}
+
+		/// <summary>
+		/// Update CustomField Categories
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateCustomFieldCategoriesAsync(Int32[] ids)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("api/customFields/UpdateCustomFieldCategories", ids);
+		}
+
+		/// <summary>
+		/// Update CustomField Categories
+		/// </summary>
+		public virtual UpdateResult UpdateCustomFieldCategories(Int32[] ids)
+		{
+			var result = Task.Run(() => UpdateCustomFieldCategoriesAsyncMsg(ids)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete ressource custom field value
+		/// </summary>
+		/// <param name="cfId">custom field value id</param>
+		/// <param name="value">custom field value</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteRessourceCustomFieldValueAsyncMsg(Int32 cfId,CustomFieldValue value)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldValue>("api/customFields/DeleteRessourceCustomFieldValue?cfId=" + cfId, value);
+		}
+
+		/// <summary>
+		/// Delete ressource custom field value
+		/// </summary>
+		/// <param name="cfId">custom field value id</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteRessourceCustomFieldValueAsync(Int32 cfId,CustomFieldValue value)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldValue>("api/customFields/DeleteRessourceCustomFieldValue?cfId=" + cfId, value);
+		}
+
+		/// <summary>
+		/// Delete ressource custom field value
+		/// </summary>
+		/// <param name="cfId">custom field value id</param>
+		public virtual UpdateResult DeleteRessourceCustomFieldValue(Int32 cfId,CustomFieldValue value)
+		{
+			var result = Task.Run(() => DeleteRessourceCustomFieldValueAsyncMsg(cfId, value)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="takeHidden"></param>
@@ -12349,6 +22885,45 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<CustomFieldJs>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="takeHidden"></param>
+		/// <param name="takeCalculHard"></param>
+		/// <param name="getVisibleReadAccess"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllCustomFieldsByCategorieAsyncMsg(Boolean takeHidden,Boolean takeCalculHard,Boolean getVisibleReadAccess)
+		{
+			return await HttpClient.GetAsync("api/customFields/getAllCustomFieldsByCategorie/" + takeHidden + "/" + takeCalculHard + "/" + getVisibleReadAccess);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="takeHidden"></param>
+		/// <param name="takeCalculHard"></param>
+		/// <param name="getVisibleReadAccess"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllCustomFieldsByCategorieAsync(Boolean takeHidden,Boolean takeCalculHard,Boolean getVisibleReadAccess)
+		{
+			return await HttpClient.GetAsync("api/customFields/getAllCustomFieldsByCategorie/" + takeHidden + "/" + takeCalculHard + "/" + getVisibleReadAccess);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="takeHidden"></param>
+		/// <param name="takeCalculHard"></param>
+		/// <param name="getVisibleReadAccess"></param>
+		public virtual List<CustomFieldCategory> GetAllCustomFieldsByCategorie(Boolean takeHidden,Boolean takeCalculHard,Boolean getVisibleReadAccess)
+		{
+			var result = Task.Run(() => GetAllCustomFieldsByCategorieAsyncMsg(takeHidden, takeCalculHard, getVisibleReadAccess)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CustomFieldCategory>>().Result;
 			 		}
 
 		/// <summary>
@@ -12420,6 +22995,102 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Allow to update custom fields by name as names are unique by type of custom field
+		/// </summary>
+		/// <param name="customFieldName"></param>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateCustomFieldValueByNameAsyncMsg(String customFieldName,CustomFieldValue value)
+		{
+			return await HttpClient.PutAsJsonAsync<CustomFieldValue>("api/customFields/updateValueByName/" + customFieldName, value);
+		}
+
+		/// <summary>
+		/// Allow to update custom fields by name as names are unique by type of custom field
+		/// </summary>
+		/// <param name="customFieldName"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateCustomFieldValueByNameAsync(String customFieldName,CustomFieldValue value)
+		{
+			return await HttpClient.PutAsJsonAsync<CustomFieldValue>("api/customFields/updateValueByName/" + customFieldName, value);
+		}
+
+		/// <summary>
+		/// Allow to update custom fields by name as names are unique by type of custom field
+		/// </summary>
+		/// <param name="customFieldName"></param>
+		public virtual UpdateResultWithId UpdateCustomFieldValueByName(String customFieldName,CustomFieldValue value)
+		{
+			var result = Task.Run(() => UpdateCustomFieldValueByNameAsyncMsg(customFieldName, value)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateCustomFieldValueShortAsyncMsg(CustomFieldValue value)
+		{
+			return await HttpClient.PutAsJsonAsync<CustomFieldValue>("api/customFields/updateValue", value);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateCustomFieldValueShortAsync(CustomFieldValue value)
+		{
+			return await HttpClient.PutAsJsonAsync<CustomFieldValue>("api/customFields/updateValue", value);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId UpdateCustomFieldValueShort(CustomFieldValue value)
+		{
+			var result = Task.Run(() => UpdateCustomFieldValueShortAsyncMsg(value)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="Values"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateCustomFieldValueBatchAsyncMsg(List<CustomFieldValue> Values)
+		{
+			return await HttpClient.PutAsJsonAsync<List<CustomFieldValue>>("api/customFields/updateValueBatch", Values);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateCustomFieldValueBatchAsync(List<CustomFieldValue> Values)
+		{
+			return await HttpClient.PutAsJsonAsync<List<CustomFieldValue>>("api/customFields/updateValueBatch", Values);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<UpdateResultWithId> UpdateCustomFieldValueBatch(List<CustomFieldValue> Values)
+		{
+			var result = Task.Run(() => UpdateCustomFieldValueBatchAsyncMsg(Values)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<UpdateResultWithId>>().Result;
+			 		}
+
+		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="customFieldCategory"></param>
@@ -12453,6 +23124,39 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// 
 		/// </summary>
+		/// <param name="fieldId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteClientCustomFieldAsyncMsg(Int32 fieldId)
+		{
+			return await HttpClient.DeleteAsync("api/customFields/DeleteClientCustomField?fieldId=" + fieldId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fieldId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteClientCustomFieldAsync(Int32 fieldId)
+		{
+			return await HttpClient.DeleteAsync("api/customFields/DeleteClientCustomField?fieldId=" + fieldId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fieldId"></param>
+		public virtual UpdateResult DeleteClientCustomField(Int32 fieldId)
+		{
+			var result = Task.Run(() => DeleteClientCustomFieldAsyncMsg(fieldId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
 		/// <param name="customField"></param>
 		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> CreateOrUpdateCustomFieldAsyncMsg(CustomFieldJs customField)
@@ -12479,6 +23183,75 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="category"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteCustomFieldCategoryAsyncMsg(Int32 category)
+		{
+			return await HttpClient.PostAsJsonAsync("api/CustomFields?category=" + category, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="category"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteCustomFieldCategoryAsync(Int32 category)
+		{
+			return await HttpClient.PostAsJsonAsync("api/CustomFields?category=" + category, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="category"></param>
+		public virtual UpdateResult DeleteCustomFieldCategory(Int32 category)
+		{
+			var result = Task.Run(() => DeleteCustomFieldCategoryAsyncMsg(category)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fieldId"></param>
+		/// <param name="isRessourceCustom"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteCustomFieldAsyncMsg(Int32 fieldId,Boolean isRessourceCustom)
+		{
+			return await HttpClient.PostAsJsonAsync("api/CustomFields?fieldId=" + fieldId + "&isRessourceCustom=" + isRessourceCustom, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fieldId"></param>
+		/// <param name="isRessourceCustom"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteCustomFieldAsync(Int32 fieldId,Boolean isRessourceCustom)
+		{
+			return await HttpClient.PostAsJsonAsync("api/CustomFields?fieldId=" + fieldId + "&isRessourceCustom=" + isRessourceCustom, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fieldId"></param>
+		/// <param name="isRessourceCustom"></param>
+		public virtual UpdateResult DeleteCustomField(Int32 fieldId,Boolean isRessourceCustom)
+		{
+			var result = Task.Run(() => DeleteCustomFieldAsyncMsg(fieldId, isRessourceCustom)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
 		#endregion
@@ -12569,6 +23342,39 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// returns a list of shared planning with current user
+		/// </summary>
+		/// <param name="planType">The report type (projects, ressources, tasks)</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetSharedPlansAsyncMsg(PlanType planType)
+		{
+			return await HttpClient.GetAsync("api/v1/dataShare/getSharedPlans/" + planType);
+		}
+
+		/// <summary>
+		/// returns a list of shared planning with current user
+		/// </summary>
+		/// <param name="planType">The report type (projects, ressources, tasks)</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetSharedPlansAsync(PlanType planType)
+		{
+			return await HttpClient.GetAsync("api/v1/dataShare/getSharedPlans/" + planType);
+		}
+
+		/// <summary>
+		/// returns a list of shared planning with current user
+		/// </summary>
+		/// <param name="planType">The report type (projects, ressources, tasks)</param>
+		public virtual List<ShareInfos> GetSharedPlans(PlanType planType)
+		{
+			var result = Task.Run(() => GetSharedPlansAsyncMsg(planType)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ShareInfos>>().Result;
+			 		}
+
+		/// <summary>
 		/// Shares user's report
 		/// </summary>
 		/// <param name="dataToShare">Informations about report to share. Dates are optinal.DatesRangeFilteredRequest is used to mostly hold filters</param>
@@ -12593,6 +23399,37 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResult ShareReport(DatesRangeFilteredRequest<ShareRapportHelper> dataToShare)
 		{
 			var result = Task.Run(() => ShareReportAsyncMsg(dataToShare)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Shares user's Planning
+		/// </summary>
+		/// <param name="dataToShare">Informations about report to share. Dates are optinal.DatesRangeFilteredRequest is used to mostly hold filters</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SharePlanningAsyncMsg(DatesRangeFilteredRequest<SharePlanningHelper> dataToShare)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<SharePlanningHelper>>("api/v1/dataShare/shareCombinedPlanning", dataToShare);
+		}
+
+		/// <summary>
+		/// Shares user's Planning
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SharePlanningAsync(DatesRangeFilteredRequest<SharePlanningHelper> dataToShare)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<SharePlanningHelper>>("api/v1/dataShare/shareCombinedPlanning", dataToShare);
+		}
+
+		/// <summary>
+		/// Shares user's Planning
+		/// </summary>
+		public virtual UpdateResult SharePlanning(DatesRangeFilteredRequest<SharePlanningHelper> dataToShare)
+		{
+			var result = Task.Run(() => SharePlanningAsyncMsg(dataToShare)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -12627,6 +23464,40 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResultWithId ImportReports(ReportType reportType,Guid[] toImport)
 		{
 			var result = Task.Run(() => ImportReportsAsyncMsg(reportType, toImport)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="planType"></param>
+		/// <param name="toImport"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ImportPlansAsyncMsg(PlanType planType,Guid[] toImport)
+		{
+			return await HttpClient.PostAsJsonAsync<Guid[]>("api/v1/dataShare/sharePlan/" + planType, toImport);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="planType"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ImportPlansAsync(PlanType planType,Guid[] toImport)
+		{
+			return await HttpClient.PostAsJsonAsync<Guid[]>("api/v1/dataShare/sharePlan/" + planType, toImport);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="planType"></param>
+		public virtual UpdateResultWithId ImportPlans(PlanType planType,Guid[] toImport)
+		{
+			var result = Task.Run(() => ImportPlansAsyncMsg(planType, toImport)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -12969,35 +23840,105 @@ namespace WebApi.Proxies.Clients
 		#region Methods
 
 		/// <summary>
+		/// returns a list of employees per task for a specified project
+		/// Takes into acount filters defined for each task
+		/// </summary>
+		/// <param name="projectid"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCombinedRessourcesByTaskAsyncMsg(Int32 projectid)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/filtered/" + projectid);
+		}
+
+		/// <summary>
+		/// returns a list of employees per task for a specified project
+		/// Takes into acount filters defined for each task
+		/// </summary>
+		/// <param name="projectid"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCombinedRessourcesByTaskAsync(Int32 projectid)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/filtered/" + projectid);
+		}
+
+		/// <summary>
+		/// returns a list of employees per task for a specified project
+		/// Takes into acount filters defined for each task
+		/// </summary>
+		/// <param name="projectid"></param>
+		public virtual Dictionary<Int32, List<EmployeJS__>> GetCombinedRessourcesByTask(Int32 projectid)
+		{
+			var result = Task.Run(() => GetCombinedRessourcesByTaskAsyncMsg(projectid)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Dictionary<Int32, List<EmployeJS__>>>().Result;
+			 		}
+
+		/// <summary>
 		/// Returns a list of all employees. Request object is bool : take or not deleted employees
+		/// Uses short term (20 seconds) cache for identique requests for the same user
 		/// </summary>
 		/// <param name="request">Filters to use. Start date and EndDate are optional. The bool value indicate if we should only return actif users
 		/// If some projects filter is applied : only return users affected to these projects</param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetAllRessourcesFilteredAsyncMsg(DatesRangeFilteredRequestPagination<Boolean> request)
+		protected virtual async Task<HttpResponseMessage> GetAllRessourcesFilteredAsyncMsg(DatesRangeFilteredRequestPagination<RessourceParam> request)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<Boolean>>("api/v1/rh/employees/filtered", request);
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<RessourceParam>>("api/v1/rh/employees/filtered", request);
 		}
 
 		/// <summary>
 		/// Returns a list of all employees. Request object is bool : take or not deleted employees
+		/// Uses short term (20 seconds) cache for identique requests for the same user
 		/// </summary>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetAllRessourcesFilteredAsync(DatesRangeFilteredRequestPagination<Boolean> request)
+		public virtual async Task<HttpResponseMessage> GetAllRessourcesFilteredAsync(DatesRangeFilteredRequestPagination<RessourceParam> request)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<Boolean>>("api/v1/rh/employees/filtered", request);
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<RessourceParam>>("api/v1/rh/employees/filtered", request);
 		}
 
 		/// <summary>
 		/// Returns a list of all employees. Request object is bool : take or not deleted employees
+		/// Uses short term (20 seconds) cache for identique requests for the same user
 		/// </summary>
-		public virtual List<EmployeJS__> GetAllRessourcesFiltered(DatesRangeFilteredRequestPagination<Boolean> request)
+		public virtual List<EmployeJS__> GetAllRessourcesFiltered(DatesRangeFilteredRequestPagination<RessourceParam> request)
 		{
 			var result = Task.Run(() => GetAllRessourcesFilteredAsyncMsg(request)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<EmployeJS__>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetRessourcesListAsyncMsg(DatesRangeFilteredRequest<UsersListRequest> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<UsersListRequest>>("api/v1/rh/employees/users", request);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetRessourcesListAsync(DatesRangeFilteredRequest<UsersListRequest> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<UsersListRequest>>("api/v1/rh/employees/users", request);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ConfigRessourcesModel> GetRessourcesList(DatesRangeFilteredRequest<UsersListRequest> request)
+		{
+			var result = Task.Run(() => GetRessourcesListAsyncMsg(request)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ConfigRessourcesModel>>().Result;
 			 		}
 
 		/// <summary>
@@ -13132,6 +24073,137 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<ActivityLine>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Hour Rate History
+		/// </summary>
+		/// <param name="userId">User id</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetHourRateHistoryAsyncMsg(Int32 userId)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/GetHourRateHistory/" + userId);
+		}
+
+		/// <summary>
+		/// Get Hour Rate History
+		/// </summary>
+		/// <param name="userId">User id</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetHourRateHistoryAsync(Int32 userId)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/GetHourRateHistory/" + userId);
+		}
+
+		/// <summary>
+		/// Get Hour Rate History
+		/// </summary>
+		/// <param name="userId">User id</param>
+		public virtual List<RessourceHourRate> GetHourRateHistory(Int32 userId)
+		{
+			var result = Task.Run(() => GetHourRateHistoryAsyncMsg(userId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<RessourceHourRate>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Bill rate History for this ressource
+		/// </summary>
+		/// <param name="userId">User id</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetBillRateHistoryAsyncMsg(Int32 userId)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/GetBillRateHistory/" + userId);
+		}
+
+		/// <summary>
+		/// Get Bill rate History for this ressource
+		/// </summary>
+		/// <param name="userId">User id</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetBillRateHistoryAsync(Int32 userId)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/GetBillRateHistory/" + userId);
+		}
+
+		/// <summary>
+		/// Get Bill rate History for this ressource
+		/// </summary>
+		/// <param name="userId">User id</param>
+		public virtual List<RessourceBillRate> GetBillRateHistory(Int32 userId)
+		{
+			var result = Task.Run(() => GetBillRateHistoryAsyncMsg(userId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<RessourceBillRate>>().Result;
+			 		}
+
+		/// <summary>
+		/// Update bill rate History
+		/// </summary>
+		/// <param name="rateHistory"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateBillRateHistoryAsyncMsg(BillRateHistory rateHistory)
+		{
+			return await HttpClient.PostAsJsonAsync<BillRateHistory>("api/v1/rh/employees/UpdateBillRateHistory", rateHistory);
+		}
+
+		/// <summary>
+		/// Update bill rate History
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateBillRateHistoryAsync(BillRateHistory rateHistory)
+		{
+			return await HttpClient.PostAsJsonAsync<BillRateHistory>("api/v1/rh/employees/UpdateBillRateHistory", rateHistory);
+		}
+
+		/// <summary>
+		/// Update bill rate History
+		/// </summary>
+		public virtual UpdateResult UpdateBillRateHistory(BillRateHistory rateHistory)
+		{
+			var result = Task.Run(() => UpdateBillRateHistoryAsyncMsg(rateHistory)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Rate History
+		/// </summary>
+		/// <param name="userId">User id</param>
+		/// <param name="rateHistory"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateRateHistoryAsyncMsg(Int32 userId,RateHistory rateHistory)
+		{
+			return await HttpClient.PostAsJsonAsync<RateHistory>("api/v1/rh/employees/UpdateRateHistory/" + userId, rateHistory);
+		}
+
+		/// <summary>
+		/// Update Rate History
+		/// </summary>
+		/// <param name="userId">User id</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateRateHistoryAsync(Int32 userId,RateHistory rateHistory)
+		{
+			return await HttpClient.PostAsJsonAsync<RateHistory>("api/v1/rh/employees/UpdateRateHistory/" + userId, rateHistory);
+		}
+
+		/// <summary>
+		/// Update Rate History
+		/// </summary>
+		/// <param name="userId">User id</param>
+		public virtual UpdateResult UpdateRateHistory(Int32 userId,RateHistory rateHistory)
+		{
+			var result = Task.Run(() => UpdateRateHistoryAsyncMsg(userId, rateHistory)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
 		/// <summary>
@@ -13440,6 +24512,203 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetUserInfoAsyncMsg(Int32 userId)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/getUserInfo/" + userId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetUserInfoAsync(Int32 userId)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/getUserInfo/" + userId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual UserInfo GetUserInfo(Int32 userId)
+		{
+			var result = Task.Run(() => GetUserInfoAsyncMsg(userId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UserInfo>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RessourceLevelAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/ressourceLevel");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RessourceLevelAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/ressourceLevel");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Int32> RessourceLevel()
+		{
+			var result = Task.Run(() => RessourceLevelAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<Int32>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="updateTiersParam"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetUsergeneralInfoAsyncMsg(Int32 userId,DatesRangeRequest<Boolean> updateTiersParam)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/rh/employees/getUsergeneralInfo/" + userId, updateTiersParam);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetUsergeneralInfoAsync(Int32 userId,DatesRangeRequest<Boolean> updateTiersParam)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/rh/employees/getUsergeneralInfo/" + userId, updateTiersParam);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual RessourceGeneralInformations GetUsergeneralInfo(Int32 userId,DatesRangeRequest<Boolean> updateTiersParam)
+		{
+			var result = Task.Run(() => GetUsergeneralInfoAsyncMsg(userId, updateTiersParam)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<RessourceGeneralInformations>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="updateTiersParam"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTiersIdByUpdatetiersparamAsyncMsg(UpdateTiersParam updateTiersParam)
+		{
+			return await HttpClient.PostAsJsonAsync<UpdateTiersParam>("api/v1/rh/employees/updateTiersIdByUpdatetiersparam", updateTiersParam);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTiersIdByUpdatetiersparamAsync(UpdateTiersParam updateTiersParam)
+		{
+			return await HttpClient.PostAsJsonAsync<UpdateTiersParam>("api/v1/rh/employees/updateTiersIdByUpdatetiersparam", updateTiersParam);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult UpdateTiersIdByUpdatetiersparam(UpdateTiersParam updateTiersParam)
+		{
+			var result = Task.Run(() => UpdateTiersIdByUpdatetiersparamAsyncMsg(updateTiersParam)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="email"></param>
+		/// <param name="message"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ReferFriendAsyncMsg(String email,String message)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/rh/employees/referFriend?email=" + email + "&message=" + message, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="email"></param>
+		/// <param name="message"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ReferFriendAsync(String email,String message)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/rh/employees/referFriend?email=" + email + "&message=" + message, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="email"></param>
+		/// <param name="message"></param>
+		public virtual UpdateResult ReferFriend(String email,String message)
+		{
+			var result = Task.Run(() => ReferFriendAsyncMsg(email, message)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetSkillsAndLevelsAsyncMsg(Int32 userId)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/getSkillsAndLevels/" + userId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetSkillsAndLevelsAsync(Int32 userId)
+		{
+			return await HttpClient.GetAsync("api/v1/rh/employees/getSkillsAndLevels/" + userId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual SkillsAndSkillLevelsJs GetSkillsAndLevels(Int32 userId)
+		{
+			var result = Task.Run(() => GetSkillsAndLevelsAsyncMsg(userId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<SkillsAndSkillLevelsJs>().Result;
 			 		}
 
 		/// <summary>
@@ -13821,6 +25090,37 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Update list of expense information
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateListExpenseAsyncMsg(RequestSelectedBulkAction data)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestSelectedBulkAction>("api/v1/expenses/UpdateListExpense", data);
+		}
+
+		/// <summary>
+		/// Update list of expense information
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateListExpenseAsync(RequestSelectedBulkAction data)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestSelectedBulkAction>("api/v1/expenses/UpdateListExpense", data);
+		}
+
+		/// <summary>
+		/// Update list of expense information
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess UpdateListExpense(RequestSelectedBulkAction data)
+		{
+			var result = Task.Run(() => UpdateListExpenseAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
 		/// Add files to expense. Files should be transfered as Posted files in the request
 		/// </summary>
 		/// <param name="expenseId"></param>
@@ -14006,31 +25306,32 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// 
 		/// </summary>
+		/// <param name="template"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> RunExportPostAsyncMsg()
+		protected virtual async Task<HttpResponseMessage> RunExportPostAsyncMsg(ExportConfigRun template)
 		{
-			return await HttpClient.PostAsJsonAsync("api/exports/run", default(HttpResponseMessage));
+			return await HttpClient.PostAsJsonAsync<ExportConfigRun>("api/exports/run", template);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> RunExportPostAsync()
+		public virtual async Task<HttpResponseMessage> RunExportPostAsync(ExportConfigRun template)
 		{
-			return await HttpClient.PostAsJsonAsync("api/exports/run", default(HttpResponseMessage));
+			return await HttpClient.PostAsJsonAsync<ExportConfigRun>("api/exports/run", template);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual HttpResponseMessage RunExportPost()
+		public virtual UpdateResult RunExportPost(ExportConfigRun template)
 		{
-			var result = Task.Run(() => RunExportPostAsyncMsg()).Result;		 
+			var result = Task.Run(() => RunExportPostAsyncMsg(template)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
-			return result.Content.ReadAsAsync<HttpResponseMessage>().Result;
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
 		/// <summary>
@@ -14122,34 +25423,37 @@ namespace WebApi.Proxies.Clients
 		#region Methods
 
 		/// <summary>
-		/// 
+		/// Returns projects list, 
+		/// if put OnlyProjectThatCanAddTasks to true and user don't have the access CanCreateTaskOnFamilyProject only show projects that are not connect to a family
 		/// </summary>
-		/// <param name="args"></param>
+		/// <param name="param"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetProjectsAsyncMsg(DatesRangeRequest<Boolean> args)
+		protected virtual async Task<HttpResponseMessage> GetProjectsAsyncMsg(DatesRangeRequest<FastPlaningGetProject> param)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/fastPlanning/getProjects", args);
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<FastPlaningGetProject>>("api/v1/fastPlanning/getProjects", param);
 		}
 
 		/// <summary>
-		/// 
+		/// Returns projects list, 
+		/// if put OnlyProjectThatCanAddTasks to true and user don't have the access CanCreateTaskOnFamilyProject only show projects that are not connect to a family
 		/// </summary>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetProjectsAsync(DatesRangeRequest<Boolean> args)
+		public virtual async Task<HttpResponseMessage> GetProjectsAsync(DatesRangeRequest<FastPlaningGetProject> param)
 		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/fastPlanning/getProjects", args);
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<FastPlaningGetProject>>("api/v1/fastPlanning/getProjects", param);
 		}
 
 		/// <summary>
-		/// 
+		/// Returns projects list, 
+		/// if put OnlyProjectThatCanAddTasks to true and user don't have the access CanCreateTaskOnFamilyProject only show projects that are not connect to a family
 		/// </summary>
-		public virtual List<ProjectFastPlanningResult> GetProjects(DatesRangeRequest<Boolean> args)
+		public virtual List<SimpleProjectWithDates> GetProjects(DatesRangeRequest<FastPlaningGetProject> param)
 		{
-			var result = Task.Run(() => GetProjectsAsyncMsg(args)).Result;		 
+			var result = Task.Run(() => GetProjectsAsyncMsg(param)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
-			return result.Content.ReadAsAsync<List<ProjectFastPlanningResult>>().Result;
+			return result.Content.ReadAsAsync<List<SimpleProjectWithDates>>().Result;
 			 		}
 
 		/// <summary>
@@ -14215,34 +25519,731 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Saves in bulk planification for a user and selected project /task.
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveAllPlanningRessourcesAsyncMsg(PlanBulkParams param)
+		{
+			return await HttpClient.PostAsJsonAsync<PlanBulkParams>("api/v1/fastPlanning/saveAllPlanningRessources", param);
+		}
+
+		/// <summary>
+		/// Saves in bulk planification for a user and selected project /task.
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveAllPlanningRessourcesAsync(PlanBulkParams param)
+		{
+			return await HttpClient.PostAsJsonAsync<PlanBulkParams>("api/v1/fastPlanning/saveAllPlanningRessources", param);
+		}
+
+		/// <summary>
+		/// Saves in bulk planification for a user and selected project /task.
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess SaveAllPlanningRessources(PlanBulkParams param)
+		{
+			var result = Task.Run(() => SaveAllPlanningRessourcesAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
 		/// Saves planification for list of users and selected project /task.
 		/// </summary>
+		/// <param name="fromImport"></param>
 		/// <param name="Params"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> SavePlanningRessourcesAsyncMsg(PlanParams Params)
+		protected virtual async Task<HttpResponseMessage> SavePlanningRessourcesAsyncMsg(Nullable<Boolean> fromImport,PlanParams Params)
 		{
-			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/fastPlanning/savePlanningRessources", Params);
+			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/fastPlanning/savePlanningRessources?fromImport=" + fromImport, Params);
 		}
 
 		/// <summary>
 		/// Saves planification for list of users and selected project /task.
 		/// </summary>
+		/// <param name="fromImport"></param>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> SavePlanningRessourcesAsync(PlanParams Params)
+		public virtual async Task<HttpResponseMessage> SavePlanningRessourcesAsync(Nullable<Boolean> fromImport,PlanParams Params)
 		{
-			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/fastPlanning/savePlanningRessources", Params);
+			return await HttpClient.PostAsJsonAsync<PlanParams>("api/v1/fastPlanning/savePlanningRessources?fromImport=" + fromImport, Params);
 		}
 
 		/// <summary>
 		/// Saves planification for list of users and selected project /task.
 		/// </summary>
-		public virtual UpdateResult SavePlanningRessources(PlanParams Params)
+		/// <param name="fromImport"></param>
+		public virtual UpdateResult SavePlanningRessources(Nullable<Boolean> fromImport,PlanParams Params)
 		{
-			var result = Task.Run(() => SavePlanningRessourcesAsyncMsg(Params)).Result;		 
+			var result = Task.Run(() => SavePlanningRessourcesAsyncMsg(fromImport, Params)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FeesClient : ClientBase, Interfaces.IFeesClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public FeesClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public FeesClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// Get list of fee, if the task is reccurence add due date to the name of the task
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ListAsyncMsg(Int32 projectId,Nullable<Int32> taskId)
+		{
+			return await HttpClient.GetAsync("api/v1/projects/fees?projectId=" + projectId + "&taskId=" + taskId);
+		}
+
+		/// <summary>
+		/// Get list of fee, if the task is reccurence add due date to the name of the task
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ListAsync(Int32 projectId,Nullable<Int32> taskId)
+		{
+			return await HttpClient.GetAsync("api/v1/projects/fees?projectId=" + projectId + "&taskId=" + taskId);
+		}
+
+		/// <summary>
+		/// Get list of fee, if the task is reccurence add due date to the name of the task
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="taskId"></param>
+		public virtual List<Fee> List(Int32 projectId,Nullable<Int32> taskId)
+		{
+			var result = Task.Run(() => ListAsyncMsg(projectId, taskId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<Fee>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="fee"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddAsyncAsyncMsg(Int32 projectId,Fee fee)
+		{
+			return await HttpClient.PostAsJsonAsync<Fee>("api/v1/projects/fees?projectId=" + projectId, fee);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddAsyncAsync(Int32 projectId,Fee fee)
+		{
+			return await HttpClient.PostAsJsonAsync<Fee>("api/v1/projects/fees?projectId=" + projectId, fee);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		public virtual Fee AddAsync(Int32 projectId,Fee fee)
+		{
+			var result = Task.Run(() => AddAsyncAsyncMsg(projectId, fee)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Fee>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="fee"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateAsyncAsyncMsg(Int32 projectId,Fee fee)
+		{
+			return await HttpClient.PutAsJsonAsync<Fee>("api/v1/projects/fees?projectId=" + projectId, fee);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateAsyncAsync(Int32 projectId,Fee fee)
+		{
+			return await HttpClient.PutAsJsonAsync<Fee>("api/v1/projects/fees?projectId=" + projectId, fee);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		public virtual Fee UpdateAsync(Int32 projectId,Fee fee)
+		{
+			var result = Task.Run(() => UpdateAsyncAsyncMsg(projectId, fee)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Fee>().Result;
+			 		}
+
+		/// <summary>
+		/// Add or insert a fee using external ids. Use for integrations
+		/// </summary>
+		/// <param name="projectExternalId">External id of the project</param>
+		/// <param name="fee">Fee with data to update</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddOrUpdateExternalAsyncAsyncMsg(String projectExternalId,Fee fee)
+		{
+			return await HttpClient.PostAsJsonAsync<Fee>("api/v1/projects/fees/external?projectExternalId=" + projectExternalId, fee);
+		}
+
+		/// <summary>
+		/// Add or insert a fee using external ids. Use for integrations
+		/// </summary>
+		/// <param name="projectExternalId">External id of the project</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddOrUpdateExternalAsyncAsync(String projectExternalId,Fee fee)
+		{
+			return await HttpClient.PostAsJsonAsync<Fee>("api/v1/projects/fees/external?projectExternalId=" + projectExternalId, fee);
+		}
+
+		/// <summary>
+		/// Add or insert a fee using external ids. Use for integrations
+		/// </summary>
+		/// <param name="projectExternalId">External id of the project</param>
+		public virtual Fee AddOrUpdateExternalAsync(String projectExternalId,Fee fee)
+		{
+			var result = Task.Run(() => AddOrUpdateExternalAsyncAsyncMsg(projectExternalId, fee)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Fee>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fees"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddOrUpdateBatchOldAsyncMsg(List<Fee> fees)
+		{
+			return await HttpClient.PutAsJsonAsync<List<Fee>>("api/v1/projects/fees", fees);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddOrUpdateBatchOldAsync(List<Fee> fees)
+		{
+			return await HttpClient.PutAsJsonAsync<List<Fee>>("api/v1/projects/fees", fees);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<Fee> AddOrUpdateBatchOld(List<Fee> fees)
+		{
+			var result = Task.Run(() => AddOrUpdateBatchOldAsyncMsg(fees)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<Fee>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fees"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddOrUpdateBatchAsyncMsg(List<Fee> fees)
+		{
+			return await HttpClient.PutAsJsonAsync<List<Fee>>("api/v2/projects/fees", fees);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddOrUpdateBatchAsync(List<Fee> fees)
+		{
+			return await HttpClient.PutAsJsonAsync<List<Fee>>("api/v2/projects/fees", fees);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ResponseContainer<Fee>> AddOrUpdateBatch(List<Fee> fees)
+		{
+			var result = Task.Run(() => AddOrUpdateBatchAsyncMsg(fees)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ResponseContainer<Fee>>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="feeId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteAsyncAsyncMsg(Int32 projectId,Guid feeId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/projects/fees?projectId=" + projectId + "&feeId=" + feeId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="feeId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteAsyncAsync(Int32 projectId,Guid feeId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/projects/fees?projectId=" + projectId + "&feeId=" + feeId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="feeId"></param>
+		public virtual void DeleteAsync(Int32 projectId,Guid feeId)
+		{
+			var result = Task.Run(() => DeleteAsyncAsyncMsg(projectId, feeId)).Result;		 
+			 
+			EnsureSuccess(result);
+		}
+
+		#endregion
+	}
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class FormClient : ClientBase, Interfaces.IFormClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public FormClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public FormClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UploadDocumentAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/form/UploadDocument", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UploadDocumentAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/form/UploadDocument", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId UploadDocument()
+		{
+			var result = Task.Run(() => UploadDocumentAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UploadDocumentQtyAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/form/UploadDocumentQty", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UploadDocumentQtyAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/form/UploadDocumentQty", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId UploadDocumentQty()
+		{
+			var result = Task.Run(() => UploadDocumentQtyAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fileToRemove"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RemoveDocumentAsyncMsg(Int32 fileToRemove)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/form/RemoveDocument/" + fileToRemove, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fileToRemove"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RemoveDocumentAsync(Int32 fileToRemove)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/form/RemoveDocument/" + fileToRemove, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fileToRemove"></param>
+		public virtual UpdateResult RemoveDocument(Int32 fileToRemove)
+		{
+			var result = Task.Run(() => RemoveDocumentAsyncMsg(fileToRemove)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetFormValuesAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/form/GetFormValues");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetFormValuesAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/form/GetFormValues");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<FormValueReturn> GetFormValues()
+		{
+			var result = Task.Run(() => GetFormValuesAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<FormValueReturn>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="strinGuid"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetFormsByCompIdAsyncMsg(Int32 compId,String strinGuid)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/form/GetFormsByCompId?compId=" + compId + "&strinGuid=" + strinGuid, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="strinGuid"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetFormsByCompIdAsync(Int32 compId,String strinGuid)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/form/GetFormsByCompId?compId=" + compId + "&strinGuid=" + strinGuid, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="strinGuid"></param>
+		public virtual FormReturn GetFormsByCompId(Int32 compId,String strinGuid)
+		{
+			var result = Task.Run(() => GetFormsByCompIdAsyncMsg(compId, strinGuid)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<FormReturn>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ValidFormValueAsyncMsg(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/ValidFormValue", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ValidFormValueAsync(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/ValidFormValue", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId ValidFormValue(FormApiParm param)
+		{
+			var result = Task.Run(() => ValidFormValueAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RejectFormValueAsyncMsg(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/RejectFormValue", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RejectFormValueAsync(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/RejectFormValue", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithGui RejectFormValue(FormApiParm param)
+		{
+			var result = Task.Run(() => RejectFormValueAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithGui>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="strinGuid"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RemoveFormValueAsyncMsg(Int32 compId,String strinGuid)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/form/RemoveFormValue/" + compId + "/" + strinGuid, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="strinGuid"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RemoveFormValueAsync(Int32 compId,String strinGuid)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/form/RemoveFormValue/" + compId + "/" + strinGuid, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="strinGuid"></param>
+		public virtual UpdateResult RemoveFormValue(Int32 compId,String strinGuid)
+		{
+			var result = Task.Run(() => RemoveFormValueAsyncMsg(compId, strinGuid)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SendNotifSubmitAsyncMsg(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/SendNotifSubmit", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SendNotifSubmitAsync(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/SendNotifSubmit", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithGui SendNotifSubmit(FormApiParm param)
+		{
+			var result = Task.Run(() => SendNotifSubmitAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithGui>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SubmitFormValueAsyncMsg(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/SubmitFormValue", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SubmitFormValueAsync(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/SubmitFormValue", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual SubmitFormReturn SubmitFormValue(FormApiParm param)
+		{
+			var result = Task.Run(() => SubmitFormValueAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<SubmitFormReturn>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SendNotifSaveAsyncMsg(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/SendNotifSave", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SendNotifSaveAsync(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/SendNotifSave", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithGui SendNotifSave(FormApiParm param)
+		{
+			var result = Task.Run(() => SendNotifSaveAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithGui>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveFormValueAsyncMsg(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/SaveFormValue", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveFormValueAsync(FormApiParm param)
+		{
+			return await HttpClient.PostAsJsonAsync<FormApiParm>("api/v1/form/SaveFormValue", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithGui SaveFormValue(FormApiParm param)
+		{
+			var result = Task.Run(() => SaveFormValueAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithGui>().Result;
 			 		}
 
 		#endregion
@@ -14388,7 +26389,7 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// Returns the list of all avalible titles
+		/// Returns the list of all available titles
 		/// </summary>
 		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> GetAllTitlesAsyncMsg()
@@ -14397,7 +26398,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// Returns the list of all avalible titles
+		/// Returns the list of all available titles
 		/// </summary>
 		/// <returns></returns>
 		public virtual async Task<HttpResponseMessage> GetAllTitlesAsync()
@@ -14406,7 +26407,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// Returns the list of all avalible titles
+		/// Returns the list of all available titles
 		/// </summary>
 		public virtual List<OccupationJS> GetAllTitles()
 		{
@@ -14639,6 +26640,76 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Update Resource Skills
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="skills"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateResourceSkillsAsyncMsg(Int32 userId,List<SkillJs> skills)
+		{
+			return await HttpClient.PostAsJsonAsync<List<SkillJs>>("api/v1/rh/updateResourceSkills/" + userId, skills);
+		}
+
+		/// <summary>
+		/// Update Resource Skills
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateResourceSkillsAsync(Int32 userId,List<SkillJs> skills)
+		{
+			return await HttpClient.PostAsJsonAsync<List<SkillJs>>("api/v1/rh/updateResourceSkills/" + userId, skills);
+		}
+
+		/// <summary>
+		/// Update Resource Skills
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual UpdateResult UpdateResourceSkills(Int32 userId,List<SkillJs> skills)
+		{
+			var result = Task.Run(() => UpdateResourceSkillsAsyncMsg(userId, skills)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Deletes resource skill
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="skillId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteResourceSkillAsyncMsg(Int32 userId,Int32 skillId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/rh/skillsResource/" + userId + "/" + skillId);
+		}
+
+		/// <summary>
+		/// Deletes resource skill
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="skillId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteResourceSkillAsync(Int32 userId,Int32 skillId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/rh/skillsResource/" + userId + "/" + skillId);
+		}
+
+		/// <summary>
+		/// Deletes resource skill
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="skillId"></param>
+		public virtual UpdateResult DeleteResourceSkill(Int32 userId,Int32 skillId)
+		{
+			var result = Task.Run(() => DeleteResourceSkillAsyncMsg(userId, skillId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
 		/// Updates order of skills
 		/// </summary>
 		/// <param name="newOrder">Ids of all skills. The order will be preserved</param>
@@ -14729,6 +26800,70 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// send email
+		/// </summary>
+		/// <param name="email"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SendEmailAsyncMsg(String email)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/rh/ressources/sendEmail?email=" + email, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// send email
+		/// </summary>
+		/// <param name="email"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SendEmailAsync(String email)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/rh/ressources/sendEmail?email=" + email, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// send email
+		/// </summary>
+		/// <param name="email"></param>
+		public virtual UpdateResult SendEmail(String email)
+		{
+			var result = Task.Run(() => SendEmailAsyncMsg(email)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Save setting Resource
+		/// </summary>
+		/// <param name="setting"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveSettingResourceAsyncMsg(SettingResource setting)
+		{
+			return await HttpClient.PostAsJsonAsync<SettingResource>("api/v1/rh/titles/SaveSettingResource", setting);
+		}
+
+		/// <summary>
+		/// Save setting Resource
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveSettingResourceAsync(SettingResource setting)
+		{
+			return await HttpClient.PostAsJsonAsync<SettingResource>("api/v1/rh/titles/SaveSettingResource", setting);
+		}
+
+		/// <summary>
+		/// Save setting Resource
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess SaveSettingResource(SettingResource setting)
+		{
+			var result = Task.Run(() => SaveSettingResourceAsyncMsg(setting)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
 			 		}
 
 		/// <summary>
@@ -14866,6 +27001,412 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
 			 		}
 
+		/// <summary>
+		/// Updates or creates a list of users
+		/// </summary>
+		/// <param name="users">List of users to insert or update</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateOrAddEmployesOldAsyncMsg(List<ApiRessource> users)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiRessource>>("api/v1/ressources/updateEmployes", users);
+		}
+
+		/// <summary>
+		/// Updates or creates a list of users
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateOrAddEmployesOldAsync(List<ApiRessource> users)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiRessource>>("api/v1/ressources/updateEmployes", users);
+		}
+
+		/// <summary>
+		/// Updates or creates a list of users
+		/// </summary>
+		public virtual UpdateResultWithId UpdateOrAddEmployesOld(List<ApiRessource> users)
+		{
+			var result = Task.Run(() => UpdateOrAddEmployesOldAsyncMsg(users)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="users"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateOrAddEmployesAsyncMsg(List<ApiRessource> users)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiRessource>>("api/v2/ressources/updateEmployes", users);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateOrAddEmployesAsync(List<ApiRessource> users)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiRessource>>("api/v2/ressources/updateEmployes", users);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ResponseContainer<ApiRessource>> UpdateOrAddEmployes(List<ApiRessource> users)
+		{
+			var result = Task.Run(() => UpdateOrAddEmployesAsyncMsg(users)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ResponseContainer<ApiRessource>>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Managers
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetManagersAsyncMsg(Int32 userId)
+		{
+			return await HttpClient.GetAsync("api/v1/ressources/getManagers/" + userId);
+		}
+
+		/// <summary>
+		/// Get Managers
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetManagersAsync(Int32 userId)
+		{
+			return await HttpClient.GetAsync("api/v1/ressources/getManagers/" + userId);
+		}
+
+		/// <summary>
+		/// Get Managers
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual Int32[] GetManagers(Int32 userId)
+		{
+			var result = Task.Run(() => GetManagersAsyncMsg(userId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Int32[]>().Result;
+			 		}
+
+		/// <summary>
+		/// Save New Positions
+		/// </summary>
+		/// <param name="newPositions"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveNewPositionsAsyncMsg(NewPositions newPositions)
+		{
+			return await HttpClient.PostAsJsonAsync<NewPositions>("api/v1/ressources/saveNewPositions", newPositions);
+		}
+
+		/// <summary>
+		/// Save New Positions
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveNewPositionsAsync(NewPositions newPositions)
+		{
+			return await HttpClient.PostAsJsonAsync<NewPositions>("api/v1/ressources/saveNewPositions", newPositions);
+		}
+
+		/// <summary>
+		/// Save New Positions
+		/// </summary>
+		public virtual UpdateResult SaveNewPositions(NewPositions newPositions)
+		{
+			var result = Task.Run(() => SaveNewPositionsAsyncMsg(newPositions)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Save New Directions
+		/// </summary>
+		/// <param name="newDirections"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveNewDirectionsAsyncMsg(NewDirections newDirections)
+		{
+			return await HttpClient.PostAsJsonAsync<NewDirections>("api/v1/ressources/saveNewDirections", newDirections);
+		}
+
+		/// <summary>
+		/// Save New Directions
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveNewDirectionsAsync(NewDirections newDirections)
+		{
+			return await HttpClient.PostAsJsonAsync<NewDirections>("api/v1/ressources/saveNewDirections", newDirections);
+		}
+
+		/// <summary>
+		/// Save New Directions
+		/// </summary>
+		public virtual UpdateResult SaveNewDirections(NewDirections newDirections)
+		{
+			var result = Task.Run(() => SaveNewDirectionsAsyncMsg(newDirections)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Save New Roles
+		/// </summary>
+		/// <param name="newRoles"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveNewRolesAsyncMsg(NewRoles newRoles)
+		{
+			return await HttpClient.PostAsJsonAsync<NewRoles>("api/v1/ressources/saveNewRoles", newRoles);
+		}
+
+		/// <summary>
+		/// Save New Roles
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveNewRolesAsync(NewRoles newRoles)
+		{
+			return await HttpClient.PostAsJsonAsync<NewRoles>("api/v1/ressources/saveNewRoles", newRoles);
+		}
+
+		/// <summary>
+		/// Save New Roles
+		/// </summary>
+		public virtual UpdateResult SaveNewRoles(NewRoles newRoles)
+		{
+			var result = Task.Run(() => SaveNewRolesAsyncMsg(newRoles)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// delete User
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteUserAsyncMsg(Int32 userId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/ressources/deleteUser/" + userId);
+		}
+
+		/// <summary>
+		/// delete User
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteUserAsync(Int32 userId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/ressources/deleteUser/" + userId);
+		}
+
+		/// <summary>
+		/// delete User
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual UpdateResult DeleteUser(Int32 userId)
+		{
+			var result = Task.Run(() => DeleteUserAsyncMsg(userId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Reactivates user.
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ReactivateUserAsyncMsg(Int32 userId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/ressources/reactivateUser/" + userId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Reactivates user.
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ReactivateUserAsync(Int32 userId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/ressources/reactivateUser/" + userId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Reactivates user.
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual UpdateResult ReactivateUser(Int32 userId)
+		{
+			var result = Task.Run(() => ReactivateUserAsyncMsg(userId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ImportsClient : ClientBase, Interfaces.IImportsClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ImportsClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ImportsClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="exportType"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetFieldsForAsyncMsg(ObjectType exportType)
+		{
+			return await HttpClient.GetAsync("api/v1/imports/fields/" + exportType);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="exportType"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetFieldsForAsync(ObjectType exportType)
+		{
+			return await HttpClient.GetAsync("api/v1/imports/fields/" + exportType);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="exportType"></param>
+		public virtual List<ColumnInfo> GetFieldsFor(ObjectType exportType)
+		{
+			var result = Task.Run(() => GetFieldsForAsyncMsg(exportType)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ColumnInfo>>().Result;
+			 		}
+
+		/// <summary>
+		/// Add an import
+		/// </summary>
+		/// <param name="import">Import to add</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddImportAsyncMsg(ApiImport import)
+		{
+			return await HttpClient.PostAsJsonAsync<ApiImport>("api/v1/imports", import);
+		}
+
+		/// <summary>
+		/// Add an import
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddImportAsync(ApiImport import)
+		{
+			return await HttpClient.PostAsJsonAsync<ApiImport>("api/v1/imports", import);
+		}
+
+		/// <summary>
+		/// Add an import
+		/// </summary>
+		public virtual ApiImport AddImport(ApiImport import)
+		{
+			var result = Task.Run(() => AddImportAsyncMsg(import)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ApiImport>().Result;
+			 		}
+
+		/// <summary>
+		/// Update an import configuration, report and status
+		/// </summary>
+		/// <param name="importId">Id of the import to update</param>
+		/// <param name="import">Values to update</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateImportAsyncMsg(Guid importId,ApiImport import)
+		{
+			return await HttpClient.PutAsJsonAsync<ApiImport>("api/v1/imports?importId=" + importId, import);
+		}
+
+		/// <summary>
+		/// Update an import configuration, report and status
+		/// </summary>
+		/// <param name="importId">Id of the import to update</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateImportAsync(Guid importId,ApiImport import)
+		{
+			return await HttpClient.PutAsJsonAsync<ApiImport>("api/v1/imports?importId=" + importId, import);
+		}
+
+		/// <summary>
+		/// Update an import configuration, report and status
+		/// </summary>
+		/// <param name="importId">Id of the import to update</param>
+		public virtual ApiImport UpdateImport(Guid importId,ApiImport import)
+		{
+			var result = Task.Run(() => UpdateImportAsyncMsg(importId, import)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ApiImport>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ListImportsAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/imports");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ListImportsAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/imports");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ApiImport> ListImports()
+		{
+			var result = Task.Run(() => ListImportsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ApiImport>>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -14889,6 +27430,138 @@ namespace WebApi.Proxies.Clients
 		}
 
 		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ImportFicheContributionAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/importFicheContribution", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ImportFicheContributionAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/importFicheContribution", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId ImportFicheContribution()
+		{
+			var result = Task.Run(() => ImportFicheContributionAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="oracleId"></param>
+		/// <param name="BeeyeId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AssignOracleProjetAsyncMsg(String oracleId,Int32 BeeyeId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/assignOracleProjet?oracleId=" + oracleId + "&BeeyeId=" + BeeyeId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="oracleId"></param>
+		/// <param name="BeeyeId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AssignOracleProjetAsync(String oracleId,Int32 BeeyeId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/assignOracleProjet?oracleId=" + oracleId + "&BeeyeId=" + BeeyeId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="oracleId"></param>
+		/// <param name="BeeyeId"></param>
+		public virtual UpdateResult AssignOracleProjet(String oracleId,Int32 BeeyeId)
+		{
+			var result = Task.Run(() => AssignOracleProjetAsyncMsg(oracleId, BeeyeId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="oracleId"></param>
+		/// <param name="BeeyeId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AssignOracleRessourceAsyncMsg(String oracleId,Int32 BeeyeId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/assignOracleRessource?oracleId=" + oracleId + "&BeeyeId=" + BeeyeId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="oracleId"></param>
+		/// <param name="BeeyeId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AssignOracleRessourceAsync(String oracleId,Int32 BeeyeId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/assignOracleRessource?oracleId=" + oracleId + "&BeeyeId=" + BeeyeId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="oracleId"></param>
+		/// <param name="BeeyeId"></param>
+		public virtual UpdateResult AssignOracleRessource(String oracleId,Int32 BeeyeId)
+		{
+			var result = Task.Run(() => AssignOracleRessourceAsyncMsg(oracleId, BeeyeId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UploadGrGpDataAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/uploadGrGpData", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UploadGrGpDataAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/uploadGrGpData", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual GtGpImportResult UploadGrGpData()
+		{
+			var result = Task.Run(() => UploadGrGpDataAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<GtGpImportResult>().Result;
+			 		}
 
 		/// <summary>
 		/// 
@@ -14947,172 +27620,6 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResult UpdateGtGpCustomField(Int32 cfId)
 		{
 			var result = Task.Run(() => UpdateGtGpCustomFieldAsyncMsg(cfId)).Result;		 
-			 
-			EnsureSuccess(result);
-			 			 
-			return result.Content.ReadAsAsync<UpdateResult>().Result;
-			 		}
-
-		/// <summary>
-		/// Creates a project from airtable record
-		/// For internal use
-		/// If project already exists (match by name) custom fields are updated
-		/// </summary>
-		/// <param name="compId"></param>
-		/// <param name="record"></param>
-		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> CreateProjectFromAirTableAsyncMsg(Int32 compId,AirtableRecord record)
-		{
-			return await HttpClient.PostAsJsonAsync<AirtableRecord>("api/v1/connect/CreateProjectFromAirTable/" + compId, record);
-		}
-
-		/// <summary>
-		/// Creates a project from airtable record
-		/// For internal use
-		/// If project already exists (match by name) custom fields are updated
-		/// </summary>
-		/// <param name="compId"></param>
-		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> CreateProjectFromAirTableAsync(Int32 compId,AirtableRecord record)
-		{
-			return await HttpClient.PostAsJsonAsync<AirtableRecord>("api/v1/connect/CreateProjectFromAirTable/" + compId, record);
-		}
-
-		/// <summary>
-		/// Creates a project from airtable record
-		/// For internal use
-		/// If project already exists (match by name) custom fields are updated
-		/// </summary>
-		/// <param name="compId"></param>
-		public virtual UpdateResultWithId CreateProjectFromAirTable(Int32 compId,AirtableRecord record)
-		{
-			var result = Task.Run(() => CreateProjectFromAirTableAsyncMsg(compId, record)).Result;		 
-			 
-			EnsureSuccess(result);
-			 			 
-			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
-			 		}
-
-		/// <summary>
-		/// Retuens AirTables integration configuration
-		/// </summary>
-		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetAirTablesConfigAsyncMsg()
-		{
-			return await HttpClient.GetAsync("api/v1/connect/getAirTablesConfig");
-		}
-
-		/// <summary>
-		/// Retuens AirTables integration configuration
-		/// </summary>
-		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetAirTablesConfigAsync()
-		{
-			return await HttpClient.GetAsync("api/v1/connect/getAirTablesConfig");
-		}
-
-		/// <summary>
-		/// Retuens AirTables integration configuration
-		/// </summary>
-		public virtual AirTablesConfig GetAirTablesConfig()
-		{
-			var result = Task.Run(() => GetAirTablesConfigAsyncMsg()).Result;		 
-			 
-			EnsureSuccess(result);
-			 			 
-			return result.Content.ReadAsAsync<AirTablesConfig>().Result;
-			 		}
-
-		/// <summary>
-		/// Alows to test connectivity with air tables
-		/// </summary>
-		/// <param name="config"></param>
-		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> TestAirTableConnexionAsyncMsg(AirTablesConfig config)
-		{
-			return await HttpClient.PostAsJsonAsync<AirTablesConfig>("api/v1/connect/testAirTablesConfig", config);
-		}
-
-		/// <summary>
-		/// Alows to test connectivity with air tables
-		/// </summary>
-		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> TestAirTableConnexionAsync(AirTablesConfig config)
-		{
-			return await HttpClient.PostAsJsonAsync<AirTablesConfig>("api/v1/connect/testAirTablesConfig", config);
-		}
-
-		/// <summary>
-		/// Alows to test connectivity with air tables
-		/// </summary>
-		public virtual UpdateResult TestAirTableConnexion(AirTablesConfig config)
-		{
-			var result = Task.Run(() => TestAirTableConnexionAsyncMsg(config)).Result;		 
-			 
-			EnsureSuccess(result);
-			 			 
-			return result.Content.ReadAsAsync<UpdateResult>().Result;
-			 		}
-
-		/// <summary>
-		/// Tries to get fields from AirTables. First 100 (or less) records are used to prepare this list
-		/// </summary>
-		/// <param name="config"></param>
-		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetAirTablesFieldsAsyncMsg(AirTablesConfig config)
-		{
-			return await HttpClient.PostAsJsonAsync<AirTablesConfig>("api/v1/connect/getAirTablesFields", config);
-		}
-
-		/// <summary>
-		/// Tries to get fields from AirTables. First 100 (or less) records are used to prepare this list
-		/// </summary>
-		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetAirTablesFieldsAsync(AirTablesConfig config)
-		{
-			return await HttpClient.PostAsJsonAsync<AirTablesConfig>("api/v1/connect/getAirTablesFields", config);
-		}
-
-		/// <summary>
-		/// Tries to get fields from AirTables. First 100 (or less) records are used to prepare this list
-		/// </summary>
-		public virtual List<String> GetAirTablesFields(AirTablesConfig config)
-		{
-			var result = Task.Run(() => GetAirTablesFieldsAsyncMsg(config)).Result;		 
-			 
-			EnsureSuccess(result);
-			 			 
-			return result.Content.ReadAsAsync<List<String>>().Result;
-			 		}
-
-		/// <summary>
-		/// Saves AirTables configuration.
-		/// Performs base check for mandatory fields
-		/// </summary>
-		/// <param name="config"></param>
-		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> SaveAirTablesConfigAsyncMsg(AirTablesConfig config)
-		{
-			return await HttpClient.PostAsJsonAsync<AirTablesConfig>("api/v1/connect/saveAirTablesConfig", config);
-		}
-
-		/// <summary>
-		/// Saves AirTables configuration.
-		/// Performs base check for mandatory fields
-		/// </summary>
-		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> SaveAirTablesConfigAsync(AirTablesConfig config)
-		{
-			return await HttpClient.PostAsJsonAsync<AirTablesConfig>("api/v1/connect/saveAirTablesConfig", config);
-		}
-
-		/// <summary>
-		/// Saves AirTables configuration.
-		/// Performs base check for mandatory fields
-		/// </summary>
-		public virtual UpdateResult SaveAirTablesConfig(AirTablesConfig config)
-		{
-			var result = Task.Run(() => SaveAirTablesConfigAsyncMsg(config)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -15304,6 +27811,272 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteAllLuccaErrorsAsyncMsg()
+		{
+			return await HttpClient.DeleteAsync("api/v1/connect/deleteLuccaErrors");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteAllLuccaErrorsAsync()
+		{
+			return await HttpClient.DeleteAsync("api/v1/connect/deleteLuccaErrors");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult DeleteAllLuccaErrors()
+		{
+			var result = Task.Run(() => DeleteAllLuccaErrorsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetGTGPConfigAsyncMsg(Int32 compId)
+		{
+			return await HttpClient.GetAsync("api/v1/connect/GetGTGPConfig/" + compId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetGTGPConfigAsync(Int32 compId)
+		{
+			return await HttpClient.GetAsync("api/v1/connect/GetGTGPConfig/" + compId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		public virtual GtGpConfig GetGTGPConfig(Int32 compId)
+		{
+			var result = Task.Run(() => GetGTGPConfigAsyncMsg(compId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<GtGpConfig>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="cfId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateGtGpConfigAsyncMsg(Int32 compId,Int32 cfId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/UpdateGtGpConfig/" + compId + "/" + cfId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="cfId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateGtGpConfigAsync(Int32 compId,Int32 cfId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/UpdateGtGpConfig/" + compId + "/" + cfId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="cfId"></param>
+		public virtual UpdateResult UpdateGtGpConfig(Int32 compId,Int32 cfId)
+		{
+			var result = Task.Run(() => UpdateGtGpConfigAsyncMsg(compId, cfId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="type"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ForceSyncAsyncMsg(IntegrationType type)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/ForceSync?type=" + type, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="type"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ForceSyncAsync(IntegrationType type)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/ForceSync?type=" + type, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="type"></param>
+		public virtual UpdateResult ForceSync(IntegrationType type)
+		{
+			var result = Task.Run(() => ForceSyncAsyncMsg(type)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="compExternalId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetConfigurationsAsyncMsg(Nullable<Int32> compId,String compExternalId)
+		{
+			return await HttpClient.GetAsync("api/v1/integrations/" + compId + "?compExternalId=" + compExternalId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="compExternalId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetConfigurationsAsync(Nullable<Int32> compId,String compExternalId)
+		{
+			return await HttpClient.GetAsync("api/v1/integrations/" + compId + "?compExternalId=" + compExternalId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="compExternalId"></param>
+		public virtual List<IntegrationConfigurationBasic> GetConfigurations(Nullable<Int32> compId,String compExternalId)
+		{
+			var result = Task.Run(() => GetConfigurationsAsyncMsg(compId, compExternalId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<IntegrationConfigurationBasic>>().Result;
+			 		}
+
+		/// <summary>
+		/// Reexecute a Lucca requests in error
+		/// </summary>
+		/// <param name="errorId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RerunLuccaAsyncMsg(Int32 errorId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/RerunLucca/" + errorId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Reexecute a Lucca requests in error
+		/// </summary>
+		/// <param name="errorId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RerunLuccaAsync(Int32 errorId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/connect/RerunLucca/" + errorId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Reexecute a Lucca requests in error
+		/// </summary>
+		/// <param name="errorId"></param>
+		public virtual UpdateResult RerunLucca(Int32 errorId)
+		{
+			var result = Task.Run(() => RerunLuccaAsyncMsg(errorId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <param name="newConfiguration"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateConfigurationsSellsyAsyncMsg(Int32 compId,IntegrationConfigurationSellsy newConfiguration)
+		{
+			return await HttpClient.PostAsJsonAsync<IntegrationConfigurationSellsy>("api/v1/integrations/" + compId, newConfiguration);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateConfigurationsSellsyAsync(Int32 compId,IntegrationConfigurationSellsy newConfiguration)
+		{
+			return await HttpClient.PostAsJsonAsync<IntegrationConfigurationSellsy>("api/v1/integrations/" + compId, newConfiguration);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="compId"></param>
+		public virtual UpdateResult UpdateConfigurationsSellsy(Int32 compId,IntegrationConfigurationSellsy newConfiguration)
+		{
+			var result = Task.Run(() => UpdateConfigurationsSellsyAsyncMsg(compId, newConfiguration)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="datesRangeRequest"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GenerateSellsyInvoiceAsyncMsg(DatesRangeRequest<Int32> datesRangeRequest)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/integrations/sellsy/generateInvoice", datesRangeRequest);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GenerateSellsyInvoiceAsync(DatesRangeRequest<Int32> datesRangeRequest)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Int32>>("api/v1/integrations/sellsy/generateInvoice", datesRangeRequest);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult GenerateSellsyInvoice(DatesRangeRequest<Int32> datesRangeRequest)
+		{
+			var result = Task.Run(() => GenerateSellsyInvoiceAsyncMsg(datesRangeRequest)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -15395,6 +28168,72 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Add files to a invoiced. Files should be transfered as Posted files in the request
+		/// </summary>
+		/// <param name="invoiceId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddFilesToInvoiceAsyncMsg(Int32 invoiceId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/invoices/addFilesToInvoice/" + invoiceId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Add files to a invoiced. Files should be transfered as Posted files in the request
+		/// </summary>
+		/// <param name="invoiceId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddFilesToInvoiceAsync(Int32 invoiceId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/invoices/addFilesToInvoice/" + invoiceId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Add files to a invoiced. Files should be transfered as Posted files in the request
+		/// </summary>
+		/// <param name="invoiceId"></param>
+		public virtual UpdateResultWithId AddFilesToInvoice(Int32 invoiceId)
+		{
+			var result = Task.Run(() => AddFilesToInvoiceAsyncMsg(invoiceId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns the list of files for an invoiced
+		/// </summary>
+		/// <param name="invoiceId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetFilesListForInvoiceAsyncMsg(Int32 invoiceId)
+		{
+			return await HttpClient.GetAsync("api/v1/invoices/getFilesListForInvoice/" + invoiceId);
+		}
+
+		/// <summary>
+		/// Returns the list of files for an invoiced
+		/// </summary>
+		/// <param name="invoiceId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetFilesListForInvoiceAsync(Int32 invoiceId)
+		{
+			return await HttpClient.GetAsync("api/v1/invoices/getFilesListForInvoice/" + invoiceId);
+		}
+
+		/// <summary>
+		/// Returns the list of files for an invoiced
+		/// </summary>
+		/// <param name="invoiceId"></param>
+		public virtual List<UploadedFile> GetFilesListForInvoice(Int32 invoiceId)
+		{
+			var result = Task.Run(() => GetFilesListForInvoiceAsyncMsg(invoiceId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<UploadedFile>>().Result;
+			 		}
+
+		/// <summary>
 		/// Gets all invoices for a project
 		/// </summary>
 		/// <param name="projectId"></param>
@@ -15421,6 +28260,36 @@ namespace WebApi.Proxies.Clients
 		public virtual List<Invoiced> GetAllInvoicesForProject(Int32 projectId)
 		{
 			var result = Task.Run(() => GetAllInvoicesForProjectAsyncMsg(projectId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<Invoiced>>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns all the invoices for all the projects
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllInvoicesAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/invoices");
+		}
+
+		/// <summary>
+		/// Returns all the invoices for all the projects
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllInvoicesAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/invoices");
+		}
+
+		/// <summary>
+		/// Returns all the invoices for all the projects
+		/// </summary>
+		public virtual List<Invoiced> GetAllInvoices()
+		{
+			var result = Task.Run(() => GetAllInvoicesAsyncMsg()).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -15462,6 +28331,37 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Update list of invoiced information
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateListInvoicedAsyncMsg(RequestSelectedBulkAction data)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestSelectedBulkAction>("api/v1/invoices/updateListInvoiced", data);
+		}
+
+		/// <summary>
+		/// Update list of invoiced information
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateListInvoicedAsync(RequestSelectedBulkAction data)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestSelectedBulkAction>("api/v1/invoices/updateListInvoiced", data);
+		}
+
+		/// <summary>
+		/// Update list of invoiced information
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess UpdateListInvoiced(RequestSelectedBulkAction data)
+		{
+			var result = Task.Run(() => UpdateListInvoicedAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
 		/// Creates a new invoice if id is 0 or negatif.
 		/// Udates existing invoice if id > 0
 		/// </summary>
@@ -15495,6 +28395,68 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
 			 		}
 
+		/// <summary>
+		/// Insert or update a list of invoices
+		/// </summary>
+		/// <param name="invoices"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateOrUpdateInvoicesOldAsyncMsg(List<Invoiced> invoices)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Invoiced>>("api/v1/invoices/createOrUpdateInvoices", invoices);
+		}
+
+		/// <summary>
+		/// Insert or update a list of invoices
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateOrUpdateInvoicesOldAsync(List<Invoiced> invoices)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Invoiced>>("api/v1/invoices/createOrUpdateInvoices", invoices);
+		}
+
+		/// <summary>
+		/// Insert or update a list of invoices
+		/// </summary>
+		public virtual UpdateResultWithId CreateOrUpdateInvoicesOld(List<Invoiced> invoices)
+		{
+			var result = Task.Run(() => CreateOrUpdateInvoicesOldAsyncMsg(invoices)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Insert or update a list of invoices
+		/// </summary>
+		/// <param name="invoices"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateOrUpdateInvoicesAsyncMsg(List<Invoiced> invoices)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Invoiced>>("api/v2/invoices/createOrUpdateInvoices", invoices);
+		}
+
+		/// <summary>
+		/// Insert or update a list of invoices
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateOrUpdateInvoicesAsync(List<Invoiced> invoices)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Invoiced>>("api/v2/invoices/createOrUpdateInvoices", invoices);
+		}
+
+		/// <summary>
+		/// Insert or update a list of invoices
+		/// </summary>
+		public virtual List<ResponseContainer<Invoiced>> CreateOrUpdateInvoices(List<Invoiced> invoices)
+		{
+			var result = Task.Run(() => CreateOrUpdateInvoicesAsyncMsg(invoices)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ResponseContainer<Invoiced>>>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -15518,6 +28480,385 @@ namespace WebApi.Proxies.Clients
 		}
 
 		#region Methods
+
+		/// <summary>
+		/// get the dashboard info of a Project Success
+		/// </summary>
+		/// <param name="request">the Project Success info</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectSuccessByProjectAsyncMsg(DatesRangeFilteredRequest<ProjectSuccessComponent> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<ProjectSuccessComponent>>("api/v1/kpi/GetProjectSuccessByProject", request);
+		}
+
+		/// <summary>
+		/// get the dashboard info of a Project Success
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectSuccessByProjectAsync(DatesRangeFilteredRequest<ProjectSuccessComponent> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<ProjectSuccessComponent>>("api/v1/kpi/GetProjectSuccessByProject", request);
+		}
+
+		/// <summary>
+		/// get the dashboard info of a Project Success
+		/// </summary>
+		public virtual List<ProjectSuccessReturn> GetProjectSuccessByProject(DatesRangeFilteredRequest<ProjectSuccessComponent> request)
+		{
+			var result = Task.Run(() => GetProjectSuccessByProjectAsyncMsg(request)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectSuccessReturn>>().Result;
+			 		}
+
+		/// <summary>
+		/// get the dashboard info of a Project Success Pie
+		/// </summary>
+		/// <param name="request">the Project Success Pie info</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectSuccessPieAsyncMsg(DatesRangeFilteredRequest<ProjectSuccessPieComponent> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<ProjectSuccessPieComponent>>("api/v1/kpi/GetProjectSuccessPie", request);
+		}
+
+		/// <summary>
+		/// get the dashboard info of a Project Success Pie
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectSuccessPieAsync(DatesRangeFilteredRequest<ProjectSuccessPieComponent> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<ProjectSuccessPieComponent>>("api/v1/kpi/GetProjectSuccessPie", request);
+		}
+
+		/// <summary>
+		/// get the dashboard info of a Project Success Pie
+		/// </summary>
+		public virtual Int32[] GetProjectSuccessPie(DatesRangeFilteredRequest<ProjectSuccessPieComponent> request)
+		{
+			var result = Task.Run(() => GetProjectSuccessPieAsyncMsg(request)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Int32[]>().Result;
+			 		}
+
+		/// <summary>
+		/// get the dashboard info of a Single Number CustomFields
+		/// </summary>
+		/// <param name="request">the Single Number CustomFields info</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetSingleValueCustomFieldKpiAsyncMsg(DatesRangeFilteredRequest<KpiSingleNumberCustomFields> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<KpiSingleNumberCustomFields>>("api/v1/kpi/GetSingleValueCustomFieldKpi", request);
+		}
+
+		/// <summary>
+		/// get the dashboard info of a Single Number CustomFields
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetSingleValueCustomFieldKpiAsync(DatesRangeFilteredRequest<KpiSingleNumberCustomFields> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<KpiSingleNumberCustomFields>>("api/v1/kpi/GetSingleValueCustomFieldKpi", request);
+		}
+
+		/// <summary>
+		/// get the dashboard info of a Single Number CustomFields
+		/// </summary>
+		public virtual KpiSingleNumberCustomFieldsValue GetSingleValueCustomFieldKpi(DatesRangeFilteredRequest<KpiSingleNumberCustomFields> request)
+		{
+			var result = Task.Run(() => GetSingleValueCustomFieldKpiAsyncMsg(request)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<KpiSingleNumberCustomFieldsValue>().Result;
+			 		}
+
+		/// <summary>
+		/// Save the DashBoard
+		/// </summary>
+		/// <param name="request">the DashBoard info</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveDashBoardAsyncMsg(DatesRangeFilteredRequest<GraphInfo> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<GraphInfo>>("api/v1/kpi/SaveDashBoard", request);
+		}
+
+		/// <summary>
+		/// Save the DashBoard
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveDashBoardAsync(DatesRangeFilteredRequest<GraphInfo> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<GraphInfo>>("api/v1/kpi/SaveDashBoard", request);
+		}
+
+		/// <summary>
+		/// Save the DashBoard
+		/// </summary>
+		public virtual UpdateResultWithId SaveDashBoard(DatesRangeFilteredRequest<GraphInfo> request)
+		{
+			var result = Task.Run(() => SaveDashBoardAsyncMsg(request)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Save the filter for DashBoard
+		/// </summary>
+		/// <param name="request">the filter with dates</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveFiltersDashBoardAsyncMsg(DatesRangeFilteredRequest<Int32> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Int32>>("api/v1/kpi/SaveFiltersDashBoard", request);
+		}
+
+		/// <summary>
+		/// Save the filter for DashBoard
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveFiltersDashBoardAsync(DatesRangeFilteredRequest<Int32> request)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Int32>>("api/v1/kpi/SaveFiltersDashBoard", request);
+		}
+
+		/// <summary>
+		/// Save the filter for DashBoard
+		/// </summary>
+		public virtual UpdateResult SaveFiltersDashBoard(DatesRangeFilteredRequest<Int32> request)
+		{
+			var result = Task.Run(() => SaveFiltersDashBoardAsyncMsg(request)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete save dashboard
+		/// </summary>
+		/// <param name="id">Id of the dashboard</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteDashboardAsyncMsg(Int32 id)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/kpi/DeleteDashboard?id=" + id, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Delete save dashboard
+		/// </summary>
+		/// <param name="id">Id of the dashboard</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteDashboardAsync(Int32 id)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/kpi/DeleteDashboard?id=" + id, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Delete save dashboard
+		/// </summary>
+		/// <param name="id">Id of the dashboard</param>
+		public virtual UpdateResult DeleteDashboard(Int32 id)
+		{
+			var result = Task.Run(() => DeleteDashboardAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Shared Dashboard
+		/// </summary>
+		/// <param name="request">param</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateSharedDashboardAsyncMsg(ShareDashboardParam request)
+		{
+			return await HttpClient.PostAsJsonAsync<ShareDashboardParam>("api/v1/kpi/UpdateSharedDashboard", request);
+		}
+
+		/// <summary>
+		/// Update Shared Dashboard
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateSharedDashboardAsync(ShareDashboardParam request)
+		{
+			return await HttpClient.PostAsJsonAsync<ShareDashboardParam>("api/v1/kpi/UpdateSharedDashboard", request);
+		}
+
+		/// <summary>
+		/// Update Shared Dashboard
+		/// </summary>
+		public virtual UpdateResult UpdateSharedDashboard(ShareDashboardParam request)
+		{
+			var result = Task.Run(() => UpdateSharedDashboardAsyncMsg(request)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Shared Dashboard
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetSharedDashboardAsyncMsg(String id)
+		{
+			return await HttpClient.GetAsync("api/v1/kpi/GetSharedDashboard?id=" + id);
+		}
+
+		/// <summary>
+		/// Get Shared Dashboard
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetSharedDashboardAsync(String id)
+		{
+			return await HttpClient.GetAsync("api/v1/kpi/GetSharedDashboard?id=" + id);
+		}
+
+		/// <summary>
+		/// Get Shared Dashboard
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual SharedDashboard GetSharedDashboard(String id)
+		{
+			var result = Task.Run(() => GetSharedDashboardAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<SharedDashboard>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Shared Dashboards List
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetSharedDashboardsListAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/kpi/GetSharedDashboardsList");
+		}
+
+		/// <summary>
+		/// Get Shared Dashboards List
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetSharedDashboardsListAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/kpi/GetSharedDashboardsList");
+		}
+
+		/// <summary>
+		/// Get Shared Dashboards List
+		/// </summary>
+		public virtual List<SharedDashboard> GetSharedDashboardsList()
+		{
+			var result = Task.Run(() => GetSharedDashboardsListAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<SharedDashboard>>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete Shared Dashboard
+		/// </summary>
+		/// <param name="Id">id</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteSharedDashboardAsyncMsg(String Id)
+		{
+			return await HttpClient.DeleteAsync("api/v1/kpi/DeleteSharedDashboard?Id=" + Id);
+		}
+
+		/// <summary>
+		/// Delete Shared Dashboard
+		/// </summary>
+		/// <param name="Id">id</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteSharedDashboardAsync(String Id)
+		{
+			return await HttpClient.DeleteAsync("api/v1/kpi/DeleteSharedDashboard?Id=" + Id);
+		}
+
+		/// <summary>
+		/// Delete Shared Dashboard
+		/// </summary>
+		/// <param name="Id">id</param>
+		public virtual UpdateResult DeleteSharedDashboard(String Id)
+		{
+			var result = Task.Run(() => DeleteSharedDashboardAsyncMsg(Id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Share Dashboard
+		/// </summary>
+		/// <param name="request">param</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ShareDashboardAsyncMsg(ShareDashboardParam request)
+		{
+			return await HttpClient.PostAsJsonAsync<ShareDashboardParam>("api/v1/kpi/ShareDashboard", request);
+		}
+
+		/// <summary>
+		/// Share Dashboard
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ShareDashboardAsync(ShareDashboardParam request)
+		{
+			return await HttpClient.PostAsJsonAsync<ShareDashboardParam>("api/v1/kpi/ShareDashboard", request);
+		}
+
+		/// <summary>
+		/// Share Dashboard
+		/// </summary>
+		public virtual UpdateResult ShareDashboard(ShareDashboardParam request)
+		{
+			var result = Task.Run(() => ShareDashboardAsyncMsg(request)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get a dashboard with id
+		/// </summary>
+		/// <param name="id">Id of the dashboard</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetDashboardAsyncMsg(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/v1/kpi/GetDashboard?id=" + id);
+		}
+
+		/// <summary>
+		/// Get a dashboard with id
+		/// </summary>
+		/// <param name="id">Id of the dashboard</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetDashboardAsync(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/v1/kpi/GetDashboard?id=" + id);
+		}
+
+		/// <summary>
+		/// Get a dashboard with id
+		/// </summary>
+		/// <param name="id">Id of the dashboard</param>
+		public virtual List<BaseDashboardComponent> GetDashboard(Int32 id)
+		{
+			var result = Task.Run(() => GetDashboardAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<BaseDashboardComponent>>().Result;
+			 		}
 
 		/// <summary>
 		/// Return data grouped by title
@@ -15704,9 +29045,10 @@ namespace WebApi.Proxies.Clients
 		#region Methods
 
 		/// <summary>
-		/// 
+		/// Method used to login with a provided API key.
+		/// Login information is stored in the cookies.
 		/// </summary>
-		/// <param name="apiKey"></param>
+		/// <param name="apiKey">Authentication key for the company</param>
 		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> ApiLoginAsyncMsg(String apiKey)
 		{
@@ -15714,9 +29056,10 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// Method used to login with a provided API key.
+		/// Login information is stored in the cookies.
 		/// </summary>
-		/// <param name="apiKey"></param>
+		/// <param name="apiKey">Authentication key for the company</param>
 		/// <returns></returns>
 		public virtual async Task<HttpResponseMessage> ApiLoginAsync(String apiKey)
 		{
@@ -15724,9 +29067,10 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// Method used to login with a provided API key.
+		/// Login information is stored in the cookies.
 		/// </summary>
-		/// <param name="apiKey"></param>
+		/// <param name="apiKey">Authentication key for the company</param>
 		public virtual UpdateResultWithId ApiLogin(String apiKey)
 		{
 			var result = Task.Run(() => ApiLoginAsyncMsg(apiKey)).Result;		 
@@ -15861,6 +29205,328 @@ namespace WebApi.Proxies.Clients
 		#endregion
 	}
 	/// <summary>
+	/// 
+	/// </summary>
+	public partial class MobileAuthClient : ClientBase, Interfaces.IMobileAuthClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public MobileAuthClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public MobileAuthClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/mobileauth/microsoft");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/mobileauth/microsoft");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual void Get()
+		{
+			var result = Task.Run(() => GetAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+		}
+
+		#endregion
+	}
+	/// <summary>
+	/// 
+	/// </summary>
+	public partial class NotificationClient : ClientBase, Interfaces.INotificationClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public NotificationClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public NotificationClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// enable or disable the notification Submit Subscription
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ToggleSubmitSubscriptionAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleSubmitSubscription", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable or disable the notification Submit Subscription
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ToggleSubmitSubscriptionAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleSubmitSubscription", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable or disable the notification Submit Subscription
+		/// </summary>
+		public virtual UpdateResultWithId ToggleSubmitSubscription()
+		{
+			var result = Task.Run(() => ToggleSubmitSubscriptionAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// enable or disable the notification Reject Subscription
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ToggleRejectedSubscriptionAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleRejectedSubscription", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable or disable the notification Reject Subscription
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ToggleRejectedSubscriptionAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleRejectedSubscription", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable or disable the notification Reject Subscription
+		/// </summary>
+		public virtual UpdateResultWithId ToggleRejectedSubscription()
+		{
+			var result = Task.Run(() => ToggleRejectedSubscriptionAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// enable/disable the notification Edited Planning
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ToggleEditedPlanningAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleEditedPlanning", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable/disable the notification Edited Planning
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ToggleEditedPlanningAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleEditedPlanning", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable/disable the notification Edited Planning
+		/// </summary>
+		public virtual UpdateResultWithId ToggleEditedPlanning()
+		{
+			var result = Task.Run(() => ToggleEditedPlanningAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// enable/disable the notification Validated Comments Timesheet
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ToggleValidatedCommentsTimesheetAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleValidatedCommentsTimesheet", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable/disable the notification Validated Comments Timesheet
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ToggleValidatedCommentsTimesheetAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleValidatedCommentsTimesheet", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable/disable the notification Validated Comments Timesheet
+		/// </summary>
+		public virtual UpdateResultWithId ToggleValidatedCommentsTimesheet()
+		{
+			var result = Task.Run(() => ToggleValidatedCommentsTimesheetAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// enable/disable the notification Validated Subscription
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ToggleValidatedSubscriptionAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleValidatedSubscription", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable/disable the notification Validated Subscription
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ToggleValidatedSubscriptionAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleValidatedSubscription", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable/disable the notification Validated Subscription
+		/// </summary>
+		public virtual UpdateResultWithId ToggleValidatedSubscription()
+		{
+			var result = Task.Run(() => ToggleValidatedSubscriptionAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// enable/disable the notification Task Subscription
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ToggleTaskSubscriptionAsyncMsg(Int32 taskId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleTaskSubscription?taskId=" + taskId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable/disable the notification Task Subscription
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ToggleTaskSubscriptionAsync(Int32 taskId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleTaskSubscription?taskId=" + taskId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable/disable the notification Task Subscription
+		/// </summary>
+		/// <param name="taskId"></param>
+		public virtual UpdateResultWithId ToggleTaskSubscription(Int32 taskId)
+		{
+			var result = Task.Run(() => ToggleTaskSubscriptionAsyncMsg(taskId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// enable/disable the notification Project Type Subscription
+		/// </summary>
+		/// <param name="projectTypeId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ToggleProjectTypeSubscriptionAsyncMsg(Int32 projectTypeId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleProjectTypeSubscription?projectTypeId=" + projectTypeId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable/disable the notification Project Type Subscription
+		/// </summary>
+		/// <param name="projectTypeId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ToggleProjectTypeSubscriptionAsync(Int32 projectTypeId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/notification/ToggleProjectTypeSubscription?projectTypeId=" + projectTypeId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// enable/disable the notification Project Type Subscription
+		/// </summary>
+		/// <param name="projectTypeId"></param>
+		public virtual UpdateResultWithId ToggleProjectTypeSubscription(Int32 projectTypeId)
+		{
+			var result = Task.Run(() => ToggleProjectTypeSubscriptionAsyncMsg(projectTypeId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Get User Notifications List
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetUserNotificationsListAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/notification/GetUserNotificationsList");
+		}
+
+		/// <summary>
+		/// Get User Notifications List
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetUserNotificationsListAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/notification/GetUserNotificationsList");
+		}
+
+		/// <summary>
+		/// Get User Notifications List
+		/// </summary>
+		public virtual UserNotificationsList GetUserNotificationsList()
+		{
+			var result = Task.Run(() => GetUserNotificationsListAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UserNotificationsList>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
 	/// APIs for getting and saving planning by project
 	/// </summary>
 	public partial class PlanningClient : ClientBase, Interfaces.IPlanningClient
@@ -15881,6 +29547,45 @@ namespace WebApi.Proxies.Clients
 		}
 
 		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="resourceId"></param>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTaskPlanningAsyncMsg(Nullable<Int32> projectId,Nullable<Int32> resourceId,Nullable<Int32> taskId)
+		{
+			return await HttpClient.GetAsync("api/v1/planning/crud?projectId=" + projectId + "&resourceId=" + resourceId + "&taskId=" + taskId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="resourceId"></param>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTaskPlanningAsync(Nullable<Int32> projectId,Nullable<Int32> resourceId,Nullable<Int32> taskId)
+		{
+			return await HttpClient.GetAsync("api/v1/planning/crud?projectId=" + projectId + "&resourceId=" + resourceId + "&taskId=" + taskId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="resourceId"></param>
+		/// <param name="taskId"></param>
+		public virtual List<TaskPlanning> GetTaskPlanning(Nullable<Int32> projectId,Nullable<Int32> resourceId,Nullable<Int32> taskId)
+		{
+			var result = Task.Run(() => GetTaskPlanningAsyncMsg(projectId, resourceId, taskId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<TaskPlanning>>().Result;
+			 		}
 
 		/// <summary>
 		/// Get projects or ressources planning.
@@ -15911,6 +29616,166 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<PlanningResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete Plannings Views
+		/// </summary>
+		/// <param name="viewId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeletePlanningViewAsyncMsg(Int32 viewId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/planning/deletePlanningView?viewId=" + viewId);
+		}
+
+		/// <summary>
+		/// Delete Plannings Views
+		/// </summary>
+		/// <param name="viewId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeletePlanningViewAsync(Int32 viewId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/planning/deletePlanningView?viewId=" + viewId);
+		}
+
+		/// <summary>
+		/// Delete Plannings Views
+		/// </summary>
+		/// <param name="viewId"></param>
+		public virtual UpdateResult DeletePlanningView(Int32 viewId)
+		{
+			var result = Task.Run(() => DeletePlanningViewAsyncMsg(viewId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SavePreferencesPlannificationAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/planning/savePreferencesPlannification", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SavePreferencesPlannificationAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/planning/savePreferencesPlannification", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual void SavePreferencesPlannification()
+		{
+			var result = Task.Run(() => SavePreferencesPlannificationAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+		}
+
+		/// <summary>
+		/// Change planning View order, need to know when is a planning normal/conflict
+		/// </summary>
+		/// <param name="normal"></param>
+		/// <param name="conflict"></param>
+		/// <param name="newOrder"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ChangePlanningOrderAsyncMsg(Boolean normal,Boolean conflict,Int32[] newOrder)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("api/v1/planning/ChangePlanningOrder/" + normal + "/" + conflict, newOrder);
+		}
+
+		/// <summary>
+		/// Change planning View order, need to know when is a planning normal/conflict
+		/// </summary>
+		/// <param name="normal"></param>
+		/// <param name="conflict"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ChangePlanningOrderAsync(Boolean normal,Boolean conflict,Int32[] newOrder)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("api/v1/planning/ChangePlanningOrder/" + normal + "/" + conflict, newOrder);
+		}
+
+		/// <summary>
+		/// Change planning View order, need to know when is a planning normal/conflict
+		/// </summary>
+		/// <param name="normal"></param>
+		/// <param name="conflict"></param>
+		public virtual UpdateResult ChangePlanningOrder(Boolean normal,Boolean conflict,Int32[] newOrder)
+		{
+			var result = Task.Run(() => ChangePlanningOrderAsyncMsg(normal, conflict, newOrder)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddNewPlanningViewAsyncMsg(DatesRangeFilteredRequestPagination<UserPreferencesPlanningParam> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<UserPreferencesPlanningParam>>("api/v1/planning/addNewPlanningView", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddNewPlanningViewAsync(DatesRangeFilteredRequestPagination<UserPreferencesPlanningParam> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<UserPreferencesPlanningParam>>("api/v1/planning/addNewPlanningView", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId AddNewPlanningView(DatesRangeFilteredRequestPagination<UserPreferencesPlanningParam> param)
+		{
+			var result = Task.Run(() => AddNewPlanningViewAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete Plannings Views
+		/// </summary>
+		/// <param name="viewsIdList"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeletePlanningViewsAsyncMsg(List<Int32> viewsIdList)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("api/v1/planning/deletePlanningsViews", viewsIdList);
+		}
+
+		/// <summary>
+		/// Delete Plannings Views
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeletePlanningViewsAsync(List<Int32> viewsIdList)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("api/v1/planning/deletePlanningsViews", viewsIdList);
+		}
+
+		/// <summary>
+		/// Delete Plannings Views
+		/// </summary>
+		public virtual UpdateResult DeletePlanningViews(List<Int32> viewsIdList)
+		{
+			var result = Task.Run(() => DeletePlanningViewsAsyncMsg(viewsIdList)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
 		/// <summary>
@@ -16117,7 +29982,7 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// Get the planning for a RESSOURCE
+		/// Get project list
 		/// </summary>
 		/// <param name="search"></param>
 		/// <returns></returns>
@@ -16127,7 +29992,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// Get the planning for a RESSOURCE
+		/// Get project list
 		/// </summary>
 		/// <returns></returns>
 		public virtual async Task<HttpResponseMessage> GetAvalibleProjectsListAsync(DatesRangeFilteredRequestPagination<GetPlanningParams> search)
@@ -16136,7 +30001,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// Get the planning for a RESSOURCE
+		/// Get project list
 		/// </summary>
 		public virtual List<ProjectJS> GetAvalibleProjectsList(DatesRangeFilteredRequestPagination<GetPlanningParams> search)
 		{
@@ -16467,6 +30332,39 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetPlannedHoursForTaskAsyncMsg(Int32 taskId)
+		{
+			return await HttpClient.GetAsync("api/v1/task-planning/GetPlannedHoursForTask/" + taskId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetPlannedHoursForTaskAsync(Int32 taskId)
+		{
+			return await HttpClient.GetAsync("api/v1/task-planning/GetPlannedHoursForTask/" + taskId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="taskId"></param>
+		public virtual Double GetPlannedHoursForTask(Int32 taskId)
+		{
+			var result = Task.Run(() => GetPlannedHoursForTaskAsyncMsg(taskId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Double>().Result;
+			 		}
+
+		/// <summary>
 		/// Get the available hours for a project, excluding task hours for this project
 		/// </summary>
 		/// <param name="projectId"></param>
@@ -16559,6 +30457,40 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResult ReversePlanningAsDone(DatesRangeRequest<RequestDeclareDone> dates)
 		{
 			var result = Task.Run(() => ReversePlanningAsDoneAsyncMsg(dates)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Declares one day of planning as "Done" and fills time in their timesheets. The StartDate should be used for the day of planning.
+		/// If plannign doesn't exist, does nothing
+		/// </summary>
+		/// <param name="dates"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeclarePlanningAsDoneAsyncMsg(DatesRangeRequest<RequestDeclareDone> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<RequestDeclareDone>>("api/v1/task-planning/declareAsFinished", dates);
+		}
+
+		/// <summary>
+		/// Declares one day of planning as "Done" and fills time in their timesheets. The StartDate should be used for the day of planning.
+		/// If plannign doesn't exist, does nothing
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeclarePlanningAsDoneAsync(DatesRangeRequest<RequestDeclareDone> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<RequestDeclareDone>>("api/v1/task-planning/declareAsFinished", dates);
+		}
+
+		/// <summary>
+		/// Declares one day of planning as "Done" and fills time in their timesheets. The StartDate should be used for the day of planning.
+		/// If plannign doesn't exist, does nothing
+		/// </summary>
+		public virtual UpdateResult DeclarePlanningAsDone(DatesRangeRequest<RequestDeclareDone> dates)
+		{
+			var result = Task.Run(() => DeclarePlanningAsDoneAsyncMsg(dates)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -17222,37 +31154,6 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// Declares one day of planning as "Done" and fills time in their timesheets. The StartDate should be used for the day of planning.
-		/// </summary>
-		/// <param name="dates"></param>
-		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> DeclarePlanningAsDoneAsyncMsg(DatesRangeRequest<RequestDeclareDone> dates)
-		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<RequestDeclareDone>>("api/PlanningByTasks", dates);
-		}
-
-		/// <summary>
-		/// Declares one day of planning as "Done" and fills time in their timesheets. The StartDate should be used for the day of planning.
-		/// </summary>
-		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> DeclarePlanningAsDoneAsync(DatesRangeRequest<RequestDeclareDone> dates)
-		{
-			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<RequestDeclareDone>>("api/PlanningByTasks", dates);
-		}
-
-		/// <summary>
-		/// Declares one day of planning as "Done" and fills time in their timesheets. The StartDate should be used for the day of planning.
-		/// </summary>
-		public virtual UpdateResult DeclarePlanningAsDone(DatesRangeRequest<RequestDeclareDone> dates)
-		{
-			var result = Task.Run(() => DeclarePlanningAsDoneAsyncMsg(dates)).Result;		 
-			 
-			EnsureSuccess(result);
-			 			 
-			return result.Content.ReadAsAsync<UpdateResult>().Result;
-			 		}
-
-		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="data"></param>
@@ -17306,6 +31207,36 @@ namespace WebApi.Proxies.Clients
 		}
 
 		#region Methods
+
+		/// <summary>
+		/// Upload UserFile
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UploadUserFileAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/profile-image/UploadUserFile", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Upload UserFile
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UploadUserFileAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/profile-image/UploadUserFile", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Upload UserFile
+		/// </summary>
+		public virtual UpdateResult UploadUserFile()
+		{
+			var result = Task.Run(() => UploadUserFileAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
 
 		/// <summary>
 		/// Update profile image for the logged-in user
@@ -17392,6 +31323,808 @@ namespace WebApi.Proxies.Clients
 		#region Methods
 
 		/// <summary>
+		/// Takes a list of projects and queues them for automated planning
+		/// All existing planification will be deleted
+		/// Performs checks on validity of projects and acess rights of user
+		/// filters are for potential future usage
+		/// </summary>
+		/// <param name="projects"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> QueueProjectsForPlanningAsyncMsg(DatesRangeFilteredRequest<Int32[]> projects)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Int32[]>>("api/v1/proj-management/queueProjectsForPlanning", projects);
+		}
+
+		/// <summary>
+		/// Takes a list of projects and queues them for automated planning
+		/// All existing planification will be deleted
+		/// Performs checks on validity of projects and acess rights of user
+		/// filters are for potential future usage
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> QueueProjectsForPlanningAsync(DatesRangeFilteredRequest<Int32[]> projects)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Int32[]>>("api/v1/proj-management/queueProjectsForPlanning", projects);
+		}
+
+		/// <summary>
+		/// Takes a list of projects and queues them for automated planning
+		/// All existing planification will be deleted
+		/// Performs checks on validity of projects and acess rights of user
+		/// filters are for potential future usage
+		/// </summary>
+		public virtual UpdateResult QueueProjectsForPlanning(DatesRangeFilteredRequest<Int32[]> projects)
+		{
+			var result = Task.Run(() => QueueProjectsForPlanningAsyncMsg(projects)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get max value for a period, use in the project sheet for the graph
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="GraphDateMode"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetGraphMaxAsyncMsg(Int32 projId,Int32 GraphDateMode)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetGraphMax/" + projId + "/" + GraphDateMode);
+		}
+
+		/// <summary>
+		/// Get max value for a period, use in the project sheet for the graph
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="GraphDateMode"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetGraphMaxAsync(Int32 projId,Int32 GraphDateMode)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetGraphMax/" + projId + "/" + GraphDateMode);
+		}
+
+		/// <summary>
+		/// Get max value for a period, use in the project sheet for the graph
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="GraphDateMode"></param>
+		public virtual ProjectGraphMax GetGraphMax(Int32 projId,Int32 GraphDateMode)
+		{
+			var result = Task.Run(() => GetGraphMaxAsyncMsg(projId, GraphDateMode)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ProjectGraphMax>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns the list of fields used for project creation when dynamic names are enabled
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetFieldsUsedForProjectCreationAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetFieldsUsedForProjectCreation");
+		}
+
+		/// <summary>
+		/// Returns the list of fields used for project creation when dynamic names are enabled
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetFieldsUsedForProjectCreationAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetFieldsUsedForProjectCreation");
+		}
+
+		/// <summary>
+		/// Returns the list of fields used for project creation when dynamic names are enabled
+		/// </summary>
+		public virtual List<ProjectDynamicNameField> GetFieldsUsedForProjectCreation()
+		{
+			var result = Task.Run(() => GetFieldsUsedForProjectCreationAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectDynamicNameField>>().Result;
+			 		}
+
+		/// <summary>
+		/// From a project list return project that use some type of data for due date
+		/// </summary>
+		/// <param name="datesRangeRequestProjectsDueDate">Contain, All the object id that was change. And All the type of nomenclature due date link we want to check, DateComparisonType. If IsClientUpdate is true id are id from clients if false id come from projects</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectsDueDateUseAsyncMsg(DatesRangeRequestProjectsDueDate datesRangeRequestProjectsDueDate)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequestProjectsDueDate>("api/v1/proj-management/GetProjectsDueDateUse", datesRangeRequestProjectsDueDate);
+		}
+
+		/// <summary>
+		/// From a project list return project that use some type of data for due date
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectsDueDateUseAsync(DatesRangeRequestProjectsDueDate datesRangeRequestProjectsDueDate)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequestProjectsDueDate>("api/v1/proj-management/GetProjectsDueDateUse", datesRangeRequestProjectsDueDate);
+		}
+
+		/// <summary>
+		/// From a project list return project that use some type of data for due date
+		/// </summary>
+		public virtual List<ListItemInt> GetProjectsDueDateUse(DatesRangeRequestProjectsDueDate datesRangeRequestProjectsDueDate)
+		{
+			var result = Task.Run(() => GetProjectsDueDateUseAsyncMsg(datesRangeRequestProjectsDueDate)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ListItemInt>>().Result;
+			 		}
+
+		/// <summary>
+		/// From a list of projects ids update the due date of the tasks in the projects
+		/// </summary>
+		/// <param name="projectsIds">All the projects ids that need to be update</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateProjectsDueDateAsyncMsg(List<Int32> projectsIds)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("api/v1/proj-management/UpdateProjectsDueDate", projectsIds);
+		}
+
+		/// <summary>
+		/// From a list of projects ids update the due date of the tasks in the projects
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateProjectsDueDateAsync(List<Int32> projectsIds)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("api/v1/proj-management/UpdateProjectsDueDate", projectsIds);
+		}
+
+		/// <summary>
+		/// From a list of projects ids update the due date of the tasks in the projects
+		/// </summary>
+		public virtual UpdateResult UpdateProjectsDueDate(List<Int32> projectsIds)
+		{
+			var result = Task.Run(() => UpdateProjectsDueDateAsyncMsg(projectsIds)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get resource of a project
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectRessourcesAsyncMsg(Int32 projId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetProjectRessources?projId=" + projId);
+		}
+
+		/// <summary>
+		/// Get resource of a project
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectRessourcesAsync(Int32 projId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetProjectRessources?projId=" + projId);
+		}
+
+		/// <summary>
+		/// Get resource of a project
+		/// </summary>
+		/// <param name="projId"></param>
+		public virtual List<RessourceStats> GetProjectRessources(Int32 projId)
+		{
+			var result = Task.Run(() => GetProjectRessourcesAsyncMsg(projId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<RessourceStats>>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete objective
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="objId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteObjectiveAsyncMsg(Int32 projId,Int32 objId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/proj-management/DeleteObjective?projId=" + projId + "&objId=" + objId);
+		}
+
+		/// <summary>
+		/// Delete objective
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="objId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteObjectiveAsync(Int32 projId,Int32 objId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/proj-management/DeleteObjective?projId=" + projId + "&objId=" + objId);
+		}
+
+		/// <summary>
+		/// Delete objective
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="objId"></param>
+		public virtual UpdateResult DeleteObjective(Int32 projId,Int32 objId)
+		{
+			var result = Task.Run(() => DeleteObjectiveAsyncMsg(projId, objId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get mandatory field for creating project, depend of the activity Families selected
+		/// </summary>
+		/// <param name="activityFamiliesId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetMandatoryFieldsAsyncMsg(Guid activityFamiliesId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetMandatoryFields/" + activityFamiliesId);
+		}
+
+		/// <summary>
+		/// Get mandatory field for creating project, depend of the activity Families selected
+		/// </summary>
+		/// <param name="activityFamiliesId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetMandatoryFieldsAsync(Guid activityFamiliesId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetMandatoryFields/" + activityFamiliesId);
+		}
+
+		/// <summary>
+		/// Get mandatory field for creating project, depend of the activity Families selected
+		/// </summary>
+		/// <param name="activityFamiliesId"></param>
+		public virtual MandatoryFields GetMandatoryFields(Guid activityFamiliesId)
+		{
+			var result = Task.Run(() => GetMandatoryFieldsAsyncMsg(activityFamiliesId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<MandatoryFields>().Result;
+			 		}
+
+		/// <summary>
+		/// Get All Expensses, if the task is reccurence add due date to the name of the task
+		/// </summary>
+		/// <param name="prId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllExpenssesAsyncMsg(Int32 prId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetAllExpensses?prId=" + prId);
+		}
+
+		/// <summary>
+		/// Get All Expensses, if the task is reccurence add due date to the name of the task
+		/// </summary>
+		/// <param name="prId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllExpenssesAsync(Int32 prId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetAllExpensses?prId=" + prId);
+		}
+
+		/// <summary>
+		/// Get All Expensses, if the task is reccurence add due date to the name of the task
+		/// </summary>
+		/// <param name="prId"></param>
+		public virtual List<Expense> GetAllExpensses(Int32 prId)
+		{
+			var result = Task.Run(() => GetAllExpenssesAsyncMsg(prId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<Expense>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Project Success
+		/// </summary>
+		/// <param name="prId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectSuccessAsyncMsg(Int32 prId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetProjectSuccess?prId=" + prId);
+		}
+
+		/// <summary>
+		/// Get Project Success
+		/// </summary>
+		/// <param name="prId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectSuccessAsync(Int32 prId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetProjectSuccess?prId=" + prId);
+		}
+
+		/// <summary>
+		/// Get Project Success
+		/// </summary>
+		/// <param name="prId"></param>
+		public virtual ProjectSuccess GetProjectSuccess(Int32 prId)
+		{
+			var result = Task.Run(() => GetProjectSuccessAsyncMsg(prId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ProjectSuccess>().Result;
+			 		}
+
+		/// <summary>
+		/// Get All Resources Responsible For Task
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllResourcesResponsibleForTaskAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetAllResourcesResponsibleForTask");
+		}
+
+		/// <summary>
+		/// Get All Resources Responsible For Task
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllResourcesResponsibleForTaskAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetAllResourcesResponsibleForTask");
+		}
+
+		/// <summary>
+		/// Get All Resources Responsible For Task
+		/// </summary>
+		public virtual List<EmployeJS> GetAllResourcesResponsibleForTask()
+		{
+			var result = Task.Run(() => GetAllResourcesResponsibleForTaskAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<EmployeJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get All Resources Responsible For Project
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllResourcesResponsibleForProjectAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetAllResourcesResponsibleForProject");
+		}
+
+		/// <summary>
+		/// Get All Resources Responsible For Project
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllResourcesResponsibleForProjectAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetAllResourcesResponsibleForProject");
+		}
+
+		/// <summary>
+		/// Get All Resources Responsible For Project
+		/// </summary>
+		public virtual List<EmployeJS> GetAllResourcesResponsibleForProject()
+		{
+			var result = Task.Run(() => GetAllResourcesResponsibleForProjectAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<EmployeJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// Save responsable project
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="responsableId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveResponsableAsyncMsg(Int32 projId,Int32 responsableId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/SaveResponsable?projId=" + projId + "&responsableId=" + responsableId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Save responsable project
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="responsableId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveResponsableAsync(Int32 projId,Int32 responsableId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/SaveResponsable?projId=" + projId + "&responsableId=" + responsableId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Save responsable project
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="responsableId"></param>
+		public virtual UpdateResult SaveResponsable(Int32 projId,Int32 responsableId)
+		{
+			var result = Task.Run(() => SaveResponsableAsyncMsg(projId, responsableId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Budget
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="projectGagne"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveBudgetAsyncMsg(Int32 projId,Double projectGagne)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/SaveBudget?projId=" + projId + "&projectGagne=" + projectGagne, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Update Budget
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="projectGagne"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveBudgetAsync(Int32 projId,Double projectGagne)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/SaveBudget?projId=" + projId + "&projectGagne=" + projectGagne, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Update Budget
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="projectGagne"></param>
+		public virtual UpdateResult SaveBudget(Int32 projId,Double projectGagne)
+		{
+			var result = Task.Run(() => SaveBudgetAsyncMsg(projId, projectGagne)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Planned Expenses
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="projectPrevu"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SavePlannedExpensesAsyncMsg(Int32 projId,Double projectPrevu)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/SavePlannedExpenses?projId=" + projId + "&projectPrevu=" + projectPrevu, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Update Planned Expenses
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="projectPrevu"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SavePlannedExpensesAsync(Int32 projId,Double projectPrevu)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/SavePlannedExpenses?projId=" + projId + "&projectPrevu=" + projectPrevu, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Update Planned Expenses
+		/// </summary>
+		/// <param name="projId"></param>
+		/// <param name="projectPrevu"></param>
+		public virtual UpdateResult SavePlannedExpenses(Int32 projId,Double projectPrevu)
+		{
+			var result = Task.Run(() => SavePlannedExpensesAsyncMsg(projId, projectPrevu)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get project list where i am the responsable
+		/// </summary>
+		/// <param name="dates"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetMyProjectsListAsyncMsg(DatesRangeRequestBase dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequestBase>("api/v1/proj-management/GetMyProjectsList", dates);
+		}
+
+		/// <summary>
+		/// Get project list where i am the responsable
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetMyProjectsListAsync(DatesRangeRequestBase dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequestBase>("api/v1/proj-management/GetMyProjectsList", dates);
+		}
+
+		/// <summary>
+		/// Get project list where i am the responsable
+		/// </summary>
+		public virtual List<ProjectJS> GetMyProjectsList(DatesRangeRequestBase dates)
+		{
+			var result = Task.Run(() => GetMyProjectsListAsyncMsg(dates)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetDocumentsForprojectAsyncMsg(Int32 projectId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/files/" + projectId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetDocumentsForprojectAsync(Int32 projectId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/files/" + projectId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		public virtual List<UploadedFile> GetDocumentsForproject(Int32 projectId)
+		{
+			var result = Task.Run(() => GetDocumentsForprojectAsyncMsg(projectId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<UploadedFile>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fileToRemove"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RemoveDocumentAsyncMsg(Int32 fileToRemove)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/RemoveDocument/" + fileToRemove, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fileToRemove"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RemoveDocumentAsync(Int32 fileToRemove)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/RemoveDocument/" + fileToRemove, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fileToRemove"></param>
+		public virtual UpdateResult RemoveDocument(Int32 fileToRemove)
+		{
+			var result = Task.Run(() => RemoveDocumentAsyncMsg(fileToRemove)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UploadDocumentAsyncMsg(Int32 projectId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/UploadDocument/" + projectId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UploadDocumentAsync(Int32 projectId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/UploadDocument/" + projectId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		public virtual UpdateResultWithId UploadDocument(Int32 projectId)
+		{
+			var result = Task.Run(() => UploadDocumentAsyncMsg(projectId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="isImport"></param>
+		/// <param name="newProjList"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateAllNewProjectAsyncMsg(Boolean isImport,List<ProjectJS> newProjList)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ProjectJS>>("api/v1/proj-management/CreateAllNewProject?isImport=" + isImport, newProjList);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="isImport"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateAllNewProjectAsync(Boolean isImport,List<ProjectJS> newProjList)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ProjectJS>>("api/v1/proj-management/CreateAllNewProject?isImport=" + isImport, newProjList);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="isImport"></param>
+		public virtual UpdateResultWithId CreateAllNewProject(Boolean isImport,List<ProjectJS> newProjList)
+		{
+			var result = Task.Run(() => CreateAllNewProjectAsyncMsg(isImport, newProjList)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="isImport"></param>
+		/// <param name="projects"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateProjectsByBatchAsyncMsg(Boolean isImport,List<ProjectJS> projects)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ProjectJS>>("api/v1/proj-management/createBatch?isImport=" + isImport, projects);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="isImport"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateProjectsByBatchAsync(Boolean isImport,List<ProjectJS> projects)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ProjectJS>>("api/v1/proj-management/createBatch?isImport=" + isImport, projects);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="isImport"></param>
+		public virtual UpdateResultWithId CreateProjectsByBatch(Boolean isImport,List<ProjectJS> projects)
+		{
+			var result = Task.Run(() => CreateProjectsByBatchAsyncMsg(isImport, projects)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateProjectNameAsyncMsg(Int32 projectId,String name)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/UpdateProjectName?projectId=" + projectId + "&name=" + name, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateProjectNameAsync(Int32 projectId,String name)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/UpdateProjectName?projectId=" + projectId + "&name=" + name, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="name"></param>
+		public virtual UpdateResult UpdateProjectName(Int32 projectId,String name)
+		{
+			var result = Task.Run(() => UpdateProjectNameAsyncMsg(projectId, name)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectsIdList"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteProjectsAsyncMsg(Int32[] projectsIdList)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("api/v1/proj-management/DeleteProjects", projectsIdList);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteProjectsAsync(Int32[] projectsIdList)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("api/v1/proj-management/DeleteProjects", projectsIdList);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult DeleteProjects(Int32[] projectsIdList)
+		{
+			var result = Task.Run(() => DeleteProjectsAsyncMsg(projectsIdList)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteProjectAsyncMsg(Int32 id)
+		{
+			return await HttpClient.DeleteAsync("api/v1/proj-management/DeleteProject?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteProjectAsync(Int32 id)
+		{
+			return await HttpClient.DeleteAsync("api/v1/proj-management/DeleteProject?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual UpdateResult DeleteProject(Int32 id)
+		{
+			var result = Task.Run(() => DeleteProjectAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="data"></param>
@@ -17420,6 +32153,39 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<ProjectJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectInfoMinimalAsyncMsg(Int32 projectId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/getProjectInfoMinimal/" + projectId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectInfoMinimalAsync(Int32 projectId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/getProjectInfoMinimal/" + projectId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		public virtual ProjectJS GetProjectInfoMinimal(Int32 projectId)
+		{
+			var result = Task.Run(() => GetProjectInfoMinimalAsyncMsg(projectId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ProjectJS>().Result;
 			 		}
 
 		/// <summary>
@@ -17516,6 +32282,71 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Create quick project
+		/// </summary>
+		/// <param name="tocreate"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ProjectQuickCreateAsyncMsg(ProjectQuickCreate tocreate)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectQuickCreate>("api/v1/proj-management/projectQuickCreate", tocreate);
+		}
+
+		/// <summary>
+		/// Create quick project
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ProjectQuickCreateAsync(ProjectQuickCreate tocreate)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectQuickCreate>("api/v1/proj-management/projectQuickCreate", tocreate);
+		}
+
+		/// <summary>
+		/// Create quick project
+		/// </summary>
+		public virtual UpdateResultWithId ProjectQuickCreate(ProjectQuickCreate tocreate)
+		{
+			var result = Task.Run(() => ProjectQuickCreateAsyncMsg(tocreate)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Add Activitys from nomenclature to Project
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="activitysId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddActivitysToProjectAsyncMsg(Int32 projectId,Guid[] activitysId)
+		{
+			return await HttpClient.PostAsJsonAsync<Guid[]>("api/v1/proj-management/addActivitysToProject/" + projectId, activitysId);
+		}
+
+		/// <summary>
+		/// Add Activitys from nomenclature to Project
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddActivitysToProjectAsync(Int32 projectId,Guid[] activitysId)
+		{
+			return await HttpClient.PostAsJsonAsync<Guid[]>("api/v1/proj-management/addActivitysToProject/" + projectId, activitysId);
+		}
+
+		/// <summary>
+		/// Add Activitys from nomenclature to Project
+		/// </summary>
+		/// <param name="projectId"></param>
+		public virtual UpdateResultMultiErrorSuccess AddActivitysToProject(Int32 projectId,Guid[] activitysId)
+		{
+			var result = Task.Run(() => AddActivitysToProjectAsyncMsg(projectId, activitysId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
 		/// Create project
 		/// </summary>
 		/// <param name="newProject"></param>
@@ -17575,6 +32406,74 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns a list of avalible users between two dates with capacity
+		/// If request object is true : group by team instead of title
+		/// </summary>
+		/// <param name="dates"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetPossibledRessourcesWithCapacityAsyncMsg(DatesRangeRequest<Boolean> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/proj-management/GetPossibledRessourcesWithCapacity", dates);
+		}
+
+		/// <summary>
+		/// Returns a list of avalible users between two dates with capacity
+		/// If request object is true : group by team instead of title
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetPossibledRessourcesWithCapacityAsync(DatesRangeRequest<Boolean> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequest<Boolean>>("api/v1/proj-management/GetPossibledRessourcesWithCapacity", dates);
+		}
+
+		/// <summary>
+		/// Returns a list of avalible users between two dates with capacity
+		/// If request object is true : group by team instead of title
+		/// </summary>
+		public virtual RessourcesForNewProject GetPossibledRessourcesWithCapacity(DatesRangeRequest<Boolean> dates)
+		{
+			var result = Task.Run(() => GetPossibledRessourcesWithCapacityAsyncMsg(dates)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<RessourcesForNewProject>().Result;
+			 		}
+
+		/// <summary>
+		/// Adds multiple users to multiples projects
+		/// If uer is already afected to a project, he won't be added
+		/// </summary>
+		/// <param name="assignMultiples">List of users and projects</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddUsersToProjectsAsyncMsg(AssignMultiples assignMultiples)
+		{
+			return await HttpClient.PostAsJsonAsync<AssignMultiples>("api/v1/proj-management/AddUsersToProjects", assignMultiples);
+		}
+
+		/// <summary>
+		/// Adds multiple users to multiples projects
+		/// If uer is already afected to a project, he won't be added
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddUsersToProjectsAsync(AssignMultiples assignMultiples)
+		{
+			return await HttpClient.PostAsJsonAsync<AssignMultiples>("api/v1/proj-management/AddUsersToProjects", assignMultiples);
+		}
+
+		/// <summary>
+		/// Adds multiple users to multiples projects
+		/// If uer is already afected to a project, he won't be added
+		/// </summary>
+		public virtual UpdateResult AddUsersToProjects(AssignMultiples assignMultiples)
+		{
+			var result = Task.Run(() => AddUsersToProjectsAsyncMsg(assignMultiples)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
 		/// <summary>
@@ -17676,7 +32575,7 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// 
+		/// Get All tasks for a project, if the task is reccurence add due date to the name of the task
 		/// </summary>
 		/// <param name="projectId"></param>
 		/// <returns></returns>
@@ -17686,7 +32585,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// Get All tasks for a project, if the task is reccurence add due date to the name of the task
 		/// </summary>
 		/// <param name="projectId"></param>
 		/// <returns></returns>
@@ -17696,7 +32595,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// Get All tasks for a project, if the task is reccurence add due date to the name of the task
 		/// </summary>
 		/// <param name="projectId"></param>
 		public virtual List<ProjectTaskMinimal> GetTasksForProject(Int32 projectId)
@@ -17740,9 +32639,9 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// Return list of all projects in the compagnie and values of custom fields
+		/// Returns a list of all projects in the company and values of custom fields
 		/// </summary>
-		/// <param name="requestObject">Dates range. The parametre indicates if custom fields should be included</param>
+		/// <param name="requestObject">Dates range. The parameter indicates if custom fields should be included</param>
 		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> GetAllProjectsWithCustomFieldsAsyncMsg(DatesRangeFilteredRequest<Boolean> requestObject)
 		{
@@ -17750,7 +32649,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// Return list of all projects in the compagnie and values of custom fields
+		/// Returns a list of all projects in the company and values of custom fields
 		/// </summary>
 		/// <returns></returns>
 		public virtual async Task<HttpResponseMessage> GetAllProjectsWithCustomFieldsAsync(DatesRangeFilteredRequest<Boolean> requestObject)
@@ -17759,7 +32658,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// Return list of all projects in the compagnie and values of custom fields
+		/// Returns a list of all projects in the company and values of custom fields
 		/// </summary>
 		public virtual List<ProjectJS> GetAllProjectsWithCustomFields(DatesRangeFilteredRequest<Boolean> requestObject)
 		{
@@ -17768,6 +32667,42 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<ProjectJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// Change the activity Family of a projects
+		/// </summary>
+		/// <param name="familyId"></param>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ChangeActivityFamilyAsyncMsg(Guid familyId,Int32 projectId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/ChangeActivityFamily/" + familyId + "/" + projectId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Change the activity Family of a projects
+		/// </summary>
+		/// <param name="familyId"></param>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ChangeActivityFamilyAsync(Guid familyId,Int32 projectId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/ChangeActivityFamily/" + familyId + "/" + projectId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Change the activity Family of a projects
+		/// </summary>
+		/// <param name="familyId"></param>
+		/// <param name="projectId"></param>
+		public virtual UpdateResultWithId ChangeActivityFamily(Guid familyId,Int32 projectId)
+		{
+			var result = Task.Run(() => ChangeActivityFamilyAsyncMsg(familyId, projectId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
 			 		}
 
 		/// <summary>
@@ -17795,6 +32730,78 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResult UpdateListProjects(RequestSelectedProjects data)
 		{
 			var result = Task.Run(() => UpdateListProjectsAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Updates client
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="fondDeFinancement">client id</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateFondDeFinancementAsyncMsg(Int32 projectId,Int32 fondDeFinancement)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/UpdateFondDeFinancement?projectId=" + projectId + "&fondDeFinancement=" + fondDeFinancement, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Updates client
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="fondDeFinancement">client id</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateFondDeFinancementAsync(Int32 projectId,Int32 fondDeFinancement)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/UpdateFondDeFinancement?projectId=" + projectId + "&fondDeFinancement=" + fondDeFinancement, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Updates client
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="fondDeFinancement">client id</param>
+		public virtual UpdateResult UpdateFondDeFinancement(Int32 projectId,Int32 fondDeFinancement)
+		{
+			var result = Task.Run(() => UpdateFondDeFinancementAsyncMsg(projectId, fondDeFinancement)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Updates name project
+		/// </summary>
+		/// <param name="projectName"></param>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateNameAsyncMsg(String projectName,Int32 projectId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/UpdateName?projectName=" + projectName + "&projectId=" + projectId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Updates name project
+		/// </summary>
+		/// <param name="projectName"></param>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateNameAsync(String projectName,Int32 projectId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/UpdateName?projectName=" + projectName + "&projectId=" + projectId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Updates name project
+		/// </summary>
+		/// <param name="projectName"></param>
+		/// <param name="projectId"></param>
+		public virtual UpdateResult UpdateName(String projectName,Int32 projectId)
+		{
+			var result = Task.Run(() => UpdateNameAsyncMsg(projectName, projectId)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -18006,6 +33013,442 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// 
 		/// </summary>
+		/// <param name="newData"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateDatesAsyncMsg(ProjectJSMainStats newData)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectJSMainStats>("api/v1/proj-management/UpdateDates", newData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateDatesAsync(ProjectJSMainStats newData)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectJSMainStats>("api/v1/proj-management/UpdateDates", newData);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResult UpdateDates(ProjectJSMainStats newData)
+		{
+			var result = Task.Run(() => UpdateDatesAsyncMsg(newData)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="projectTypeId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateProjectTypeIdAsyncMsg(Int32 projectId,Int32 projectTypeId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/UpdateProjectTypeId/" + projectId + "/" + projectTypeId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="projectTypeId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateProjectTypeIdAsync(Int32 projectId,Int32 projectTypeId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/UpdateProjectTypeId/" + projectId + "/" + projectTypeId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="projectTypeId"></param>
+		public virtual UpdateResult UpdateProjectTypeId(Int32 projectId,Int32 projectTypeId)
+		{
+			var result = Task.Run(() => UpdateProjectTypeIdAsyncMsg(projectId, projectTypeId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetPossibledRessourcesAsyncMsg(DatesRangeFilteredRequest<Boolean> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Boolean>>("api/v1/proj-management/GetPossibledRessources", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetPossibledRessourcesAsync(DatesRangeFilteredRequest<Boolean> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Boolean>>("api/v1/proj-management/GetPossibledRessources", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<EmployeJS> GetPossibledRessources(DatesRangeFilteredRequest<Boolean> param)
+		{
+			var result = Task.Run(() => GetPossibledRessourcesAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<EmployeJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetPossibledResponsablesAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetPossibledResponsables");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetPossibledResponsablesAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetPossibledResponsables");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<EmployeJS> GetPossibledResponsables()
+		{
+			var result = Task.Run(() => GetPossibledResponsablesAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<EmployeJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="prId"></param>
+		/// <param name="val"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ToggleProjectFavAsyncMsg(Int32 prId,Boolean val)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/ToggleProjectFav?prId=" + prId + "&val=" + val, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="prId"></param>
+		/// <param name="val"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ToggleProjectFavAsync(Int32 prId,Boolean val)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/ToggleProjectFav?prId=" + prId + "&val=" + val, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="prId"></param>
+		/// <param name="val"></param>
+		public virtual UpdateResult ToggleProjectFav(Int32 prId,Boolean val)
+		{
+			var result = Task.Run(() => ToggleProjectFavAsyncMsg(prId, val)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectDescriptionAsyncMsg(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetProjectDescription?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectDescriptionAsync(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetProjectDescription?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual UpdateResult GetProjectDescription(Int32 id)
+		{
+			var result = Task.Run(() => GetProjectDescriptionAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="description"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateProjectDescriptionAsyncMsg(Int32 id,String description)
+		{
+			return await HttpClient.PostAsJsonAsync<String>("api/v1/proj-management/UpdateProjectDescription?id=" + id, description);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateProjectDescriptionAsync(Int32 id,String description)
+		{
+			return await HttpClient.PostAsJsonAsync<String>("api/v1/proj-management/UpdateProjectDescription?id=" + id, description);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual UpdateResult UpdateProjectDescription(Int32 id,String description)
+		{
+			var result = Task.Run(() => UpdateProjectDescriptionAsyncMsg(id, description)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAvalibleProjectsListAsyncMsg(DatesRangeFilteredRequest<RequestProjectManaged> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<RequestProjectManaged>>("api/v1/proj-management/GetAvalibleProjectsList", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAvalibleProjectsListAsync(DatesRangeFilteredRequest<RequestProjectManaged> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<RequestProjectManaged>>("api/v1/proj-management/GetAvalibleProjectsList", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectJS> GetAvalibleProjectsList(DatesRangeFilteredRequest<RequestProjectManaged> param)
+		{
+			var result = Task.Run(() => GetAvalibleProjectsListAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAvalibleProjectsListNoDateAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetAvalibleProjectsListNoDate");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAvalibleProjectsListNoDateAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetAvalibleProjectsListNoDate");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectJS> GetAvalibleProjectsListNoDate()
+		{
+			var result = Task.Run(() => GetAvalibleProjectsListNoDateAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="noUnique"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCustomFieldsForProjectAsyncMsg(Int32 projectId,Boolean noUnique)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetCustomFieldsForProject/" + projectId + "/" + noUnique);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="noUnique"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCustomFieldsForProjectAsync(Int32 projectId,Boolean noUnique)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetCustomFieldsForProject/" + projectId + "/" + noUnique);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="noUnique"></param>
+		public virtual List<CustomFieldJs> GetCustomFieldsForProject(Int32 projectId,Boolean noUnique)
+		{
+			var result = Task.Run(() => GetCustomFieldsForProjectAsyncMsg(projectId, noUnique)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CustomFieldJs>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <param name="noUnique"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCustomFieldsForRessourceAsyncMsg(Int32 ressourceId,Boolean noUnique)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetCustomFieldsForRessource/" + ressourceId + "/" + noUnique);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <param name="noUnique"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCustomFieldsForRessourceAsync(Int32 ressourceId,Boolean noUnique)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-management/GetCustomFieldsForRessource/" + ressourceId + "/" + noUnique);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <param name="noUnique"></param>
+		public virtual List<CustomFieldJs> GetCustomFieldsForRessource(Int32 ressourceId,Boolean noUnique)
+		{
+			var result = Task.Run(() => GetCustomFieldsForRessourceAsyncMsg(ressourceId, noUnique)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CustomFieldJs>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="pId"></param>
+		/// <param name="rId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RemoveRessourceFromProjectAsyncMsg(Int32 pId,Int32 rId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/RemoveRessourceFromProject/" + pId + "/" + rId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="pId"></param>
+		/// <param name="rId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RemoveRessourceFromProjectAsync(Int32 pId,Int32 rId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/RemoveRessourceFromProject/" + pId + "/" + rId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="pId"></param>
+		/// <param name="rId"></param>
+		public virtual UpdateResultWithId RemoveRessourceFromProject(Int32 pId,Int32 rId)
+		{
+			var result = Task.Run(() => RemoveRessourceFromProjectAsyncMsg(pId, rId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// For a project/resource remove the bill Rate, if error or no bill rate to delete return -1
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="resourceId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RemoveProjectResourcesBillRateAsyncMsg(Int32 projectId,Int32 resourceId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/RemoveProjectResourcesBillRate/" + projectId + "/" + resourceId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// For a project/resource remove the bill Rate, if error or no bill rate to delete return -1
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="resourceId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RemoveProjectResourcesBillRateAsync(Int32 projectId,Int32 resourceId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-management/RemoveProjectResourcesBillRate/" + projectId + "/" + resourceId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// For a project/resource remove the bill Rate, if error or no bill rate to delete return -1
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="resourceId"></param>
+		public virtual Double RemoveProjectResourcesBillRate(Int32 projectId,Int32 resourceId)
+		{
+			var result = Task.Run(() => RemoveProjectResourcesBillRateAsyncMsg(projectId, resourceId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Double>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
 		/// <param name="projectId"></param>
 		/// <param name="rs"></param>
 		/// <returns></returns>
@@ -18040,37 +33483,32 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="companyId"></param>
-		/// <param name="range"></param>
+		/// <param name="objective"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> DeleteCompanyProjectsRangeAsyncMsg(Int32 companyId,Int32 range)
+		protected virtual async Task<HttpResponseMessage> AddObjectiveAsyncMsg(ProjectObjective objective)
 		{
-			return await HttpClient.DeleteAsync("api/v1/proj-management/deleteProjectsRange?companyId=" + companyId + "&range=" + range);
+			return await HttpClient.PostAsJsonAsync<ProjectObjective>("api/v1/proj-management/objective", objective);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="companyId"></param>
-		/// <param name="range"></param>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> DeleteCompanyProjectsRangeAsync(Int32 companyId,Int32 range)
+		public virtual async Task<HttpResponseMessage> AddObjectiveAsync(ProjectObjective objective)
 		{
-			return await HttpClient.DeleteAsync("api/v1/proj-management/deleteProjectsRange?companyId=" + companyId + "&range=" + range);
+			return await HttpClient.PostAsJsonAsync<ProjectObjective>("api/v1/proj-management/objective", objective);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="companyId"></param>
-		/// <param name="range"></param>
-		public virtual UpdateResult DeleteCompanyProjectsRange(Int32 companyId,Int32 range)
+		public virtual UpdateResultWithId AddObjective(ProjectObjective objective)
 		{
-			var result = Task.Run(() => DeleteCompanyProjectsRangeAsyncMsg(companyId, range)).Result;		 
+			var result = Task.Run(() => AddObjectiveAsyncMsg(objective)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
-			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
 			 		}
 
 		/// <summary>
@@ -18078,30 +33516,92 @@ namespace WebApi.Proxies.Clients
 		/// </summary>
 		/// <param name="projects"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> CreateProjectsByBatchAsyncMsg(List<ProjectJS> projects)
+		protected virtual async Task<HttpResponseMessage> CreateOrUpdateProjectsAsyncMsg(List<ApiProject> projects)
 		{
-			return await HttpClient.PostAsJsonAsync<List<ProjectJS>>("api/v1/proj-management/createBatch", projects);
+			return await HttpClient.PostAsJsonAsync<List<ApiProject>>("api/v1/proj-management/CreateOrUpdateProjects", projects);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> CreateProjectsByBatchAsync(List<ProjectJS> projects)
+		public virtual async Task<HttpResponseMessage> CreateOrUpdateProjectsAsync(List<ApiProject> projects)
 		{
-			return await HttpClient.PostAsJsonAsync<List<ProjectJS>>("api/v1/proj-management/createBatch", projects);
+			return await HttpClient.PostAsJsonAsync<List<ApiProject>>("api/v1/proj-management/CreateOrUpdateProjects", projects);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual UpdateResultWithId CreateProjectsByBatch(List<ProjectJS> projects)
+		public virtual UpdateResultWithId CreateOrUpdateProjects(List<ApiProject> projects)
 		{
-			var result = Task.Run(() => CreateProjectsByBatchAsyncMsg(projects)).Result;		 
+			var result = Task.Run(() => CreateOrUpdateProjectsAsyncMsg(projects)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Insert or update a list of projects without creating non existing resources linked
+		/// </summary>
+		/// <param name="projects"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateOrUpdateProjectsWithoutUsersOldAsyncMsg(List<ApiProject> projects)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiProject>>("api/v1/proj-management/CreateOrUpdateProjectsWithoutUsers", projects);
+		}
+
+		/// <summary>
+		/// Insert or update a list of projects without creating non existing resources linked
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateOrUpdateProjectsWithoutUsersOldAsync(List<ApiProject> projects)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiProject>>("api/v1/proj-management/CreateOrUpdateProjectsWithoutUsers", projects);
+		}
+
+		/// <summary>
+		/// Insert or update a list of projects without creating non existing resources linked
+		/// </summary>
+		public virtual UpdateResultWithId CreateOrUpdateProjectsWithoutUsersOld(List<ApiProject> projects)
+		{
+			var result = Task.Run(() => CreateOrUpdateProjectsWithoutUsersOldAsyncMsg(projects)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Insert or update a list of projects without creating non existing resources linked
+		/// </summary>
+		/// <param name="projects"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateOrUpdateProjectsWithoutUsersAsyncMsg(List<ApiProject> projects)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiProject>>("api/v2/proj-management/CreateOrUpdateProjectsWithoutUsers", projects);
+		}
+
+		/// <summary>
+		/// Insert or update a list of projects without creating non existing resources linked
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateOrUpdateProjectsWithoutUsersAsync(List<ApiProject> projects)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiProject>>("api/v2/proj-management/CreateOrUpdateProjectsWithoutUsers", projects);
+		}
+
+		/// <summary>
+		/// Insert or update a list of projects without creating non existing resources linked
+		/// </summary>
+		public virtual List<ResponseContainer<ApiProject>> CreateOrUpdateProjectsWithoutUsers(List<ApiProject> projects)
+		{
+			var result = Task.Run(() => CreateOrUpdateProjectsWithoutUsersAsyncMsg(projects)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ResponseContainer<ApiProject>>>().Result;
 			 		}
 
 		#endregion
@@ -18265,6 +33765,490 @@ namespace WebApi.Proxies.Clients
 		#endregion
 	}
 	/// <summary>
+	/// 
+	/// </summary>
+	public partial class ProjectSurveyClient : ClientBase, Interfaces.IProjectSurveyClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ProjectSurveyClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ProjectSurveyClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// Send All Team
+		/// </summary>
+		/// <param name="pId"></param>
+		/// <param name="sendToTeam"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SendAllTeamAsyncMsg(Int32 pId,Boolean sendToTeam)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-survey/SendAllTeam?pId=" + pId + "&sendToTeam=" + sendToTeam, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Send All Team
+		/// </summary>
+		/// <param name="pId"></param>
+		/// <param name="sendToTeam"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SendAllTeamAsync(Int32 pId,Boolean sendToTeam)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-survey/SendAllTeam?pId=" + pId + "&sendToTeam=" + sendToTeam, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Send All Team
+		/// </summary>
+		/// <param name="pId"></param>
+		/// <param name="sendToTeam"></param>
+		public virtual UpdateResult SendAllTeam(Int32 pId,Boolean sendToTeam)
+		{
+			var result = Task.Run(() => SendAllTeamAsyncMsg(pId, sendToTeam)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Add Survey Question
+		/// </summary>
+		/// <param name="idSection"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddSurveyQuestionAsyncMsg(Int32 idSection)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-survey/AddSurveyQuestion?idSection=" + idSection, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Add Survey Question
+		/// </summary>
+		/// <param name="idSection"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddSurveyQuestionAsync(Int32 idSection)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-survey/AddSurveyQuestion?idSection=" + idSection, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Add Survey Question
+		/// </summary>
+		/// <param name="idSection"></param>
+		public virtual UpdateResultWithId AddSurveyQuestion(Int32 idSection)
+		{
+			var result = Task.Run(() => AddSurveyQuestionAsyncMsg(idSection)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete Survey Section
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteSurveySectionAsyncMsg(Int32 id)
+		{
+			return await HttpClient.DeleteAsync("api/v1/proj-survey/DeleteSurveySection?id=" + id);
+		}
+
+		/// <summary>
+		/// Delete Survey Section
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteSurveySectionAsync(Int32 id)
+		{
+			return await HttpClient.DeleteAsync("api/v1/proj-survey/DeleteSurveySection?id=" + id);
+		}
+
+		/// <summary>
+		/// Delete Survey Section
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual Boolean DeleteSurveySection(Int32 id)
+		{
+			var result = Task.Run(() => DeleteSurveySectionAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Boolean>().Result;
+			 		}
+
+		/// <summary>
+		/// Send Email Survey
+		/// </summary>
+		/// <param name="prId"></param>
+		/// <param name="sendToTeam"></param>
+		/// <param name="haveSurveyAnswer"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SendEmailSurveyAsyncMsg(Int32 prId,Boolean sendToTeam,Boolean haveSurveyAnswer)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-survey/SendEmailSurvey?prId=" + prId + "&sendToTeam=" + sendToTeam + "&haveSurveyAnswer=" + haveSurveyAnswer, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Send Email Survey
+		/// </summary>
+		/// <param name="prId"></param>
+		/// <param name="sendToTeam"></param>
+		/// <param name="haveSurveyAnswer"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SendEmailSurveyAsync(Int32 prId,Boolean sendToTeam,Boolean haveSurveyAnswer)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-survey/SendEmailSurvey?prId=" + prId + "&sendToTeam=" + sendToTeam + "&haveSurveyAnswer=" + haveSurveyAnswer, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Send Email Survey
+		/// </summary>
+		/// <param name="prId"></param>
+		/// <param name="sendToTeam"></param>
+		/// <param name="haveSurveyAnswer"></param>
+		public virtual Boolean SendEmailSurvey(Int32 prId,Boolean sendToTeam,Boolean haveSurveyAnswer)
+		{
+			var result = Task.Run(() => SendEmailSurveyAsyncMsg(prId, sendToTeam, haveSurveyAnswer)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Boolean>().Result;
+			 		}
+
+		/// <summary>
+		/// Save Answer
+		/// </summary>
+		/// <param name="answer"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveAnswerAsyncMsg(List<ProjectSurveyQuestionAnswer> answer)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ProjectSurveyQuestionAnswer>>("api/v1/proj-survey/SaveAnswer", answer);
+		}
+
+		/// <summary>
+		/// Save Answer
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveAnswerAsync(List<ProjectSurveyQuestionAnswer> answer)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ProjectSurveyQuestionAnswer>>("api/v1/proj-survey/SaveAnswer", answer);
+		}
+
+		/// <summary>
+		/// Save Answer
+		/// </summary>
+		public virtual UpdateResult SaveAnswer(List<ProjectSurveyQuestionAnswer> answer)
+		{
+			var result = Task.Run(() => SaveAnswerAsyncMsg(answer)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Project Survey Question Sections
+		/// </summary>
+		/// <param name="pId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectSurveyQuestionSectionsAsyncMsg(Int32 pId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-survey/GetProjectSurveyQuestionSections?pId=" + pId);
+		}
+
+		/// <summary>
+		/// Get Project Survey Question Sections
+		/// </summary>
+		/// <param name="pId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectSurveyQuestionSectionsAsync(Int32 pId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-survey/GetProjectSurveyQuestionSections?pId=" + pId);
+		}
+
+		/// <summary>
+		/// Get Project Survey Question Sections
+		/// </summary>
+		/// <param name="pId"></param>
+		public virtual List<SurveySection> GetProjectSurveyQuestionSections(Int32 pId)
+		{
+			var result = Task.Run(() => GetProjectSurveyQuestionSectionsAsyncMsg(pId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<SurveySection>>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete Survey
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteSurveyAsyncMsg(Int32 id)
+		{
+			return await HttpClient.DeleteAsync("api/v1/proj-survey/DeleteSurvey?id=" + id);
+		}
+
+		/// <summary>
+		/// Delete Survey
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteSurveyAsync(Int32 id)
+		{
+			return await HttpClient.DeleteAsync("api/v1/proj-survey/DeleteSurvey?id=" + id);
+		}
+
+		/// <summary>
+		/// Delete Survey
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual Boolean DeleteSurvey(Int32 id)
+		{
+			var result = Task.Run(() => DeleteSurveyAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Boolean>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Question
+		/// </summary>
+		/// <param name="questionChange"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateQuestionAsyncMsg(ProjectSurveyQuestion questionChange)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectSurveyQuestion>("api/v1/proj-survey/UpdateQuestion", questionChange);
+		}
+
+		/// <summary>
+		/// Update Question
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateQuestionAsync(ProjectSurveyQuestion questionChange)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectSurveyQuestion>("api/v1/proj-survey/UpdateQuestion", questionChange);
+		}
+
+		/// <summary>
+		/// Update Question
+		/// </summary>
+		public virtual UpdateResult UpdateQuestion(ProjectSurveyQuestion questionChange)
+		{
+			var result = Task.Run(() => UpdateQuestionAsyncMsg(questionChange)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Section
+		/// </summary>
+		/// <param name="sectionChange"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateSectionAsyncMsg(ProjectSurveyQuestionSection sectionChange)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectSurveyQuestionSection>("api/v1/proj-survey/UpdateSection", sectionChange);
+		}
+
+		/// <summary>
+		/// Update Section
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateSectionAsync(ProjectSurveyQuestionSection sectionChange)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectSurveyQuestionSection>("api/v1/proj-survey/UpdateSection", sectionChange);
+		}
+
+		/// <summary>
+		/// Update Section
+		/// </summary>
+		public virtual UpdateResult UpdateSection(ProjectSurveyQuestionSection sectionChange)
+		{
+			var result = Task.Run(() => UpdateSectionAsyncMsg(sectionChange)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Add Survey Section
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddSurveySectionAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-survey/AddSurveySection", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Add Survey Section
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddSurveySectionAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/proj-survey/AddSurveySection", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Add Survey Section
+		/// </summary>
+		public virtual UpdateResultWithId AddSurveySection()
+		{
+			var result = Task.Run(() => AddSurveySectionAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Save Survey Parametres
+		/// </summary>
+		/// <param name="toSave"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveSurveyParametresAsyncMsg(CompagnyGeneralParams toSave)
+		{
+			return await HttpClient.PostAsJsonAsync<CompagnyGeneralParams>("api/v1/proj-survey/SaveSurveyParametres", toSave);
+		}
+
+		/// <summary>
+		/// Save Survey Parametres
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveSurveyParametresAsync(CompagnyGeneralParams toSave)
+		{
+			return await HttpClient.PostAsJsonAsync<CompagnyGeneralParams>("api/v1/proj-survey/SaveSurveyParametres", toSave);
+		}
+
+		/// <summary>
+		/// Save Survey Parametres
+		/// </summary>
+		public virtual UpdateResult SaveSurveyParametres(CompagnyGeneralParams toSave)
+		{
+			var result = Task.Run(() => SaveSurveyParametresAsyncMsg(toSave)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Survey Enable
+		/// </summary>
+		/// <param name="ProjectId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetSurveyEnableAsyncMsg(Int32 ProjectId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-survey/GetSurveyEnable?ProjectId=" + ProjectId);
+		}
+
+		/// <summary>
+		/// Get Survey Enable
+		/// </summary>
+		/// <param name="ProjectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetSurveyEnableAsync(Int32 ProjectId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-survey/GetSurveyEnable?ProjectId=" + ProjectId);
+		}
+
+		/// <summary>
+		/// Get Survey Enable
+		/// </summary>
+		/// <param name="ProjectId"></param>
+		public virtual SurveyState GetSurveyEnable(Int32 ProjectId)
+		{
+			var result = Task.Run(() => GetSurveyEnableAsyncMsg(ProjectId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<SurveyState>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Survey Question Sections
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetSurveyQuestionSectionsAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-survey/GetSurveyQuestionSections");
+		}
+
+		/// <summary>
+		/// Get Survey Question Sections
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetSurveyQuestionSectionsAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/proj-survey/GetSurveyQuestionSections");
+		}
+
+		/// <summary>
+		/// Get Survey Question Sections
+		/// </summary>
+		public virtual List<SurveySection> GetSurveyQuestionSections()
+		{
+			var result = Task.Run(() => GetSurveyQuestionSectionsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<SurveySection>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Aswer Question
+		/// </summary>
+		/// <param name="qId"></param>
+		/// <param name="pId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAswerQuestionAsyncMsg(Int32 qId,Int32 pId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-survey/GetMyProjectsList?qId=" + qId + "&pId=" + pId);
+		}
+
+		/// <summary>
+		/// Get Aswer Question
+		/// </summary>
+		/// <param name="qId"></param>
+		/// <param name="pId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAswerQuestionAsync(Int32 qId,Int32 pId)
+		{
+			return await HttpClient.GetAsync("api/v1/proj-survey/GetMyProjectsList?qId=" + qId + "&pId=" + pId);
+		}
+
+		/// <summary>
+		/// Get Aswer Question
+		/// </summary>
+		/// <param name="qId"></param>
+		/// <param name="pId"></param>
+		public virtual AswerQuestion GetAswerQuestion(Int32 qId,Int32 pId)
+		{
+			var result = Task.Run(() => GetAswerQuestionAsyncMsg(qId, pId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<AswerQuestion>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
 	/// APIs for managing project states
 	/// </summary>
 	public partial class ProjectTemplateClient : ClientBase, Interfaces.IProjectTemplateClient
@@ -18285,6 +34269,69 @@ namespace WebApi.Proxies.Clients
 		}
 
 		#region Methods
+
+		/// <summary>
+		/// The list of all template
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllTemplatesAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/projectTemplate/getAllTemplates");
+		}
+
+		/// <summary>
+		/// The list of all template
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllTemplatesAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/projectTemplate/getAllTemplates");
+		}
+
+		/// <summary>
+		/// The list of all template
+		/// </summary>
+		public virtual List<ProjectTemplate> GetAllTemplates()
+		{
+			var result = Task.Run(() => GetAllTemplatesAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectTemplate>>().Result;
+			 		}
+
+		/// <summary>
+		/// The list of template for a project
+		/// </summary>
+		/// <param name="projectId">Id of project</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTemplatesListAsyncMsg(Int32 projectId)
+		{
+			return await HttpClient.GetAsync("api/v1/projectTemplate/getAllTemplates?projectId=" + projectId);
+		}
+
+		/// <summary>
+		/// The list of template for a project
+		/// </summary>
+		/// <param name="projectId">Id of project</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTemplatesListAsync(Int32 projectId)
+		{
+			return await HttpClient.GetAsync("api/v1/projectTemplate/getAllTemplates?projectId=" + projectId);
+		}
+
+		/// <summary>
+		/// The list of template for a project
+		/// </summary>
+		/// <param name="projectId">Id of project</param>
+		public virtual List<ProjectTemplate> GetTemplatesList(Int32 projectId)
+		{
+			var result = Task.Run(() => GetTemplatesListAsyncMsg(projectId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectTemplate>>().Result;
+			 		}
 
 		/// <summary>
 		/// Create template for project
@@ -18317,6 +34364,39 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<ProjectTemplate>().Result;
 			 		}
 
+		/// <summary>
+		/// Delete template for project
+		/// </summary>
+		/// <param name="tid">Guid of the template</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteTemplateAsyncMsg(String tid)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/projectTemplate/deleteTemplate?tid=" + tid, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Delete template for project
+		/// </summary>
+		/// <param name="tid">Guid of the template</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteTemplateAsync(String tid)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/projectTemplate/deleteTemplate?tid=" + tid, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Delete template for project
+		/// </summary>
+		/// <param name="tid">Guid of the template</param>
+		public virtual UpdateResult DeleteTemplate(String tid)
+		{
+			var result = Task.Run(() => DeleteTemplateAsyncMsg(tid)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -18340,6 +34420,531 @@ namespace WebApi.Proxies.Clients
 		}
 
 		#region Methods
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveTypeProjectDynamicNameAsyncMsg(TypeProjectDynamic param)
+		{
+			return await HttpClient.PostAsJsonAsync<TypeProjectDynamic>("api/v1/projectType/SaveTypeProjectDynamicName", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveTypeProjectDynamicNameAsync(TypeProjectDynamic param)
+		{
+			return await HttpClient.PostAsJsonAsync<TypeProjectDynamic>("api/v1/projectType/SaveTypeProjectDynamicName", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess SaveTypeProjectDynamicName(TypeProjectDynamic param)
+		{
+			var result = Task.Run(() => SaveTypeProjectDynamicNameAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ProjectTypeId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteProjectTypeAsyncMsg(Int32 ProjectTypeId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/projectType/DeleteProjectType?ProjectTypeId=" + ProjectTypeId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ProjectTypeId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteProjectTypeAsync(Int32 ProjectTypeId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/projectType/DeleteProjectType?ProjectTypeId=" + ProjectTypeId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ProjectTypeId"></param>
+		public virtual UpdateResultWithId DeleteProjectType(Int32 ProjectTypeId)
+		{
+			var result = Task.Run(() => DeleteProjectTypeAsyncMsg(ProjectTypeId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="prjs"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateProjectTypeAsyncMsg(ProjectTypeJS prjs)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectTypeJS>("api/v1/projectType/UpdateProjectType", prjs);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateProjectTypeAsync(ProjectTypeJS prjs)
+		{
+			return await HttpClient.PostAsJsonAsync<ProjectTypeJS>("api/v1/projectType/UpdateProjectType", prjs);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId UpdateProjectType(ProjectTypeJS prjs)
+		{
+			var result = Task.Run(() => UpdateProjectTypeAsyncMsg(prjs)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="prjs"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateProjectTypesAsyncMsg(List<ProjectTypeJS> prjs)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ProjectTypeJS>>("api/v1/projectType/UpdateProjectTypes", prjs);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateProjectTypesAsync(List<ProjectTypeJS> prjs)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ProjectTypeJS>>("api/v1/projectType/UpdateProjectTypes", prjs);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId UpdateProjectTypes(List<ProjectTypeJS> prjs)
+		{
+			var result = Task.Run(() => UpdateProjectTypesAsyncMsg(prjs)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="categorie"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateCategoryAsyncMsg(CustomFieldCategory categorie)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldCategory>("api/v1/projectType/UpdateCategory", categorie);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateCategoryAsync(CustomFieldCategory categorie)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldCategory>("api/v1/projectType/UpdateCategory", categorie);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId UpdateCategory(CustomFieldCategory categorie)
+		{
+			var result = Task.Run(() => UpdateCategoryAsyncMsg(categorie)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCustomFieldsCategpriesAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCustomFieldsCategpries");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCustomFieldsCategpriesAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCustomFieldsCategpries");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<CustomFieldCategory> GetCustomFieldsCategpries()
+		{
+			var result = Task.Run(() => GetCustomFieldsCategpriesAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CustomFieldCategory>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCustomFieldByIdAsyncMsg(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCustomFieldById?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCustomFieldByIdAsync(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCustomFieldById?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual CustomFieldJs GetCustomFieldById(Int32 id)
+		{
+			var result = Task.Run(() => GetCustomFieldByIdAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<CustomFieldJs>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="takeHiddens"></param>
+		/// <param name="takeCalculHard"></param>
+		/// <param name="getAllCustomField"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCustomFieldsAsyncMsg(Boolean takeHiddens,Boolean takeCalculHard,Boolean getAllCustomField)
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCustomFields?takeHiddens=" + takeHiddens + "&takeCalculHard=" + takeCalculHard + "&getAllCustomField=" + getAllCustomField);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="takeHiddens"></param>
+		/// <param name="takeCalculHard"></param>
+		/// <param name="getAllCustomField"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCustomFieldsAsync(Boolean takeHiddens,Boolean takeCalculHard,Boolean getAllCustomField)
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCustomFields?takeHiddens=" + takeHiddens + "&takeCalculHard=" + takeCalculHard + "&getAllCustomField=" + getAllCustomField);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="takeHiddens"></param>
+		/// <param name="takeCalculHard"></param>
+		/// <param name="getAllCustomField"></param>
+		public virtual List<CustomFieldJs> GetCustomFields(Boolean takeHiddens,Boolean takeCalculHard,Boolean getAllCustomField)
+		{
+			var result = Task.Run(() => GetCustomFieldsAsyncMsg(takeHiddens, takeCalculHard, getAllCustomField)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CustomFieldJs>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="categoryId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteCustomFieldCategoryAsyncMsg(Int32 categoryId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/projectType/DeleteCustomFieldCategory?categoryId=" + categoryId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="categoryId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteCustomFieldCategoryAsync(Int32 categoryId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/projectType/DeleteCustomFieldCategory?categoryId=" + categoryId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="categoryId"></param>
+		public virtual UpdateResult DeleteCustomFieldCategory(Int32 categoryId)
+		{
+			var result = Task.Run(() => DeleteCustomFieldCategoryAsyncMsg(categoryId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="category"></param>
+		/// <param name="isRessource"></param>
+		/// <param name="isClient"></param>
+		/// <param name="toReorder"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ReorderFieldsAsyncMsg(Int32 category,Boolean isRessource,Boolean isClient,Dictionary<Int32, Int32> toReorder)
+		{
+			return await HttpClient.PostAsJsonAsync<Dictionary<Int32, Int32>>("api/v1/projectType/ReorderFields?category=" + category + "&isRessource=" + isRessource + "&isClient=" + isClient, toReorder);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="category"></param>
+		/// <param name="isRessource"></param>
+		/// <param name="isClient"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ReorderFieldsAsync(Int32 category,Boolean isRessource,Boolean isClient,Dictionary<Int32, Int32> toReorder)
+		{
+			return await HttpClient.PostAsJsonAsync<Dictionary<Int32, Int32>>("api/v1/projectType/ReorderFields?category=" + category + "&isRessource=" + isRessource + "&isClient=" + isClient, toReorder);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="category"></param>
+		/// <param name="isRessource"></param>
+		/// <param name="isClient"></param>
+		public virtual UpdateResult ReorderFields(Int32 category,Boolean isRessource,Boolean isClient,Dictionary<Int32, Int32> toReorder)
+		{
+			var result = Task.Run(() => ReorderFieldsAsyncMsg(category, isRessource, isClient, toReorder)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fieldId"></param>
+		/// <param name="isRessourceCustom"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteCustomFieldAsyncMsg(Int32 fieldId,Boolean isRessourceCustom)
+		{
+			return await HttpClient.DeleteAsync("api/v1/projectType/DeleteCustomField?fieldId=" + fieldId + "&isRessourceCustom=" + isRessourceCustom);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fieldId"></param>
+		/// <param name="isRessourceCustom"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteCustomFieldAsync(Int32 fieldId,Boolean isRessourceCustom)
+		{
+			return await HttpClient.DeleteAsync("api/v1/projectType/DeleteCustomField?fieldId=" + fieldId + "&isRessourceCustom=" + isRessourceCustom);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fieldId"></param>
+		/// <param name="isRessourceCustom"></param>
+		public virtual UpdateResult DeleteCustomField(Int32 fieldId,Boolean isRessourceCustom)
+		{
+			var result = Task.Run(() => DeleteCustomFieldAsyncMsg(fieldId, isRessourceCustom)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCompanyTypesAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCompanyTypes");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCompanyTypesAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCompanyTypes");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectTypeJS> GetCompanyTypes()
+		{
+			var result = Task.Run(() => GetCompanyTypesAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectTypeJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="field"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> EditCustomFieldAsyncMsg(CustomFieldJs field)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldJs>("api/v1/projectType/EditCustomField", field);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> EditCustomFieldAsync(CustomFieldJs field)
+		{
+			return await HttpClient.PostAsJsonAsync<CustomFieldJs>("api/v1/projectType/EditCustomField", field);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId EditCustomField(CustomFieldJs field)
+		{
+			var result = Task.Run(() => EditCustomFieldAsyncMsg(field)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCustomFieldRessourceByIdAsyncMsg(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCustomFieldRessourceById?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCustomFieldRessourceByIdAsync(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCustomFieldRessourceById?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual CustomFieldJs GetCustomFieldRessourceById(Int32 id)
+		{
+			var result = Task.Run(() => GetCustomFieldRessourceByIdAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<CustomFieldJs>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCustomFieldClientByIdAsyncMsg(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCustomFieldClientById?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCustomFieldClientByIdAsync(Int32 id)
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCustomFieldClientById?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual CustomFieldJs GetCustomFieldClientById(Int32 id)
+		{
+			var result = Task.Run(() => GetCustomFieldClientByIdAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<CustomFieldJs>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCompanyTypesWithSubscribtionAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCompanyTypesWithSubscribtion");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCompanyTypesWithSubscribtionAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/projectType/GetCompanyTypesWithSubscribtion");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<ProjectTypeJS> GetCompanyTypesWithSubscribtion()
+		{
+			var result = Task.Run(() => GetCompanyTypesWithSubscribtionAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectTypeJS>>().Result;
+			 		}
 
 		/// <summary>
 		/// 
@@ -18461,6 +35066,381 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddNewRapportViewAsyncMsg(DatesRangeFilteredRequestPagination<UserPreferencesRepportsParam> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<UserPreferencesRepportsParam>>("addNewRapportView", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddNewRapportViewAsync(DatesRangeFilteredRequestPagination<UserPreferencesRepportsParam> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<UserPreferencesRepportsParam>>("addNewRapportView", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId AddNewRapportView(DatesRangeFilteredRequestPagination<UserPreferencesRepportsParam> param)
+		{
+			var result = Task.Run(() => AddNewRapportViewAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete Rapport View
+		/// </summary>
+		/// <param name="viewId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteRapportViewAsyncMsg(Int32 viewId)
+		{
+			return await HttpClient.DeleteAsync("DeleteRapportView?viewId=" + viewId);
+		}
+
+		/// <summary>
+		/// Delete Rapport View
+		/// </summary>
+		/// <param name="viewId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteRapportViewAsync(Int32 viewId)
+		{
+			return await HttpClient.DeleteAsync("DeleteRapportView?viewId=" + viewId);
+		}
+
+		/// <summary>
+		/// Delete Rapport View
+		/// </summary>
+		/// <param name="viewId"></param>
+		public virtual UpdateResult DeleteRapportView(Int32 viewId)
+		{
+			var result = Task.Run(() => DeleteRapportViewAsyncMsg(viewId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Change Rapport View order
+		/// </summary>
+		/// <param name="rapportType"></param>
+		/// <param name="newOrder"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ChangeRepportsOrderAsyncMsg(Int32 rapportType,Int32[] newOrder)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("ChangeRepportsOrder/" + rapportType, newOrder);
+		}
+
+		/// <summary>
+		/// Change Rapport View order
+		/// </summary>
+		/// <param name="rapportType"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ChangeRepportsOrderAsync(Int32 rapportType,Int32[] newOrder)
+		{
+			return await HttpClient.PostAsJsonAsync<Int32[]>("ChangeRepportsOrder/" + rapportType, newOrder);
+		}
+
+		/// <summary>
+		/// Change Rapport View order
+		/// </summary>
+		/// <param name="rapportType"></param>
+		public virtual UpdateResult ChangeRepportsOrder(Int32 rapportType,Int32[] newOrder)
+		{
+			var result = Task.Run(() => ChangeRepportsOrderAsyncMsg(rapportType, newOrder)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Projects By Categorie
+		/// </summary>
+		/// <param name="dates"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProjectsByCategorieAsyncMsg(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<SearchCriteriaRapports>>("GetProjectsByCategorie", dates);
+		}
+
+		/// <summary>
+		/// Get Projects By Categorie
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProjectsByCategorieAsync(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<SearchCriteriaRapports>>("GetProjectsByCategorie", dates);
+		}
+
+		/// <summary>
+		/// Get Projects By Categorie
+		/// </summary>
+		public virtual BaseRapport GetProjectsByCategorie(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			var result = Task.Run(() => GetProjectsByCategorieAsyncMsg(dates)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<BaseRapport>().Result;
+			 		}
+
+		/// <summary>
+		/// Get tasks By Direction
+		/// </summary>
+		/// <param name="dates"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTasksByDirectionAsyncMsg(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<SearchCriteriaRapports>>("GetTasksByDirection", dates);
+		}
+
+		/// <summary>
+		/// Get tasks By Direction
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTasksByDirectionAsync(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<SearchCriteriaRapports>>("GetTasksByDirection", dates);
+		}
+
+		/// <summary>
+		/// Get tasks By Direction
+		/// </summary>
+		public virtual BaseRapport GetTasksByDirection(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			var result = Task.Run(() => GetTasksByDirectionAsyncMsg(dates)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<BaseRapport>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Surveys By Project
+		/// </summary>
+		/// <param name="dates"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetSurveysByProjectAsyncMsg(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<SearchCriteriaRapports>>("GetSurveysByProject", dates);
+		}
+
+		/// <summary>
+		/// Get Surveys By Project
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetSurveysByProjectAsync(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<SearchCriteriaRapports>>("GetSurveysByProject", dates);
+		}
+
+		/// <summary>
+		/// Get Surveys By Project
+		/// </summary>
+		public virtual BaseRapport GetSurveysByProject(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			var result = Task.Run(() => GetSurveysByProjectAsyncMsg(dates)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<BaseRapport>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Task Custom By Id
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetTaskCustomByIdAsyncMsg(Int32 taskId)
+		{
+			return await HttpClient.GetAsync("GetTaskCustomById/" + taskId);
+		}
+
+		/// <summary>
+		/// Get Task Custom By Id
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetTaskCustomByIdAsync(Int32 taskId)
+		{
+			return await HttpClient.GetAsync("GetTaskCustomById/" + taskId);
+		}
+
+		/// <summary>
+		/// Get Task Custom By Id
+		/// </summary>
+		/// <param name="taskId"></param>
+		public virtual List<CustomFieldJs> GetTaskCustomById(Int32 taskId)
+		{
+			var result = Task.Run(() => GetTaskCustomByIdAsyncMsg(taskId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CustomFieldJs>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Possibles Columns Projects
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetPossiblesColumnsProjectsAsyncMsg()
+		{
+			return await HttpClient.GetAsync("GetPossiblesColumnsProjects");
+		}
+
+		/// <summary>
+		/// Get Possibles Columns Projects
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetPossiblesColumnsProjectsAsync()
+		{
+			return await HttpClient.GetAsync("GetPossiblesColumnsProjects");
+		}
+
+		/// <summary>
+		/// Get Possibles Columns Projects
+		/// </summary>
+		public virtual List<ColumnInfo> GetPossiblesColumnsProjects()
+		{
+			var result = Task.Run(() => GetPossiblesColumnsProjectsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ColumnInfo>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Possibles Columns Ressources
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetPossiblesColumnsRessourcesAsyncMsg()
+		{
+			return await HttpClient.GetAsync("GetPossiblesColumnsRessources");
+		}
+
+		/// <summary>
+		/// Get Possibles Columns Ressources
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetPossiblesColumnsRessourcesAsync()
+		{
+			return await HttpClient.GetAsync("GetPossiblesColumnsRessources");
+		}
+
+		/// <summary>
+		/// Get Possibles Columns Ressources
+		/// </summary>
+		public virtual List<ColumnInfo> GetPossiblesColumnsRessources()
+		{
+			var result = Task.Run(() => GetPossiblesColumnsRessourcesAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ColumnInfo>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Possibles Columns Tasks
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetPossiblesColumnsTasksAsyncMsg()
+		{
+			return await HttpClient.GetAsync("GetPossiblesColumnsTasks");
+		}
+
+		/// <summary>
+		/// Get Possibles Columns Tasks
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetPossiblesColumnsTasksAsync()
+		{
+			return await HttpClient.GetAsync("GetPossiblesColumnsTasks");
+		}
+
+		/// <summary>
+		/// Get Possibles Columns Tasks
+		/// </summary>
+		public virtual List<ColumnInfo> GetPossiblesColumnsTasks()
+		{
+			var result = Task.Run(() => GetPossiblesColumnsTasksAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ColumnInfo>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Possibles Columns Surveys
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetPossiblesColumnsSurveysAsyncMsg()
+		{
+			return await HttpClient.GetAsync("GetPossiblesColumnsSurveys");
+		}
+
+		/// <summary>
+		/// Get Possibles Columns Surveys
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetPossiblesColumnsSurveysAsync()
+		{
+			return await HttpClient.GetAsync("GetPossiblesColumnsSurveys");
+		}
+
+		/// <summary>
+		/// Get Possibles Columns Surveys
+		/// </summary>
+		public virtual List<ColumnInfo> GetPossiblesColumnsSurveys()
+		{
+			var result = Task.Run(() => GetPossiblesColumnsSurveysAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ColumnInfo>>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete Rapports Views
+		/// </summary>
+		/// <param name="viewsIdList"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteRapportsViewsAsyncMsg(List<Int32> viewsIdList)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("DeleteRapportsViews", viewsIdList);
+		}
+
+		/// <summary>
+		/// Delete Rapports Views
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteRapportsViewsAsync(List<Int32> viewsIdList)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("DeleteRapportsViews", viewsIdList);
+		}
+
+		/// <summary>
+		/// Delete Rapports Views
+		/// </summary>
+		public virtual UpdateResult DeleteRapportsViews(List<Int32> viewsIdList)
+		{
+			var result = Task.Run(() => DeleteRapportsViewsAsyncMsg(viewsIdList)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
 		/// Get simple Tasks List
 		/// </summary>
 		/// <param name="param"></param>
@@ -18489,6 +35469,242 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<TaskFiltre>>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Default Sorting
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateDefaultSortingAsyncMsg(Int32 col,Boolean direction)
+		{
+			return await HttpClient.PostAsJsonAsync("UpdateDefaultSorting?col=" + col + "&direction=" + direction, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Update Default Sorting
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateDefaultSortingAsync(Int32 col,Boolean direction)
+		{
+			return await HttpClient.PostAsJsonAsync("UpdateDefaultSorting?col=" + col + "&direction=" + direction, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Update Default Sorting
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		public virtual UpdateResult UpdateDefaultSorting(Int32 col,Boolean direction)
+		{
+			var result = Task.Run(() => UpdateDefaultSortingAsyncMsg(col, direction)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Default Sorting Tasks
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateDefaultSortingTasksAsyncMsg(Int32 col,Boolean direction)
+		{
+			return await HttpClient.PostAsJsonAsync("UpdateDefaultSortingTasks?col=" + col + "&direction=" + direction, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Update Default Sorting Tasks
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateDefaultSortingTasksAsync(Int32 col,Boolean direction)
+		{
+			return await HttpClient.PostAsJsonAsync("UpdateDefaultSortingTasks?col=" + col + "&direction=" + direction, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Update Default Sorting Tasks
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		public virtual UpdateResult UpdateDefaultSortingTasks(Int32 col,Boolean direction)
+		{
+			var result = Task.Run(() => UpdateDefaultSortingTasksAsyncMsg(col, direction)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// UpdateDefaultSortingSurveys
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateDefaultSortingSurveysAsyncMsg(Int32 col,Boolean direction)
+		{
+			return await HttpClient.PostAsJsonAsync("UpdateDefaultSortingSurveys?col=" + col + "&direction=" + direction, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// UpdateDefaultSortingSurveys
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateDefaultSortingSurveysAsync(Int32 col,Boolean direction)
+		{
+			return await HttpClient.PostAsJsonAsync("UpdateDefaultSortingSurveys?col=" + col + "&direction=" + direction, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// UpdateDefaultSortingSurveys
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		public virtual UpdateResult UpdateDefaultSortingSurveys(Int32 col,Boolean direction)
+		{
+			var result = Task.Run(() => UpdateDefaultSortingSurveysAsyncMsg(col, direction)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// UpdateDefaultSortingRessources
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateDefaultSortingRessourcesAsyncMsg(Int32 col,Boolean direction)
+		{
+			return await HttpClient.PostAsJsonAsync("UpdateDefaultSortingRessources?col=" + col + "&direction=" + direction, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// UpdateDefaultSortingRessources
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateDefaultSortingRessourcesAsync(Int32 col,Boolean direction)
+		{
+			return await HttpClient.PostAsJsonAsync("UpdateDefaultSortingRessources?col=" + col + "&direction=" + direction, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// UpdateDefaultSortingRessources
+		/// </summary>
+		/// <param name="col"></param>
+		/// <param name="direction"></param>
+		public virtual UpdateResult UpdateDefaultSortingRessources(Int32 col,Boolean direction)
+		{
+			var result = Task.Run(() => UpdateDefaultSortingRessourcesAsyncMsg(col, direction)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// GetRessourcesByDirection
+		/// </summary>
+		/// <param name="dates"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetRessourcesByDirectionAsyncMsg(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<SearchCriteriaRapports>>("GetRessourcesByDirection", dates);
+		}
+
+		/// <summary>
+		/// GetRessourcesByDirection
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetRessourcesByDirectionAsync(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<SearchCriteriaRapports>>("GetRessourcesByDirection", dates);
+		}
+
+		/// <summary>
+		/// GetRessourcesByDirection
+		/// </summary>
+		public virtual BaseRapport GetRessourcesByDirection(DatesRangeFilteredRequest<SearchCriteriaRapports> dates)
+		{
+			var result = Task.Run(() => GetRessourcesByDirectionAsyncMsg(dates)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<BaseRapport>().Result;
+			 		}
+
+		#endregion
+	}
+	/// <summary>
+	/// APIs for managing real times 9aka timesheets)
+	/// </summary>
+	public partial class RealTimesClient : ClientBase, Interfaces.IRealTimesClient
+	{		
+
+		/// <summary>
+		/// APIs for managing real times 9aka timesheets)
+		/// </summary>
+		public RealTimesClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// APIs for managing real times 9aka timesheets)
+		/// </summary>
+		public RealTimesClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// Lists tiemsheets data for a specified project and data range
+		/// Does not support filtering
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="dates"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ListAsyncMsg(Int32 projectId,DatesRangeRequestBase dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequestBase>("api/v1/realtimes/projects/" + projectId, dates);
+		}
+
+		/// <summary>
+		/// Lists tiemsheets data for a specified project and data range
+		/// Does not support filtering
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ListAsync(Int32 projectId,DatesRangeRequestBase dates)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeRequestBase>("api/v1/realtimes/projects/" + projectId, dates);
+		}
+
+		/// <summary>
+		/// Lists tiemsheets data for a specified project and data range
+		/// Does not support filtering
+		/// </summary>
+		/// <param name="projectId"></param>
+		public virtual List<RealtimeEntry> List(Int32 projectId,DatesRangeRequestBase dates)
+		{
+			var result = Task.Run(() => ListAsyncMsg(projectId, dates)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<RealtimeEntry>>().Result;
 			 		}
 
 		#endregion
@@ -18574,13 +35790,43 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual UpdateResult ResourceBulkUpdate(ResourceBulkUpdate resourceBulkUpdate)
+		public virtual UpdateResultMultiMessages ResourceBulkUpdate(ResourceBulkUpdate resourceBulkUpdate)
 		{
 			var result = Task.Run(() => ResourceBulkUpdateAsyncMsg(resourceBulkUpdate)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
-			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			return result.Content.ReadAsAsync<UpdateResultMultiMessages>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetPreferencesAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/ressource/getPreferences");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetPreferencesAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/ressource/getPreferences");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual Object GetPreferences()
+		{
+			var result = Task.Run(() => GetPreferencesAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<Object>().Result;
 			 		}
 
 		/// <summary>
@@ -18612,6 +35858,36 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetDefaultAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/ressource/default");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetDefaultAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/ressource/default");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual EmployeJS GetDefault()
+		{
+			var result = Task.Run(() => GetDefaultAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<EmployeJS>().Result;
 			 		}
 
 		/// <summary>
@@ -18864,34 +36140,37 @@ namespace WebApi.Proxies.Clients
 		/// 
 		/// </summary>
 		/// <param name="roleId"></param>
+		/// <param name="roleName"></param>
 		/// <param name="customFieldPermissions"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> SaveCustomFieldsPermissionsAsyncMsg(Int32 roleId,List<CustomFieldPermissionJS> customFieldPermissions)
+		protected virtual async Task<HttpResponseMessage> SaveCustomFieldsPermissionsAsyncMsg(Int32 roleId,String roleName,List<CustomFieldPermissionJS> customFieldPermissions)
 		{
-			return await HttpClient.PostAsJsonAsync<List<CustomFieldPermissionJS>>("api/v1/roles/SaveCustomFieldsPermissions/" + roleId, customFieldPermissions);
+			return await HttpClient.PostAsJsonAsync<List<CustomFieldPermissionJS>>("api/v1/roles/SaveCustomFieldsPermissions/" + roleId + "/" + roleName, customFieldPermissions);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="roleId"></param>
+		/// <param name="roleName"></param>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> SaveCustomFieldsPermissionsAsync(Int32 roleId,List<CustomFieldPermissionJS> customFieldPermissions)
+		public virtual async Task<HttpResponseMessage> SaveCustomFieldsPermissionsAsync(Int32 roleId,String roleName,List<CustomFieldPermissionJS> customFieldPermissions)
 		{
-			return await HttpClient.PostAsJsonAsync<List<CustomFieldPermissionJS>>("api/v1/roles/SaveCustomFieldsPermissions/" + roleId, customFieldPermissions);
+			return await HttpClient.PostAsJsonAsync<List<CustomFieldPermissionJS>>("api/v1/roles/SaveCustomFieldsPermissions/" + roleId + "/" + roleName, customFieldPermissions);
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="roleId"></param>
-		public virtual Boolean SaveCustomFieldsPermissions(Int32 roleId,List<CustomFieldPermissionJS> customFieldPermissions)
+		/// <param name="roleName"></param>
+		public virtual UpdateResult SaveCustomFieldsPermissions(Int32 roleId,String roleName,List<CustomFieldPermissionJS> customFieldPermissions)
 		{
-			var result = Task.Run(() => SaveCustomFieldsPermissionsAsyncMsg(roleId, customFieldPermissions)).Result;		 
+			var result = Task.Run(() => SaveCustomFieldsPermissionsAsyncMsg(roleId, roleName, customFieldPermissions)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
-			return result.Content.ReadAsAsync<Boolean>().Result;
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
 		#endregion
@@ -19153,6 +36432,92 @@ namespace WebApi.Proxies.Clients
 		#endregion
 	}
 	/// <summary>
+	/// 
+	/// </summary>
+	public partial class StatisticsClient : ClientBase, Interfaces.IStatisticsClient
+	{		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public StatisticsClient() : base()
+		{
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public StatisticsClient(HttpMessageHandler handler, bool disposeHandler = true) : base(handler, disposeHandler)
+		{
+		}
+
+		#region Methods
+
+		/// <summary>
+		/// ReportAdBlock
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ReportAdBlockAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/statistics/ReportAdBlock", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// ReportAdBlock
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ReportAdBlockAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/statistics/ReportAdBlock", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// ReportAdBlock
+		/// </summary>
+		public virtual void ReportAdBlock()
+		{
+			var result = Task.Run(() => ReportAdBlockAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+		}
+
+		/// <summary>
+		/// Track
+		/// </summary>
+		/// <param name="events"></param>
+		/// <param name="objects"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> TrackAsyncMsg(String events,String objects)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/statistics/Track?events=" + events + "&objects=" + objects, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Track
+		/// </summary>
+		/// <param name="events"></param>
+		/// <param name="objects"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> TrackAsync(String events,String objects)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/statistics/Track?events=" + events + "&objects=" + objects, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Track
+		/// </summary>
+		/// <param name="events"></param>
+		/// <param name="objects"></param>
+		public virtual void Track(String events,String objects)
+		{
+			var result = Task.Run(() => TrackAsyncMsg(events, objects)).Result;		 
+			 
+			EnsureSuccess(result);
+		}
+
+		#endregion
+	}
+	/// <summary>
 	/// APIS for managing delivrables (Aka Tasks)
 	/// </summary>
 	public partial class TasksClient : ClientBase, Interfaces.ITasksClient
@@ -19214,6 +36579,198 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Add a view for task management
+		/// </summary>
+		/// <param name="param">The dates/filter/group/favorite save in the view, the name of the view and if the view is a default one. Default view react differently you cannot delete/rename them</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddNewTaskViewAsyncMsg(DatesRangeFilteredRequestPagination<UserPreferencesTasksParam> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<UserPreferencesTasksParam>>("api/v1/tasks/addNewTaskView", param);
+		}
+
+		/// <summary>
+		/// Add a view for task management
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddNewTaskViewAsync(DatesRangeFilteredRequestPagination<UserPreferencesTasksParam> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<UserPreferencesTasksParam>>("api/v1/tasks/addNewTaskView", param);
+		}
+
+		/// <summary>
+		/// Add a view for task management
+		/// </summary>
+		public virtual UpdateResultWithId AddNewTaskView(DatesRangeFilteredRequestPagination<UserPreferencesTasksParam> param)
+		{
+			var result = Task.Run(() => AddNewTaskViewAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Share a task view to every body in the company
+		/// </summary>
+		/// <param name="taskViewId">The id of the view we want to share</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ShareTaskViewAsyncMsg(Int32 taskViewId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/shareTaskView/" + taskViewId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Share a task view to every body in the company
+		/// </summary>
+		/// <param name="taskViewId">The id of the view we want to share</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ShareTaskViewAsync(Int32 taskViewId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/shareTaskView/" + taskViewId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Share a task view to every body in the company
+		/// </summary>
+		/// <param name="taskViewId">The id of the view we want to share</param>
+		public virtual UpdateResult ShareTaskView(Int32 taskViewId)
+		{
+			var result = Task.Run(() => ShareTaskViewAsyncMsg(taskViewId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update list of tasks information
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateListTasksAsyncMsg(RequestSelectedBulkAction data)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestSelectedBulkAction>("api/v1/tasks/api/v1/clients/UpdateListTasks", data);
+		}
+
+		/// <summary>
+		/// Update list of tasks information
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateListTasksAsync(RequestSelectedBulkAction data)
+		{
+			return await HttpClient.PostAsJsonAsync<RequestSelectedBulkAction>("api/v1/tasks/api/v1/clients/UpdateListTasks", data);
+		}
+
+		/// <summary>
+		/// Update list of tasks information
+		/// </summary>
+		public virtual List<UpdateResultWithData<ApiTask>> UpdateListTasks(RequestSelectedBulkAction data)
+		{
+			var result = Task.Run(() => UpdateListTasksAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<UpdateResultWithData<ApiTask>>>().Result;
+			 		}
+
+		/// <summary>
+		/// For the company remove the share task view
+		/// </summary>
+		/// <param name="taskViewId">The id of the view we want to share</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UnShareTaskViewAsyncMsg(Int32 taskViewId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/unShareTaskView/" + taskViewId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// For the company remove the share task view
+		/// </summary>
+		/// <param name="taskViewId">The id of the view we want to share</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UnShareTaskViewAsync(Int32 taskViewId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/unShareTaskView/" + taskViewId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// For the company remove the share task view
+		/// </summary>
+		/// <param name="taskViewId">The id of the view we want to share</param>
+		public virtual UpdateResult UnShareTaskView(Int32 taskViewId)
+		{
+			var result = Task.Run(() => UnShareTaskViewAsyncMsg(taskViewId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Updating a view task info
+		/// </summary>
+		/// <param name="param">The dates/filter/group/favorite save in the view, the name of the view and if the view is a default one. Default view react differently you cannot delete/rename them</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateViewAsyncMsg(DatesRangeFilteredRequestPagination<UserPreferencesTasksParam> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<UserPreferencesTasksParam>>("api/v1/tasks/UpdateView", param);
+		}
+
+		/// <summary>
+		/// Updating a view task info
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateViewAsync(DatesRangeFilteredRequestPagination<UserPreferencesTasksParam> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<UserPreferencesTasksParam>>("api/v1/tasks/UpdateView", param);
+		}
+
+		/// <summary>
+		/// Updating a view task info
+		/// </summary>
+		public virtual UpdateResult UpdateView(DatesRangeFilteredRequestPagination<UserPreferencesTasksParam> param)
+		{
+			var result = Task.Run(() => UpdateViewAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Remove a view task
+		/// </summary>
+		/// <param name="viewId">view id to remove</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteViewAsyncMsg(Int32 viewId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/DeleteView/" + viewId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Remove a view task
+		/// </summary>
+		/// <param name="viewId">view id to remove</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteViewAsync(Int32 viewId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/DeleteView/" + viewId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Remove a view task
+		/// </summary>
+		/// <param name="viewId">view id to remove</param>
+		public virtual UpdateResult DeleteView(Int32 viewId)
+		{
+			var result = Task.Run(() => DeleteViewAsyncMsg(viewId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
 		/// Create a new task for a project and assign an employe
 		/// </summary>
 		/// <param name="toCreate"></param>
@@ -19235,13 +36792,43 @@ namespace WebApi.Proxies.Clients
 		/// <summary>
 		/// Create a new task for a project and assign an employe
 		/// </summary>
-		public virtual UpdateResultWithId CreateTask(ProjectTaskMinimal toCreate)
+		public virtual List<UpdateResultWithData<ApiTask>> CreateTask(ProjectTaskMinimal toCreate)
 		{
 			var result = Task.Run(() => CreateTaskAsyncMsg(toCreate)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
-			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			return result.Content.ReadAsAsync<List<UpdateResultWithData<ApiTask>>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get CustomFields For Task NoValue
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetCustomFieldsForTaskNoValueAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/tasks/GetCustomFieldsForTaskNoValue");
+		}
+
+		/// <summary>
+		/// Get CustomFields For Task NoValue
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetCustomFieldsForTaskNoValueAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/tasks/GetCustomFieldsForTaskNoValue");
+		}
+
+		/// <summary>
+		/// Get CustomFields For Task NoValue
+		/// </summary>
+		public virtual List<CustomFieldJs> GetCustomFieldsForTaskNoValue()
+		{
+			var result = Task.Run(() => GetCustomFieldsForTaskNoValueAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<CustomFieldJs>>().Result;
 			 		}
 
 		/// <summary>
@@ -19278,30 +36865,30 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// Deletes specified task
+		/// save states task
 		/// </summary>
-		/// <param name="tasksId">Id of the task to delete</param>
+		/// <param name="states">states object to update</param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> DeleteTasksAsyncMsg(Int32[] tasksId)
+		protected virtual async Task<HttpResponseMessage> SaveAllStatesAsyncMsg(List<TaskState> states)
 		{
-			return await HttpClient.PostAsJsonAsync<Int32[]>("api/v1/tasks/api/v1/tasks/DeleteTasks", tasksId);
+			return await HttpClient.PostAsJsonAsync<List<TaskState>>("api/v1/tasks/api/v1/tasks/saveAllStates", states);
 		}
 
 		/// <summary>
-		/// Deletes specified task
+		/// save states task
 		/// </summary>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> DeleteTasksAsync(Int32[] tasksId)
+		public virtual async Task<HttpResponseMessage> SaveAllStatesAsync(List<TaskState> states)
 		{
-			return await HttpClient.PostAsJsonAsync<Int32[]>("api/v1/tasks/api/v1/tasks/DeleteTasks", tasksId);
+			return await HttpClient.PostAsJsonAsync<List<TaskState>>("api/v1/tasks/api/v1/tasks/saveAllStates", states);
 		}
 
 		/// <summary>
-		/// Deletes specified task
+		/// save states task
 		/// </summary>
-		public virtual UpdateResult DeleteTasks(Int32[] tasksId)
+		public virtual UpdateResult SaveAllStates(List<TaskState> states)
 		{
-			var result = Task.Run(() => DeleteTasksAsyncMsg(tasksId)).Result;		 
+			var result = Task.Run(() => SaveAllStatesAsyncMsg(states)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -19309,7 +36896,329 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// 
+		/// Delete task state
+		/// </summary>
+		/// <param name="stateId">Id of the state</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteStateAsyncMsg(Int32 stateId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/deleteState/" + stateId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Delete task state
+		/// </summary>
+		/// <param name="stateId">Id of the state</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteStateAsync(Int32 stateId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/deleteState/" + stateId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Delete task state
+		/// </summary>
+		/// <param name="stateId">Id of the state</param>
+		public virtual UpdateResult DeleteState(Int32 stateId)
+		{
+			var result = Task.Run(() => DeleteStateAsyncMsg(stateId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Deletes specified task
+		/// </summary>
+		/// <param name="tasksId">Id of the task to delete</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteTasksAsyncMsg(List<Int32> tasksId)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("api/v1/tasks/api/v1/tasks/DeleteTasks", tasksId);
+		}
+
+		/// <summary>
+		/// Deletes specified task
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteTasksAsync(List<Int32> tasksId)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("api/v1/tasks/api/v1/tasks/DeleteTasks", tasksId);
+		}
+
+		/// <summary>
+		/// Deletes specified task
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess DeleteTasks(List<Int32> tasksId)
+		{
+			var result = Task.Run(() => DeleteTasksAsyncMsg(tasksId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Task Filter
+		/// </summary>
+		/// <param name="requesTasksFilter"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTaskFilterAsyncMsg(RequesTasksFilter requesTasksFilter)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksFilter>("api/v1/tasks/api/v1/tasks/UpdateTaskFilter", requesTasksFilter);
+		}
+
+		/// <summary>
+		/// Update Task Filter
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTaskFilterAsync(RequesTasksFilter requesTasksFilter)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksFilter>("api/v1/tasks/api/v1/tasks/UpdateTaskFilter", requesTasksFilter);
+		}
+
+		/// <summary>
+		/// Update Task Filter
+		/// </summary>
+		public virtual UpdateResult UpdateTaskFilter(RequesTasksFilter requesTasksFilter)
+		{
+			var result = Task.Run(() => UpdateTaskFilterAsyncMsg(requesTasksFilter)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Task todo
+		/// </summary>
+		/// <param name="requesTasksTodo"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTaskTodoListAsyncMsg(RequesTasksTodo requesTasksTodo)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksTodo>("api/v1/tasks/api/v1/tasks/UpdateTaskTodoList", requesTasksTodo);
+		}
+
+		/// <summary>
+		/// Update Task todo
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTaskTodoListAsync(RequesTasksTodo requesTasksTodo)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksTodo>("api/v1/tasks/api/v1/tasks/UpdateTaskTodoList", requesTasksTodo);
+		}
+
+		/// <summary>
+		/// Update Task todo
+		/// </summary>
+		public virtual UpdateResult UpdateTaskTodoList(RequesTasksTodo requesTasksTodo)
+		{
+			var result = Task.Run(() => UpdateTaskTodoListAsyncMsg(requesTasksTodo)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Task Billing Rules
+		/// </summary>
+		/// <param name="requesTasksBillingRules"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTaskBillingRulesAsyncMsg(RequesTasksBillingRules requesTasksBillingRules)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksBillingRules>("api/v1/tasks/api/v1/tasks/UpdateTaskBillingRules", requesTasksBillingRules);
+		}
+
+		/// <summary>
+		/// Update Task Billing Rules
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTaskBillingRulesAsync(RequesTasksBillingRules requesTasksBillingRules)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksBillingRules>("api/v1/tasks/api/v1/tasks/UpdateTaskBillingRules", requesTasksBillingRules);
+		}
+
+		/// <summary>
+		/// Update Task Billing Rules
+		/// </summary>
+		public virtual UpdateResult UpdateTaskBillingRules(RequesTasksBillingRules requesTasksBillingRules)
+		{
+			var result = Task.Run(() => UpdateTaskBillingRulesAsyncMsg(requesTasksBillingRules)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Task Billing Rules
+		/// </summary>
+		/// <param name="requesTasksDefaultDuration"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTaskDefaultDurationAsyncMsg(RequesTasksDefaultDuration requesTasksDefaultDuration)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksDefaultDuration>("api/v1/tasks/api/v1/tasks/UpdateTasksDefaultDuration", requesTasksDefaultDuration);
+		}
+
+		/// <summary>
+		/// Update Task Billing Rules
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTaskDefaultDurationAsync(RequesTasksDefaultDuration requesTasksDefaultDuration)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksDefaultDuration>("api/v1/tasks/api/v1/tasks/UpdateTasksDefaultDuration", requesTasksDefaultDuration);
+		}
+
+		/// <summary>
+		/// Update Task Billing Rules
+		/// </summary>
+		public virtual UpdateResult UpdateTaskDefaultDuration(RequesTasksDefaultDuration requesTasksDefaultDuration)
+		{
+			var result = Task.Run(() => UpdateTaskDefaultDurationAsyncMsg(requesTasksDefaultDuration)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Task deadline
+		/// </summary>
+		/// <param name="requesTasksDeadline"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTaskDeadlineAsyncMsg(RequesTasksDeadline requesTasksDeadline)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksDeadline>("api/v1/tasks/api/v1/tasks/UpdateTaskDeadline", requesTasksDeadline);
+		}
+
+		/// <summary>
+		/// Update Task deadline
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTaskDeadlineAsync(RequesTasksDeadline requesTasksDeadline)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksDeadline>("api/v1/tasks/api/v1/tasks/UpdateTaskDeadline", requesTasksDeadline);
+		}
+
+		/// <summary>
+		/// Update Task deadline
+		/// </summary>
+		public virtual UpdateResult UpdateTaskDeadline(RequesTasksDeadline requesTasksDeadline)
+		{
+			var result = Task.Run(() => UpdateTaskDeadlineAsyncMsg(requesTasksDeadline)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Task description
+		/// </summary>
+		/// <param name="requesTasksDescription"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTaskDescriptionAsyncMsg(RequesTasksDescription requesTasksDescription)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksDescription>("api/v1/tasks/api/v1/tasks/UpdateTaskDescription", requesTasksDescription);
+		}
+
+		/// <summary>
+		/// Update Task description
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTaskDescriptionAsync(RequesTasksDescription requesTasksDescription)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksDescription>("api/v1/tasks/api/v1/tasks/UpdateTaskDescription", requesTasksDescription);
+		}
+
+		/// <summary>
+		/// Update Task description
+		/// </summary>
+		public virtual UpdateResult UpdateTaskDescription(RequesTasksDescription requesTasksDescription)
+		{
+			var result = Task.Run(() => UpdateTaskDescriptionAsyncMsg(requesTasksDescription)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update multiple Tasks
+		/// </summary>
+		/// <param name="requesTasksInfosUpdate"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateBulkTasksAsyncMsg(RequesTasksInfosUpdate requesTasksInfosUpdate)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksInfosUpdate>("api/v1/tasks/api/v1/tasks/UpdateBulkTasks", requesTasksInfosUpdate);
+		}
+
+		/// <summary>
+		/// Update multiple Tasks
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateBulkTasksAsync(RequesTasksInfosUpdate requesTasksInfosUpdate)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksInfosUpdate>("api/v1/tasks/api/v1/tasks/UpdateBulkTasks", requesTasksInfosUpdate);
+		}
+
+		/// <summary>
+		/// Update multiple Tasks
+		/// </summary>
+		public virtual UpdateResult UpdateBulkTasks(RequesTasksInfosUpdate requesTasksInfosUpdate)
+		{
+			var result = Task.Run(() => UpdateBulkTasksAsyncMsg(requesTasksInfosUpdate)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update basc task info
+		/// </summary>
+		/// <param name="requestTaskInfo"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTaskInfoAsyncMsg(RequesTasksInfo requestTaskInfo)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksInfo>("api/v1/tasks/api/v1/tasks/UpdateTaskInfo", requestTaskInfo);
+		}
+
+		/// <summary>
+		/// Update basc task info
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTaskInfoAsync(RequesTasksInfo requestTaskInfo)
+		{
+			return await HttpClient.PostAsJsonAsync<RequesTasksInfo>("api/v1/tasks/api/v1/tasks/UpdateTaskInfo", requestTaskInfo);
+		}
+
+		/// <summary>
+		/// Update basc task info
+		/// </summary>
+		public virtual UpdateResult UpdateTaskInfo(RequesTasksInfo requestTaskInfo)
+		{
+			var result = Task.Run(() => UpdateTaskInfoAsyncMsg(requestTaskInfo)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Updates task
+		/// if parentId is 0 or less : Removes link to parent
+		/// If new startdate is provided : Updates startdate if there are no realtimes entered before this date
+		/// If state is proved : updates state
+		/// If a due date is provided and this date is not in year 1990, updates due date
+		/// If a due date is provided and this date is in year 1990, clears due date
+		/// if workplaceid is provided : sets new default workspace for the task
+		/// If workplace id is 0 or less, clears default workspace for the task
+		/// if task enddate is provided and not in year 1990, sets enddate but does not put task in last avalible state (finished)
+		/// if new state is provided : sets new state for the trask and all subtasks of this task
+		/// If user calling API is task responsible, but can not edit project, only state change is supported
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="parentId"></param>
@@ -19321,7 +37230,17 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// Updates task
+		/// if parentId is 0 or less : Removes link to parent
+		/// If new startdate is provided : Updates startdate if there are no realtimes entered before this date
+		/// If state is proved : updates state
+		/// If a due date is provided and this date is not in year 1990, updates due date
+		/// If a due date is provided and this date is in year 1990, clears due date
+		/// if workplaceid is provided : sets new default workspace for the task
+		/// If workplace id is 0 or less, clears default workspace for the task
+		/// if task enddate is provided and not in year 1990, sets enddate but does not put task in last avalible state (finished)
+		/// if new state is provided : sets new state for the trask and all subtasks of this task
+		/// If user calling API is task responsible, but can not edit project, only state change is supported
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="parentId"></param>
@@ -19332,7 +37251,17 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// Updates task
+		/// if parentId is 0 or less : Removes link to parent
+		/// If new startdate is provided : Updates startdate if there are no realtimes entered before this date
+		/// If state is proved : updates state
+		/// If a due date is provided and this date is not in year 1990, updates due date
+		/// If a due date is provided and this date is in year 1990, clears due date
+		/// if workplaceid is provided : sets new default workspace for the task
+		/// If workplace id is 0 or less, clears default workspace for the task
+		/// if task enddate is provided and not in year 1990, sets enddate but does not put task in last avalible state (finished)
+		/// if new state is provided : sets new state for the trask and all subtasks of this task
+		/// If user calling API is task responsible, but can not edit project, only state change is supported
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="parentId"></param>
@@ -19346,42 +37275,179 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// 
+		/// GetCustomFieldsForTask
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="projectId"></param>
+		/// <param name="isForTaskEmpty"></param>
 		/// <param name="noUnique"></param>
 		/// <returns></returns>
-		protected virtual async Task<HttpResponseMessage> GetCustomFieldsForTaskAsyncMsg(Int32 taskId,Int32 projectId,Boolean noUnique)
+		protected virtual async Task<HttpResponseMessage> GetCustomFieldsForTaskAsyncMsg(Int32 taskId,Int32 projectId,Boolean isForTaskEmpty,Boolean noUnique)
 		{
-			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetCustomFieldsForTask?taskId=" + taskId + "&projectId=" + projectId + "&noUnique=" + noUnique, default(HttpResponseMessage));
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetCustomFieldsForTask?taskId=" + taskId + "&projectId=" + projectId + "&isForTaskEmpty=" + isForTaskEmpty + "&noUnique=" + noUnique, default(HttpResponseMessage));
 		}
 
 		/// <summary>
-		/// 
+		/// GetCustomFieldsForTask
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="projectId"></param>
+		/// <param name="isForTaskEmpty"></param>
 		/// <param name="noUnique"></param>
 		/// <returns></returns>
-		public virtual async Task<HttpResponseMessage> GetCustomFieldsForTaskAsync(Int32 taskId,Int32 projectId,Boolean noUnique)
+		public virtual async Task<HttpResponseMessage> GetCustomFieldsForTaskAsync(Int32 taskId,Int32 projectId,Boolean isForTaskEmpty,Boolean noUnique)
 		{
-			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetCustomFieldsForTask?taskId=" + taskId + "&projectId=" + projectId + "&noUnique=" + noUnique, default(HttpResponseMessage));
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetCustomFieldsForTask?taskId=" + taskId + "&projectId=" + projectId + "&isForTaskEmpty=" + isForTaskEmpty + "&noUnique=" + noUnique, default(HttpResponseMessage));
 		}
 
 		/// <summary>
-		/// 
+		/// GetCustomFieldsForTask
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="projectId"></param>
+		/// <param name="isForTaskEmpty"></param>
 		/// <param name="noUnique"></param>
-		public virtual List<CustomFieldJs> GetCustomFieldsForTask(Int32 taskId,Int32 projectId,Boolean noUnique)
+		public virtual List<CustomFieldJs> GetCustomFieldsForTask(Int32 taskId,Int32 projectId,Boolean isForTaskEmpty,Boolean noUnique)
 		{
-			var result = Task.Run(() => GetCustomFieldsForTaskAsyncMsg(taskId, projectId, noUnique)).Result;		 
+			var result = Task.Run(() => GetCustomFieldsForTaskAsyncMsg(taskId, projectId, isForTaskEmpty, noUnique)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<List<CustomFieldJs>>().Result;
+			 		}
+
+		/// <summary>
+		/// Insert or update a list of tasks
+		/// </summary>
+		/// <param name="tasks"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddOrUpdateTasksAsyncMsg(List<ApiTask> tasks)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiTask>>("api/v1/tasks/api/v1/tasks/AddOrUpdateTasks", tasks);
+		}
+
+		/// <summary>
+		/// Insert or update a list of tasks
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddOrUpdateTasksAsync(List<ApiTask> tasks)
+		{
+			return await HttpClient.PostAsJsonAsync<List<ApiTask>>("api/v1/tasks/api/v1/tasks/AddOrUpdateTasks", tasks);
+		}
+
+		/// <summary>
+		/// Insert or update a list of tasks
+		/// </summary>
+		public virtual UpdateResult AddOrUpdateTasks(List<ApiTask> tasks)
+		{
+			var result = Task.Run(() => AddOrUpdateTasksAsyncMsg(tasks)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// UpdateTasksOrder
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="orders"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTasksOrderAsyncMsg(Int32 projectId,List<Int32[]> orders)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32[]>>("api/v1/tasks/api/v1/tasks/UpdateTasksOrder/" + projectId, orders);
+		}
+
+		/// <summary>
+		/// UpdateTasksOrder
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTasksOrderAsync(Int32 projectId,List<Int32[]> orders)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32[]>>("api/v1/tasks/api/v1/tasks/UpdateTasksOrder/" + projectId, orders);
+		}
+
+		/// <summary>
+		/// UpdateTasksOrder
+		/// </summary>
+		/// <param name="projectId"></param>
+		public virtual UpdateResult UpdateTasksOrder(Int32 projectId,List<Int32[]> orders)
+		{
+			var result = Task.Run(() => UpdateTasksOrderAsyncMsg(projectId, orders)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// GetMyTodayTasks
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetMyTodayTasksAsyncMsg(Int32 userId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetMyTodayTasks/" + userId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// GetMyTodayTasks
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetMyTodayTasksAsync(Int32 userId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/GetMyTodayTasks/" + userId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// GetMyTodayTasks
+		/// </summary>
+		/// <param name="userId"></param>
+		public virtual List<ProjectWithTasks> GetMyTodayTasks(Int32 userId)
+		{
+			var result = Task.Run(() => GetMyTodayTasksAsyncMsg(userId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectWithTasks>>().Result;
+			 		}
+
+		/// <summary>
+		/// ToggleEnded
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <param name="isEnded"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ToggleEndedAsyncMsg(Int32 taskId,Boolean isEnded)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/ToggleEnded/" + taskId + "?isEnded=" + isEnded, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// ToggleEnded
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <param name="isEnded"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ToggleEndedAsync(Int32 taskId,Boolean isEnded)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/ToggleEnded/" + taskId + "?isEnded=" + isEnded, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// ToggleEnded
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <param name="isEnded"></param>
+		public virtual UpdateResult ToggleEnded(Int32 taskId,Boolean isEnded)
+		{
+			var result = Task.Run(() => ToggleEndedAsyncMsg(taskId, isEnded)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
 		/// <summary>
@@ -19419,7 +37485,38 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// 
+		/// Updates a list of task state
+		/// </summary>
+		/// <param name="taskStates"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateListStateTaskAsyncMsg(List<TaskState> taskStates)
+		{
+			return await HttpClient.PostAsJsonAsync<List<TaskState>>("api/v1/tasks/api/v1/tasks/UpdateListStateTask", taskStates);
+		}
+
+		/// <summary>
+		/// Updates a list of task state
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateListStateTaskAsync(List<TaskState> taskStates)
+		{
+			return await HttpClient.PostAsJsonAsync<List<TaskState>>("api/v1/tasks/api/v1/tasks/UpdateListStateTask", taskStates);
+		}
+
+		/// <summary>
+		/// Updates a list of task state
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess UpdateListStateTask(List<TaskState> taskStates)
+		{
+			var result = Task.Run(() => UpdateListStateTaskAsyncMsg(taskStates)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
+		/// Updates state of a task.
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="stateId"></param>
@@ -19430,7 +37527,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// Updates state of a task.
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="stateId"></param>
@@ -19441,7 +37538,7 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// Updates state of a task.
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <param name="stateId"></param>
@@ -19517,7 +37614,9 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// 
+		/// In bulk, modify a group of tasks. 
+		/// When change the dates of the tasks check the Real hours on the task.
+		/// If no value in a variable in data dont do the change
 		/// </summary>
 		/// <param name="data"></param>
 		/// <returns></returns>
@@ -19527,7 +37626,9 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// In bulk, modify a group of tasks. 
+		/// When change the dates of the tasks check the Real hours on the task.
+		/// If no value in a variable in data dont do the change
 		/// </summary>
 		/// <returns></returns>
 		public virtual async Task<HttpResponseMessage> UpdateSelectedTasksInfoAsync(RequestSelectedTasks data)
@@ -19536,7 +37637,9 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// 
+		/// In bulk, modify a group of tasks. 
+		/// When change the dates of the tasks check the Real hours on the task.
+		/// If no value in a variable in data dont do the change
 		/// </summary>
 		public virtual UpdateResult UpdateSelectedTasksInfo(RequestSelectedTasks data)
 		{
@@ -19548,10 +37651,212 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
-		/// get ressource for task
+		/// AddComment
 		/// </summary>
-		/// <param name="projectId">Id of the project to delete</param>
-		/// <param name="dates">dates param</param>
+		/// <param name="taskId"></param>
+		/// <param name="comment"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddCommentAsyncMsg(Int32 taskId,String comment)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/AddComment?taskId=" + taskId + "&comment=" + comment, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// AddComment
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <param name="comment"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddCommentAsync(Int32 taskId,String comment)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/AddComment?taskId=" + taskId + "&comment=" + comment, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// AddComment
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <param name="comment"></param>
+		public virtual UpdateResultWithId AddComment(Int32 taskId,String comment)
+		{
+			var result = Task.Run(() => AddCommentAsyncMsg(taskId, comment)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Delete Comment
+		/// </summary>
+		/// <param name="commentId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteCommentAsyncMsg(Int32 commentId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/tasks/api/v1/tasks/DeleteComment?commentId=" + commentId);
+		}
+
+		/// <summary>
+		/// Delete Comment
+		/// </summary>
+		/// <param name="commentId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteCommentAsync(Int32 commentId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/tasks/api/v1/tasks/DeleteComment?commentId=" + commentId);
+		}
+
+		/// <summary>
+		/// Delete Comment
+		/// </summary>
+		/// <param name="commentId"></param>
+		public virtual UpdateResult DeleteComment(Int32 commentId)
+		{
+			var result = Task.Run(() => DeleteCommentAsyncMsg(commentId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Update Comment
+		/// </summary>
+		/// <param name="commentId"></param>
+		/// <param name="newText"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateCommentAsyncMsg(Int32 commentId,String newText)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/UpdateComment/" + commentId + "?newText=" + newText, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Update Comment
+		/// </summary>
+		/// <param name="commentId"></param>
+		/// <param name="newText"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateCommentAsync(Int32 commentId,String newText)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/UpdateComment/" + commentId + "?newText=" + newText, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Update Comment
+		/// </summary>
+		/// <param name="commentId"></param>
+		/// <param name="newText"></param>
+		public virtual UpdateResult UpdateComment(Int32 commentId,String newText)
+		{
+			var result = Task.Run(() => UpdateCommentAsyncMsg(commentId, newText)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Refresh Task
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RefreshTaskAsyncMsg(Int32 taskId)
+		{
+			return await HttpClient.GetAsync("api/v1/tasks/api/v1/tasks/RefreshTask/" + taskId);
+		}
+
+		/// <summary>
+		/// Refresh Task
+		/// </summary>
+		/// <param name="taskId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RefreshTaskAsync(Int32 taskId)
+		{
+			return await HttpClient.GetAsync("api/v1/tasks/api/v1/tasks/RefreshTask/" + taskId);
+		}
+
+		/// <summary>
+		/// Refresh Task
+		/// </summary>
+		/// <param name="taskId"></param>
+		public virtual ProjectTask RefreshTask(Int32 taskId)
+		{
+			var result = Task.Run(() => RefreshTaskAsyncMsg(taskId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ProjectTask>().Result;
+			 		}
+
+		/// <summary>
+		/// Duplicate a task
+		/// </summary>
+		/// <param name="taskId">task to duplicate</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DuplicateTaskAsyncMsg(Int32 taskId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/duplicateTask/" + taskId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Duplicate a task
+		/// </summary>
+		/// <param name="taskId">task to duplicate</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DuplicateTaskAsync(Int32 taskId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/duplicateTask/" + taskId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Duplicate a task
+		/// </summary>
+		/// <param name="taskId">task to duplicate</param>
+		public virtual UpdateResult DuplicateTask(Int32 taskId)
+		{
+			var result = Task.Run(() => DuplicateTaskAsyncMsg(taskId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Duplicate multiple task
+		/// </summary>
+		/// <param name="tasksId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DuplicateTasksAsyncMsg(List<Int32> tasksId)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("api/v1/tasks/api/v1/tasks/duplicateTask", tasksId);
+		}
+
+		/// <summary>
+		/// Duplicate multiple task
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DuplicateTasksAsync(List<Int32> tasksId)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Int32>>("api/v1/tasks/api/v1/tasks/duplicateTask", tasksId);
+		}
+
+		/// <summary>
+		/// Duplicate multiple task
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess DuplicateTasks(List<Int32> tasksId)
+		{
+			var result = Task.Run(() => DuplicateTasksAsyncMsg(tasksId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="dates"></param>
 		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> GetAllProjectRessourcesAsyncMsg(Int32 projectId,RequesTasks dates)
 		{
@@ -19559,9 +37864,9 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// get ressource for task
+		/// 
 		/// </summary>
-		/// <param name="projectId">Id of the project to delete</param>
+		/// <param name="projectId"></param>
 		/// <returns></returns>
 		public virtual async Task<HttpResponseMessage> GetAllProjectRessourcesAsync(Int32 projectId,RequesTasks dates)
 		{
@@ -19569,9 +37874,9 @@ namespace WebApi.Proxies.Clients
 		}
 
 		/// <summary>
-		/// get ressource for task
+		/// 
 		/// </summary>
-		/// <param name="projectId">Id of the project to delete</param>
+		/// <param name="projectId"></param>
 		public virtual List<EmployeJS> GetAllProjectRessources(Int32 projectId,RequesTasks dates)
 		{
 			var result = Task.Run(() => GetAllProjectRessourcesAsyncMsg(projectId, dates)).Result;		 
@@ -19647,6 +37952,7 @@ namespace WebApi.Proxies.Clients
 
 		/// <summary>
 		/// Returns data for a task. Planning and real times included between provided dates
+		/// if task cannont be found, returns null
 		/// </summary>
 		/// <param name="criteria">RequestObject : TaskId</param>
 		/// <returns></returns>
@@ -19657,6 +37963,7 @@ namespace WebApi.Proxies.Clients
 
 		/// <summary>
 		/// Returns data for a task. Planning and real times included between provided dates
+		/// if task cannont be found, returns null
 		/// </summary>
 		/// <returns></returns>
 		public virtual async Task<HttpResponseMessage> GetTaskByIdAsync(DatesRangeRequest<Int32> criteria)
@@ -19666,6 +37973,7 @@ namespace WebApi.Proxies.Clients
 
 		/// <summary>
 		/// Returns data for a task. Planning and real times included between provided dates
+		/// if task cannont be found, returns null
 		/// </summary>
 		public virtual ProjectTask GetTaskById(DatesRangeRequest<Int32> criteria)
 		{
@@ -19705,6 +38013,180 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Adds a new task from activity
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateTaskFromActicityAsyncMsg(Int32 projectId,Guid activityId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/createTaskFromActivity/" + projectId + "/" + activityId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Adds a new task from activity
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="activityId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateTaskFromActicityAsync(Int32 projectId,Guid activityId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/tasks/api/v1/tasks/createTaskFromActivity/" + projectId + "/" + activityId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Adds a new task from activity
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <param name="activityId"></param>
+		public virtual UpdateResultWithId CreateTaskFromActicity(Int32 projectId,Guid activityId)
+		{
+			var result = Task.Run(() => CreateTaskFromActicityAsyncMsg(projectId, activityId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Get all tasks for a project, option get tasks in a tree structure
+		/// </summary>
+		/// <param name="projectId">Id of the project</param>
+		/// <param name="getBillingInfo">get hour rate</param>
+		/// <param name="putInTreeChild">if the return task should be in a tree structure (childs tasks in childs object of the tasks)</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllTasksAsyncMsg(Int32 projectId,Boolean getBillingInfo,Boolean putInTreeChild)
+		{
+			return await HttpClient.GetAsync("api/v1/tasks/getAllTasks/" + projectId + "/" + getBillingInfo + "/" + putInTreeChild);
+		}
+
+		/// <summary>
+		/// Get all tasks for a project, option get tasks in a tree structure
+		/// </summary>
+		/// <param name="projectId">Id of the project</param>
+		/// <param name="getBillingInfo">get hour rate</param>
+		/// <param name="putInTreeChild">if the return task should be in a tree structure (childs tasks in childs object of the tasks)</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllTasksAsync(Int32 projectId,Boolean getBillingInfo,Boolean putInTreeChild)
+		{
+			return await HttpClient.GetAsync("api/v1/tasks/getAllTasks/" + projectId + "/" + getBillingInfo + "/" + putInTreeChild);
+		}
+
+		/// <summary>
+		/// Get all tasks for a project, option get tasks in a tree structure
+		/// </summary>
+		/// <param name="projectId">Id of the project</param>
+		/// <param name="getBillingInfo">get hour rate</param>
+		/// <param name="putInTreeChild">if the return task should be in a tree structure (childs tasks in childs object of the tasks)</param>
+		public virtual List<ProjectTask> GetAllTasks(Int32 projectId,Boolean getBillingInfo,Boolean putInTreeChild)
+		{
+			var result = Task.Run(() => GetAllTasksAsyncMsg(projectId, getBillingInfo, putInTreeChild)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectTask>>().Result;
+			 		}
+
+		/// <summary>
+		/// Creates multiple tasks for ONE project from multiple activity ids (should match 1 yo 1)
+		/// For now ; Any user can import tasks in any project of the company
+		/// </summary>
+		/// <param name="projectId">Id of the project</param>
+		/// <param name="activities">List of GUIDs for activities</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateMultipleTasksFromIdsAsyncMsg(Int32 projectId,List<Guid> activities)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Guid>>("api/v1/tasks/api/v1/tasks/createTasksFromActivities/" + projectId, activities);
+		}
+
+		/// <summary>
+		/// Creates multiple tasks for ONE project from multiple activity ids (should match 1 yo 1)
+		/// For now ; Any user can import tasks in any project of the company
+		/// </summary>
+		/// <param name="projectId">Id of the project</param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateMultipleTasksFromIdsAsync(Int32 projectId,List<Guid> activities)
+		{
+			return await HttpClient.PostAsJsonAsync<List<Guid>>("api/v1/tasks/api/v1/tasks/createTasksFromActivities/" + projectId, activities);
+		}
+
+		/// <summary>
+		/// Creates multiple tasks for ONE project from multiple activity ids (should match 1 yo 1)
+		/// For now ; Any user can import tasks in any project of the company
+		/// </summary>
+		/// <param name="projectId">Id of the project</param>
+		public virtual UpdateResultWithId CreateMultipleTasksFromIds(Int32 projectId,List<Guid> activities)
+		{
+			var result = Task.Run(() => CreateMultipleTasksFromIdsAsyncMsg(projectId, activities)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns a list of tasks based on provided filters and dates range
+		/// </summary>
+		/// <param name="query"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ListTasksAsyncMsg(DatesRangeFilteredRequest<Object> query)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Object>>("api/v1/tasks/api/v1/tasks/list", query);
+		}
+
+		/// <summary>
+		/// Returns a list of tasks based on provided filters and dates range
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ListTasksAsync(DatesRangeFilteredRequest<Object> query)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Object>>("api/v1/tasks/api/v1/tasks/list", query);
+		}
+
+		/// <summary>
+		/// Returns a list of tasks based on provided filters and dates range
+		/// </summary>
+		public virtual List<ProjectTask> ListTasks(DatesRangeFilteredRequest<Object> query)
+		{
+			var result = Task.Run(() => ListTasksAsyncMsg(query)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectTask>>().Result;
+			 		}
+
+		/// <summary>
+		/// Returns a list of tasks with minimal info budget rate based on provided filters and dates range
+		/// </summary>
+		/// <param name="query"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ListTasksBudgetRateAsyncMsg(DatesRangeFilteredRequest<Object> query)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Object>>("api/v1/tasks/api/v1/tasks/listTasksBudgetRate", query);
+		}
+
+		/// <summary>
+		/// Returns a list of tasks with minimal info budget rate based on provided filters and dates range
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ListTasksBudgetRateAsync(DatesRangeFilteredRequest<Object> query)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequest<Object>>("api/v1/tasks/api/v1/tasks/listTasksBudgetRate", query);
+		}
+
+		/// <summary>
+		/// Returns a list of tasks with minimal info budget rate based on provided filters and dates range
+		/// </summary>
+		public virtual List<ProjectTask> ListTasksBudgetRate(DatesRangeFilteredRequest<Object> query)
+		{
+			var result = Task.Run(() => ListTasksBudgetRateAsyncMsg(query)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ProjectTask>>().Result;
 			 		}
 
 		/// <summary>
@@ -19765,6 +38247,74 @@ namespace WebApi.Proxies.Clients
 		#region Methods
 
 		/// <summary>
+		/// Updates one value for a timesheet
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTimeAsyncMsg(Int32 ressourceId,TimehseetBaseLine data)
+		{
+			return await HttpClient.PostAsJsonAsync<TimehseetBaseLine>("api/v1/timesheets/updateTime/" + ressourceId, data);
+		}
+
+		/// <summary>
+		/// Updates one value for a timesheet
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTimeAsync(Int32 ressourceId,TimehseetBaseLine data)
+		{
+			return await HttpClient.PostAsJsonAsync<TimehseetBaseLine>("api/v1/timesheets/updateTime/" + ressourceId, data);
+		}
+
+		/// <summary>
+		/// Updates one value for a timesheet
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		public virtual UpdateResultWithId UpdateTime(Int32 ressourceId,TimehseetBaseLine data)
+		{
+			var result = Task.Run(() => UpdateTimeAsyncMsg(ressourceId, data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// Used for integrations
+		/// Allow to sync incoming real times
+		/// </summary>
+		/// <param name="dataList">List of time entries</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTimeExternalAsyncMsg(List<TimehseetBaseLine> dataList)
+		{
+			return await HttpClient.PostAsJsonAsync<List<TimehseetBaseLine>>("api/v1/timesheets/updateTimeExternal", dataList);
+		}
+
+		/// <summary>
+		/// Used for integrations
+		/// Allow to sync incoming real times
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTimeExternalAsync(List<TimehseetBaseLine> dataList)
+		{
+			return await HttpClient.PostAsJsonAsync<List<TimehseetBaseLine>>("api/v1/timesheets/updateTimeExternal", dataList);
+		}
+
+		/// <summary>
+		/// Used for integrations
+		/// Allow to sync incoming real times
+		/// </summary>
+		public virtual UpdateResult UpdateTimeExternal(List<TimehseetBaseLine> dataList)
+		{
+			var result = Task.Run(() => UpdateTimeExternalAsyncMsg(dataList)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="args"></param>
@@ -19793,6 +38343,39 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<TimeSheetReduced>().Result;
+			 		}
+
+		/// <summary>
+		/// Submits a timesheet
+		/// </summary>
+		/// <param name="timesheetId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SubmitTimesheetAsyncMsg(Int32 timesheetId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/timesheets/submit/" + timesheetId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Submits a timesheet
+		/// </summary>
+		/// <param name="timesheetId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SubmitTimesheetAsync(Int32 timesheetId)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/timesheets/submit/" + timesheetId, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Submits a timesheet
+		/// </summary>
+		/// <param name="timesheetId"></param>
+		public virtual UpdateResult SubmitTimesheet(Int32 timesheetId)
+		{
+			var result = Task.Run(() => SubmitTimesheetAsyncMsg(timesheetId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
 			 		}
 
 		/// <summary>
@@ -19889,6 +38472,70 @@ namespace WebApi.Proxies.Clients
 			 		}
 
 		/// <summary>
+		/// Delete Timesheet Views
+		/// </summary>
+		/// <param name="viewId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteNewTimesheetViewAsyncMsg(Int32 viewId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/timesheets/deleteNewTimesheetView?viewId=" + viewId);
+		}
+
+		/// <summary>
+		/// Delete Timesheet Views
+		/// </summary>
+		/// <param name="viewId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteNewTimesheetViewAsync(Int32 viewId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/timesheets/deleteNewTimesheetView?viewId=" + viewId);
+		}
+
+		/// <summary>
+		/// Delete Timesheet Views
+		/// </summary>
+		/// <param name="viewId"></param>
+		public virtual UpdateResult DeleteNewTimesheetView(Int32 viewId)
+		{
+			var result = Task.Run(() => DeleteNewTimesheetViewAsyncMsg(viewId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="param"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddNewTimesheetViewAsyncMsg(DatesRangeFilteredRequestPagination<UserPreferencesTimesheetsParam> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<UserPreferencesTimesheetsParam>>("api/v1/timesheets/addNewTimesheetView", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddNewTimesheetViewAsync(DatesRangeFilteredRequestPagination<UserPreferencesTimesheetsParam> param)
+		{
+			return await HttpClient.PostAsJsonAsync<DatesRangeFilteredRequestPagination<UserPreferencesTimesheetsParam>>("api/v1/timesheets/addNewTimesheetView", param);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId AddNewTimesheetView(DatesRangeFilteredRequestPagination<UserPreferencesTimesheetsParam> param)
+		{
+			var result = Task.Run(() => AddNewTimesheetViewAsyncMsg(param)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="data"></param>
@@ -19944,6 +38591,106 @@ namespace WebApi.Proxies.Clients
 		public virtual UpdateResult SendNotifToUserNotSubmit(DatesRangeFilteredRequest<TimesheetsValidationUsersRequest> data)
 		{
 			var result = Task.Run(() => SendNotifToUserNotSubmitAsyncMsg(data)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Get Past Timesheet
+		/// </summary>
+		/// <param name="args"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetPastTimesheetAsyncMsg(GetTimesheetRequest args)
+		{
+			return await HttpClient.PostAsJsonAsync<GetTimesheetRequest>("api/v1/timesheets/GetPastTimesheet", args);
+		}
+
+		/// <summary>
+		/// Get Past Timesheet
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetPastTimesheetAsync(GetTimesheetRequest args)
+		{
+			return await HttpClient.PostAsJsonAsync<GetTimesheetRequest>("api/v1/timesheets/GetPastTimesheet", args);
+		}
+
+		/// <summary>
+		/// Get Past Timesheet
+		/// </summary>
+		public virtual TimeSheetReduced GetPastTimesheet(GetTimesheetRequest args)
+		{
+			var result = Task.Run(() => GetPastTimesheetAsyncMsg(args)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<TimeSheetReduced>().Result;
+			 		}
+
+		/// <summary>
+		/// Reject TimeSheet
+		/// </summary>
+		/// <param name="toReject"></param>
+		/// <param name="comment"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> RejectTimeSheetAsyncMsg(Int32 toReject,String comment)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/timesheets/RejectTimeSheet?toReject=" + toReject + "&comment=" + comment, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Reject TimeSheet
+		/// </summary>
+		/// <param name="toReject"></param>
+		/// <param name="comment"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> RejectTimeSheetAsync(Int32 toReject,String comment)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/timesheets/RejectTimeSheet?toReject=" + toReject + "&comment=" + comment, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Reject TimeSheet
+		/// </summary>
+		/// <param name="toReject"></param>
+		/// <param name="comment"></param>
+		public virtual UpdateResult RejectTimeSheet(Int32 toReject,String comment)
+		{
+			var result = Task.Run(() => RejectTimeSheetAsyncMsg(toReject, comment)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Devalidate TimeSheet
+		/// </summary>
+		/// <param name="toVal"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DevalidateTimeSheetAsyncMsg(Int32 toVal)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/timesheets/DevalidateTimeSheet?toVal=" + toVal, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Devalidate TimeSheet
+		/// </summary>
+		/// <param name="toVal"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DevalidateTimeSheetAsync(Int32 toVal)
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/timesheets/DevalidateTimeSheet?toVal=" + toVal, default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Devalidate TimeSheet
+		/// </summary>
+		/// <param name="toVal"></param>
+		public virtual UpdateResult DevalidateTimeSheet(Int32 toVal)
+		{
+			var result = Task.Run(() => DevalidateTimeSheetAsyncMsg(toVal)).Result;		 
 			 
 			EnsureSuccess(result);
 			 			 
@@ -20211,6 +38958,74 @@ namespace WebApi.Proxies.Clients
 			return result.Content.ReadAsAsync<List<ListItem>>().Result;
 			 		}
 
+		/// <summary>
+		/// Validates a timesheet with a comment message
+		/// </summary>
+		/// <param name="timesheetId"></param>
+		/// <param name="coment"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ValidateTimesheetAsyncMsg(Int32 timesheetId,String coment)
+		{
+			return await HttpClient.PostAsJsonAsync<String>("api/v1/timesheets/validate/" + timesheetId, coment);
+		}
+
+		/// <summary>
+		/// Validates a timesheet with a comment message
+		/// </summary>
+		/// <param name="timesheetId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ValidateTimesheetAsync(Int32 timesheetId,String coment)
+		{
+			return await HttpClient.PostAsJsonAsync<String>("api/v1/timesheets/validate/" + timesheetId, coment);
+		}
+
+		/// <summary>
+		/// Validates a timesheet with a comment message
+		/// </summary>
+		/// <param name="timesheetId"></param>
+		public virtual UpdateResult ValidateTimesheet(Int32 timesheetId,String coment)
+		{
+			var result = Task.Run(() => ValidateTimesheetAsyncMsg(timesheetId, coment)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Updates timebank value for a timesheet
+		/// If timesheet doesn't exist, it is created
+		/// </summary>
+		/// <param name="ts">Timesheet to update. Need to provide : Id, ressourceId, StartDate and CurrentTimeBank</param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateTimebankAsyncMsg(TimeSheetReduced ts)
+		{
+			return await HttpClient.PostAsJsonAsync<TimeSheetReduced>("api/v1/timesheets/updateTimebank", ts);
+		}
+
+		/// <summary>
+		/// Updates timebank value for a timesheet
+		/// If timesheet doesn't exist, it is created
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateTimebankAsync(TimeSheetReduced ts)
+		{
+			return await HttpClient.PostAsJsonAsync<TimeSheetReduced>("api/v1/timesheets/updateTimebank", ts);
+		}
+
+		/// <summary>
+		/// Updates timebank value for a timesheet
+		/// If timesheet doesn't exist, it is created
+		/// </summary>
+		public virtual UpdateResultWithId UpdateTimebank(TimeSheetReduced ts)
+		{
+			var result = Task.Run(() => UpdateTimebankAsyncMsg(ts)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
 		#endregion
 	}
 	/// <summary>
@@ -20234,6 +39049,36 @@ namespace WebApi.Proxies.Clients
 		}
 
 		#region Methods
+
+		/// <summary>
+		/// Returns ALL avalible translations
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetAllAvalibleTranslationsAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/langs");
+		}
+
+		/// <summary>
+		/// Returns ALL avalible translations
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetAllAvalibleTranslationsAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/langs");
+		}
+
+		/// <summary>
+		/// Returns ALL avalible translations
+		/// </summary>
+		public virtual List<TranslationsData> GetAllAvalibleTranslations()
+		{
+			var result = Task.Run(() => GetAllAvalibleTranslationsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<TranslationsData>>().Result;
+			 		}
 
 		/// <summary>
 		/// returns translations to use in TypeScript for a page or right pane
@@ -20463,6 +39308,133 @@ namespace WebApi.Proxies.Clients
 		/// 
 		/// </summary>
 		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetActiveDelegationsRecivedAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/profile/getActiveDelegationsRecived");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetActiveDelegationsRecivedAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/profile/getActiveDelegationsRecived");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual List<DelegationJS> GetActiveDelegationsRecived()
+		{
+			var result = Task.Run(() => GetActiveDelegationsRecivedAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<DelegationJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="delegation"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> CreateDelegationAsyncMsg(DelegationJS delegation)
+		{
+			return await HttpClient.PostAsJsonAsync<DelegationJS>("api/v1/profile/createDelegation", delegation);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> CreateDelegationAsync(DelegationJS delegation)
+		{
+			return await HttpClient.PostAsJsonAsync<DelegationJS>("api/v1/profile/createDelegation", delegation);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual UpdateResultWithId CreateDelegation(DelegationJS delegation)
+		{
+			var result = Task.Run(() => CreateDelegationAsyncMsg(delegation)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultWithId>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteDelegationAsyncMsg(Int32 id)
+		{
+			return await HttpClient.DeleteAsync("api/v1/profile/deleteDelegation?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteDelegationAsync(Int32 id)
+		{
+			return await HttpClient.DeleteAsync("api/v1/profile/deleteDelegation?id=" + id);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		public virtual UpdateResult DeleteDelegation(Int32 id)
+		{
+			var result = Task.Run(() => DeleteDelegationAsyncMsg(id)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="newLink"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateStartUpPageAsyncMsg(String newLink)
+		{
+			return await HttpClient.GetAsync("api/v1/profile/updateStartUpPage?newLink=" + newLink);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="newLink"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateStartUpPageAsync(String newLink)
+		{
+			return await HttpClient.GetAsync("api/v1/profile/updateStartUpPage?newLink=" + newLink);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="newLink"></param>
+		public virtual UpdateResult UpdateStartUpPage(String newLink)
+		{
+			var result = Task.Run(() => UpdateStartUpPageAsyncMsg(newLink)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		protected virtual async Task<HttpResponseMessage> GetTimesheetRemindersAsyncMsg()
 		{
 			return await HttpClient.GetAsync("api/v1/profile/getTimesheetsReminders");
@@ -20556,6 +39528,220 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// get list active delegation
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetActiveDelegationsAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/profile/getActiveDelegations");
+		}
+
+		/// <summary>
+		/// get list active delegation
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetActiveDelegationsAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/profile/getActiveDelegations");
+		}
+
+		/// <summary>
+		/// get list active delegation
+		/// </summary>
+		public virtual List<DelegationJS> GetActiveDelegations()
+		{
+			var result = Task.Run(() => GetActiveDelegationsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<DelegationJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// Get User available for delegation
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetUsersListForDelegationAsyncMsg()
+		{
+			return await HttpClient.GetAsync("api/v1/profile");
+		}
+
+		/// <summary>
+		/// Get User available for delegation
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetUsersListForDelegationAsync()
+		{
+			return await HttpClient.GetAsync("api/v1/profile");
+		}
+
+		/// <summary>
+		/// Get User available for delegation
+		/// </summary>
+		public virtual List<EmployeJS> GetUsersListForDelegation()
+		{
+			var result = Task.Run(() => GetUsersListForDelegationAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<EmployeJS>>().Result;
+			 		}
+
+		/// <summary>
+		/// Change Name
+		/// </summary>
+		/// <param name="newInfo"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ChangeNameAsyncMsg(RessourceStats newInfo)
+		{
+			return await HttpClient.PostAsJsonAsync<RessourceStats>("api/v1/profile/changeName", newInfo);
+		}
+
+		/// <summary>
+		/// Change Name
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ChangeNameAsync(RessourceStats newInfo)
+		{
+			return await HttpClient.PostAsJsonAsync<RessourceStats>("api/v1/profile/changeName", newInfo);
+		}
+
+		/// <summary>
+		/// Change Name
+		/// </summary>
+		public virtual UpdateResult ChangeName(RessourceStats newInfo)
+		{
+			var result = Task.Run(() => ChangeNameAsyncMsg(newInfo)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Change Password
+		/// </summary>
+		/// <param name="info"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ChangePasswordAsyncMsg(RessourceStats info)
+		{
+			return await HttpClient.PostAsJsonAsync<RessourceStats>("api/v1/profile/changePassword", info);
+		}
+
+		/// <summary>
+		/// Change Password
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ChangePasswordAsync(RessourceStats info)
+		{
+			return await HttpClient.PostAsJsonAsync<RessourceStats>("api/v1/profile/changePassword", info);
+		}
+
+		/// <summary>
+		/// Change Password
+		/// </summary>
+		public virtual UpdateResult ChangePassword(RessourceStats info)
+		{
+			var result = Task.Run(() => ChangePasswordAsyncMsg(info)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// Reset All Time Periods
+		/// </summary>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> ResetAllTimePeriodsAsyncMsg()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/profile/resetAllTimePeriods", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Reset All Time Periods
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> ResetAllTimePeriodsAsync()
+		{
+			return await HttpClient.PostAsJsonAsync("api/v1/profile/resetAllTimePeriods", default(HttpResponseMessage));
+		}
+
+		/// <summary>
+		/// Reset All Time Periods
+		/// </summary>
+		public virtual void ResetAllTimePeriods()
+		{
+			var result = Task.Run(() => ResetAllTimePeriodsAsyncMsg()).Result;		 
+			 
+			EnsureSuccess(result);
+		}
+
+		/// <summary>
+		/// Get Profile Files
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetProfileFilesAsyncMsg(Int32 ressourceId)
+		{
+			return await HttpClient.GetAsync("api/v1/profile/getProfileFiles?ressourceId=" + ressourceId);
+		}
+
+		/// <summary>
+		/// Get Profile Files
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetProfileFilesAsync(Int32 ressourceId)
+		{
+			return await HttpClient.GetAsync("api/v1/profile/getProfileFiles?ressourceId=" + ressourceId);
+		}
+
+		/// <summary>
+		/// Get Profile Files
+		/// </summary>
+		/// <param name="ressourceId"></param>
+		public virtual List<UploadedFile> GetProfileFiles(Int32 ressourceId)
+		{
+			var result = Task.Run(() => GetProfileFilesAsyncMsg(ressourceId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<UploadedFile>>().Result;
+			 		}
+
+		/// <summary>
+		/// Save user profile
+		/// </summary>
+		/// <param name="profile"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> SaveProfileAsyncMsg(ProfileUser profile)
+		{
+			return await HttpClient.PostAsJsonAsync<ProfileUser>("api/v1/profile/saveProfile", profile);
+		}
+
+		/// <summary>
+		/// Save user profile
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> SaveProfileAsync(ProfileUser profile)
+		{
+			return await HttpClient.PostAsJsonAsync<ProfileUser>("api/v1/profile/saveProfile", profile);
+		}
+
+		/// <summary>
+		/// Save user profile
+		/// </summary>
+		public virtual UpdateResultMultiErrorSuccess SaveProfile(ProfileUser profile)
+		{
+			var result = Task.Run(() => SaveProfileAsyncMsg(profile)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<UpdateResultMultiErrorSuccess>().Result;
 			 		}
 
 		/// <summary>
@@ -20802,6 +39988,144 @@ namespace WebApi.Proxies.Clients
 			EnsureSuccess(result);
 			 			 
 			return result.Content.ReadAsAsync<UpdateResult>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> GetSystemWebHooksAsyncMsg(Nullable<Int32> companyId)
+		{
+			return await HttpClient.GetAsync("api/v1/hooks/system?companyId=" + companyId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> GetSystemWebHooksAsync(Nullable<Int32> companyId)
+		{
+			return await HttpClient.GetAsync("api/v1/hooks/system?companyId=" + companyId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		public virtual List<ActiveBeeyeWebHook> GetSystemWebHooks(Nullable<Int32> companyId)
+		{
+			var result = Task.Run(() => GetSystemWebHooksAsyncMsg(companyId)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<List<ActiveBeeyeWebHook>>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="companyId"></param>
+		/// <param name="webHookUpdate"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> UpdateSystemWebHookAsyncMsg(Guid id,Nullable<Int32> companyId,ActiveBeeyeWebHook webHookUpdate)
+		{
+			return await HttpClient.PutAsJsonAsync<ActiveBeeyeWebHook>("api/v1/hooks/system/" + id + "?companyId=" + companyId, webHookUpdate);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> UpdateSystemWebHookAsync(Guid id,Nullable<Int32> companyId,ActiveBeeyeWebHook webHookUpdate)
+		{
+			return await HttpClient.PutAsJsonAsync<ActiveBeeyeWebHook>("api/v1/hooks/system/" + id + "?companyId=" + companyId, webHookUpdate);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="companyId"></param>
+		public virtual ActiveBeeyeWebHook UpdateSystemWebHook(Guid id,Nullable<Int32> companyId,ActiveBeeyeWebHook webHookUpdate)
+		{
+			var result = Task.Run(() => UpdateSystemWebHookAsyncMsg(id, companyId, webHookUpdate)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ActiveBeeyeWebHook>().Result;
+			 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> DeleteSystemWebHookAsyncMsg(Guid id,Nullable<Int32> companyId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/hooks/system/" + id + "?companyId=" + companyId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> DeleteSystemWebHookAsync(Guid id,Nullable<Int32> companyId)
+		{
+			return await HttpClient.DeleteAsync("api/v1/hooks/system/" + id + "?companyId=" + companyId);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="companyId"></param>
+		public virtual void DeleteSystemWebHook(Guid id,Nullable<Int32> companyId)
+		{
+			var result = Task.Run(() => DeleteSystemWebHookAsyncMsg(id, companyId)).Result;		 
+			 
+			EnsureSuccess(result);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		/// <param name="beeyeWebHook"></param>
+		/// <returns></returns>
+		protected virtual async Task<HttpResponseMessage> AddSystemWebHookAsyncMsg(Nullable<Int32> companyId,ActiveBeeyeWebHook beeyeWebHook)
+		{
+			return await HttpClient.PostAsJsonAsync<ActiveBeeyeWebHook>("api/v1/hooks/system?companyId=" + companyId, beeyeWebHook);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		/// <returns></returns>
+		public virtual async Task<HttpResponseMessage> AddSystemWebHookAsync(Nullable<Int32> companyId,ActiveBeeyeWebHook beeyeWebHook)
+		{
+			return await HttpClient.PostAsJsonAsync<ActiveBeeyeWebHook>("api/v1/hooks/system?companyId=" + companyId, beeyeWebHook);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="companyId"></param>
+		public virtual ActiveBeeyeWebHook AddSystemWebHook(Nullable<Int32> companyId,ActiveBeeyeWebHook beeyeWebHook)
+		{
+			var result = Task.Run(() => AddSystemWebHookAsyncMsg(companyId, beeyeWebHook)).Result;		 
+			 
+			EnsureSuccess(result);
+			 			 
+			return result.Content.ReadAsAsync<ActiveBeeyeWebHook>().Result;
 			 		}
 
 		#endregion
