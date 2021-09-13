@@ -32,10 +32,10 @@ namespace HelloBeeye
                 apiKey = args[0];
             }
 
-            //Changing end point : by default https://betabeeye.azurewebsites.net //TEST Server
+            //Changing end point : by default https://betabeeyev2.azurewebsites.net //TEST Server
             //WebApi.Proxies.Configuration.MyWebApiProxyBaseAddress = "https://eu.mybeeye.com"; // Server Europe
             //WebApi.Proxies.Configuration.MyWebApiProxyBaseAddress = "https://app.mybeeye.com"; // Server Canada
-            WebApi.Proxies.Configuration.MyWebApiProxyBaseAddress = "https://betabeeye.azurewebsites.net";
+            WebApi.Proxies.Configuration.MyWebApiProxyBaseAddress = "https://betabeeyev2.azurewebsites.net";
 
 
             using (var beeyeLoginApi = new LoginClient(handler, false))
